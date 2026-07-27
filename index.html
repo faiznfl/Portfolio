@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Faiz Naufal Putra Permana</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js untuk Hamburger Menu Mobile -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-[#F6F8F6] text-slate-800 antialiased selection:bg-sky-600 selection:text-white">
+
+    <div class="max-w-5xl mx-auto px-5 py-8 sm:py-12">
+
+        <!-- NAVBAR MELAYANG DENGAN DUKUNGAN MOBILE MENU -->
+        <header x-data="{ open: false }"
+            class="sticky top-4 z-50 bg-white/90 backdrop-blur-md rounded-2xl border border-sky-100/80 shadow-sm mb-14 px-6 py-3.5 transition-all">
+            
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#home" class="text-xl font-extrabold tracking-tight text-slate-900">
+                    faiznfl<span class="text-sky-500">.</span>
+                </a>
+
+                <!-- Navigasi Desktop -->
+                <nav class="hidden md:flex gap-6 text-xs sm:text-sm font-medium text-slate-600">
+                    <a href="#home" class="hover:text-sky-600 transition">Beranda</a>
+                    <a href="#about" class="hover:text-sky-600 transition">Tentang Saya</a>
+                    <a href="#skills" class="hover:text-sky-600 transition">Keahlian</a>
+                    <a href="#projects" class="hover:text-sky-600 transition">Hasil Karya</a>
+                    <a href="#activities" class="hover:text-sky-600 transition">Kegiatan</a>
+                    <a href="#contact" class="hover:text-sky-600 transition">Kontak</a>
+                </nav>
+
+                <!-- Tombol Action Desktop -->
+                <div class="hidden md:block">
+                    <a href="#contact"
+                        class="px-4 py-2 text-xs font-semibold rounded-xl bg-sky-600 hover:bg-sky-700 text-white transition">
+                        Hubungi Saya
+                    </a>
+                </div>
+
+                <!-- Tombol Hamburger Mobile -->
+                <button @click="open = !open" type="button" class="md:hidden text-slate-700 hover:text-sky-600 focus:outline-none p-1">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path x-show="!open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        <path x-show="open" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Menu Dropdown Mobile -->
+            <div x-show="open" 
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 -translate-y-2"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-150"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-2"
+                 @click.away="open = false" 
+                 class="md:hidden pt-4 pb-2 border-t border-slate-100 mt-3 flex flex-col space-y-3 text-sm font-medium text-slate-600">
+                <a @click="open = false" href="#home" class="hover:text-sky-600 transition py-1">Beranda</a>
+                <a @click="open = false" href="#about" class="hover:text-sky-600 transition py-1">Tentang Saya</a>
+                <a @click="open = false" href="#skills" class="hover:text-sky-600 transition py-1">Keahlian</a>
+                <a @click="open = false" href="#projects" class="hover:text-sky-600 transition py-1">Hasil Karya</a>
+                <a @click="open = false" href="#activities" class="hover:text-sky-600 transition py-1">Kegiatan</a>
+                <a @click="open = false" href="#contact" class="hover:text-sky-600 transition py-1">Kontak</a>
+                <div class="pt-2">
+                    <a @click="open = false" href="#contact"
+                        class="block text-center px-4 py-2 text-xs font-semibold rounded-xl bg-sky-600 hover:bg-sky-700 text-white transition">
+                        Hubungi Saya
+                    </a>
+                </div>
+            </div>
+
+        </header>
+
+        <main class="space-y-24">
+
+            <!-- 1. HERO SECTION -->
+            <section id="home" class="scroll-mt-28 flex flex-col md:flex-row items-center gap-10 pt-2">
+                <!-- Foto Profil di Kiri -->
+                <div class="w-full md:w-5/12 flex justify-center items-center">
+                    <!-- Card Utama -->
+                    <div
+                        class="relative w-full max-w-xs h-80 bg-sky-100/80 rounded-3xl p-4 border border-sky-200/70 shadow-sm flex items-end justify-center overflow-hidden">
+
+                        <!-- Ornamen Lingkaran di Belakang Foto -->
+                        <div class="absolute w-48 h-48 bg-sky-200/50 rounded-full blur-md top-6"></div>
+
+                        <!-- Foto Profil PNG -->
+                        <img src="images/foto-profil.png" alt="Foto Profil"
+                            class="relative z-10 max-h-full w-auto rounded-3xl object-contain object-bottom transition-transform duration-300 hover:scale-105">
+                    </div>
+                </div>
+
+                <!-- Deskripsi Kanan -->
+                <div class="w-full md:w-7/12 space-y-4 text-center md:text-left">
+                    <span
+                        class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold rounded-full bg-sky-50 text-sky-700 border border-sky-200/60">
+                        <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                        Front-End Developer
+                    </span>
+                    <span
+                        class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold rounded-full bg-sky-50 text-sky-700 border border-sky-200/60">
+                        <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                        UI/UX Designer
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        Faiz Naufal Putra Permana<br>
+                    </h1>
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                        Fokus mengembangkan dan membangun sistem aplikasi website yang terstruktur, rapi, dan responsif
+                        menggunakan Laravel
+                        dan Tailwind CSS.
+                    </p>
+                    <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-3 text-sm">
+                        <a href="#projects"
+                            class="px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold transition shadow-sm">
+                            Lihat Karya
+                        </a>
+                        <a href="#contact"
+                            class="px-5 py-2.5 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 font-semibold transition">
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. TENTANG SAYA -->
+            <section id="about" class="scroll-mt-28 space-y-6">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-slate-900">Tentang Saya</h2>
+                    <div class="w-12 h-1 bg-sky-500 mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 items-stretch">
+                    <!-- Deskripsi Narasi -->
+                    <div
+                        class="md:col-span-2 bg-white p-6 sm:p-7 rounded-2xl border border-slate-100 shadow-sm space-y-4 leading-relaxed text-slate-600 text-sm">
+                        <p>
+                            Saya adalah mahasiswa Universitas Pamulang program studi Sistem Informasi yang memiliki
+                            ketertarikan mendalam pada Front-End Development dan UI/UX Design, yang berfokus pada
+                            merancang
+                            dan membangun antarmuka web yang responsif, intuitif, serta berorientasi pada pengalaman
+                            pengguna.
+                        </p>
+                        <p>
+                            Memiliki pemahaman pada Figma, HTML, CSS, Tailwind CSS, PHP, dan Laravel. Berbekal semangat
+                            belajar dan yang tinggi dan fleksibilitas beradaptasi, saya siap berkontribusi dalam
+                            menciptakan
+                            pengalaman pengguna yang efektif, dan berdampak positif bagi industri teknologi.
+                        </p>
+                    </div>
+
+                    <!-- Kartu Info Ringkas -->
+                    <div
+                        class="bg-sky-50/60 p-6 rounded-2xl border border-sky-100 flex flex-col justify-between space-y-4">
+                        <div>
+                            <p class="text-xs text-sky-700 font-bold uppercase tracking-wider">Fokus Utama</p>
+                            <p class="text-sm font-bold text-slate-800 mt-1">Frontend & System Design</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-sky-700 font-bold uppercase tracking-wider">Framework Pilihan</p>
+                            <p class="text-sm font-bold text-slate-800 mt-1">Laravel</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-sky-700 font-bold uppercase tracking-wider">Project Teratas</p>
+                            <p class="text-sm font-bold text-slate-800 mt-1">Sistem Manajemen Hotel & Sistem Manajemen
+                                Rental Mobil</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. KEAHLIAN & KEMAMPUAN -->
+            <section id="skills" class="scroll-mt-28 space-y-6">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-slate-900">Keahlian & Kemampuan</h2>
+                    <div class="w-12 h-1 bg-sky-500 mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <!-- 1 Kartu Utama Ringkas -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-100 shadow-sm space-y-6">
+
+                    <!-- Baris 1: UI/UX & Web Design -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2 text-sky-700 font-bold text-sm uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                            UI/UX & Web Design
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3.5 py-1.5 rounded-xl bg-sky-50/80 text-sky-700 border border-sky-100/80 text-xs font-semibold">Figma</span>
+                            <span
+                                class="px-3.5 py-1.5 rounded-xl bg-sky-50/80 text-sky-700 border border-sky-100/80 text-xs font-semibold">Wireframing</span>
+                            <span
+                                class="px-3.5 py-1.5 rounded-xl bg-sky-50/80 text-sky-700 border border-sky-100/80 text-xs font-semibold">Prototyping</span>
+                            <span
+                                class="px-3.5 py-1.5 rounded-xl bg-sky-50/80 text-sky-700 border border-sky-100/80 text-xs font-semibold">Responsive
+                                Web Design</span>
+                        </div>
+                    </div>
+
+                    <div class="border-b border-slate-100"></div>
+
+                    <!-- Baris 2: Web Development & Frameworks -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2 text-sky-700 font-bold text-sm uppercase tracking-wider">
+                            <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+                            Web Development & Frameworks
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span
+                                class="px-3.5 py-1.5 rounded-xl bg-sky-50/80 text-sky-700 border border-sky-100/80 text-xs font-semibold">HTML</span>
+                            <span
+                                class="px-3.5 py-1.5 rounded-xl bg-sky-50/80 text-sky-700 border border-sky-100/80 text-xs font-semibold">CSS</span>
+                            <span
+                                class="px-3.5 py-1.5 rounded-xl bg-sky-50/80 text-sky-700 border border-sky-100/80 text-xs font-semibold">Tailwind
+                                CSS</span>
+                            <span
+                                class="px-3.5 py-1.5 rounded-xl bg-sky-50/80 text-sky-700 border border-sky-100/80 text-xs font-semibold">Laravel</span>
+                            <span
+                                class="px-3.5 py-1.5 rounded-xl bg-sky-50/80 text-sky-700 border border-sky-100/80 text-xs font-semibold">PHP</span>
+                            <span
+                                class="px-3.5 py-1.5 rounded-xl bg-sky-50/80 text-sky-700 border border-sky-100/80 text-xs font-semibold">Filament</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 4. HASIL KARYA (PROJECTS) -->
+            <section id="projects" class="scroll-mt-28 space-y-6">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-slate-900">Hasil Karya</h2>
+                    <p class="text-xs text-slate-500 mt-1">Project yang pernah dikerjakan</p>
+                    <div class="w-12 h-1 bg-sky-500 mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-6">
+
+                    <!-- Project 1: Sistem Informasi Manajemen Hotel -->
+                    <div
+                        class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <div class="h-48 bg-slate-100 relative overflow-hidden shrink-0">
+                            <img src="images/project1.png" alt="Sistem Informasi Manajemen Hotel"
+                                class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2 py-0.5 rounded inline-block">
+                                    Reservasi Online
+                                </span>
+                                <h3 class="text-base font-bold text-slate-900 leading-snug">Sistem Informasi Manajemen
+                                    Hotel</h3>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    Website reservasi kamar hotel. Merancang wireframe/prototipe responsif di Figma,
+                                    mengimplementasikan
+                                    kode dengan Tailwind CSS & Laravel, serta integrasi Midtrans Payment Gateway.
+                                </p>
+                            </div>
+                            <div
+                                class="flex flex-wrap gap-1.5 text-[11px] font-mono text-sky-700 pt-2 border-t border-slate-100">
+                                <span>#Figma</span> <span>#Laravel</span> <span>#TailwindCSS</span>
+                                <span>#Midtrans</span>
+                                <span>#Filament</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: ALCarRent -->
+                    <div
+                        class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <div class="h-48 bg-slate-100 relative overflow-hidden shrink-0">
+                            <img src="images/project2.png"
+                                alt="ALCarRent - Sistem Informasi Rental Mobil"
+                                class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2 py-0.5 rounded inline-block">
+                                    Rental Mobil
+                                </span>
+                                <h3 class="text-base font-bold text-slate-900 leading-snug">ALCarRent</h3>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    Sistem informasi rental mobil berbasis website. Merancang katalog & form
+                                    pemesanan
+                                    interaktif, serta
+                                    membuat dashboard admin menggunakan Filament untuk kelola data armada &
+                                    transaksi.
+                                </p>
+                            </div>
+                            <div
+                                class="flex flex-wrap gap-1.5 text-[11px] font-mono text-sky-700 pt-2 border-t border-slate-100">
+                                <span>#Figma</span> <span>#TailwindCSS</span> <span>#Filament</span>
+                                <span>#Laravel</span>
+                                <span>#KerjaPraktek</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Icikiwir Travel -->
+                    <div
+                        class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <div class="h-48 bg-slate-100 relative overflow-hidden shrink-0">
+                            <img src="images/project3.png"
+                                alt="Icikiwir Travel - Rekomendasi Tempat Wisata"
+                                class="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2 py-0.5 rounded inline-block">
+                                    Wisata & Travel
+                                </span>
+                                <h3 class="text-base font-bold text-slate-900 leading-snug">Icikiwir Travel</h3>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    Website sistem informasi dan direktori rekomendasi destinasi tempat wisata menarik
+                                    serta populer
+                                    di Indonesia.
+                                </p>
+                            </div>
+                            <div
+                                class="flex flex-wrap gap-1.5 text-[11px] font-mono text-sky-700 pt-2 border-t border-slate-100">
+                                <span>#WordPress</span> <span>#CMS</span> <span>#WebDesign</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 5. KEGIATAN & SERTIFIKAT (MODEL GRID CLEAR PREVIEW) -->
+            <section id="activities" class="scroll-mt-28 space-y-6">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-slate-900">Kegiatan & Sertifikat</h2>
+                    <div class="w-12 h-1 bg-sky-500 mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <!-- Grid Responsif -->
+                <div class="grid sm:grid-cols-2 gap-6">
+
+                    <!-- Sertifikat 1: BNSP (Masih Dalam Proses) -->
+                    <div
+                        class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <!-- Bingkai Utama (Tinggi h-52) -->
+                        <div
+                            class="h-52 bg-sky-50/60 relative overflow-hidden shrink-0 border-b border-sky-100/60 flex flex-col items-center justify-center p-6 text-center gap-2">
+                            <div
+                                class="w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center shadow-xs">
+                                <svg class="w-6 h-6 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <span class="text-xs font-bold text-sky-800">Sertifikat Masih Dalam Proses</span>
+                            <span class="text-[11px] text-sky-600">Skema Network Administrator</span>
+                        </div>
+                        <!-- Detail Teks -->
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-2">
+                            <div>
+                                <div class="flex items-center justify-between mb-1">
+                                    <span
+                                        class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2.5 py-0.5 rounded">
+                                        2026
+                                    </span>
+                                    <span
+                                        class="inline-flex items-center gap-1.5 text-[10px] font-semibold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200/60">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                                        Proses Penerbitan
+                                    </span>
+                                </div>
+                                <h4 class="text-base font-bold text-slate-900 leading-snug mt-1">BNSP Certified (Network
+                                    Administrator)</h4>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                                    Sertifikasi Kompetensi BNSP Skema Network Administrator.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sertifikat 2: PKM-PM -->
+                    <div
+                        class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <div
+                            class="h-52 bg-slate-50 relative overflow-hidden shrink-0 border-b border-slate-100 p-3 flex items-center justify-center">
+                            <img src="images/pkm-pm.jpg" alt="PKM-PM"
+                                class="max-h-full max-w-full object-contain rounded-lg shadow-xs transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-2">
+                            <div>
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2.5 py-0.5 rounded inline-block mb-1">
+                                    2025
+                                </span>
+                                <h4 class="text-base font-bold text-slate-900 leading-snug">PKM-PM</h4>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                                    Program Kreativitas Mahasiswa Pengabdian Kepada Masyarakat.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sertifikat 3: Gemastik (Cyber Security - Portrait) -->
+                    <div
+                        class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <div
+                            class="h-52 bg-slate-50 relative overflow-hidden shrink-0 border-b border-slate-100 p-3 flex items-center justify-center">
+                            <img src="images/gemastik.jpeg" alt="Gemastik (Cyber Security)"
+                                class="max-h-full max-w-full object-contain rounded-lg shadow-xs transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-2">
+                            <div>
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2.5 py-0.5 rounded inline-block mb-1">
+                                    2024
+                                </span>
+                                <h4 class="text-base font-bold text-slate-900 leading-snug">Gemastik (Cyber Security)
+                                </h4>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                                    Pagelaran Mahasiswa Nasional Bidang TIK.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sertifikat 4: Course Cyber Security -->
+                    <div
+                        class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <div
+                            class="h-52 bg-slate-50 relative overflow-hidden shrink-0 border-b border-slate-100 p-3 flex items-center justify-center">
+                            <img src="images/cyber-security.jpg" alt="Course (Cyber Security)"
+                                class="max-h-full max-w-full object-contain rounded-lg shadow-xs transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-2">
+                            <div>
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2.5 py-0.5 rounded inline-block mb-1">
+                                    2024
+                                </span>
+                                <h4 class="text-base font-bold text-slate-900 leading-snug">Course Cyber Security</h4>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                                    Pelatihan dasar dan analisis keamanan jaringan digital.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sertifikat 5: Workshop React -->
+                    <div
+                        class="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group sm:col-span-2 lg:col-span-1">
+                        <div
+                            class="h-52 bg-slate-50 relative overflow-hidden shrink-0 border-b border-slate-100 p-3 flex items-center justify-center">
+                            <img src="images/workshop.jpg" alt="Workshop React"
+                                class="max-h-full max-w-full object-contain rounded-lg shadow-xs transition-transform duration-300 group-hover:scale-105">
+                        </div>
+                        <div class="p-5 flex-1 flex flex-col justify-between space-y-2">
+                            <div>
+                                <span
+                                    class="text-[10px] font-bold uppercase tracking-wider text-sky-600 bg-sky-50 px-2.5 py-0.5 rounded inline-block mb-1">
+                                    2022
+                                </span>
+                                <h4 class="text-base font-bold text-slate-900 leading-snug">Workshop React</h4>
+                                <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                                    Pelatihan dasar pengembangan aplikasi antarmuka web modern dengan React JS.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 6. HUBUNGI SAYA (KONTAK) -->
+            <section id="contact" class="scroll-mt-28 space-y-6">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-slate-900">Hubungi Saya</h2>
+                    <p class="text-xs text-slate-500 mt-1">Mari berdiskusi atau terhubung secara profesional</p>
+                    <div class="w-12 h-1 bg-sky-500 mx-auto rounded-full mt-2"></div>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/6285777479609" target="_blank"
+                        class="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-emerald-500 transition text-center flex flex-col items-center justify-center gap-1.5 group cursor-default">
+                        <span
+                            class="w-8 h-8 rounded-full bg-sky-50 text-emerald-600 flex items-center justify-center">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                            </svg>
+                        </span>
+                        <span class="text-sm font-bold text-emerald-600">WhatsApp</span>
+                        <span class="text-xs font-bold text-slate-800">0857-7747-9609</span>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://linkedin.com/in/faiz-naufal-putra-permana" target="_blank"
+                        class="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-sky-500 hover:shadow-md transition text-center flex flex-col items-center justify-center gap-1.5 group cursor-pointer">
+                        <span
+                            class="w-8 h-8 rounded-full bg-sky-50 text-sky-600 flex items-center justify-center group-hover:bg-sky-600 group-hover:text-white transition">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </span>
+                        <span class="text-sm font-bold text-sky-600">LinkedIn</span>
+                        <span class="text-xs font-bold text-slate-800">Faiz Naufal Putra Permana</span>
+                    </a>
+
+                    <!-- GitHub -->
+                    <a href="https://github.com/faiznfl" target="_blank"
+                        class="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-slate-800 transition text-center flex flex-col items-center justify-center gap-1.5 group cursor-default">
+                        <span class="w-8 h-8 rounded-full bg-slate-100 text-slate-800 flex items-center justify-center">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                            </svg>
+                        </span>
+                        <span class="text-sm font-bold text-slate-600">GitHub</span>
+                        <span class="text-xs font-bold text-slate-800">github.com/faiznfl</span>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/faiz.nfl20" target="_blank"
+                        class="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-pink-500 transition text-center flex flex-col items-center justify-center gap-1.5 group cursor-default">
+                        <span class="w-8 h-8 rounded-full bg-pink-50 text-pink-600 flex items-center justify-center">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </span>
+                        <span class="text-sm font-bold text-pink-600">Instagram</span>
+                        <span class="text-xs font-bold text-slate-800">@faiz.nfl20</span>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:faiznfl20@gmail.com" target="_blank"
+                        class="p-4 bg-white rounded-2xl border border-slate-100 shadow-sm hover:border-rose-500 transition text-center flex flex-col items-center justify-center gap-1.5 col-span-2 sm:col-span-1 group cursor-default">
+                        <span class="w-8 h-8 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center">
+                            <svg class="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </span>
+                        <span class="text-sm font-bold text-rose-600">Email</span>
+                        <span class="text-xs font-bold text-slate-800">faiznfl20@gmail.com</span>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="mt-20 pt-6 border-t border-slate-200/80 text-center text-xs text-slate-400">
+            &copy; 2026 Faiz Naufal Putra Permana. All rights reserved.
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
