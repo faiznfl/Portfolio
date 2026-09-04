@@ -110,6 +110,12 @@ class AdminController extends Controller
         $profile = Profile::first();
         if ($profile) {
             $profile->update($validated);
+        } else {
+            Profile::create(array_merge([
+                'full_name' => 'Admin User',
+                'headline' => 'Portfolio Owner',
+                'bio_about' => 'Selamat datang di portofolio saya.',
+            ], $validated));
         }
 
         return back()->with('success', 'Status ketersediaan kerja berhasil diperbarui.');
@@ -165,9 +171,12 @@ class AdminController extends Controller
             'title' => ['required', 'string', 'max:200'],
             'category' => ['required', 'string', 'max:100'],
             'summary' => ['required', 'string'],
+            'cover_image' => ['nullable', 'string', 'max:255'],
+            'key_features_raw' => ['nullable', 'string'],
             'problem_statement' => ['nullable', 'string'],
             'solution_details' => ['nullable', 'string'],
             'architecture_details' => ['nullable', 'string'],
+            'key_metrics_raw' => ['nullable', 'string'],
             'tech_stacks_raw' => ['nullable', 'string'],
             'demo_url' => ['nullable', 'url'],
             'repo_url' => ['nullable', 'url'],
@@ -180,11 +189,28 @@ class AdminController extends Controller
         $validated['is_featured'] = $request->boolean('is_featured');
         $validated['is_published'] = $request->boolean('is_published');
         $validated['order_index'] = $request->input('order_index', 0);
+        $validated['cover_image'] = ($validated['cover_image'] ?? null) ?: '/assets/projects/project-omnipulse.svg';
 
         if (! empty($validated['tech_stacks_raw'])) {
-            $validated['tech_stacks'] = array_map('trim', explode(',', $validated['tech_stacks_raw']));
+            $validated['tech_stacks'] = array_values(array_filter(array_map('trim', explode(',', $validated['tech_stacks_raw']))));
+        } else {
+            $validated['tech_stacks'] = [];
         }
         unset($validated['tech_stacks_raw']);
+
+        if (! empty($validated['key_features_raw'])) {
+            $validated['key_features'] = array_values(array_filter(array_map('trim', explode("\n", $validated['key_features_raw']))));
+        } else {
+            $validated['key_features'] = [];
+        }
+        unset($validated['key_features_raw']);
+
+        if (! empty($validated['key_metrics_raw'])) {
+            $validated['key_metrics'] = array_values(array_filter(array_map('trim', explode("\n", $validated['key_metrics_raw']))));
+        } else {
+            $validated['key_metrics'] = [];
+        }
+        unset($validated['key_metrics_raw']);
 
         Project::create($validated);
 
@@ -211,9 +237,12 @@ class AdminController extends Controller
             'title' => ['required', 'string', 'max:200'],
             'category' => ['required', 'string', 'max:100'],
             'summary' => ['required', 'string'],
+            'cover_image' => ['nullable', 'string', 'max:255'],
+            'key_features_raw' => ['nullable', 'string'],
             'problem_statement' => ['nullable', 'string'],
             'solution_details' => ['nullable', 'string'],
             'architecture_details' => ['nullable', 'string'],
+            'key_metrics_raw' => ['nullable', 'string'],
             'tech_stacks_raw' => ['nullable', 'string'],
             'demo_url' => ['nullable', 'url'],
             'repo_url' => ['nullable', 'url'],
@@ -225,11 +254,28 @@ class AdminController extends Controller
         $validated['is_featured'] = $request->boolean('is_featured');
         $validated['is_published'] = $request->boolean('is_published');
         $validated['order_index'] = $request->input('order_index', $project->order_index);
+        $validated['cover_image'] = ($validated['cover_image'] ?? null) ?: ($project->cover_image ?: '/assets/projects/project-omnipulse.svg');
 
         if (! empty($validated['tech_stacks_raw'])) {
-            $validated['tech_stacks'] = array_map('trim', explode(',', $validated['tech_stacks_raw']));
+            $validated['tech_stacks'] = array_values(array_filter(array_map('trim', explode(',', $validated['tech_stacks_raw']))));
+        } else {
+            $validated['tech_stacks'] = [];
         }
         unset($validated['tech_stacks_raw']);
+
+        if (! empty($validated['key_features_raw'])) {
+            $validated['key_features'] = array_values(array_filter(array_map('trim', explode("\n", $validated['key_features_raw']))));
+        } else {
+            $validated['key_features'] = [];
+        }
+        unset($validated['key_features_raw']);
+
+        if (! empty($validated['key_metrics_raw'])) {
+            $validated['key_metrics'] = array_values(array_filter(array_map('trim', explode("\n", $validated['key_metrics_raw']))));
+        } else {
+            $validated['key_metrics'] = [];
+        }
+        unset($validated['key_metrics_raw']);
 
         $project->update($validated);
 

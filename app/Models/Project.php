@@ -20,6 +20,7 @@ class Project extends Model
     {
         return [
             'tech_stacks' => 'array',
+            'key_features' => 'array',
             'gallery_images' => 'array',
             'key_metrics' => 'array',
             'is_featured' => 'boolean',

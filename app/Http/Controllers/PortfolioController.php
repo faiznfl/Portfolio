@@ -9,7 +9,6 @@ use App\Models\Message;
 use App\Models\Profile;
 use App\Models\Project;
 use App\Models\Skill;
-use App\Services\PortfolioData;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -24,27 +23,12 @@ class PortfolioController extends Controller
      */
     public function index(): View
     {
-        $profile = Profile::first() ?? PortfolioData::getProfile();
+        $profile = Profile::first();
         $skills = Skill::orderBy('order_index')->get();
-        if ($skills->isEmpty()) {
-            $skills = PortfolioData::getSkills();
-        }
         $skillsByCategory = $skills->groupBy('category');
-
         $projects = Project::where('is_published', true)->orderBy('order_index')->get();
-        if ($projects->isEmpty()) {
-            $projects = PortfolioData::getProjects();
-        }
-
         $experiences = Experience::orderBy('order_index')->get();
-        if ($experiences->isEmpty()) {
-            $experiences = PortfolioData::getExperiences();
-        }
-
         $certificates = Certificate::orderBy('order_index')->get();
-        if ($certificates->isEmpty()) {
-            $certificates = PortfolioData::getCertificates();
-        }
 
         return view('portfolio.index', compact(
             'profile',
@@ -57,23 +41,19 @@ class PortfolioController extends Controller
     }
 
     /**
-     * Display or return JSON details for a specific project case study.
+     * Return JSON details for a specific project or redirect to homepage showcase.
      */
-    public function project(Request $request, string $slug): View|JsonResponse
+    public function project(Request $request, string $slug): RedirectResponse|JsonResponse
     {
         $project = Project::where('slug', $slug)
             ->where('is_published', true)
-            ->first() ?? PortfolioData::findProject($slug);
-
-        if (! $project) {
-            abort(404);
-        }
+            ->firstOrFail();
 
         if ($request->wantsJson() || $request->ajax()) {
             return response()->json($project);
         }
 
-        return view('portfolio.project-detail', compact('project'));
+        return redirect()->to(url('/#projects'));
     }
 
     /**
