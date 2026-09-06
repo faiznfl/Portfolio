@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <circle cx="100" cy="100" r="90" fill="#1e1b4b" stroke="#3b82f6" stroke-width="4"/>
+  <polygon points="100,45 145,75 145,125 100,155 55,125 55,75" fill="none" stroke="#60a5fa" stroke-width="3"/>
+  <text x="100" y="98" fill="#ffffff" font-family="system-ui, sans-serif" font-size="18" font-weight="800" text-anchor="middle">BNSP</text>
+  <text x="100" y="115" fill="#93c5fd" font-family="system-ui, sans-serif" font-size="10" font-weight="600" text-anchor="middle">KOMPETENSI</text>
+  <text x="100" y="140" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="9" text-anchor="middle">SOFTWARE ARCHITECT</text>
+</svg>

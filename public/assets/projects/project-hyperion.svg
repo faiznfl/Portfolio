@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="hyp-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#16152b"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#hyp-bg)"/>
+  <!-- Vector Cloud Nodes -->
+  <g stroke="#818cf8" stroke-width="1.5" opacity="0.6">
+    <line x1="300" y1="180" x2="400" y2="140"/>
+    <line x1="400" y1="140" x2="520" y2="190"/>
+    <line x1="520" y1="190" x2="450" y2="280"/>
+    <line x1="450" y1="280" x2="330" y2="260"/>
+    <line x1="330" y1="260" x2="300" y2="180"/>
+    <line x1="400" y1="140" x2="450" y2="280"/>
+  </g>
+  <circle cx="300" cy="180" r="8" fill="#c084fc"/>
+  <circle cx="400" cy="140" r="10" fill="#818cf8"/>
+  <circle cx="520" cy="190" r="9" fill="#38bdf8"/>
+  <circle cx="450" cy="280" r="11" fill="#a855f7"/>
+  <circle cx="330" cy="260" r="8" fill="#6366f1"/>
+  <rect x="40" y="30" width="230" height="42" rx="21" fill="rgba(168,85,247,0.18)" stroke="rgba(168,85,247,0.4)" stroke-width="1"/>
+  <text x="155" y="56" fill="#d8b4fe" font-family="system-ui, sans-serif" font-size="13" font-weight="600" text-anchor="middle">🧠 ENTERPRISE RAG SEARCH</text>
+  <text x="400" y="365" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="600" text-anchor="middle">1536-D pgvector Cosine Hybrid Search &amp; LLM Re-Ranking</text>
+  <text x="400" y="390" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">Streaming SSE Token Delivery | 250ms Response</text>
+</svg>

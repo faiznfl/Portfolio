@@ -172,6 +172,7 @@ class AdminController extends Controller
             'category' => ['required', 'string', 'max:100'],
             'summary' => ['required', 'string'],
             'cover_image' => ['nullable', 'string', 'max:255'],
+            'project_image' => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
             'key_features_raw' => ['nullable', 'string'],
             'problem_statement' => ['nullable', 'string'],
             'solution_details' => ['nullable', 'string'],
@@ -185,11 +186,21 @@ class AdminController extends Controller
             'order_index' => ['integer'],
         ]);
 
+        if ($request->hasFile('project_image')) {
+            $file = $request->file('project_image');
+            $extension = $file->getClientOriginalExtension() ?: 'png';
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$extension;
+            $file->move(public_path('assets/projects'), $filename);
+            $validated['cover_image'] = '/assets/projects/'.$filename;
+        } elseif (empty($validated['cover_image'])) {
+            $validated['cover_image'] = '/assets/projects/project-omnipulse.svg';
+        }
+        unset($validated['project_image']);
+
         $validated['slug'] = Str::slug($validated['title']);
         $validated['is_featured'] = $request->boolean('is_featured');
         $validated['is_published'] = $request->boolean('is_published');
         $validated['order_index'] = $request->input('order_index', 0);
-        $validated['cover_image'] = ($validated['cover_image'] ?? null) ?: '/assets/projects/project-omnipulse.svg';
 
         if (! empty($validated['tech_stacks_raw'])) {
             $validated['tech_stacks'] = array_values(array_filter(array_map('trim', explode(',', $validated['tech_stacks_raw']))));
@@ -238,6 +249,7 @@ class AdminController extends Controller
             'category' => ['required', 'string', 'max:100'],
             'summary' => ['required', 'string'],
             'cover_image' => ['nullable', 'string', 'max:255'],
+            'project_image' => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
             'key_features_raw' => ['nullable', 'string'],
             'problem_statement' => ['nullable', 'string'],
             'solution_details' => ['nullable', 'string'],
@@ -251,10 +263,20 @@ class AdminController extends Controller
             'order_index' => ['integer'],
         ]);
 
+        if ($request->hasFile('project_image')) {
+            $file = $request->file('project_image');
+            $extension = $file->getClientOriginalExtension() ?: 'png';
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$extension;
+            $file->move(public_path('assets/projects'), $filename);
+            $validated['cover_image'] = '/assets/projects/'.$filename;
+        } elseif (empty($validated['cover_image'])) {
+            $validated['cover_image'] = $project->cover_image ?: '/assets/projects/project-omnipulse.svg';
+        }
+        unset($validated['project_image']);
+
         $validated['is_featured'] = $request->boolean('is_featured');
         $validated['is_published'] = $request->boolean('is_published');
         $validated['order_index'] = $request->input('order_index', $project->order_index);
-        $validated['cover_image'] = ($validated['cover_image'] ?? null) ?: ($project->cover_image ?: '/assets/projects/project-omnipulse.svg');
 
         if (! empty($validated['tech_stacks_raw'])) {
             $validated['tech_stacks'] = array_values(array_filter(array_map('trim', explode(',', $validated['tech_stacks_raw']))));
@@ -316,12 +338,13 @@ class AdminController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:100'],
             'category' => ['required', 'string', 'max:100'],
-            'proficiency_level' => ['required', 'integer', 'min:1', 'max:100'],
+            'proficiency_level' => ['nullable', 'integer', 'min:1', 'max:100'],
             'order_index' => ['nullable', 'integer'],
             'is_featured' => ['boolean'],
             'icon_svg' => ['nullable', 'string'],
         ]);
 
+        $validated['proficiency_level'] = $request->input('proficiency_level', 100) ?: 100;
         $validated['order_index'] = $request->input('order_index', 0);
         $validated['is_featured'] = $request->boolean('is_featured');
 
@@ -343,12 +366,13 @@ class AdminController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:100'],
             'category' => ['required', 'string', 'max:100'],
-            'proficiency_level' => ['required', 'integer', 'min:1', 'max:100'],
+            'proficiency_level' => ['nullable', 'integer', 'min:1', 'max:100'],
             'order_index' => ['nullable', 'integer'],
             'is_featured' => ['boolean'],
             'icon_svg' => ['nullable', 'string'],
         ]);
 
+        $validated['proficiency_level'] = $request->input('proficiency_level', $skill->proficiency_level ?: 100) ?: 100;
         $validated['order_index'] = $request->input('order_index', $skill->order_index);
         $validated['is_featured'] = $request->boolean('is_featured');
 
@@ -495,17 +519,42 @@ class AdminController extends Controller
 
     public function certificateStore(Request $request): RedirectResponse
     {
+        // If year is submitted as issue_year, convert or ensure issue_date is populated
+        if ($request->filled('issue_year') && ! $request->filled('issue_date')) {
+            $request->merge(['issue_date' => $request->input('issue_year').'-01-01']);
+        } elseif ($request->filled('issue_date') && preg_match('/^\d{4}$/', (string) $request->input('issue_date'))) {
+            $request->merge(['issue_date' => $request->input('issue_date').'-01-01']);
+        }
+
+        if (! $request->filled('issuer_organization') && $request->filled('course_name')) {
+            $request->merge(['issuer_organization' => $request->input('course_name')]);
+        }
+
         $validated = $request->validate([
             'certificate_name' => ['required', 'string', 'max:150'],
+            'course_name' => ['nullable', 'string', 'max:200'],
             'issuer_organization' => ['required', 'string', 'max:150'],
             'issue_date' => ['required', 'date'],
             'expiration_date' => ['nullable', 'date'],
             'credential_id' => ['nullable', 'string', 'max:100'],
             'credential_url' => ['nullable', 'url'],
             'media_file_path' => ['nullable', 'string'],
-            'category' => ['nullable', 'string', 'max:100'],
+            'certificate_image' => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
+            'category' => ['nullable', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
             'order_index' => ['nullable', 'integer'],
         ]);
+
+        if ($request->hasFile('certificate_image')) {
+            $file = $request->file('certificate_image');
+            $extension = $file->getClientOriginalExtension() ?: 'png';
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$extension;
+            $file->move(public_path('assets/certificates'), $filename);
+            $validated['media_file_path'] = '/assets/certificates/'.$filename;
+        } elseif (empty($validated['media_file_path'])) {
+            $validated['media_file_path'] = '/assets/certificates/cert-aws-saa.svg';
+        }
+        unset($validated['certificate_image']);
 
         $validated['order_index'] = $request->input('order_index', 0);
 
@@ -524,17 +573,42 @@ class AdminController extends Controller
 
     public function certificateUpdate(Request $request, Certificate $certificate): RedirectResponse
     {
+        // If year is submitted as issue_year, convert or ensure issue_date is populated
+        if ($request->filled('issue_year') && ! $request->filled('issue_date')) {
+            $request->merge(['issue_date' => $request->input('issue_year').'-01-01']);
+        } elseif ($request->filled('issue_date') && preg_match('/^\d{4}$/', (string) $request->input('issue_date'))) {
+            $request->merge(['issue_date' => $request->input('issue_date').'-01-01']);
+        }
+
+        if (! $request->filled('issuer_organization') && $request->filled('course_name')) {
+            $request->merge(['issuer_organization' => $request->input('course_name')]);
+        }
+
         $validated = $request->validate([
             'certificate_name' => ['required', 'string', 'max:150'],
+            'course_name' => ['nullable', 'string', 'max:200'],
             'issuer_organization' => ['required', 'string', 'max:150'],
             'issue_date' => ['required', 'date'],
             'expiration_date' => ['nullable', 'date'],
             'credential_id' => ['nullable', 'string', 'max:100'],
             'credential_url' => ['nullable', 'url'],
             'media_file_path' => ['nullable', 'string'],
-            'category' => ['nullable', 'string', 'max:100'],
+            'certificate_image' => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
+            'category' => ['nullable', 'string', 'max:255'],
+            'description' => ['nullable', 'string'],
             'order_index' => ['nullable', 'integer'],
         ]);
+
+        if ($request->hasFile('certificate_image')) {
+            $file = $request->file('certificate_image');
+            $extension = $file->getClientOriginalExtension() ?: 'png';
+            $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$extension;
+            $file->move(public_path('assets/certificates'), $filename);
+            $validated['media_file_path'] = '/assets/certificates/'.$filename;
+        } elseif (empty($validated['media_file_path'])) {
+            $validated['media_file_path'] = $certificate->media_file_path ?: '/assets/certificates/cert-aws-saa.svg';
+        }
+        unset($validated['certificate_image']);
 
         $validated['order_index'] = $request->input('order_index', $certificate->order_index);
 

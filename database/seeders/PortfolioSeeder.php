@@ -116,6 +116,7 @@ class PortfolioSeeder extends Seeder
                 ['certificate_name' => $certificate->certificate_name],
                 [
                     'certificate_name' => $certificate->certificate_name,
+                    'course_name' => $certificate->course_name,
                     'issuer_organization' => $certificate->issuer_organization,
                     'issue_date' => $certificate->issue_date,
                     'expiration_date' => $certificate->expiration_date,
@@ -123,6 +124,7 @@ class PortfolioSeeder extends Seeder
                     'credential_url' => $certificate->credential_url,
                     'media_file_path' => $certificate->media_file_path,
                     'category' => $certificate->category,
+                    'description' => $certificate->description,
                     'order_index' => $certificate->order_index,
                 ]
             );

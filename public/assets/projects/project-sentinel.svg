@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sentinel-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1319"/>
+      <stop offset="60%" stop-color="#121e28"/>
+      <stop offset="100%" stop-color="#071b26"/>
+    </linearGradient>
+    <linearGradient id="shield-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0070d1"/>
+      <stop offset="100%" stop-color="#00b4d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#sentinel-bg)"/>
+  <circle cx="400" cy="225" r="160" fill="none" stroke="rgba(0,180,216,0.12)" stroke-width="2"/>
+  <circle cx="400" cy="225" r="110" fill="none" stroke="rgba(0,112,209,0.2)" stroke-width="2" stroke-dasharray="8,6"/>
+  <!-- Shield Icon Graphic -->
+  <path d="M400 130 L470 170 V240 C470 290 400 325 400 325 C400 325 330 290 330 240 V170 Z" fill="url(#shield-grad)" opacity="0.85"/>
+  <path d="M400 155 L450 185 V235 C450 270 400 298 400 298 C400 298 350 270 350 235 V185 Z" fill="#0b1319"/>
+  <!-- Checkmark / Core -->
+  <path d="M380 225 L395 240 L425 205" fill="none" stroke="#53b1ff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Security Badges -->
+  <rect x="40" y="30" width="220" height="42" rx="21" fill="rgba(0,180,216,0.15)" stroke="rgba(0,180,216,0.4)" stroke-width="1"/>
+  <text x="150" y="56" fill="#90e0ef" font-family="system-ui, sans-serif" font-size="13" font-weight="600" text-anchor="middle">🛡️ EDGE DDOS SHIELD</text>
+  <text x="400" y="365" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="600" text-anchor="middle">Adaptive Rate Limiting &amp; Bot Defense</text>
+  <text x="400" y="390" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12" text-anchor="middle">P99 Latency: 4.2ms | Zero False Positives</text>
+</svg>
