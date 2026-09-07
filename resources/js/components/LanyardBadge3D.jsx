@@ -18,7 +18,7 @@ extend({ MeshLineGeometry, MeshLineMaterial });
 try {
     useGLTF.preload('/assets/3d/card.glb');
     useTexture.preload('/assets/images/tag_texture.png');
-    useTexture.preload('/assets/images/card_texture_faiz.png');
+    useTexture.preload('/assets/images/card_texture_faiz.png?v=clean');
 } catch (e) {
     // Ignore in SSR/non-browser contexts
 }
@@ -49,7 +49,7 @@ function Band({ profile, maxSpeed = 50, minSpeed = 10 }) {
 
     const { nodes, materials } = useGLTF('/assets/3d/card.glb');
     const strapTexture = useTexture('/assets/images/tag_texture.png');
-    const cardTexture = useTexture('/assets/images/card_texture_faiz.png');
+    const cardTexture = useTexture('/assets/images/card_texture_faiz.png?v=clean');
 
     const [curve] = useState(
         () =>

@@ -3,27 +3,16 @@ import React from 'react';
 export default function About({ profile }) {
     const educationList = [
         {
-            institution: 'Universitas Islam Negeri Sunan Ampel Surabaya',
-            major: 'Information Systems',
-            period: '2026 - Present',
+            institution: 'Universitas Pamulang',
+            major: 'Sistem Informasi',
+            period: '2022 - 2026',
+            gpa: '3.85',
             color: 'primary',
             icon: (
                 <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.8">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 14v7" />
-                </svg>
-            ),
-        },
-        {
-            institution: 'SMK Rajasa Surabaya',
-            major: 'Teknik Komputer dan Jaringan',
-            period: '',
-            color: 'cyan',
-            icon: (
-                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.8">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
             ),
         },
@@ -43,15 +32,6 @@ export default function About({ profile }) {
             icon: (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-            ),
-        },
-        {
-            name: 'Mobile Development',
-            icon: (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.8">
-                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" strokeLinecap="round" strokeLinejoin="round" />
-                    <line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2" strokeLinecap="round" />
                 </svg>
             ),
         },
@@ -97,7 +77,7 @@ export default function About({ profile }) {
     ];
 
     const bioNarrative =
-        'Saya adalah mahasiswa Sistem Informasi Universitas Islam Negeri Sunan Ampel Surabaya dengan latar belakang Teknik Komputer dan Jaringan. Saya memiliki ketertarikan dalam membangun aplikasi digital, mengeksplorasi AI, dan menciptakan solusi teknologi dengan pengalaman pengguna yang baik.';
+        'Fresh graduate Sistem Informasi Universitas Pamulang dengan IPK 3.85, berfokus pada Web Development dan perancangan UI/UX. Terbiasa merancang antarmuka pengguna yang intuitif di Figma serta mengimplementasikannya menjadi aplikasi web menggunakan Laravel, PHP, MySQL, dan Tailwind CSS, termasuk integrasi payment gateway dan dashboard sistem. Terbuka untuk peluang kerja di bidang Web Development dan Software Engineering.';
 
     return (
         <section id="about" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
@@ -117,10 +97,19 @@ export default function About({ profile }) {
                     </p>
                 </div>
 
-                {/* 2-Column Split Layout */}
+                {/* 2-Column Split Layout with Symmetrical Alignment */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                     {/* Left Column: Narrative Story & Education Cards */}
-                    <div className="lg:col-span-6 space-y-6">
+                    <div className="lg:col-span-6 space-y-4">
+                        {/* Section Tag Indicator (Aligned with Right Column) */}
+                        <div className="flex items-center gap-2 px-1">
+                            <span className="w-2 h-2 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
+                            <span className="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-cyan-400">
+                                BIOGRAPHY &amp; EDUCATION
+                            </span>
+                        </div>
+
+                        {/* Bio Narrative Card */}
                         <div className="glass-panel p-6 sm:p-7 shadow-sm dark:shadow-none">
                             <p className="text-slate-700 dark:text-slate-200 text-base sm:text-lg leading-relaxed font-light">
                                 {bioNarrative}
@@ -137,20 +126,34 @@ export default function About({ profile }) {
                                     <div
                                         className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-transform duration-300 group-hover:scale-105 ${
                                             edu.color === 'primary'
-                                                ? 'bg-ps-primary/10 dark:bg-ps-primary/20 text-ps-primary dark:text-cyan-400 border-ps-primary/25 dark:border-cyan-400/30'
-                                                : 'bg-cyan-500/10 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-300 border-cyan-500/25 dark:border-cyan-400/30'
+                                                ? 'bg-ps-primary/10 dark:bg-ps-primary/20 text-ps-primary dark:text-cyan-400 border-ps-primary/25 dark:border-cyan-400/30 group-hover:bg-ps-primary/15 dark:group-hover:bg-cyan-400/20'
+                                                : 'bg-cyan-500/10 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-300 border-cyan-500/25 dark:border-cyan-400/30 group-hover:bg-cyan-500/15'
                                         }`}
                                     >
                                         {edu.icon}
                                     </div>
-                                    <div className="min-w-0 flex-1">
-                                        <h4 className="text-base font-semibold text-slate-900 dark:text-white tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
-                                            {edu.institution}
-                                        </h4>
-                                        <p className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 font-light mt-0.5">
-                                            {edu.major}
-                                            {edu.period ? ` · ${edu.period}` : ''}
-                                        </p>
+                                    <div className="min-w-0 flex-1 space-y-1">
+                                        <div className="flex flex-wrap items-center justify-between gap-x-2">
+                                            <h4 className="text-base font-semibold text-slate-900 dark:text-white tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                                                {edu.institution}
+                                            </h4>
+                                            {edu.gpa && (
+                                                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-semibold border border-emerald-500/20 shrink-0">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                                    IPK {edu.gpa}
+                                                </span>
+                                            )}
+                                        </div>
+                                        <div className="flex flex-wrap items-center justify-between gap-x-2">
+                                            <p className="text-xs sm:text-sm text-ps-primary dark:text-cyan-300 font-medium">
+                                                {edu.major}
+                                            </p>
+                                            {edu.period && (
+                                                <span className="text-xs font-mono text-slate-500 dark:text-gray-400">
+                                                    {edu.period}
+                                                </span>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             ))}
@@ -172,9 +175,9 @@ export default function About({ profile }) {
                             {interests.map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className="glass-panel p-4 flex items-center gap-3.5 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default"
+                                    className="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default"
                                 >
-                                    <div className="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 transition-transform duration-200">
+                                    <div className="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
                                         {item.icon}
                                     </div>
                                     <span className="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
@@ -189,5 +192,3 @@ export default function About({ profile }) {
         </section>
     );
 }
-
-

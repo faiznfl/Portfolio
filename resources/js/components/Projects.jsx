@@ -3,11 +3,18 @@ import React, { useState } from 'react';
 export default function Projects({ projects = [], onSelectProject }) {
     const [selectedCategory, setSelectedCategory] = useState('all');
 
-    const categories = ['all', 'Full-Stack', 'Backend & Systems', 'Cloud & DevOps', 'AI & Realtime'];
+    // Extract unique categories dynamically from actual inputted projects
+    const availableCategories = Array.from(
+        new Set((projects || []).map(p => p.category?.trim()).filter(Boolean))
+    );
 
-    const filteredProjects = selectedCategory === 'all'
+    const activeCategory = (selectedCategory === 'all' || availableCategories.includes(selectedCategory))
+        ? selectedCategory
+        : 'all';
+
+    const filteredProjects = activeCategory === 'all'
         ? projects
-        : projects.filter(p => p.category === selectedCategory);
+        : projects.filter(p => p.category?.trim().toLowerCase() === activeCategory.toLowerCase());
 
     const handleFilter = (cat) => {
         setSelectedCategory(cat);
@@ -27,19 +34,28 @@ export default function Projects({ projects = [], onSelectProject }) {
                     </p>
                 </div>
 
-                {/* Projects Category Filter Chips (Horizontal Single Row) */}
-                <div className="w-full flex items-center justify-start sm:justify-center gap-2.5 overflow-x-auto py-2 px-1 max-w-5xl mx-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                    {categories.map((cat) => (
+                {/* Projects Category Filter Chips (Only shown when categories exist) */}
+                {availableCategories.length > 0 && (
+                    <div className="w-full flex items-center justify-start sm:justify-center gap-2.5 overflow-x-auto py-2 px-1 max-w-5xl mx-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                         <button
-                            key={cat}
                             type="button"
-                            onClick={() => handleFilter(cat)}
-                            className={`filter-chip-dark whitespace-nowrap shrink-0 ${selectedCategory === cat ? 'active' : ''}`}
+                            onClick={() => handleFilter('all')}
+                            className={`filter-chip-dark whitespace-nowrap shrink-0 ${activeCategory === 'all' ? 'active' : ''}`}
                         >
-                            {cat === 'all' ? 'All Projects' : cat}
+                            All Projects
                         </button>
-                    ))}
-                </div>
+                        {availableCategories.map((cat) => (
+                            <button
+                                key={cat}
+                                type="button"
+                                onClick={() => handleFilter(cat)}
+                                className={`filter-chip-dark whitespace-nowrap shrink-0 ${activeCategory === cat ? 'active' : ''}`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                )}
 
                 {/* 3-Column Projects Grid */}
                 <div 

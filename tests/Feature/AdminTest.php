@@ -448,4 +448,21 @@ class AdminTest extends TestCase
         $response->assertSee('Prompt Engineering');
         $response->assertSee('Artificial Intelligence Basic');
     }
+
+    public function test_skills_index_displays_custom_icons_and_no_lightning_bolt_placeholders(): void
+    {
+        Skill::create([
+            'name' => 'Laravel',
+            'category' => 'Backend',
+            'icon_svg' => '<svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>',
+            'order_index' => 1,
+            'is_featured' => 1,
+        ]);
+
+        $response = $this->actingAs($this->admin)->get('/admin/skills');
+
+        $response->assertStatus(200);
+        $response->assertDontSee('⚡');
+        $response->assertSee('<svg', false);
+    }
 }

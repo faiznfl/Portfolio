@@ -383,10 +383,10 @@ export default function Interactive3DCard({ profile }) {
                         style={{ transform: 'translateZ(25px)' }}
                     >
                         <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
-                            {profile?.full_name || 'Faiz Naufal'}
+                            {profile?.full_name || 'Faiz Naufal Putra Permana'}
                         </h3>
                         <p className="text-xs text-ps-primary dark:text-cyan-300 font-medium">
-                            {profile?.headline || 'Staff Systems & Cloud Architect'}
+                            {profile?.headline || 'Web Developer'}
                         </p>
                     </div>
 

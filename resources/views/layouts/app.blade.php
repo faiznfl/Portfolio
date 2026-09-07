@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', 'Faiz Naufal Putra Permana - Portfolio')</title>
-    <meta name="description" content="@yield('meta_description', 'Portofolio Resmi Faiz Naufal - Senior Full-Stack Software Engineer & Distributed Cloud Systems Architect. Menampilkan portofolio proyek enterprise, rekam jejak karier, dan sertifikasi terverifikasi.')">
+    <meta name="description" content="@yield('meta_description', 'Portofolio Resmi Faiz Naufal Putra Permana - Web Developer. Menampilkan portofolio proyek enterprise, rekam jejak karier, dan sertifikasi terverifikasi.')">
     
     <!-- Open Graph / SEO -->
     <meta property="og:type" content="website">
@@ -163,7 +163,7 @@
 
                 <!-- LinkedIn -->
                 <a
-                    href="https://linkedin.com/in/faiznfl"
+                    href="https://www.linkedin.com/in/faiz-naufal-putra-permana"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-white/[0.04] border border-slate-300/70 dark:border-white/10 hover:bg-slate-300/60 dark:hover:bg-white/[0.08] hover:border-slate-400 dark:hover:border-white/20 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200 shadow-sm"
@@ -177,7 +177,7 @@
 
                 <!-- Email -->
                 <a
-                    href="mailto:faiznaufal.dev@gmail.com"
+                    href="mailto:faiznfl20@gmail.com"
                     class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-white/[0.04] border border-slate-300/70 dark:border-white/10 hover:bg-slate-300/60 dark:hover:bg-white/[0.08] hover:border-slate-400 dark:hover:border-white/20 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200 shadow-sm"
                     title="Email"
                     aria-label="Email"

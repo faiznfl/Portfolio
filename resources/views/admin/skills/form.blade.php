@@ -48,15 +48,19 @@
                         <label for="category" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
                             Kategori <span class="text-red-500">*</span>
                         </label>
-                        <select id="category" name="category" required
-                                class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
-                            <option value="Languages" {{ old('category', $skill->category) == 'Languages' ? 'selected' : '' }}>Languages</option>
-                            <option value="Backend" {{ old('category', $skill->category) == 'Backend' ? 'selected' : '' }}>Backend</option>
-                            <option value="Frontend" {{ old('category', $skill->category) == 'Frontend' ? 'selected' : '' }}>Frontend</option>
-                            <option value="Databases" {{ old('category', $skill->category) == 'Databases' ? 'selected' : '' }}>Databases</option>
-                            <option value="DevOps" {{ old('category', $skill->category) == 'DevOps' ? 'selected' : '' }}>DevOps &amp; Cloud</option>
-                            <option value="Tools" {{ old('category', $skill->category) == 'Tools' ? 'selected' : '' }}>Tools &amp; AI</option>
-                        </select>
+                        <input type="text" id="category" name="category" list="skill-category-options" required
+                               value="{{ old('category', $skill->category) }}"
+                               placeholder="Pilih atau ketik kategori baru (cth: Frontend, UI/UX, Backend)"
+                               class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
+                        <datalist id="skill-category-options">
+                            <option value="Languages">
+                            <option value="Frontend">
+                            <option value="Backend">
+                            <option value="UI/UX Design">
+                            <option value="Databases">
+                            <option value="DevOps">
+                            <option value="Tools">
+                        </datalist>
                         @error('category') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
                 </div>
@@ -82,7 +86,7 @@
                         <!-- Live Preview Box -->
                         <div class="flex flex-col items-center gap-1.5 flex-shrink-0">
                             <div id="icon-preview-box" class="w-16 h-16 rounded-2xl bg-slate-200/80 dark:bg-white/10 border border-slate-300 dark:border-white/15 flex items-center justify-center text-2xl text-ps-primary dark:text-cyan-400 shadow-inner overflow-hidden transition-all duration-200">
-                                <span id="icon-preview-placeholder">⚡</span>
+                                <span id="icon-preview-placeholder" class="text-xs font-mono text-slate-400 font-bold">&lt;/&gt;</span>
                             </div>
                             <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Preview</span>
                         </div>
@@ -228,6 +232,8 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'CI/CD & Git', category: 'DevOps', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-6 h-6"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="9" r="3"/><path d="M6 9v6M9 6h4a4 4 0 014 4"/></svg>' },
 
         // Tools & AI
+        { name: 'Figma', category: 'Tools', svg: '<svg viewBox="0 0 24 24" fill="none" class="w-6 h-6"><path d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4z" fill="#0ACF83"/><path d="M4 12c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4z" fill="#A259FF"/><path d="M4 4c0-2.2 1.8-4 4-4h4v8H8C5.8 8 4 6.2 4 4z" fill="#F24E1E"/><path d="M12 0h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4V0z" fill="#FF7262"/><path d="M20 12c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z" fill="#1ABCFE"/></svg>' },
+        { name: 'UI / UX Design', category: 'Tools', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-6 h-6"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18v-9z"/><path d="M16 12a4 4 0 0 0-4-4"/></svg>' },
         { name: 'Artificial Intelligence', category: 'Tools', svg: '<svg viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M12 2a1 1 0 011 1v1.07A8.001 8.001 0 0119.93 11H21a1 1 0 110 2h-1.07A8.001 8.001 0 0113 19.93V21a1 1 0 11-2 0v-1.07A8.001 8.001 0 014.07 13H3a1 1 0 110-2h1.07A8.001 8.001 0 0111 4.07V3a1 1 0 011-1zm0 4a6 6 0 100 12 6 6 0 000-12zm-2 4a1.5 1.5 0 110 3 1.5 1.5 0 010-3zm4 0a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg>' },
         { name: 'Terminal / CLI', category: 'Tools', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-6 h-6"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>' },
         { name: 'Code / IDE', category: 'Tools', svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-6 h-6"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>' },
@@ -236,13 +242,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function updatePreview(value) {
         const val = (value || '').trim();
         if (!val) {
-            previewBox.innerHTML = '<span id="icon-preview-placeholder">⚡</span>';
+            previewBox.innerHTML = '<span id="icon-preview-placeholder" class="text-xs font-mono text-slate-400 font-bold">&lt;/&gt;</span>';
             iconTypeIndicator.textContent = '';
             return;
         }
 
         if (val.startsWith('<svg') || val.startsWith('<i ')) {
-            previewBox.innerHTML = `<div class="w-8 h-8 inline-flex items-center justify-center text-ps-primary dark:text-cyan-400 [&>svg]:w-7 [&>svg]:h-7 [&>svg]:fill-current">${val}</div>`;
+            previewBox.innerHTML = `<div class="w-8 h-8 inline-flex items-center justify-center text-ps-primary dark:text-cyan-400 [&>svg]:w-7 [&>svg]:h-7 [&>svg]:max-w-full [&>svg]:max-h-full">${val}</div>`;
             iconTypeIndicator.textContent = 'Format: Vektor SVG';
         } else if (val.startsWith('http://') || val.startsWith('https://') || val.startsWith('/') || val.endsWith('.svg') || val.endsWith('.png')) {
             previewBox.innerHTML = `<img src="${val}" alt="Icon Preview" class="w-8 h-8 object-contain" />`;
@@ -298,10 +304,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Category change listener: auto update preset icons
-    categorySelect.addEventListener('change', function() {
-        if (!showAll) {
-            renderPresets();
-        }
+    ['change', 'input'].forEach(evt => {
+        categorySelect.addEventListener(evt, function() {
+            if (!showAll) {
+                renderPresets();
+            }
+        });
     });
 
     // Tab buttons

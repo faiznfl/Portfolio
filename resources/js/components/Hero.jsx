@@ -11,8 +11,8 @@ export default function Hero({ profile, resumeUrl }) {
     };
 
     const githubUrl = profile?.social_links?.github || 'https://github.com/faiznfl';
-    const linkedinUrl = profile?.social_links?.linkedin || 'https://linkedin.com/in/faiznfl';
-    const emailAddress = profile?.social_links?.email || profile?.email || 'faiznaufal.dev@gmail.com';
+    const linkedinUrl = profile?.social_links?.linkedin || 'https://www.linkedin.com/in/faiz-naufal-putra-permana';
+    const emailAddress = profile?.social_links?.email || profile?.email || 'faiznfl20@gmail.com';
 
     return (
         <section id="home" className="relative min-h-[92vh] flex items-center pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -27,19 +27,14 @@ export default function Hero({ profile, resumeUrl }) {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
                     {/* Left Column: Greeting, Role & CTAs */}
                     <div className="lg:col-span-7 space-y-6 text-left relative z-20 pointer-events-auto">
-                        {/* Subtitle / Role Tag */}
-                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-200/70 dark:bg-white/[0.05] border border-slate-300/80 dark:border-white/10 text-xs font-mono tracking-widest uppercase text-ps-primary dark:text-cyan-400">
-                            <span className="w-2 h-2 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
-                            <span>SOFTWARE ENGINEER &amp; CLOUD ARCHITECT</span>
-                        </div>
 
                         {/* Main Title matching reference */}
                         <div className="space-y-2">
                             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-slate-900 dark:text-white leading-none">
-                                Hi, I'm <span className="text-gradient-ps font-semibold">{profile?.full_name || 'Developer'}</span>
+                                Hi, I'm <span className="text-gradient-ps font-semibold">{profile?.full_name || 'Faiz Naufal Putra Permana'}</span>
                             </h1>
                             <div className="text-xl sm:text-2xl font-normal text-ps-primary dark:text-cyan-300 font-sans tracking-wide pt-1">
-                                {profile?.headline || 'Software Engineer'}
+                                {profile?.headline || 'Web Developer'}
                             </div>
                         </div>
 

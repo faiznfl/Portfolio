@@ -48,7 +48,7 @@
                             <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
                                 <td class="px-4 py-3 font-mono text-xs text-slate-400">#{{ $skill->order_index }}</td>
                                 <td class="px-4 py-3">
-                                    <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-ps-primary dark:text-cyan-300 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:fill-current overflow-hidden">
+                                    <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-ps-primary dark:text-cyan-300 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:max-w-full [&>svg]:max-h-full overflow-hidden">
                                         @if(!empty($skill->icon_svg))
                                             @if(str_starts_with(trim($skill->icon_svg), '<svg') || str_starts_with(trim($skill->icon_svg), '<i '))
                                                 {!! $skill->icon_svg !!}
@@ -58,7 +58,10 @@
                                                 <span class="text-base">{{ $skill->icon_svg }}</span>
                                             @endif
                                         @else
-                                            <span class="text-xs font-mono text-slate-400">⚡</span>
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-4 h-4 text-slate-400">
+                                                <polyline points="16 18 22 12 16 6"/>
+                                                <polyline points="8 6 2 12 8 18"/>
+                                            </svg>
                                         @endif
                                     </div>
                                 </td>

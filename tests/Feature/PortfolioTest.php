@@ -37,9 +37,9 @@ class PortfolioTest extends TestCase
         $response->assertSee('id="certificates"', false);
         $response->assertSee('id="contacts"', false);
 
-        // Assert seeded benchmark content
+        // Assert seeded profile content
         $response->assertSee('Faiz Naufal');
-        $response->assertSee('OmniPulse');
+        $response->assertSee('Web Developer');
     }
 
     public function test_portfolio_works_completely_without_database_seeder(): void

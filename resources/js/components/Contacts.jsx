@@ -12,9 +12,9 @@ export default function Contacts({ profile = {}, csrfToken = '', submitUrl = '/c
     const [charCount, setCharCount] = useState(0);
     const [copied, setCopied] = useState(false);
 
-    const email = profile?.social_links?.email || profile?.email || 'faiznaufal.dev@gmail.com';
+    const email = profile?.social_links?.email || profile?.email || 'faiznfl20@gmail.com';
     const github = profile?.social_links?.github || 'https://github.com/faiznfl';
-    const linkedin = profile?.social_links?.linkedin || 'https://linkedin.com/in/faiznfl';
+    const linkedin = profile?.social_links?.linkedin || 'https://www.linkedin.com/in/faiz-naufal-putra-permana';
     const locationText = 'Indonesia (Remote / On-site)';
 
     const handleCopyEmail = async () => {

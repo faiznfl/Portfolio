@@ -18,10 +18,10 @@ class PortfolioData
     {
         return new Profile([
             'id' => 1,
-            'full_name' => 'Faiz Naufal',
-            'headline' => 'Senior Full-Stack Engineer & Cloud Systems Architect',
-            'subheadline' => 'Merancang sistem terdistribusi berkecepatan tinggi, database berdaya tahan tinggi, dan antarmuka web modern dengan standar keandalan 99.98%.',
-            'bio_about' => 'Saya adalah Software Engineer dengan pengalaman lebih dari 5 tahun dalam merancang dan membangun ekosistem perangkat lunak berskala besar. Berfokus pada sistem backend berkinerja tinggi, arsitektur terdistribusi yang tangguh, serta antarmuka web modern yang presisi dan responsif. Berdedikasi pada prinsip Clean Code, automatisasi DevOps, dan efisiensi arsitektur yang memberikan dampak bisnis nyata.',
+            'full_name' => 'Faiz Naufal Putra Permana',
+            'headline' => 'Web Developer | UI/UX Enthusiast',
+            'subheadline' => 'Fresh Graduate Sistem Informasi Universitas Pamulang',
+            'bio_about' => 'Fresh Graduate Sistem Informasi Universitas Pamulang dengan minat dan pengalaman dalam Web Development serta UI/UX Design. Terbiasa membangun aplikasi web fungsional mulai dari perancangan antarmuka hingga implementasi sistem. Terbuka untuk peluang kerja di bidang Web Development dan Software Engineering.',
             'engineering_principles' => [
                 [
                     'title' => 'Architecture Before Code',
@@ -50,8 +50,8 @@ class PortfolioData
             'availability_text' => 'Tersedia untuk Proyek Strategis & Posisi Senior',
             'social_links' => [
                 'github' => 'https://github.com/faiznfl',
-                'linkedin' => 'https://linkedin.com/in/faiznfl',
-                'email' => 'faiznaufal.dev@gmail.com',
+                'linkedin' => 'https://www.linkedin.com/in/faiz-naufal-putra-permana',
+                'email' => 'faiznfl20@gmail.com',
                 'twitter' => 'https://x.com/faiznfl',
             ],
             'stats' => [
@@ -72,36 +72,36 @@ class PortfolioData
     {
         $items = [
             // Languages
-            ['id' => 1, 'name' => 'PHP 8.4+', 'category' => 'Languages', 'proficiency_level' => 96, 'order_index' => 1, 'is_featured' => true],
-            ['id' => 2, 'name' => 'TypeScript', 'category' => 'Languages', 'proficiency_level' => 92, 'order_index' => 2, 'is_featured' => true],
-            ['id' => 3, 'name' => 'Go (Golang)', 'category' => 'Languages', 'proficiency_level' => 88, 'order_index' => 3, 'is_featured' => true],
-            ['id' => 4, 'name' => 'Python', 'category' => 'Languages', 'proficiency_level' => 82, 'order_index' => 4, 'is_featured' => false],
-            ['id' => 5, 'name' => 'SQL (PostgreSQL)', 'category' => 'Languages', 'proficiency_level' => 94, 'order_index' => 5, 'is_featured' => true],
+            ['id' => 1, 'name' => 'PHP 8.4+', 'category' => 'Languages', 'proficiency_level' => 96, 'order_index' => 1, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 7.03 2 12s4.48 9 10 9 10-4.03 10-9-4.48-9-10-9zm-3.2 12.5H7.2l.6-3.6H6.1c-1.2 0-2.1-.9-2.1-2.1s.9-2.1 2.1-2.1h3.3l-1.6 7.8zm7.5 0h-1.6l.6-3.6h-1.7c-1.2 0-2.1-.9-2.1-2.1s.9-2.1 2.1-2.1h3.3l-1.6 7.8zm4.2-3.8c-.3 2.1-2.1 3.8-4.2 3.8h-1.6l1.6-7.8h1.6c2.1 0 3.9 1.7 3.6 4z"/></svg>'],
+            ['id' => 2, 'name' => 'TypeScript', 'category' => 'Languages', 'proficiency_level' => 92, 'order_index' => 2, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><rect width="20" height="20" x="2" y="2" rx="4" fill="#3178C6"/><path d="M6 10.5h6v1.8H9.9v6.2H7.8v-6.2H6v-1.8zm8.7 6.2c.9.5 2 .8 3 .8 2.2 0 3.5-1.2 3.5-2.9 0-1.6-1-2.4-2.5-3-.9-.4-1.4-.7-1.4-1.3 0-.6.5-1 1.3-1 .8 0 1.5.3 2.1.7l.6-1.5c-.7-.4-1.6-.7-2.7-.7-2.1 0-3.4 1.2-3.4 2.8 0 1.5 1 2.3 2.4 2.9.9.4 1.4.7 1.4 1.4 0 .7-.6 1.2-1.6 1.2-1 0-1.8-.4-2.4-.8l-.7 1.4z" fill="#FFF"/></svg>'],
+            ['id' => 3, 'name' => 'Go (Golang)', 'category' => 'Languages', 'proficiency_level' => 88, 'order_index' => 3, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 10.5c.3-1.8 1.6-3.2 3.8-3.2 2.7 0 4.2 1.8 4.2 4.5 0 2.8-1.6 4.7-4.4 4.7-2.6 0-4.1-1.8-4.1-4.4 0-.6.1-1.1.5-1.6zm4.8 1.4c0-1.8-.8-2.9-2.2-2.9-1.2 0-2 1-2 2.8 0 1.7.8 2.8 2 2.8 1.4 0 2.2-1 2.2-2.7zm10.2 1.3h-3.4v-1.6h5.3c0 3.3-2 5-4.9 5-3.3 0-5.2-2.2-5.2-5.2 0-3.1 2-5.2 5.3-5.2 2.8 0 4.6 1.7 4.7 3.8h-1.9c-.2-1.3-1.2-2.2-2.8-2.2-2 0-3.2 1.4-3.2 3.6 0 2.1 1.2 3.6 3.2 3.6 1.7 0 2.7-.9 2.9-2.3z"/></svg>'],
+            ['id' => 4, 'name' => 'Python', 'category' => 'Languages', 'proficiency_level' => 82, 'order_index' => 4, 'is_featured' => false, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.9 2C8.5 2 6.5 3.5 6.5 5.7v1.8h5.6v.7H4.3C2.1 8.2 1 10.3 1 12.6c0 2.4 1.4 4.3 3.3 4.3h1.8v-2.5c0-2.3 1.9-4.2 4.2-4.2h5.6c1.9 0 3.5-1.6 3.5-3.5V5.7C19.4 3.5 17.4 2 11.9 2zm-1.8 1.8c.6 0 1.1.5 1.1 1.1s-.5 1.1-1.1 1.1-1.1-.5-1.1-1.1.5-1.1 1.1-1.1zm3.8 18.2c3.4 0 5.4-1.5 5.4-3.7v-1.8h-5.6v-.7h7.8c2.2 0 3.3-2.1 3.3-4.4 0-2.4-1.4-4.3-3.3-4.3h-1.8v2.5c0 2.3-1.9 4.2-4.2 4.2H9.8c-1.9 0-3.5 1.6-3.5 3.5v1c0 2.2 2 3.7 7.5 3.7zm1.8-1.8c-.6 0-1.1-.5-1.1-1.1s.5-1.1 1.1-1.1 1.1.5 1.1 1.1-.5 1.1-1.1 1.1z"/></svg>'],
+            ['id' => 5, 'name' => 'SQL (PostgreSQL)', 'category' => 'Languages', 'proficiency_level' => 94, 'order_index' => 5, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>'],
 
             // Backend
-            ['id' => 6, 'name' => 'Laravel 12/13', 'category' => 'Backend', 'proficiency_level' => 98, 'order_index' => 6, 'is_featured' => true],
-            ['id' => 7, 'name' => 'Node.js / NestJS', 'category' => 'Backend', 'proficiency_level' => 89, 'order_index' => 7, 'is_featured' => true],
-            ['id' => 8, 'name' => 'GraphQL / gRPC', 'category' => 'Backend', 'proficiency_level' => 86, 'order_index' => 8, 'is_featured' => false],
-            ['id' => 9, 'name' => 'FastAPI', 'category' => 'Backend', 'proficiency_level' => 83, 'order_index' => 9, 'is_featured' => false],
+            ['id' => 6, 'name' => 'Laravel 12/13', 'category' => 'Backend', 'proficiency_level' => 98, 'order_index' => 6, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.8 6.5l-6.9-4a1.8 1.8 0 00-1.8 0l-6.9 4A1.8 1.8 0 003.3 8v8a1.8 1.8 0 00.9 1.5l6.9 4c.6.3 1.2.3 1.8 0l6.9-4a1.8 1.8 0 00.9-1.5V8a1.8 1.8 0 00-.9-1.5zM12 4.1l5.5 3.2-2.5 1.5L9.5 5.6 12 4.1zm-1 15.8l-5.5-3.2V10.3l5.5 3.2v6.4zm1-8.1L6.5 8.6 9 7.1l5.5 3.2-2.5 1.5zm6.5 4.9l-5.5 3.2v-6.4l2.5-1.5v2.8l3-1.8v3.7z"/></svg>'],
+            ['id' => 7, 'name' => 'Node.js / NestJS', 'category' => 'Backend', 'proficiency_level' => 89, 'order_index' => 7, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l9.5 5.5v11L12 24l-9.5-5.5v-11L12 2zm0 2.3L4.5 8.6v8.8L12 21.7l7.5-4.3V8.6L12 4.3zm0 3.2a4.5 4.5 0 014.5 4.5c0 2.5-2 4.5-4.5 4.5S7.5 14.5 7.5 12s2-4.5 4.5-4.5z"/></svg>'],
+            ['id' => 8, 'name' => 'GraphQL / gRPC', 'category' => 'Backend', 'proficiency_level' => 86, 'order_index' => 8, 'is_featured' => false, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l8.66 5v10L12 22l-8.66-5V7L12 2zm0 2.3L5.34 8v8L12 19.7 18.66 16V8L12 4.3zM12 7a2 2 0 110 4 2 2 0 010-4zm-4 6a2 2 0 110 4 2 2 0 010-4zm8 0a2 2 0 110 4 2 2 0 010-4z"/></svg>'],
+            ['id' => 9, 'name' => 'FastAPI', 'category' => 'Backend', 'proficiency_level' => 83, 'order_index' => 9, 'is_featured' => false, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 14h7l-2 8 11-12h-7l3-8z"/></svg>'],
 
             // Frontend
-            ['id' => 10, 'name' => 'Tailwind CSS v4', 'category' => 'Frontend', 'proficiency_level' => 95, 'order_index' => 10, 'is_featured' => true],
-            ['id' => 11, 'name' => 'Vue.js 3 / Inertia', 'category' => 'Frontend', 'proficiency_level' => 91, 'order_index' => 11, 'is_featured' => true],
-            ['id' => 12, 'name' => 'React & Next.js', 'category' => 'Frontend', 'proficiency_level' => 87, 'order_index' => 12, 'is_featured' => false],
-            ['id' => 13, 'name' => 'Modern Vanilla JS', 'category' => 'Frontend', 'proficiency_level' => 94, 'order_index' => 13, 'is_featured' => false],
+            ['id' => 10, 'name' => 'Tailwind CSS v4', 'category' => 'Frontend', 'proficiency_level' => 95, 'order_index' => 10, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 6c-2.7 0-4.3 1.3-5 4 .9-1.3 2-1.9 3.3-1.6 1 .2 1.7.9 2.5 1.7C14.1 11.4 15.6 13 19 13c2.7 0 4.3-1.3 5-4-.9 1.3-2 1.9-3.3 1.6-1-.2-1.7-.9-2.5-1.7C16.9 7.6 15.4 6 12 6zM5 13c-2.7 0-4.3 1.3-5 4 .9-1.3 2-1.9 3.3-1.6 1 .2 1.7.9 2.5 1.7C7.1 18.4 8.6 20 12 20c2.7 0 4.3-1.3 5-4-.9 1.3-2 1.9-3.3 1.6-1-.2-1.7-.9-2.5-1.7C9.9 14.6 8.4 13 5 13z"/></svg>'],
+            ['id' => 11, 'name' => 'Vue.js 3 / Inertia', 'category' => 'Frontend', 'proficiency_level' => 91, 'order_index' => 11, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 3h3.5L12 14.2 18.5 3H22L12 21 2 3zm4.5 0h3.5L12 6.8 14 3h3.5L12 12.5 6.5 3z"/></svg>'],
+            ['id' => 12, 'name' => 'React & Next.js', 'category' => 'Frontend', 'proficiency_level' => 87, 'order_index' => 12, 'is_featured' => false, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(0 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>'],
+            ['id' => 13, 'name' => 'Modern Vanilla JS', 'category' => 'Frontend', 'proficiency_level' => 94, 'order_index' => 13, 'is_featured' => false, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><rect width="20" height="20" x="2" y="2" rx="4" fill="#F7DF1E"/><path d="M7 16.5c.7.4 1.5.7 2.3.7 1.3 0 2.1-.7 2.1-1.7v-5h-2.1v5c0 .4-.3.6-.7.6-.4 0-.8-.2-1.1-.4l-.5 1.4zm6.7.2c1 .5 2.1.8 3.1.8 2.3 0 3.7-1.2 3.7-3.1 0-1.7-1.1-2.5-2.7-3.2-.9-.4-1.3-.8-1.3-1.4 0-.6.5-1.1 1.4-1.1.8 0 1.6.3 2.2.7l.6-1.5c-.7-.4-1.7-.7-2.8-.7-2.2 0-3.5 1.3-3.5 3 0 1.6 1 2.4 2.5 3 1 .4 1.5.8 1.5 1.5 0 .8-.7 1.3-1.7 1.3-1 0-1.9-.4-2.5-.9l-.5 1.5z" fill="#000"/></svg>'],
 
             // Databases
-            ['id' => 14, 'name' => 'PostgreSQL & pgvector', 'category' => 'Databases', 'proficiency_level' => 93, 'order_index' => 14, 'is_featured' => true],
-            ['id' => 15, 'name' => 'Redis (Cache/PubSub)', 'category' => 'Databases', 'proficiency_level' => 95, 'order_index' => 15, 'is_featured' => true],
-            ['id' => 16, 'name' => 'MySQL / MariaDB', 'category' => 'Databases', 'proficiency_level' => 90, 'order_index' => 16, 'is_featured' => false],
-            ['id' => 17, 'name' => 'Elasticsearch', 'category' => 'Databases', 'proficiency_level' => 84, 'order_index' => 17, 'is_featured' => false],
+            ['id' => 14, 'name' => 'PostgreSQL & pgvector', 'category' => 'Databases', 'proficiency_level' => 93, 'order_index' => 14, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg>'],
+            ['id' => 15, 'name' => 'Redis (Cache/PubSub)', 'category' => 'Databases', 'proficiency_level' => 95, 'order_index' => 15, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zm0 8L2 15l10 5 10-5-10-5zm0 7l-8-4 8 4 8-4-8 4z"/></svg>'],
+            ['id' => 16, 'name' => 'MySQL / MariaDB', 'category' => 'Databases', 'proficiency_level' => 90, 'order_index' => 16, 'is_featured' => false, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 10h18M8 15h2m4 0h2"/></svg>'],
+            ['id' => 17, 'name' => 'Elasticsearch', 'category' => 'Databases', 'proficiency_level' => 84, 'order_index' => 17, 'is_featured' => false, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="M16.5 16.5L21 21M8 11h6m-3-3v6"/></svg>'],
 
             // DevOps & Cloud
-            ['id' => 18, 'name' => 'Docker & Podman', 'category' => 'DevOps', 'proficiency_level' => 94, 'order_index' => 18, 'is_featured' => true],
-            ['id' => 19, 'name' => 'Kubernetes (K8s)', 'category' => 'DevOps', 'proficiency_level' => 86, 'order_index' => 19, 'is_featured' => true],
-            ['id' => 20, 'name' => 'AWS (ECS, S3, RDS)', 'category' => 'DevOps', 'proficiency_level' => 90, 'order_index' => 20, 'is_featured' => true],
-            ['id' => 21, 'name' => 'CI/CD (GitHub Actions)', 'category' => 'DevOps', 'proficiency_level' => 93, 'order_index' => 21, 'is_featured' => true],
-            ['id' => 22, 'name' => 'Terraform (IaC)', 'category' => 'DevOps', 'proficiency_level' => 85, 'order_index' => 22, 'is_featured' => false],
+            ['id' => 18, 'name' => 'Docker & Podman', 'category' => 'DevOps', 'proficiency_level' => 94, 'order_index' => 18, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 10.5c-.3-.2-1.5-.3-2.5.3-.2-.7-.7-1.3-1.4-1.8l-.8-.5-.5.8c-.5.8-.6 1.7-.3 2.6-1 .6-2.5.7-4.3.7H2v3c0 2.8 2.2 5 5 5 5.5 0 9.8-3.4 11.2-8.4 1.3.1 2.9-.3 4.3-1.7zm-14-3h2v2h-2zm3 0h2v2h-2zm3 0h2v2h-2zm-6-3h2v2h-2zm3 0h2v2h-2zm3 0h2v2h-2z"/></svg>'],
+            ['id' => 19, 'name' => 'Kubernetes (K8s)', 'category' => 'DevOps', 'proficiency_level' => 86, 'order_index' => 19, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3.5 7v10L12 22l8.5-5V7L12 2zm0 2.4l6.5 3.8v7.6L12 19.6 5.5 15.8V8.2L12 4.4zm0 3.6a4 4 0 100 8 4 4 0 000-8zm0 2a2 2 0 110 4 2 2 0 010-4z"/></svg>'],
+            ['id' => 20, 'name' => 'AWS (ECS, S3, RDS)', 'category' => 'DevOps', 'proficiency_level' => 90, 'order_index' => 20, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>'],
+            ['id' => 21, 'name' => 'CI/CD (GitHub Actions)', 'category' => 'DevOps', 'proficiency_level' => 93, 'order_index' => 21, 'is_featured' => true, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="9" r="3"/><path d="M6 9v6M9 6h4a4 4 0 014 4"/></svg>'],
+            ['id' => 22, 'name' => 'Terraform (IaC)', 'category' => 'DevOps', 'proficiency_level' => 85, 'order_index' => 22, 'is_featured' => false, 'icon_svg' => '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 2v7.5l6.5 3.7V5.7L1.5 2zm8 4.6v7.5l6.5 3.7V10.3l-6.5-3.7zm8 4.6v7.5l5-2.9v-7.5l-5 2.9zm-8 4.6v7.5l6.5-3.7v-7.5l-6.5 3.7z"/></svg>'],
         ];
 
         return collect($items)->map(fn ($item) => new Skill($item));

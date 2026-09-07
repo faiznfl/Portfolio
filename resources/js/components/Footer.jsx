@@ -28,7 +28,7 @@ export default function Footer() {
 
                     {/* LinkedIn */}
                     <a
-                        href="https://linkedin.com/in/faiznfl"
+                        href="https://www.linkedin.com/in/faiz-naufal-putra-permana"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-white/[0.04] border border-slate-300/70 dark:border-white/10 hover:bg-slate-300/60 dark:hover:bg-white/[0.08] hover:border-slate-400 dark:hover:border-white/20 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200 shadow-sm"
@@ -42,7 +42,7 @@ export default function Footer() {
 
                     {/* Email */}
                     <a
-                        href="mailto:faiznaufal.dev@gmail.com"
+                        href="mailto:faiznfl20@gmail.com"
                         className="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-white/[0.04] border border-slate-300/70 dark:border-white/10 hover:bg-slate-300/60 dark:hover:bg-white/[0.08] hover:border-slate-400 dark:hover:border-white/20 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200 shadow-sm"
                         title="Email"
                         aria-label="Email"

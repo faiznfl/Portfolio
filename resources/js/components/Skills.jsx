@@ -3,11 +3,18 @@ import React, { useState } from 'react';
 export default function Skills({ skills = [] }) {
     const [selectedCategory, setSelectedCategory] = useState('all');
 
-    const categories = ['all', 'Languages', 'Backend', 'Frontend', 'Databases', 'DevOps'];
+    // Extract unique categories dynamically from actual inputted skills
+    const availableCategories = Array.from(
+        new Set((skills || []).map(s => s.category?.trim()).filter(Boolean))
+    );
 
-    const filteredSkills = selectedCategory === 'all'
+    const activeCategory = (selectedCategory === 'all' || availableCategories.includes(selectedCategory))
+        ? selectedCategory
+        : 'all';
+
+    const filteredSkills = activeCategory === 'all'
         ? skills
-        : skills.filter(s => s.category.toLowerCase() === selectedCategory.toLowerCase());
+        : skills.filter(s => s.category?.trim().toLowerCase() === activeCategory.toLowerCase());
 
     const handleFilter = (cat) => {
         setSelectedCategory(cat);
@@ -39,7 +46,7 @@ export default function Skills({ skills = [] }) {
             if (icon.startsWith('<svg') || icon.startsWith('<i ')) {
                 return (
                     <span
-                        className="inline-flex items-center justify-center w-8 h-8 text-ps-primary dark:text-cyan-400 [&>svg]:w-7 [&>svg]:h-7 [&>svg]:fill-current"
+                        className="inline-flex items-center justify-center w-8 h-8 text-ps-primary dark:text-cyan-400 [&>svg]:w-7 [&>svg]:h-7 [&>svg]:max-w-full [&>svg]:max-h-full"
                         dangerouslySetInnerHTML={{ __html: icon }}
                     />
                 );
@@ -66,19 +73,28 @@ export default function Skills({ skills = [] }) {
                     </p>
                 </div>
 
-                {/* Category Filter Pills (Horizontal Single Row) */}
-                <div className="w-full flex items-center justify-start sm:justify-center gap-2.5 overflow-x-auto py-2 px-1 max-w-5xl mx-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                    {categories.map((cat) => (
+                {/* Category Filter Pills (Only shown when categories exist) */}
+                {availableCategories.length > 0 && (
+                    <div className="w-full flex items-center justify-start sm:justify-center gap-2.5 overflow-x-auto py-2 px-1 max-w-5xl mx-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
                         <button
-                            key={cat}
                             type="button"
-                            onClick={() => handleFilter(cat)}
-                            className={`filter-chip-dark whitespace-nowrap shrink-0 ${selectedCategory === cat ? 'active' : ''}`}
+                            onClick={() => handleFilter('all')}
+                            className={`filter-chip-dark whitespace-nowrap shrink-0 ${activeCategory === 'all' ? 'active' : ''}`}
                         >
-                            {cat === 'all' ? 'All Skills' : (cat === 'DevOps' ? 'DevOps & Cloud' : cat)}
+                            All Skills
                         </button>
-                    ))}
-                </div>
+                        {availableCategories.map((cat) => (
+                            <button
+                                key={cat}
+                                type="button"
+                                onClick={() => handleFilter(cat)}
+                                className={`filter-chip-dark whitespace-nowrap shrink-0 ${activeCategory === cat ? 'active' : ''}`}
+                            >
+                                {cat === 'DevOps' ? 'DevOps & Cloud' : cat}
+                            </button>
+                        ))}
+                    </div>
+                )}
 
                 {/* Skills Grid matching Reference Squircle Cards */}
                 <div 
@@ -88,7 +104,7 @@ export default function Skills({ skills = [] }) {
                 >
                     {filteredSkills.length === 0 ? (
                         <div className="col-span-full py-16 text-center text-slate-400 dark:text-gray-500 font-light border border-dashed border-slate-200 dark:border-white/10 rounded-2xl p-8">
-                            <span className="text-3xl block mb-2">⚡</span>
+                            <span className="text-3xl block mb-2">💻</span>
                             <span className="text-sm">Belum ada keahlian yang ditambahkan.</span>
                         </div>
                     ) : (

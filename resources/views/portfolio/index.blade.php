@@ -50,7 +50,7 @@
                             &amp; Digital Products.
                         </h1>
                         <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed max-w-2xl">
-                            Halo, saya <span class="text-white font-medium">{{ $profile->full_name ?? 'Faiz Naufal' }}</span> — Senior Full-Stack Engineer. Mengubah arsitektur kompleks menjadi solusi web berkecepatan tinggi, tangguh di bawah beban jutaan transaksi, dan menyenangkan untuk digunakan.
+                            Halo, saya <span class="text-white font-medium">{{ $profile->full_name ?? 'Faiz Naufal Putra Permana' }}</span> — Web Developer. Mengubah arsitektur kompleks menjadi solusi web berkecepatan tinggi, tangguh di bawah beban jutaan transaksi, dan menyenangkan untuk digunakan.
                         </p>
                     </div>
 
@@ -88,7 +88,7 @@
 
                         <!-- LinkedIn -->
                         <a
-                            href="{{ $profile->social_links['linkedin'] ?? 'https://linkedin.com/in/faiznfl' }}"
+                            href="{{ $profile->social_links['linkedin'] ?? 'https://www.linkedin.com/in/faiz-naufal-putra-permana' }}"
                             target="_blank"
                             rel="noopener noreferrer"
                             class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
@@ -102,9 +102,9 @@
 
                         <!-- Email / Gmail -->
                         <a
-                            href="mailto:{{ $profile->social_links['email'] ?? ($profile->email ?? 'faiznaufal.dev@gmail.com') }}"
+                            href="mailto:{{ $profile->social_links['email'] ?? ($profile->email ?? 'faiznfl20@gmail.com') }}"
                             class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
-                            title="Email: {{ $profile->social_links['email'] ?? ($profile->email ?? 'faiznaufal.dev@gmail.com') }}"
+                            title="Email: {{ $profile->social_links['email'] ?? ($profile->email ?? 'faiznfl20@gmail.com') }}"
                             aria-label="Send Email"
                         >
                             <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.8">
@@ -153,8 +153,8 @@
                             <!-- Minimalist Floating Glass Badge -->
                             <div class="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-between shadow-xl">
                                 <div>
-                                    <div class="text-sm font-semibold text-white tracking-wide">{{ $profile->full_name ?? 'Faiz Naufal' }}</div>
-                                    <div class="text-xs text-cyan-300 font-light">{{ $profile->headline ?? 'Senior Full-Stack Engineer' }}</div>
+                                    <div class="text-sm font-semibold text-white tracking-wide">{{ $profile->full_name ?? 'Faiz Naufal Putra Permana' }}</div>
+                                    <div class="text-xs text-cyan-300 font-light">{{ $profile->headline ?? 'Web Developer' }}</div>
                                 </div>
                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/10 text-green-400 text-[11px] font-mono border border-green-500/20">
                                     <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
@@ -171,69 +171,70 @@
     <!-- ==========================================
          CHAPTER 2: ABOUT (Fluid Deep Dark with Ambient Lighting)
          ========================================== -->
-    <section id="about" class="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-white/10 overflow-hidden">
+    <section id="about" class="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
         <!-- Ambient Background Glow -->
-        <div class="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-ps-primary/10 rounded-full blur-[140px] pointer-events-none z-0"></div>
+        <div class="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-ps-primary/10 dark:bg-ps-primary/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
         <div class="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
         <div class="max-w-7xl mx-auto space-y-12 relative z-10">
             <!-- Header conforming strictly to the site-wide design system -->
             <div class="text-center space-y-2 max-w-2xl mx-auto">
                 <div class="section-tagline">GET TO KNOW ME</div>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-light text-white tracking-tight">
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-light text-slate-900 dark:text-white tracking-tight">
                     About <span class="text-gradient-ps font-semibold">Me</span>
                 </h2>
-                <p class="text-gray-400 text-sm sm:text-base font-light">
+                <p class="text-slate-600 dark:text-gray-400 text-sm sm:text-base font-light">
                     Sedikit cerita tentang latar belakang dan minat saya di dunia teknologi.
                 </p>
             </div>
 
-            <!-- 2-Column Split Layout -->
+            <!-- 2-Column Split Layout with Symmetrical Alignment -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
                 <!-- Left Column: Narrative Story & Education Cards -->
-                <div class="lg:col-span-6 space-y-6">
-                    <div class="glass-panel p-6 sm:p-7">
-                        <p class="text-gray-200 text-base sm:text-lg leading-relaxed font-light">
-                            Saya adalah mahasiswa Sistem Informasi Universitas Islam Negeri Sunan Ampel Surabaya dengan latar belakang Teknik Komputer dan Jaringan. Saya memiliki ketertarikan dalam membangun aplikasi digital, mengeksplorasi AI, dan menciptakan solusi teknologi dengan pengalaman pengguna yang baik.
+                <div class="lg:col-span-6 space-y-4">
+                    <!-- Section Tag Indicator (Aligned with Right Column) -->
+                    <div class="flex items-center gap-2 px-1">
+                        <span class="w-2 h-2 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
+                        <span class="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-cyan-400">
+                            BIOGRAPHY &amp; EDUCATION
+                        </span>
+                    </div>
+
+                    <!-- Bio Narrative Card -->
+                    <div class="glass-panel p-6 sm:p-7 shadow-sm dark:shadow-none">
+                        <p class="text-slate-700 dark:text-slate-200 text-base sm:text-lg leading-relaxed font-light">
+                            Fresh graduate Sistem Informasi Universitas Pamulang dengan IPK 3.85, berfokus pada Web Development dan perancangan UI/UX. Terbiasa merancang antarmuka pengguna yang intuitif di Figma serta mengimplementasikannya menjadi aplikasi web menggunakan Laravel, PHP, MySQL, dan Tailwind CSS, termasuk integrasi payment gateway dan dashboard sistem. Terbuka untuk peluang kerja di bidang Web Development dan Software Engineering.
                         </p>
                     </div>
 
                     <!-- Education Cards Stack -->
                     <div class="space-y-4">
-                        <!-- Education 1 -->
-                        <div class="glass-panel p-5 flex items-center gap-4 hover:border-ps-primary transition-all duration-300 hover:scale-[1.01] group">
-                            <div class="w-12 h-12 rounded-xl bg-ps-primary/20 text-cyan-400 border border-cyan-400/30 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
+                        <div class="glass-panel p-5 flex items-center gap-4 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.01] shadow-sm dark:shadow-none group">
+                            <div class="w-12 h-12 rounded-xl bg-ps-primary/10 dark:bg-ps-primary/20 text-ps-primary dark:text-cyan-400 border border-ps-primary/25 dark:border-cyan-400/30 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:bg-ps-primary/15 dark:group-hover:bg-cyan-400/20">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 14v7" />
                                 </svg>
                             </div>
-                            <div class="min-w-0 flex-1">
-                                <h4 class="text-base font-semibold text-white tracking-tight leading-snug group-hover:text-cyan-300 transition-colors">
-                                    Universitas Islam Negeri Sunan Ampel Surabaya
-                                </h4>
-                                <p class="text-xs sm:text-sm text-gray-400 font-light mt-0.5">
-                                    Information Systems · 2026 - Present
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Education 2 -->
-                        <div class="glass-panel p-5 flex items-center gap-4 hover:border-ps-primary transition-all duration-300 hover:scale-[1.01] group">
-                            <div class="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                    <path strokeLinecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                            </div>
-                            <div class="min-w-0 flex-1">
-                                <h4 class="text-base font-semibold text-white tracking-tight leading-snug group-hover:text-cyan-300 transition-colors">
-                                    SMK Rajasa Surabaya
-                                </h4>
-                                <p class="text-xs sm:text-sm text-gray-400 font-light mt-0.5">
-                                    Teknik Komputer dan Jaringan
-                                </p>
+                            <div class="min-w-0 flex-1 space-y-1">
+                                <div class="flex flex-wrap items-center justify-between gap-x-2">
+                                    <h4 class="text-base font-semibold text-slate-900 dark:text-white tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                                        Universitas Pamulang
+                                    </h4>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-semibold border border-emerald-500/20 shrink-0">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                        IPK 3.85
+                                    </span>
+                                </div>
+                                <div class="flex flex-wrap items-center justify-between gap-x-2">
+                                    <p class="text-xs sm:text-sm text-ps-primary dark:text-cyan-300 font-medium">
+                                        Sistem Informasi
+                                    </p>
+                                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400">
+                                        2022 - 2026
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -241,61 +242,51 @@
 
                 <!-- Right Column: Interests & Focus Areas -->
                 <div class="lg:col-span-6 space-y-4">
+                    <!-- Section Tag Indicator -->
                     <div class="flex items-center gap-2 px-1">
-                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                        <span class="text-xs font-mono font-bold tracking-widest uppercase text-cyan-400">
+                        <span class="w-2 h-2 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
+                        <span class="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-cyan-400">
                             INTERESTS &amp; FOCUS AREAS
                         </span>
                     </div>
 
+                    <!-- 2-Column Grid of Interest Cards -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                        <div class="glass-panel p-4 flex items-center gap-3.5 hover:border-ps-primary transition-all duration-300 hover:scale-[1.02] group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 text-cyan-300 group-hover:scale-110 transition-transform duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-200 tracking-tight leading-snug group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
                                 Software Development
                             </span>
                         </div>
 
-                        <div class="glass-panel p-4 flex items-center gap-3.5 hover:border-ps-primary transition-all duration-300 hover:scale-[1.02] group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 text-cyan-300 group-hover:scale-110 transition-transform duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-200 tracking-tight leading-snug group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
                                 Web Development
                             </span>
                         </div>
 
-                        <div class="glass-panel p-4 flex items-center gap-3.5 hover:border-ps-primary transition-all duration-300 hover:scale-[1.02] group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 text-cyan-300 group-hover:scale-110 transition-transform duration-200">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
-                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round" />
-                                    <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2" stroke-linecap="round" />
-                                </svg>
-                            </div>
-                            <span class="text-sm font-medium text-slate-200 tracking-tight leading-snug group-hover:text-cyan-300 transition-colors">
-                                Mobile Development
-                            </span>
-                        </div>
-
-                        <div class="glass-panel p-4 flex items-center gap-3.5 hover:border-ps-primary transition-all duration-300 hover:scale-[1.02] group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 text-cyan-300 group-hover:scale-110 transition-transform duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 2A2.5 2.5 0 007 4.5c0 .28.05.54.13.79A3 3 0 005 8a3 3 0 00.35 1.4A3.5 3.5 0 004 12.5a3.5 3.5 0 001.5 2.87V16a3 3 0 003 3h1v2a1 1 0 001 1h.5a1 1 0 001-1V2H9.5zM14.5 2A2.5 2.5 0 0117 4.5c0 .28-.05.54-.13.79A3 3 0 0119 8a3 3 0 01-.35 1.4 3.5 3.5 0 011.35 3.1A3.5 3.5 0 0118.5 15.37V16a3 3 0 01-3 3h-1v2a1 1 0 01-1 1h-.5a1 1 0 01-1-1V2h2.5z" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-200 tracking-tight leading-snug group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
                                 Artificial Intelligence
                             </span>
                         </div>
 
-                        <div class="glass-panel p-4 flex items-center gap-3.5 hover:border-ps-primary transition-all duration-300 hover:scale-[1.02] group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 text-cyan-300 group-hover:scale-110 transition-transform duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4 7 7 0 0114-1.5 7.02 7.02 0 013 5.5 4 4 0 01-4 4 4 4 0 01-4-4c0-.75.6-1.5 1.5-1.5s1.5.75 1.5 1.5a1 1 0 001 1 1 1 0 001-1 4.5 4.5 0 00-4.5-4.5A4.5 4.5 0 008 17a4 4 0 01-1 4z" />
                                     <circle cx="8.5" cy="8.5" r="1" fill="currentColor" />
@@ -303,33 +294,33 @@
                                     <circle cx="15.5" cy="8.5" r="1" fill="currentColor" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-200 tracking-tight leading-snug group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
                                 UI/UX Design
                             </span>
                         </div>
 
-                        <div class="glass-panel p-4 flex items-center gap-3.5 hover:border-ps-primary transition-all duration-300 hover:scale-[1.02] group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 text-cyan-300 group-hover:scale-110 transition-transform duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                     <ellipse cx="12" cy="5" rx="9" ry="3" />
                                     <path stroke-linecap="round" d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
                                     <path stroke-linecap="round" d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-200 tracking-tight leading-snug group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
                                 Database Management
                             </span>
                         </div>
 
-                        <div class="glass-panel p-4 flex items-center gap-3.5 hover:border-ps-primary transition-all duration-300 hover:scale-[1.02] group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center shrink-0 text-cyan-300 group-hover:scale-110 transition-transform duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                     <rect x="4" y="4" width="16" height="16" rx="2" />
                                     <rect x="9" y="9" width="6" height="6" />
                                     <path stroke-linecap="round" d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-200 tracking-tight leading-snug group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
                                 Information Technology
                             </span>
                         </div>
@@ -360,15 +351,19 @@
                     </p>
                 </div>
 
+            @php
+                $skillCategories = $skills->pluck('category')->filter()->map(fn($c) => trim($c))->unique()->values();
+            @endphp
+
+            @if($skillCategories->isNotEmpty())
                 <!-- Category Filter Chips (Horizontal Single Row) -->
                 <div class="flex items-center gap-2 overflow-x-auto py-1 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex-nowrap">
                     <button type="button" class="filter-chip-dark active whitespace-nowrap shrink-0" data-skill-filter="all">Semua</button>
-                    <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-skill-filter="Languages">Languages</button>
-                    <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-skill-filter="Backend">Backend</button>
-                    <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-skill-filter="Frontend">Frontend</button>
-                    <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-skill-filter="Databases">Databases</button>
-                    <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-skill-filter="DevOps">DevOps &amp; Cloud</button>
+                    @foreach($skillCategories as $cat)
+                        <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-skill-filter="{{ $cat }}">{{ $cat == 'DevOps' ? 'DevOps & Cloud' : $cat }}</button>
+                    @endforeach
                 </div>
+            @endif
             </div>
 
             <!-- Skills Grid -->
@@ -428,14 +423,19 @@
                     </p>
                 </div>
 
+            @php
+                $projectCategories = $projects->pluck('category')->filter()->map(fn($c) => trim($c))->unique()->values();
+            @endphp
+
+            @if($projectCategories->isNotEmpty())
                 <!-- Projects Category Filter Chips (Horizontal Single Row) -->
                 <div class="flex items-center gap-2 overflow-x-auto py-1 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex-nowrap">
                     <button type="button" class="filter-chip-dark active whitespace-nowrap shrink-0" data-project-filter="all">Semua Proyek</button>
-                    <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-project-filter="Full-Stack">Full-Stack</button>
-                    <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-project-filter="Backend & Systems">Backend &amp; Systems</button>
-                    <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-project-filter="Cloud & DevOps">Cloud &amp; DevOps</button>
-                    <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-project-filter="AI & Realtime">AI &amp; Realtime</button>
+                    @foreach($projectCategories as $cat)
+                        <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-project-filter="{{ $cat }}">{{ $cat }}</button>
+                    @endforeach
                 </div>
+            @endif
             </div>
 
             <!-- Projects Grid with 3D Interactive Tilt -->
@@ -711,15 +711,15 @@
                                         <div class="text-[11px] font-mono font-semibold uppercase tracking-wider text-gray-400">
                                             EMAIL
                                         </div>
-                                        <a href="mailto:{{ $profile->email ?? 'faiznaufal.dev@gmail.com' }}" class="text-sm sm:text-base font-semibold text-white hover:text-cyan-300 transition-colors truncate block">
-                                            {{ $profile->email ?? 'faiznaufal.dev@gmail.com' }}
+                                        <a href="mailto:{{ $profile->email ?? 'faiznfl20@gmail.com' }}" class="text-sm sm:text-base font-semibold text-white hover:text-cyan-300 transition-colors truncate block">
+                                            {{ $profile->email ?? 'faiznfl20@gmail.com' }}
                                         </a>
                                     </div>
                                 </div>
 
                                 <button
                                     type="button"
-                                    onclick="navigator.clipboard.writeText('{{ $profile->email ?? 'faiznaufal.dev@gmail.com' }}'); this.innerText = 'Copied!'; setTimeout(() => this.innerHTML = '<svg class=\'w-4 h-4\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\' stroke-width=\'1.8\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' d=\'M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z\' /></svg>', 2000);"
+                                    onclick="navigator.clipboard.writeText('{{ $profile->email ?? 'faiznfl20@gmail.com' }}'); this.innerText = 'Copied!'; setTimeout(() => this.innerHTML = '<svg class=\'w-4 h-4\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\' stroke-width=\'1.8\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' d=\'M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z\' /></svg>', 2000);"
                                     class="relative p-2.5 rounded-xl text-gray-400 hover:text-white hover:bg-white/10 transition-all shrink-0 active:scale-90"
                                     title="Salin email"
                                     aria-label="Salin alamat email"
@@ -763,14 +763,14 @@
                                 </a>
 
                                 <!-- LinkedIn -->
-                                <a href="https://linkedin.com/in/faiznfl" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95" title="LinkedIn Profile" aria-label="LinkedIn Profile">
+                                <a href="https://www.linkedin.com/in/faiz-naufal-putra-permana" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95" title="LinkedIn Profile" aria-label="LinkedIn Profile">
                                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                                     </svg>
                                 </a>
 
                                 <!-- Email -->
-                                <a href="mailto:{{ $profile->email ?? 'faiznaufal.dev@gmail.com' }}" class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95" title="Kirim Email" aria-label="Kirim Email">
+                                <a href="mailto:{{ $profile->email ?? 'faiznfl20@gmail.com' }}" class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95" title="Kirim Email" aria-label="Kirim Email">
                                     <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.8">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                     </svg>
@@ -905,7 +905,7 @@
 
                 <!-- LinkedIn -->
                 <a
-                    href="https://linkedin.com/in/faiznfl"
+                    href="https://www.linkedin.com/in/faiz-naufal-putra-permana"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-white/[0.04] border border-slate-300/70 dark:border-white/10 hover:bg-slate-300/60 dark:hover:bg-white/[0.08] hover:border-slate-400 dark:hover:border-white/20 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200 shadow-sm"
@@ -919,7 +919,7 @@
 
                 <!-- Email -->
                 <a
-                    href="mailto:faiznaufal.dev@gmail.com"
+                    href="mailto:faiznfl20@gmail.com"
                     class="w-10 h-10 rounded-full bg-slate-200/50 dark:bg-white/[0.04] border border-slate-300/70 dark:border-white/10 hover:bg-slate-300/60 dark:hover:bg-white/[0.08] hover:border-slate-400 dark:hover:border-white/20 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all duration-200 shadow-sm"
                     title="Email"
                     aria-label="Email"

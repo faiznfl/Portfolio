@@ -55,13 +55,20 @@
                             <label for="category" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
                                 Kategori <span class="text-red-500">*</span>
                             </label>
-                            <select id="category" name="category" required
-                                    class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
-                                <option value="Full-Stack" {{ old('category', $project->category) == 'Full-Stack' ? 'selected' : '' }}>Full-Stack</option>
-                                <option value="Backend & Systems" {{ old('category', $project->category) == 'Backend & Systems' ? 'selected' : '' }}>Backend &amp; Systems</option>
-                                <option value="Cloud & DevOps" {{ old('category', $project->category) == 'Cloud & DevOps' ? 'selected' : '' }}>Cloud &amp; DevOps</option>
-                                <option value="AI & Realtime" {{ old('category', $project->category) == 'AI & Realtime' ? 'selected' : '' }}>AI &amp; Realtime</option>
-                            </select>
+                            <input type="text" id="category" name="category" list="project-category-options" required
+                                   value="{{ old('category', $project->category) }}"
+                                   placeholder="Pilih atau ketik kategori (cth: Web Application, Full-Stack, Mobile App)"
+                                   class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
+                            <datalist id="project-category-options">
+                                <option value="Web Application">
+                                <option value="Full-Stack">
+                                <option value="Backend & Systems">
+                                <option value="Frontend">
+                                <option value="UI/UX Design">
+                                <option value="Mobile App">
+                                <option value="Cloud & DevOps">
+                                <option value="AI & Realtime">
+                            </datalist>
                             @error('category') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                         </div>
                     </div>
