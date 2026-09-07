@@ -52,43 +52,48 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <!-- Location -->
                     <div class="space-y-2">
                         <label for="location" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
                             Lokasi <span class="text-red-500">*</span>
                         </label>
                         <input type="text" id="location" name="location" value="{{ old('location', $experience->location ?? 'Jakarta, Indonesia (Hybrid)') }}" required
+                               placeholder="cth: Jakarta, Indonesia (Hybrid) atau Remote"
                                class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
                         @error('location') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
 
-                    <!-- Employment Type -->
+                    <!-- Employment Type (Text input with suggestions) -->
                     <div class="space-y-2">
                         <label for="employment_type" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
                             Tipe Pekerjaan <span class="text-red-500">*</span>
                         </label>
-                        <select id="employment_type" name="employment_type" required
-                                class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
-                            <option value="Full-time" {{ old('employment_type', $experience->employment_type) == 'Full-time' ? 'selected' : '' }}>Full-time</option>
-                            <option value="Contract" {{ old('employment_type', $experience->employment_type) == 'Contract' ? 'selected' : '' }}>Contract</option>
-                            <option value="Consultant" {{ old('employment_type', $experience->employment_type) == 'Consultant' ? 'selected' : '' }}>Consultant</option>
-                            <option value="Part-time" {{ old('employment_type', $experience->employment_type) == 'Part-time' ? 'selected' : '' }}>Part-time</option>
-                        </select>
+                        <input type="text" id="employment_type" name="employment_type" list="employment_type_suggestions"
+                               value="{{ old('employment_type', $experience->employment_type ?? 'Full-time') }}" required
+                               placeholder="cth: Full-time, Contract, Freelance, Magang, Remote"
+                               class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
+                        <datalist id="employment_type_suggestions">
+                            <option value="Full-time">
+                            <option value="Contract">
+                            <option value="Freelance">
+                            <option value="Magang">
+                            <option value="Internship">
+                            <option value="Part-time">
+                            <option value="Consultant">
+                            <option value="Remote">
+                        </datalist>
+                        <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                            <button type="button" onclick="document.getElementById('employment_type').value = 'Full-time'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Full-time</button>
+                            <button type="button" onclick="document.getElementById('employment_type').value = 'Contract'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Contract</button>
+                            <button type="button" onclick="document.getElementById('employment_type').value = 'Freelance'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Freelance</button>
+                            <button type="button" onclick="document.getElementById('employment_type').value = 'Magang'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Magang</button>
+                            <button type="button" onclick="document.getElementById('employment_type').value = 'Part-time'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Part-time</button>
+                        </div>
                         @error('employment_type') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
-
-                    <!-- Company URL -->
-                    <div class="space-y-2">
-                        <label for="company_url" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
-                            Website Perusahaan (Opsional)
-                        </label>
-                        <input type="url" id="company_url" name="company_url" value="{{ old('company_url', $experience->company_url) }}"
-                               placeholder="https://company.com"
-                               class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
-                        @error('company_url') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
-                    </div>
                 </div>
+
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <!-- Start Date -->
@@ -124,6 +129,18 @@
                     </label>
                 </div>
 
+                <!-- Deskripsi Singkat -->
+                <div class="space-y-2">
+                    <label for="summary" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
+                        Deskripsi Singkat Peran / Pengalaman
+                    </label>
+                    <textarea id="summary" name="summary" rows="3"
+                              placeholder="Ringkasan singkat mengenai tanggung jawab utama, lingkup proyek, atau peran..."
+                              class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">{{ old('summary', $experience->summary) }}</textarea>
+                    <p class="text-[11px] text-slate-500 dark:text-gray-400">Ringkasan singkat yang menjelaskan gambaran umum posisi ini.</p>
+                    @error('summary') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
+                </div>
+
                 <!-- Description Points (One per line) -->
                 @php
                     $pts = '';
@@ -134,9 +151,9 @@
                 @endphp
                 <div class="space-y-2">
                     <label for="description_points_raw" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
-                        Poin-Poin Tanggung Jawab &amp; Pencapaian (1 Poin Per Baris) <span class="text-red-500">*</span>
+                        Poin-Poin Tanggung Jawab &amp; Pencapaian (1 Poin Per Baris)
                     </label>
-                    <textarea id="description_points_raw" name="description_points_raw" rows="4" required
+                    <textarea id="description_points_raw" name="description_points_raw" rows="4"
                               placeholder="Memimpin tim arsitektur 8 engineer dan merancang distributed cache&#10;Mengurangi latensi transaksi p99 sebesar 65%&#10;Menerapkan CI/CD pipeline berbasis GitLab & Kubernetes"
                               class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary font-mono">{{ old('description_points_raw', $pts) }}</textarea>
                     <p class="text-[11px] text-slate-500 dark:text-gray-400">Tuliskan tiap pencapaian pada baris baru (tekan Enter untuk poin berikutnya).</p>

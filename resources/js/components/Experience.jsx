@@ -48,9 +48,12 @@ export default function Experience({ experiences = [] }) {
                                     const isExpanded = !!expandedIds[cardKey];
                                     const isEven = idx % 2 === 0;
 
-                                    const points = Array.isArray(exp.description_points)
+                                    const rawPoints = Array.isArray(exp.description_points)
                                         ? exp.description_points
-                                        : (typeof exp.description_points === 'string' ? JSON.parse(exp.description_points) : []);
+                                        : (typeof exp.description_points === 'string'
+                                            ? (function () { try { return JSON.parse(exp.description_points); } catch (e) { return []; } })()
+                                            : []);
+                                    const points = (Array.isArray(rawPoints) ? rawPoints : []).map(p => typeof p === 'string' ? p.trim() : p).filter(Boolean);
 
                                     const techUsed = Array.isArray(exp.tech_used)
                                         ? exp.tech_used
@@ -61,9 +64,8 @@ export default function Experience({ experiences = [] }) {
                                     return (
                                         <div
                                             key={cardKey}
-                                            className={`relative flex flex-col md:flex-row items-center transition-all duration-300 ${
-                                                isEven ? 'md:flex-row-reverse' : ''
-                                            }`}
+                                            className={`relative flex flex-col md:flex-row items-center transition-all duration-300 ${isEven ? 'md:flex-row-reverse' : ''
+                                                }`}
                                         >
                                             {/* Center Node Dot */}
                                             <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-white dark:bg-black border-4 border-ps-primary dark:border-cyan-400 shadow-[0_0_15px_rgba(0,112,209,0.6)] z-20"></div>
@@ -93,55 +95,73 @@ export default function Experience({ experiences = [] }) {
                                                         </div>
                                                     </div>
 
-                                                    {/* Primary Highlight Point (Always visible) */}
-                                                    {points.length > 0 && (
-                                                        <ul className="space-y-2 text-sm text-slate-600 dark:text-gray-300 font-light leading-relaxed">
-                                                            <li className="flex items-start gap-2.5">
+                                                    {/* Deskripsi Singkat */}
+                                                    {exp.summary && (
+                                                        <p className="text-sm text-slate-600 dark:text-gray-300 font-light leading-relaxed">
+                                                            {exp.summary}
+                                                        </p>
+                                                    )}
+
+                                                    {/* Points & Accordion (Zero Gap, Uniform 8px Spacing) */}
+                                                    {points.length > 0 ? (
+                                                        <div>
+                                                            {/* Always Visible First Point */}
+                                                            <div className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-gray-300 font-light leading-relaxed">
                                                                 <span className="text-ps-primary dark:text-cyan-400 mt-1 shrink-0 text-xs">◆</span>
                                                                 <span>{points[0]}</span>
-                                                            </li>
-                                                        </ul>
-                                                    )}
-
-                                                    {/* Expandable Section: Remaining Points & Tech Badges (Smooth CSS Grid Transition) */}
-                                                    {hasMore && (
-                                                        <div className={`accordion-wrapper ${isExpanded ? 'is-open' : ''}`}>
-                                                            <div className="accordion-inner">
-                                                                <div className="space-y-3 pt-3 border-t border-slate-200/80 dark:border-white/10">
-                                                                    {points.length > 1 && (
-                                                                        <ul className="space-y-2 text-sm text-slate-600 dark:text-gray-300 font-light leading-relaxed">
-                                                                            {points.slice(1).map((point, pIdx) => (
-                                                                                <li key={pIdx} className="flex items-start gap-2.5">
-                                                                                    <span className="text-ps-primary dark:text-cyan-400 mt-1 shrink-0 text-xs">◆</span>
-                                                                                    <span>{point}</span>
-                                                                                </li>
-                                                                            ))}
-                                                                        </ul>
-                                                                    )}
-
-                                                                    {techUsed.length > 0 && (
-                                                                        <div className="pt-1">
-                                                                            <div className="text-[10px] font-mono uppercase tracking-wider text-slate-400 dark:text-gray-500 mb-1.5 font-semibold">
-                                                                                Technologies:
-                                                                            </div>
-                                                                            <div className="flex flex-wrap gap-1.5">
-                                                                                {techUsed.map((tech, tIdx) => (
-                                                                                    <span
-                                                                                        key={tIdx}
-                                                                                        className="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-white/10"
-                                                                                    >
-                                                                                        {tech}
-                                                                                    </span>
-                                                                                ))}
-                                                                            </div>
-                                                                        </div>
-                                                                    )}
-                                                                </div>
                                                             </div>
+
+                                                            {/* Expandable Remaining Points (Exact 8px gap between all points) */}
+                                                            {hasMore && (
+                                                                <div className={`accordion-wrapper ${isExpanded ? 'is-open' : ''}`}>
+                                                                    <div className="accordion-inner">
+                                                                        <div className="space-y-3">
+                                                                            {points.length > 1 && (
+                                                                                <div className="space-y-2 pt-2">
+                                                                                    {points.slice(1).map((point, pIdx) => (
+                                                                                        <div key={pIdx} className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-gray-300 font-light leading-relaxed">
+                                                                                            <span className="text-ps-primary dark:text-cyan-400 mt-1 shrink-0 text-xs">◆</span>
+                                                                                            <span>{point}</span>
+                                                                                        </div>
+                                                                                    ))}
+                                                                                </div>
+                                                                            )}
+
+                                                                            {techUsed.length > 0 && (
+                                                                                <div className="pt-2">
+                                                                                    <div className="flex flex-wrap gap-1.5">
+                                                                                        {techUsed.map((tech, tIdx) => (
+                                                                                            <span
+                                                                                                key={tIdx}
+                                                                                                className="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-white/10"
+                                                                                            >
+                                                                                                {tech}
+                                                                                            </span>
+                                                                                        ))}
+                                                                                    </div>
+                                                                                </div>
+                                                                            )}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            )}
                                                         </div>
+                                                    ) : (
+                                                        techUsed.length > 0 && (
+                                                            <div className="flex flex-wrap gap-1.5 pt-1">
+                                                                {techUsed.map((tech, tIdx) => (
+                                                                    <span
+                                                                        key={tIdx}
+                                                                        className="px-2 py-0.5 rounded text-[11px] font-mono bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-white/10"
+                                                                    >
+                                                                        {tech}
+                                                                    </span>
+                                                                ))}
+                                                            </div>
+                                                        )
                                                     )}
 
-                                                    {/* Per-section Toggle Button */}
+                                                    {/* Per-section Toggle Button: Show More / Show Less */}
                                                     {hasMore && (
                                                         <div className="pt-1">
                                                             <button
@@ -151,9 +171,8 @@ export default function Experience({ experiences = [] }) {
                                                             >
                                                                 <span>{isExpanded ? 'Show Less' : 'Show More'}</span>
                                                                 <svg
-                                                                    className={`w-3.5 h-3.5 transform transition-transform duration-300 ${
-                                                                        isExpanded ? 'rotate-180' : 'group-hover:translate-y-0.5'
-                                                                    }`}
+                                                                    className={`w-3.5 h-3.5 transform transition-transform duration-300 ${isExpanded ? 'rotate-180' : 'group-hover:translate-y-0.5'
+                                                                        }`}
                                                                     fill="none"
                                                                     stroke="currentColor"
                                                                     viewBox="0 0 24 24"

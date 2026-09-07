@@ -20,11 +20,6 @@ export default function CertificateDetailModal({ certificate, onClose }) {
 
     if (!certificate) return null;
 
-    const getYear = (dateStr) => {
-        if (!dateStr) return '2026';
-        const d = new Date(dateStr);
-        return isNaN(d.getFullYear()) ? '2026' : d.getFullYear();
-    };
 
     // Extract tags from category or certificate tags
     const getTags = () => {
@@ -74,13 +69,15 @@ export default function CertificateDetailModal({ certificate, onClose }) {
 
                 {/* 2. Informasi Sertifikat (White Liquid Glass Theme) */}
                 <div className="pt-4 px-2 pb-2 space-y-3 relative z-10">
-                    {/* Ribbon Icon + Tahun (Pink/Magenta Accent) */}
-                    <div className="flex items-center gap-1.5 text-pink-600 font-semibold text-sm">
-                        <svg className="w-4 h-4 text-pink-600 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    {/* Ribbon Icon + Tahun (PlayStation Blue Accent) */}
+                    <div className="flex items-center gap-2 text-ps-primary font-semibold text-sm">
+                        <svg className="w-4 h-4 text-ps-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <circle cx="12" cy="8" r="5" />
                             <path d="m9 12-4 9 7-3.5 7 3.5-4-9" />
                         </svg>
-                        <span>{getYear(certificate.issue_date)}</span>
+                        <span>
+                            {certificate.issue_date ? `Tahun ${new Date(certificate.issue_date).getFullYear()}` : (certificate.category ? certificate.category.split(',')[0].trim() : 'Sertifikasi Terverifikasi')}
+                        </span>
                     </div>
 
                     {/* Judul Sertifikat */}

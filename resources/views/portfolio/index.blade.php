@@ -36,12 +36,6 @@
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
                 <!-- Left Column: Story & CTAs -->
                 <div class="lg:col-span-7 space-y-8 text-left">
-                    <!-- Availability Pill Badge -->
-                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/[0.06] border border-white/10 text-xs text-gray-200 backdrop-blur-md shadow-lg shadow-black/20">
-                        <span class="pulse-indicator"></span>
-                        <span class="font-medium tracking-wide">{{ $profile->availability_text ?? 'Tersedia untuk Proyek Strategis & Posisi Senior' }}</span>
-                    </div>
-
                     <!-- Main Headline (Fluid Gradient, Non-Rigid) -->
                     <div class="space-y-4">
                         <h1 class="ps-display-xl font-light tracking-tight text-white">
@@ -570,6 +564,12 @@
                                 </div>
                             </div>
 
+                            @if(!empty($exp->summary))
+                                <p class="text-sm text-gray-300 font-light leading-relaxed">
+                                    {{ $exp->summary }}
+                                </p>
+                            @endif
+
                             <!-- Bullet Points -->
                             <ul class="space-y-2.5 text-sm text-gray-300 font-light leading-relaxed">
                                 @if(!empty($exp->description_points))
@@ -637,9 +637,15 @@
                             <div class="space-y-1.5">
                                 <div class="flex items-center justify-between gap-2">
                                     <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider">{{ $cert->issuer_organization }}</span>
-                                    <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-gray-300">
-                                        {{ \Carbon\Carbon::parse($cert->issue_date)->format('Y') }}
-                                    </span>
+                                    @if($cert->issue_date)
+                                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-gray-300">
+                                            {{ \Carbon\Carbon::parse($cert->issue_date)->format('Y') }}
+                                        </span>
+                                    @elseif($cert->category)
+                                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-cyan-300">
+                                            {{ explode(',', $cert->category)[0] }}
+                                        </span>
+                                    @endif
                                 </div>
                                 <h3 class="text-base font-bold text-white leading-snug">{{ $cert->certificate_name }}</h3>
                                 @if($cert->course_name)
@@ -652,7 +658,6 @@
 
                             <div class="space-y-1 text-xs text-gray-400 font-mono pt-2 border-t border-white/10">
                                 <div>ID: <span class="text-gray-200 font-semibold">{{ $cert->credential_id ?? 'Terverifikasi' }}</span></div>
-                                <div>Terbit: {{ \Carbon\Carbon::parse($cert->issue_date)->format('d M Y') }}</div>
                                 @if($cert->expiration_date)
                                     <div>Berlaku: {{ \Carbon\Carbon::parse($cert->expiration_date)->format('d M Y') }}</div>
                                 @endif

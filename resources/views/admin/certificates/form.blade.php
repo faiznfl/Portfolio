@@ -72,15 +72,15 @@
                     <!-- Quick Preset Selector from public/assets/certificates -->
                     <div class="pt-2 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center gap-2">
                         <span class="text-[11px] text-slate-400 dark:text-gray-500">Atau pilih dari aset lokal yang tersedia:</span>
-                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-aws-saa.svg', 'AWS Certified SAA')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-200/70 dark:bg-white/10 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-400 dark:hover:text-black transition-colors font-mono">AWS</button>
-                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-terraform.svg', 'HashiCorp Terraform')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-200/70 dark:bg-white/10 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-400 dark:hover:text-black transition-colors font-mono">Terraform</button>
-                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-gcp.svg', 'Google Cloud PCD')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-200/70 dark:bg-white/10 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-400 dark:hover:text-black transition-colors font-mono">GCP</button>
-                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-bnsp.svg', 'BNSP Architect')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-200/70 dark:bg-white/10 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-400 dark:hover:text-black transition-colors font-mono">BNSP</button>
+                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-aws-saa.svg', 'AWS Certified SAA')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">AWS</button>
+                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-terraform.svg', 'HashiCorp Terraform')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">Terraform</button>
+                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-gcp.svg', 'Google Cloud PCD')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">GCP</button>
+                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-bnsp.svg', 'BNSP Architect')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">BNSP</button>
                     </div>
                 </div>
 
-                <!-- 2. Judul Sertifikat & 3. Tahun Sertifikat -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <!-- 2. Judul Sertifikat, 3. Tahun Sertifikat & 4. Urutan Tampilan -->
+                <div class="grid grid-cols-1 sm:grid-cols-4 gap-6">
                     <!-- Judul Sertifikat (Col 1 & 2) -->
                     <div class="sm:col-span-2 space-y-2">
                         <label for="certificate_name" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
@@ -103,15 +103,28 @@
                                value="{{ old('issue_year', $certificate->issue_date ? $certificate->issue_date->format('Y') : date('Y')) }}" required
                                placeholder="2026"
                                class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary font-mono text-center">
-                        @error('issue_date') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                         @error('issue_year') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
+                        @error('issue_date') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
+                    </div>
+
+                    <!-- Urutan Tampilan (Col 4) -->
+                    <div class="sm:col-span-1 space-y-2">
+                        <label for="order_index" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
+                            4. Urutan Tampilan <span class="text-red-500">*</span>
+                        </label>
+                        <input type="number" id="order_index" name="order_index" 
+                               min="0" step="1"
+                               value="{{ old('order_index', $certificate->order_index ?? 0) }}" required
+                               placeholder="1"
+                               class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary font-mono text-center">
+                        @error('order_index') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
                 </div>
 
-                <!-- 4. Lembaga / Organisasi Penerbit -->
+                <!-- 5. Lembaga / Organisasi Penerbit -->
                 <div class="space-y-2">
                     <label for="issuer_organization" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
-                        4. Lembaga / Platform Penerbit <span class="text-red-500">*</span>
+                        5. Lembaga / Platform Penerbit <span class="text-red-500">*</span>
                     </label>
                     <input type="text" id="issuer_organization" name="issuer_organization" 
                            value="{{ old('issuer_organization', $certificate->issuer_organization ?? 'Amazon Web Services (AWS)') }}" required
@@ -120,11 +133,11 @@
                     @error('issuer_organization') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                 </div>
 
-                <!-- 5. Kategori Sertifikat -->
+                <!-- 6. Kategori Sertifikat -->
                 <div class="space-y-3">
                     <div class="flex items-center justify-between">
                         <label for="category" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
-                            5. Kategori Sertifikat
+                            6. Kategori Sertifikat
                         </label>
                         <span class="text-[11px] text-slate-400 dark:text-gray-500">Ketik kustom atau klik pilihan preset di bawah</span>
                     </div>
@@ -137,37 +150,37 @@
                     <div class="flex flex-wrap items-center gap-2 pt-1">
                         <button type="button" 
                                 onclick="toggleCategoryPreset('Prompt Engineering')" 
-                                class="category-preset-btn px-4 py-1.5 rounded-full text-xs font-medium bg-slate-200/90 hover:bg-slate-300 dark:bg-[#151926] dark:hover:bg-[#1e2336] text-slate-800 dark:text-gray-200 border border-slate-300/90 dark:border-white/15 hover:border-ps-primary dark:hover:border-cyan-400 transition-all cursor-pointer shadow-xs select-none">
+                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:text-ps-primary dark:hover:text-cyan-300 transition-all cursor-pointer select-none">
                             Prompt Engineering
                         </button>
                         <button type="button" 
                                 onclick="toggleCategoryPreset('Artificial Intelligence Basic')" 
-                                class="category-preset-btn px-4 py-1.5 rounded-full text-xs font-medium bg-slate-200/90 hover:bg-slate-300 dark:bg-[#151926] dark:hover:bg-[#1e2336] text-slate-800 dark:text-gray-200 border border-slate-300/90 dark:border-white/15 hover:border-ps-primary dark:hover:border-cyan-400 transition-all cursor-pointer shadow-xs select-none">
+                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:text-ps-primary dark:hover:text-cyan-300 transition-all cursor-pointer select-none">
                             Artificial Intelligence Basic
                         </button>
                         <button type="button" 
                                 onclick="toggleCategoryPreset('Cloud & Architecture')" 
-                                class="category-preset-btn px-4 py-1.5 rounded-full text-xs font-medium bg-slate-200/90 hover:bg-slate-300 dark:bg-[#151926] dark:hover:bg-[#1e2336] text-slate-800 dark:text-gray-200 border border-slate-300/90 dark:border-white/15 hover:border-ps-primary dark:hover:border-cyan-400 transition-all cursor-pointer shadow-xs select-none">
+                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:text-ps-primary dark:hover:text-cyan-300 transition-all cursor-pointer select-none">
                             Cloud &amp; Architecture
                         </button>
                         <button type="button" 
                                 onclick="toggleCategoryPreset('DevOps & Infrastructure')" 
-                                class="category-preset-btn px-4 py-1.5 rounded-full text-xs font-medium bg-slate-200/90 hover:bg-slate-300 dark:bg-[#151926] dark:hover:bg-[#1e2336] text-slate-800 dark:text-gray-200 border border-slate-300/90 dark:border-white/15 hover:border-ps-primary dark:hover:border-cyan-400 transition-all cursor-pointer shadow-xs select-none">
+                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:text-ps-primary dark:hover:text-cyan-300 transition-all cursor-pointer select-none">
                             DevOps &amp; Infrastructure
                         </button>
                         <button type="button" 
                                 onclick="toggleCategoryPreset('Software Engineering')" 
-                                class="category-preset-btn px-4 py-1.5 rounded-full text-xs font-medium bg-slate-200/90 hover:bg-slate-300 dark:bg-[#151926] dark:hover:bg-[#1e2336] text-slate-800 dark:text-gray-200 border border-slate-300/90 dark:border-white/15 hover:border-ps-primary dark:hover:border-cyan-400 transition-all cursor-pointer shadow-xs select-none">
+                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:text-ps-primary dark:hover:text-cyan-300 transition-all cursor-pointer select-none">
                             Software Engineering
                         </button>
                     </div>
                     @error('category') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                 </div>
 
-                <!-- 6. Keterangan atau Deskripsinya -->
+                <!-- 7. Keterangan atau Deskripsinya -->
                 <div class="space-y-2">
                     <label for="description" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
-                        6. Keterangan atau Deskripsi Sertifikat
+                        7. Keterangan atau Deskripsi Sertifikat
                     </label>
                     <textarea id="description" name="description" rows="4"
                               placeholder="Keterangan materi keahlian, topik yang dikuasai, atau catatan penting sertifikat..."
@@ -229,9 +242,9 @@
         document.querySelectorAll('.category-preset-btn').forEach(btn => {
             const text = btn.textContent.trim();
             if (activeTags.includes(text)) {
-                btn.classList.add('!bg-ps-primary', '!text-white', '!border-ps-primary', 'dark:!bg-cyan-400', 'dark:!text-black', 'dark:!border-cyan-400', 'font-semibold');
+                btn.classList.add('!bg-ps-primary', '!text-white', '!border-ps-primary', 'dark:!bg-ps-primary', 'dark:!text-white', 'dark:!border-cyan-400', 'font-semibold');
             } else {
-                btn.classList.remove('!bg-ps-primary', '!text-white', '!border-ps-primary', 'dark:!bg-cyan-400', 'dark:!text-black', 'dark:!border-cyan-400', 'font-semibold');
+                btn.classList.remove('!bg-ps-primary', '!text-white', '!border-ps-primary', 'dark:!bg-ps-primary', 'dark:!text-white', 'dark:!border-cyan-400', 'font-semibold');
             }
         });
     }

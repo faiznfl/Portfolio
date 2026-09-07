@@ -39,7 +39,7 @@
                             <th class="px-4 py-3">Posisi / Role</th>
                             <th class="px-4 py-3">Perusahaan</th>
                             <th class="px-4 py-3">Lokasi</th>
-                            <th class="px-4 py-3">Pencapaian Utama</th>
+                            <th class="px-4 py-3">Deskripsi / Ringkasan</th>
                             <th class="px-4 py-3 text-right">Aksi</th>
                         </tr>
                     </thead>
@@ -61,7 +61,7 @@
                                     @php
                                         $pts = is_array($exp->description_points) ? $exp->description_points : (is_string($exp->description_points) ? json_decode($exp->description_points, true) : []);
                                     @endphp
-                                    <span class="line-clamp-1">{{ $pts[0] ?? '-' }}</span>
+                                    <span class="line-clamp-2">{{ $exp->summary ?: ($pts[0] ?? '-') }}</span>
                                 </td>
                                 <td class="px-4 py-3 text-right">
                                     <div class="flex items-center justify-end gap-3 text-xs">

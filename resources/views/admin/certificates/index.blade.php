@@ -35,9 +35,9 @@
                 <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
                     <thead class="text-xs font-mono uppercase bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
                         <tr>
+                            <th class="px-4 py-3">Urutan</th>
                             <th class="px-4 py-3">Nama Sertifikat</th>
                             <th class="px-4 py-3">Organisasi Penerbit</th>
-                            <th class="px-4 py-3">Tanggal Terbit</th>
                             <th class="px-4 py-3 font-mono">Tahun</th>
                             <th class="px-4 py-3 text-right">Aksi</th>
                         </tr>
@@ -45,6 +45,7 @@
                     <tbody class="divide-y divide-slate-200 dark:divide-white/5">
                         @forelse($certificates as $cert)
                             <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                <td class="px-4 py-3 font-mono text-xs text-slate-400">#{{ $cert->order_index }}</td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center gap-3">
                                         <div class="w-10 h-10 rounded-lg bg-white dark:bg-black/40 border border-slate-200 dark:border-white/10 p-1 flex items-center justify-center shrink-0 shadow-xs">
@@ -67,11 +68,8 @@
                                     </div>
                                 </td>
                                 <td class="px-4 py-3 text-ps-primary dark:text-cyan-400 font-medium">{{ $cert->issuer_organization }}</td>
-                                <td class="px-4 py-3 font-mono text-xs text-slate-500 dark:text-gray-400">
-                                    {{ $cert->issue_date->format('d M Y') }}
-                                </td>
                                 <td class="px-4 py-3 font-mono text-xs font-semibold text-slate-700 dark:text-gray-300">
-                                    {{ $cert->issue_date->format('Y') }}
+                                    {{ $cert->issue_date ? $cert->issue_date->format('Y') : '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-right">
                                     <div class="flex items-center justify-end gap-3 text-xs">
@@ -91,7 +89,7 @@
                         @empty
                             <tr>
                                 <td colspan="5" class="px-4 py-12 text-center text-slate-400">
-                                    Belum ada data sertifikasi resmi. Silakan tambahkan sertifikat baru.
+                                    Belum ada sertifikasi yang ditambahkan.
                                 </td>
                             </tr>
                         @endforelse

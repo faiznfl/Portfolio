@@ -386,6 +386,65 @@ class AdminTest extends TestCase
         $this->assertDatabaseMissing('certificates', ['id' => $certificate->id]);
     }
 
+    public function test_admin_can_create_certificate_without_issue_date_and_with_order_index(): void
+    {
+        $payload = [
+            'certificate_name' => 'HashiCorp Certified Terraform Associate',
+            'issuer_organization' => 'HashiCorp',
+            'category' => 'Infrastructure as Code',
+            'order_index' => 5,
+        ];
+
+        $response = $this->actingAs($this->admin)->post('/admin/certificates', $payload);
+        $response->assertRedirect('/admin/certificates');
+        $response->assertSessionHas('success');
+
+        $cert = Certificate::where('certificate_name', 'HashiCorp Certified Terraform Associate')->first();
+        $this->assertNotNull($cert);
+        $this->assertEquals(5, $cert->order_index);
+        $this->assertNull($cert->issue_date);
+    }
+
+    public function test_admin_can_create_and_update_certificate_with_issue_year_and_order_index(): void
+    {
+        $payload = [
+            'certificate_name' => 'AWS Certified AI Practitioner',
+            'issuer_organization' => 'Amazon Web Services',
+            'issue_year' => '2026',
+            'category' => 'Artificial Intelligence',
+            'order_index' => 2,
+        ];
+
+        $response = $this->actingAs($this->admin)->post('/admin/certificates', $payload);
+        $response->assertRedirect('/admin/certificates');
+        $response->assertSessionHas('success');
+
+        $cert = Certificate::where('certificate_name', 'AWS Certified AI Practitioner')->first();
+        $this->assertNotNull($cert);
+        $this->assertEquals(2, $cert->order_index);
+        $this->assertEquals('2026', $cert->issue_date->format('Y'));
+
+        // Form shows the year
+        $editRes = $this->actingAs($this->admin)->get('/admin/certificates/'.$cert->id.'/edit');
+        $editRes->assertStatus(200);
+        $editRes->assertSee('value="2026"', false);
+        $editRes->assertSee('value="2"', false);
+
+        // Update year and order
+        $updatePayload = [
+            'certificate_name' => 'AWS Certified AI Practitioner Early Adopter',
+            'issuer_organization' => 'Amazon Web Services',
+            'issue_year' => '2025',
+            'category' => 'Artificial Intelligence',
+            'order_index' => 1,
+        ];
+
+        $updateResponse = $this->actingAs($this->admin)->put('/admin/certificates/'.$cert->id, $updatePayload);
+        $updateResponse->assertRedirect('/admin/certificates');
+        $this->assertEquals('2025', $cert->fresh()->issue_date->format('Y'));
+        $this->assertEquals(1, $cert->fresh()->order_index);
+    }
+
     public function test_admin_certificates_and_projects_do_not_render_preview_actions(): void
     {
         // 1. Certificates index
@@ -464,5 +523,41 @@ class AdminTest extends TestCase
         $response->assertStatus(200);
         $response->assertDontSee('⚡');
         $response->assertSee('<svg', false);
+    }
+
+    public function test_admin_experience_form_has_no_company_url_and_allows_custom_typed_employment_type(): void
+    {
+        // 1. Verify create form does not show company_url and has typed employment_type input and summary textarea
+        $formRes = $this->actingAs($this->admin)->get('/admin/experiences/create');
+        $formRes->assertStatus(200);
+        $formRes->assertDontSee('name="company_url"', false);
+        $formRes->assertSee('name="employment_type"', false);
+        $formRes->assertSee('<input type="text" id="employment_type"', false);
+        $formRes->assertDontSee('<select id="employment_type"', false);
+        $formRes->assertSee('name="summary"', false);
+
+        // 2. Can create experience with custom typed employment_type, summary, and without company_url
+        $payload = [
+            'role_title' => 'Backend Engineering Intern',
+            'company_name' => 'Tech Startup ID',
+            'location' => 'Bandung, Indonesia',
+            'employment_type' => 'Magang Mandiri (Hybrid)',
+            'start_date' => '2025-02-01',
+            'is_current' => 1,
+            'summary' => 'Membantu pengembangan arsitektur mikroservis dan integrasi payment gateway.',
+            'description_points_raw' => 'Mengembangkan REST API mikroservis menggunakan Laravel 12.',
+            'tech_used_raw' => 'Laravel, MySQL, Redis',
+            'order_index' => 10,
+        ];
+
+        $storeRes = $this->actingAs($this->admin)->post('/admin/experiences', $payload);
+        $storeRes->assertRedirect('/admin/experiences');
+        $storeRes->assertSessionHas('success');
+
+        $exp = Experience::where('role_title', 'Backend Engineering Intern')->first();
+        $this->assertNotNull($exp);
+        $this->assertEquals('Magang Mandiri (Hybrid)', $exp->employment_type);
+        $this->assertNull($exp->company_url);
+        $this->assertEquals('Membantu pengembangan arsitektur mikroservis dan integrasi payment gateway.', $exp->summary);
     }
 }

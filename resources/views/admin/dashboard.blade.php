@@ -33,79 +33,44 @@
             <div class="ps-card-dark p-5 space-y-1">
                 <div class="text-xs text-slate-500 dark:text-gray-400 font-mono uppercase">Pengalaman</div>
                 <div class="text-3xl font-light text-slate-900 dark:text-white">{{ $totalExperiences }}</div>
-                <a href="{{ route('admin.experiences.index') }}" class="text-[11px] text-indigo-600 dark:text-indigo-400 hover:underline block pt-1">Kelola Journey →</a>
+                <a href="{{ route('admin.experiences.index') }}" class="text-[11px] text-ps-primary dark:text-cyan-400 hover:underline block pt-1">Kelola Journey →</a>
             </div>
             <div class="ps-card-dark p-5 space-y-1">
                 <div class="text-xs text-slate-500 dark:text-gray-400 font-mono uppercase">Sertifikat</div>
                 <div class="text-3xl font-light text-slate-900 dark:text-white">{{ $totalCertificates }}</div>
-                <a href="{{ route('admin.certificates.index') }}" class="text-[11px] text-emerald-600 dark:text-emerald-400 hover:underline block pt-1">Kelola Sertifikat →</a>
+                <a href="{{ route('admin.certificates.index') }}" class="text-[11px] text-ps-primary dark:text-cyan-400 hover:underline block pt-1">Kelola Sertifikat →</a>
             </div>
             <div class="ps-card-dark p-5 space-y-1">
                 <div class="text-xs text-slate-500 dark:text-gray-400 font-mono uppercase">Total Pesan</div>
                 <div class="text-3xl font-light text-slate-900 dark:text-white">{{ $totalMessages }}</div>
                 <span class="text-[11px] text-slate-400 dark:text-gray-500 block pt-1">Masuk via formulir</span>
             </div>
-            <div class="ps-card-dark p-5 space-y-1 bg-ps-primary/10 border-ps-primary/30">
-                <div class="text-xs text-ps-primary font-mono uppercase font-bold">Belum Dibaca</div>
-                <div class="text-3xl font-bold text-slate-900 dark:text-white">{{ $unreadMessagesCount }}</div>
-                <span class="text-[11px] text-amber-600 dark:text-yellow-400 block pt-1">Memerlukan respon</span>
+            <div class="ps-card-dark p-5 space-y-1">
+                <div class="text-xs text-slate-500 dark:text-gray-400 font-mono uppercase">Belum Dibaca</div>
+                <div class="text-3xl font-light text-slate-900 dark:text-white">{{ $unreadMessagesCount }}</div>
+                @if($unreadMessagesCount > 0)
+                    <span class="text-[11px] text-amber-600 dark:text-amber-400 font-semibold block pt-1">● Perlu ditinjau</span>
+                @else
+                    <span class="text-[11px] text-slate-400 dark:text-gray-500 block pt-1">Semua terbaca</span>
+                @endif
             </div>
         </div>
 
-        <!-- Availability Setting & Inquiries -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Col 1: Update Availability Status (PRD ADM-2) -->
-            <div class="lg:col-span-1 ps-card-dark p-6 sm:p-8 space-y-6">
+        <!-- Inquiries & Messages List (PRD ADM-3) -->
+        <div class="ps-card-dark p-6 sm:p-8 space-y-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Status Ketersediaan Kerja</h2>
-                    <p class="text-xs text-slate-500 dark:text-gray-400 mt-1">Perbarui indikator status kerja yang tampil di hero section publik.</p>
+                    <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Pesan &amp; Tawaran Kerja Sama Masuk</h2>
+                    <p class="text-xs text-slate-500 dark:text-gray-400 mt-1">Daftar pertanyaan dan penawaran dari formulir Contacts publik.</p>
                 </div>
-
-                <form action="{{ route('admin.availability.update') }}" method="POST" class="space-y-4">
-                    @csrf
-                    @method('PUT')
-
-                    <div class="space-y-2">
-                        <label for="availability_status" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">Status Ketersediaan</label>
-                        <select id="availability_status" name="availability_status" class="w-full px-3 py-2 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
-                            <option value="available" {{ ($profile->availability_status ?? '') == 'available' ? 'selected' : '' }}>Tersedia (Available)</option>
-                            <option value="contract_only" {{ ($profile->availability_status ?? '') == 'contract_only' ? 'selected' : '' }}>Hanya Kontrak Strategis</option>
-                            <option value="busy" {{ ($profile->availability_status ?? '') == 'busy' ? 'selected' : '' }}>Sedang Penuh (Busy)</option>
-                        </select>
-                    </div>
-
-                    <div class="space-y-2">
-                        <label for="availability_text" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">Teks Indikator Hero</label>
-                        <input type="text" id="availability_text" name="availability_text" 
-                               value="{{ old('availability_text', $profile->availability_text ?? 'Tersedia untuk Proyek Strategis & Posisi Senior') }}" 
-                               required
-                               class="w-full px-3 py-2 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
-                    </div>
-
-                    <button type="submit" class="btn-ps-primary !w-full !py-2.5 !text-xs">
-                        <span>Perbarui Status Kerja</span>
-                    </button>
-                </form>
-
-                <!-- CV Quick Check -->
-                <div class="pt-4 border-t border-slate-200 dark:border-white/10 space-y-2">
-                    <span class="text-xs text-slate-500 dark:text-gray-400 block">Berkas CV Aktif:</span>
-                    <div class="flex items-center justify-between text-xs bg-slate-100/90 dark:bg-black/50 p-2.5 rounded-xl border border-slate-200 dark:border-white/10">
-                        <span class="font-mono text-slate-600 dark:text-gray-300 truncate">assets/resume-faiz-naufal.pdf</span>
-                        <a href="{{ route('resume.download') }}" class="text-ps-primary font-semibold hover:underline">Unduh</a>
-                    </div>
+                <div class="flex items-center gap-3">
+                    <a href="{{ route('resume.download') }}" class="btn-ps-outline-dark !py-2 !px-4 !text-xs !bg-white/70 dark:!bg-transparent !border-slate-300 dark:!border-white/15 !text-slate-800 dark:!text-white flex items-center gap-1.5" title="Unduh Berkas CV Aktif">
+                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        <span>Unduh CV Aktif</span>
+                    </a>
+                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400 bg-slate-100 dark:bg-white/5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/10">Total: {{ $totalMessages }}</span>
                 </div>
             </div>
-
-            <!-- Col 2: Inquiries & Messages List (PRD ADM-3) -->
-            <div class="lg:col-span-2 ps-card-dark p-6 sm:p-8 space-y-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Pesan &amp; Tawaran Kerja Sama Masuk</h2>
-                        <p class="text-xs text-slate-500 dark:text-gray-400 mt-1">Daftar pertanyaan dan penawaran dari formulir Contacts publik.</p>
-                    </div>
-                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400">Total: {{ $totalMessages }}</span>
-                </div>
 
                 @if($messages->isEmpty())
                     <div class="text-center py-12 border border-dashed border-slate-200 dark:border-white/15 rounded-xl text-slate-400 text-sm">
@@ -186,7 +151,7 @@
                         <a href="{{ route('admin.skills.index') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white underline">
                             Lihat Semua Skills →
                         </a>
-                        <a href="{{ route('admin.skills.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !bg-gradient-to-r !from-cyan-600 !to-ps-primary">
+                        <a href="{{ route('admin.skills.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Skill Baru</span>
                         </a>
                     </div>
@@ -208,23 +173,26 @@
                                 <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
                                     <td class="px-4 py-3 font-mono text-xs text-slate-400">#{{ $s->order_index }}</td>
                                     <td class="px-4 py-3">
-                                        <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-ps-primary dark:text-cyan-300 [&>svg]:w-4 [&>svg]:h-4 [&>svg]:fill-current overflow-hidden">
+                                        <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-ps-primary dark:text-cyan-300 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:max-w-full [&>svg]:max-h-full overflow-hidden">
                                             @if(!empty($s->icon_svg))
                                                 @if(str_starts_with(trim($s->icon_svg), '<svg') || str_starts_with(trim($s->icon_svg), '<i '))
                                                     {!! $s->icon_svg !!}
                                                 @elseif(str_starts_with(trim($s->icon_svg), 'http') || str_starts_with(trim($s->icon_svg), '/'))
-                                                    <img src="{{ $s->icon_svg }}" alt="{{ $s->name }}" class="w-4 h-4 object-contain">
+                                                    <img src="{{ $s->icon_svg }}" alt="{{ $s->name }}" class="w-5 h-5 object-contain">
                                                 @else
-                                                    <span class="text-sm">{{ $s->icon_svg }}</span>
+                                                    <span class="text-base">{{ $s->icon_svg }}</span>
                                                 @endif
                                             @else
-                                                <span class="text-xs font-mono text-slate-400">⚡</span>
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-4 h-4 text-slate-400">
+                                                    <polyline points="16 18 22 12 16 6"/>
+                                                    <polyline points="8 6 2 12 8 18"/>
+                                                </svg>
                                             @endif
                                         </div>
                                     </td>
                                     <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">{{ $s->name }}</td>
                                     <td class="px-4 py-3">
-                                        <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300">
+                                        <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10">
                                             {{ $s->category }}
                                         </span>
                                     </td>
@@ -260,7 +228,7 @@
                         <a href="{{ route('admin.projects.index') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white underline">
                             Lihat Semua Proyek →
                         </a>
-                        <a href="{{ route('admin.projects.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs">
+                        <a href="{{ route('admin.projects.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Proyek Baru</span>
                         </a>
                     </div>
@@ -278,7 +246,7 @@
                                 <th class="px-4 py-3 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-200 dark:divide-white/10">
+                        <tbody class="divide-y divide-slate-200 dark:divide-white/5">
                             @forelse($projects->take(6) as $p)
                                 <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
                                     <td class="px-4 py-3 font-mono text-xs">{{ $p->order_index }}</td>
@@ -287,20 +255,24 @@
                                         <span class="block text-xs font-mono text-slate-400 dark:text-gray-500">{{ $p->slug }}</span>
                                     </td>
                                     <td class="px-4 py-3">
-                                        <span class="px-2 py-0.5 rounded text-xs bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-gray-300 font-mono">{{ $p->category }}</span>
+                                        <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10">{{ $p->category }}</span>
                                     </td>
                                     <td class="px-4 py-3">
                                         @if($p->is_published)
-                                             <span class="text-xs text-emerald-600 dark:text-green-400 font-semibold">● Publik</span>
+                                             <span class="inline-flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+                                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Publik
+                                             </span>
                                         @else
-                                            <span class="text-xs text-slate-400 dark:text-gray-500">○ Draft</span>
+                                            <span class="inline-flex items-center gap-1.5 text-xs text-slate-400 dark:text-gray-500">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Draft
+                                            </span>
                                         @endif
                                     </td>
                                     <td class="px-4 py-3">
                                         @if($p->is_featured)
-                                            <span class="text-xs text-amber-500 dark:text-yellow-400">★ Yes</span>
+                                            <span class="text-xs text-amber-500 dark:text-yellow-400 font-semibold">★ Ya</span>
                                         @else
-                                            <span class="text-xs text-slate-400 dark:text-gray-500">-</span>
+                                            <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">-</span>
                                         @endif
                                     </td>
                                     <td class="px-4 py-3 text-right space-x-2">
@@ -335,7 +307,7 @@
                         <a href="{{ route('admin.experiences.index') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white underline">
                             Lihat Semua Journey →
                         </a>
-                        <a href="{{ route('admin.experiences.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !bg-gradient-to-r !from-indigo-600 !to-ps-primary">
+                        <a href="{{ route('admin.experiences.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Pengalaman Baru</span>
                         </a>
                     </div>
@@ -352,19 +324,23 @@
                                 <th class="px-4 py-3 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-200 dark:divide-white/10">
+                        <tbody class="divide-y divide-slate-200 dark:divide-white/5">
                             @forelse($experiences->take(5) as $exp)
                                 <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
                                     <td class="px-4 py-3 font-mono text-xs text-slate-500 dark:text-gray-400">
                                         {{ $exp->start_date->format('M Y') }} — {{ $exp->is_current ? 'Present' : ($exp->end_date ? $exp->end_date->format('M Y') : '-') }}
                                     </td>
                                     <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">{{ $exp->role_title }}</td>
-                                    <td class="px-4 py-3 text-indigo-600 dark:text-indigo-300">{{ $exp->company_name }}</td>
+                                    <td class="px-4 py-3 text-ps-primary dark:text-cyan-400 font-medium">{{ $exp->company_name }}</td>
                                     <td class="px-4 py-3">
                                         @if($exp->is_current)
-                                            <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">Active</span>
+                                            <span class="inline-flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Aktif
+                                            </span>
                                         @else
-                                            <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">Past</span>
+                                            <span class="inline-flex items-center gap-1.5 text-xs text-slate-400 dark:text-gray-500 font-mono">
+                                                Selesai
+                                            </span>
                                         @endif
                                     </td>
                                     <td class="px-4 py-3 text-right space-x-2">
@@ -399,7 +375,7 @@
                         <a href="{{ route('admin.certificates.index') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white underline">
                             Lihat Semua Sertifikat →
                         </a>
-                        <a href="{{ route('admin.certificates.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !bg-gradient-to-r !from-emerald-600 !to-teal-600">
+                        <a href="{{ route('admin.certificates.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Sertifikat Baru</span>
                         </a>
                     </div>
@@ -409,29 +385,31 @@
                     <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
                         <thead class="text-xs font-mono uppercase bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
                             <tr>
+                                <th class="px-4 py-3">Urutan</th>
                                 <th class="px-4 py-3">Nama Sertifikat</th>
                                 <th class="px-4 py-3">Penerbit</th>
-                                <th class="px-4 py-3">Tanggal Terbit</th>
                                 <th class="px-4 py-3 font-mono">Tahun</th>
                                 <th class="px-4 py-3 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-200 dark:divide-white/10">
+                        <tbody class="divide-y divide-slate-200 dark:divide-white/5">
                             @forelse($certificates->take(5) as $cert)
                                 <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                                    <td class="px-4 py-3 font-mono text-xs text-slate-400">#{{ $cert->order_index }}</td>
                                     <td class="px-4 py-3">
                                         <div class="font-semibold text-slate-900 dark:text-white">{{ $cert->certificate_name }}</div>
                                         @if($cert->category)
                                             <div class="flex flex-wrap gap-1 mt-1">
                                                 @foreach(array_filter(array_map('trim', explode(',', $cert->category))) as $cat)
-                                                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 dark:bg-white/10 text-emerald-600 dark:text-emerald-400 border border-slate-200 dark:border-white/10">{{ $cat }}</span>
+                                                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10">{{ $cat }}</span>
                                                 @endforeach
                                             </div>
                                         @endif
                                     </td>
-                                    <td class="px-4 py-3 text-emerald-600 dark:text-emerald-400">{{ $cert->issuer_organization }}</td>
-                                    <td class="px-4 py-3 font-mono text-xs text-slate-500 dark:text-gray-400">{{ $cert->issue_date->format('d M Y') }}</td>
-                                    <td class="px-4 py-3 font-mono text-xs font-semibold text-slate-700 dark:text-gray-300">{{ $cert->issue_date->format('Y') }}</td>
+                                    <td class="px-4 py-3 text-ps-primary dark:text-cyan-400 font-medium">{{ $cert->issuer_organization }}</td>
+                                    <td class="px-4 py-3 font-mono text-xs font-semibold text-slate-700 dark:text-gray-300">
+                                        {{ $cert->issue_date ? $cert->issue_date->format('Y') : '-' }}
+                                    </td>
                                     <td class="px-4 py-3 text-right space-x-2">
                                         <a href="{{ route('admin.certificates.edit', $cert->id) }}" class="text-xs text-ps-primary hover:underline font-semibold">Edit</a>
                                         <form action="{{ route('admin.certificates.destroy', $cert->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus sertifikat ini?')">

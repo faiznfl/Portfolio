@@ -79,7 +79,7 @@ class AdminController extends Controller
         $projects = Project::orderBy('order_index')->get();
         $skills = Skill::orderBy('order_index')->get();
         $experiences = Experience::orderByDesc('start_date')->get();
-        $certificates = Certificate::orderByDesc('issue_date')->get();
+        $certificates = Certificate::orderBy('order_index')->get();
 
         return view('admin.dashboard', compact(
             'profile',
@@ -418,7 +418,8 @@ class AdminController extends Controller
             'start_date' => ['required', 'date'],
             'end_date' => ['nullable', 'date'],
             'is_current' => ['boolean'],
-            'description_points_raw' => ['required', 'string'],
+            'summary' => ['nullable', 'string'],
+            'description_points_raw' => ['nullable', 'string'],
             'tech_used_raw' => ['nullable', 'string'],
             'order_index' => ['nullable', 'integer'],
         ]);
@@ -428,7 +429,11 @@ class AdminController extends Controller
             $validated['end_date'] = null;
         }
 
-        $validated['description_points'] = array_values(array_filter(array_map('trim', explode("\n", $validated['description_points_raw']))));
+        if (! empty($validated['description_points_raw'])) {
+            $validated['description_points'] = array_values(array_filter(array_map('trim', explode("\n", $validated['description_points_raw']))));
+        } else {
+            $validated['description_points'] = [];
+        }
         unset($validated['description_points_raw']);
 
         if (! empty($validated['tech_used_raw'])) {
@@ -464,7 +469,8 @@ class AdminController extends Controller
             'start_date' => ['required', 'date'],
             'end_date' => ['nullable', 'date'],
             'is_current' => ['boolean'],
-            'description_points_raw' => ['required', 'string'],
+            'summary' => ['nullable', 'string'],
+            'description_points_raw' => ['nullable', 'string'],
             'tech_used_raw' => ['nullable', 'string'],
             'order_index' => ['nullable', 'integer'],
         ]);
@@ -474,7 +480,11 @@ class AdminController extends Controller
             $validated['end_date'] = null;
         }
 
-        $validated['description_points'] = array_values(array_filter(array_map('trim', explode("\n", $validated['description_points_raw']))));
+        if (! empty($validated['description_points_raw'])) {
+            $validated['description_points'] = array_values(array_filter(array_map('trim', explode("\n", $validated['description_points_raw']))));
+        } else {
+            $validated['description_points'] = [];
+        }
         unset($validated['description_points_raw']);
 
         if (! empty($validated['tech_used_raw'])) {
@@ -504,7 +514,7 @@ class AdminController extends Controller
 
     public function certificatesIndex(): View
     {
-        $certificates = Certificate::orderByDesc('issue_date')->paginate(15);
+        $certificates = Certificate::orderBy('order_index')->paginate(15);
 
         return view('admin.certificates.index', compact('certificates'));
     }
@@ -534,7 +544,7 @@ class AdminController extends Controller
             'certificate_name' => ['required', 'string', 'max:150'],
             'course_name' => ['nullable', 'string', 'max:200'],
             'issuer_organization' => ['required', 'string', 'max:150'],
-            'issue_date' => ['required', 'date'],
+            'issue_date' => ['nullable', 'date'],
             'expiration_date' => ['nullable', 'date'],
             'credential_id' => ['nullable', 'string', 'max:100'],
             'credential_url' => ['nullable', 'url'],
@@ -556,7 +566,7 @@ class AdminController extends Controller
         }
         unset($validated['certificate_image']);
 
-        $validated['order_index'] = $request->input('order_index', 0);
+        $validated['order_index'] = (int) $request->input('order_index', 0);
 
         Certificate::create($validated);
 
@@ -588,7 +598,7 @@ class AdminController extends Controller
             'certificate_name' => ['required', 'string', 'max:150'],
             'course_name' => ['nullable', 'string', 'max:200'],
             'issuer_organization' => ['required', 'string', 'max:150'],
-            'issue_date' => ['required', 'date'],
+            'issue_date' => ['nullable', 'date'],
             'expiration_date' => ['nullable', 'date'],
             'credential_id' => ['nullable', 'string', 'max:100'],
             'credential_url' => ['nullable', 'url'],
@@ -610,7 +620,7 @@ class AdminController extends Controller
         }
         unset($validated['certificate_image']);
 
-        $validated['order_index'] = $request->input('order_index', $certificate->order_index);
+        $validated['order_index'] = (int) $request->input('order_index', $certificate->order_index ?? 0);
 
         $certificate->update($validated);
 

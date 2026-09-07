@@ -15,13 +15,14 @@ export default function ProjectDetailModal({ project, onClose }) {
         ? project.tech_stacks
         : (typeof project.tech_stacks === 'string' ? JSON.parse(project.tech_stacks) : []);
 
-    const features = (Array.isArray(project.key_features) && project.key_features.length > 0)
+    const rawFeatures = (Array.isArray(project.key_features) && project.key_features.length > 0)
         ? project.key_features
         : (typeof project.key_features === 'string'
-            ? JSON.parse(project.key_features)
+            ? (function () { try { return JSON.parse(project.key_features); } catch (e) { return []; } })()
             : (Array.isArray(project.key_metrics)
                 ? project.key_metrics
-                : (typeof project.key_metrics === 'string' ? JSON.parse(project.key_metrics) : [])));
+                : (typeof project.key_metrics === 'string' ? (function () { try { return JSON.parse(project.key_metrics); } catch (e) { return []; } })() : [])));
+    const features = (Array.isArray(rawFeatures) ? rawFeatures : []).map(f => typeof f === 'string' ? f.trim() : f).filter(Boolean);
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">

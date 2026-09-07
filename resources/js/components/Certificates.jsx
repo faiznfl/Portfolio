@@ -54,9 +54,15 @@ export default function Certificates({ certificates = [], onSelectCertificate })
                                         <span className="text-xs font-mono text-ps-primary dark:text-cyan-400 uppercase tracking-wider font-semibold">
                                             {cert.issuer_organization}
                                         </span>
-                                        <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-white/10 shrink-0">
-                                            {cert.issue_date ? new Date(cert.issue_date).getFullYear() : '2024'}
-                                        </span>
+                                        {cert.issue_date ? (
+                                            <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-white/10 shrink-0">
+                                                {new Date(cert.issue_date).getFullYear()}
+                                            </span>
+                                        ) : cert.category ? (
+                                            <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10 shrink-0">
+                                                {cert.category.split(',')[0].trim()}
+                                            </span>
+                                        ) : null}
                                     </div>
 
                                     <div>

@@ -29,49 +29,49 @@
         @endif
 
         <!-- Projects Table -->
-        <div class="ps-card-dark overflow-hidden">
+        <div class="ps-card-dark p-6 sm:p-8 space-y-6">
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
                     <thead class="text-xs font-mono uppercase bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
                         <tr>
-                            <th class="px-6 py-4">Urutan</th>
-                            <th class="px-6 py-4">Judul &amp; Slug</th>
-                            <th class="px-6 py-4">Kategori</th>
-                            <th class="px-6 py-4">Status</th>
-                            <th class="px-6 py-4">Featured</th>
-                            <th class="px-6 py-4 text-right">Aksi</th>
+                            <th class="px-4 py-3">Urutan</th>
+                            <th class="px-4 py-3">Judul &amp; Slug</th>
+                            <th class="px-4 py-3">Kategori</th>
+                            <th class="px-4 py-3">Status</th>
+                            <th class="px-4 py-3">Featured</th>
+                            <th class="px-4 py-3 text-right">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-200 dark:divide-white/10">
+                    <tbody class="divide-y divide-slate-200 dark:divide-white/5">
                         @forelse($projects as $project)
                             <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
-                                <td class="px-6 py-4 font-mono text-xs text-slate-400">{{ $project->order_index }}</td>
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3 font-mono text-xs text-slate-400">{{ $project->order_index }}</td>
+                                <td class="px-4 py-3">
                                     <div class="font-bold text-slate-900 dark:text-white">{{ $project->title }}</div>
                                     <div class="text-xs font-mono text-slate-400 dark:text-gray-500">{{ $project->slug }}</div>
                                 </td>
-                                <td class="px-6 py-4">
-                                    <span class="px-2.5 py-1 rounded-full text-xs font-mono bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-white/10">{{ $project->category }}</span>
+                                <td class="px-4 py-3">
+                                    <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10">{{ $project->category }}</span>
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3">
                                     @if($project->is_published)
-                                        <span class="inline-flex items-center gap-1.5 text-xs text-emerald-600 dark:text-green-400 font-semibold">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Publik
+                                        <span class="inline-flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Publik
                                         </span>
                                     @else
                                         <span class="inline-flex items-center gap-1.5 text-xs text-slate-400 dark:text-gray-500">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span> Draft
+                                            <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Draft
                                         </span>
                                     @endif
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3">
                                     @if($project->is_featured)
                                         <span class="text-xs text-amber-500 dark:text-yellow-400 font-semibold">★ Ya</span>
                                     @else
-                                        <span class="text-xs text-slate-400 dark:text-gray-500">-</span>
+                                        <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">-</span>
                                     @endif
                                 </td>
-                                <td class="px-6 py-4 text-right space-x-3 text-xs">
+                                <td class="px-4 py-3 text-right space-x-3 text-xs">
                                     <a href="{{ route('admin.projects.edit', $project->id) }}" class="text-ps-primary hover:underline font-semibold">
                                         Edit
                                     </a>
@@ -86,7 +86,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="px-6 py-12 text-center text-slate-400">
+                                <td colspan="6" class="px-4 py-12 text-center text-slate-400">
                                     Belum ada proyek yang ditambahkan.
                                 </td>
                             </tr>
