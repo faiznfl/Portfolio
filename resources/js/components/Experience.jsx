@@ -16,6 +16,19 @@ export default function Experience({ experiences = [] }) {
         }));
     };
 
+    const sortedExperiences = [...experiences].sort((a, b) => {
+        const orderA = Number(a.order_index ?? 0);
+        const orderB = Number(b.order_index ?? 0);
+        if (orderA !== orderB) return orderA - orderB;
+
+        const timeA = new Date(a.start_date || 0).getTime();
+        const timeB = new Date(b.start_date || 0).getTime();
+        if (timeB !== timeA) return timeB - timeA;
+        const endA = a.is_current ? Infinity : new Date(a.end_date || 0).getTime();
+        const endB = b.is_current ? Infinity : new Date(b.end_date || 0).getTime();
+        return endB - endA;
+    });
+
     return (
         <section id="experience" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
             <div className="max-w-6xl mx-auto space-y-12 relative z-10">
@@ -32,7 +45,7 @@ export default function Experience({ experiences = [] }) {
 
                 {/* Alternating Journey Timeline */}
                 <div className="relative">
-                    {experiences.length === 0 ? (
+                    {sortedExperiences.length === 0 ? (
                         <div className="py-16 text-center text-slate-400 dark:text-gray-500 font-light border border-dashed border-slate-200 dark:border-white/10 rounded-2xl p-8 max-w-xl mx-auto">
                             <span className="text-3xl block mb-2">🧭</span>
                             <span className="text-sm">Belum ada linimasa pengalaman yang ditambahkan.</span>
@@ -43,7 +56,7 @@ export default function Experience({ experiences = [] }) {
                             <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-ps-primary via-cyan-400 to-indigo-600 -translate-x-1/2 shadow-[0_0_12px_rgba(0,112,209,0.5)]"></div>
 
                             <div className="space-y-10">
-                                {experiences.map((exp, idx) => {
+                                {sortedExperiences.map((exp, idx) => {
                                     const cardKey = exp.id ?? idx;
                                     const isExpanded = !!expandedIds[cardKey];
                                     const isEven = idx % 2 === 0;

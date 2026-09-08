@@ -119,14 +119,27 @@
                     </div>
                 </div>
 
-                <!-- Current Active Role Checkbox -->
-                <div class="flex items-center gap-3">
-                    <input type="checkbox" id="is_current" name="is_current" value="1"
-                           {{ old('is_current', $experience->is_current) ? 'checked' : '' }}
-                           class="w-4 h-4 rounded bg-black/60 border border-white/20 text-ps-primary focus:ring-0">
-                    <label for="is_current" class="text-xs text-slate-700 dark:text-gray-300">
-                        Masih aktif bekerja pada posisi ini saat ini (*Current Active Position*)
-                    </label>
+                <!-- Current Active Role Checkbox & Order Index -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+                    <div class="flex items-center gap-3">
+                        <input type="checkbox" id="is_current" name="is_current" value="1"
+                               {{ old('is_current', $experience->is_current) ? 'checked' : '' }}
+                               class="w-4 h-4 rounded bg-black/60 border border-white/20 text-ps-primary focus:ring-0">
+                        <label for="is_current" class="text-xs text-slate-700 dark:text-gray-300">
+                            Masih aktif bekerja pada posisi ini saat ini (*Current Active Position*)
+                        </label>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="order_index" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
+                            Urutan Tampil <span class="text-slate-400 font-normal">(Angka lebih kecil tampil lebih awal)</span>
+                        </label>
+                        <input type="number" id="order_index" name="order_index"
+                               value="{{ old('order_index', $experience->order_index ?? 0) }}"
+                               placeholder="cth: 1"
+                               class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
+                        @error('order_index') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
+                    </div>
                 </div>
 
                 <!-- Deskripsi Singkat -->

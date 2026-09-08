@@ -170,4 +170,95 @@ class PortfolioTest extends TestCase
             'sender_name' => 'Spam Bot',
         ]);
     }
+
+    public function test_portfolio_renders_experiences_ordered_by_date_descending(): void
+    {
+        Experience::truncate();
+
+        Experience::create([
+            'role_title' => 'Junior Developer',
+            'company_name' => 'Old Company',
+            'location' => 'Jakarta',
+            'employment_type' => 'Full-time',
+            'start_date' => '2022-01-01',
+            'end_date' => '2023-01-01',
+            'is_current' => false,
+            'description_points' => ['Point 1'],
+            'order_index' => 0,
+        ]);
+
+        Experience::create([
+            'role_title' => 'Lead Architect',
+            'company_name' => 'New Company',
+            'location' => 'Jakarta',
+            'employment_type' => 'Full-time',
+            'start_date' => '2025-06-01',
+            'end_date' => null,
+            'is_current' => true,
+            'description_points' => ['Point 1'],
+            'order_index' => 0,
+        ]);
+
+        Experience::create([
+            'role_title' => 'Senior Developer',
+            'company_name' => 'Mid Company',
+            'location' => 'Jakarta',
+            'employment_type' => 'Full-time',
+            'start_date' => '2023-06-01',
+            'end_date' => '2025-05-01',
+            'is_current' => false,
+            'description_points' => ['Point 1'],
+            'order_index' => 0,
+        ]);
+
+        $response = $this->get('/');
+        $response->assertStatus(200);
+
+        $experiencesInView = $response->viewData('experiences');
+        $this->assertEquals(['Lead Architect', 'Senior Developer', 'Junior Developer'], $experiencesInView->pluck('role_title')->all());
+    }
+
+    public function test_portfolio_renders_experiences_ordered_by_order_index(): void
+    {
+        Experience::truncate();
+
+        Experience::create([
+            'role_title' => 'Position Three',
+            'company_name' => 'Company C',
+            'location' => 'Jakarta',
+            'employment_type' => 'Full-time',
+            'start_date' => '2025-01-01',
+            'is_current' => true,
+            'description_points' => ['Point 1'],
+            'order_index' => 3,
+        ]);
+
+        Experience::create([
+            'role_title' => 'Position One',
+            'company_name' => 'Company A',
+            'location' => 'Jakarta',
+            'employment_type' => 'Full-time',
+            'start_date' => '2021-01-01',
+            'is_current' => false,
+            'description_points' => ['Point 1'],
+            'order_index' => 1,
+        ]);
+
+        Experience::create([
+            'role_title' => 'Position Two',
+            'company_name' => 'Company B',
+            'location' => 'Jakarta',
+            'employment_type' => 'Full-time',
+            'start_date' => '2023-01-01',
+            'is_current' => false,
+            'description_points' => ['Point 1'],
+            'order_index' => 2,
+        ]);
+
+        $response = $this->get('/');
+        $response->assertStatus(200);
+
+        $experiencesInView = $response->viewData('experiences');
+        $this->assertEquals(['Position One', 'Position Two', 'Position Three'], $experiencesInView->pluck('role_title')->all());
+    }
 }

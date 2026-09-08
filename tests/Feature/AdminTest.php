@@ -234,6 +234,36 @@ class AdminTest extends TestCase
         $this->assertDatabaseMissing('projects', ['id' => $project->id]);
     }
 
+    public function test_admin_can_create_project_without_category_and_tables_do_not_render_kategori_header(): void
+    {
+        $payload = [
+            'title' => 'Project Without Category',
+            'summary' => 'Summary of project without category.',
+            'order_index' => 10,
+            'is_published' => 1,
+            'is_featured' => 0,
+        ];
+
+        $storeResponse = $this->actingAs($this->admin)->post('/admin/projects', $payload);
+        $storeResponse->assertRedirect('/admin/projects');
+        $storeResponse->assertSessionHas('success');
+
+        $this->assertDatabaseHas('projects', [
+            'title' => 'Project Without Category',
+            'category' => null,
+        ]);
+
+        // Projects form does not show category input
+        $formRes = $this->actingAs($this->admin)->get('/admin/projects/create');
+        $formRes->assertOk();
+        $formRes->assertDontSee('name="category"', false);
+
+        // Projects index table does not show Kategori header
+        $indexRes = $this->actingAs($this->admin)->get('/admin/projects');
+        $indexRes->assertOk();
+        $indexRes->assertDontSee('<th class="px-4 py-3.5">Kategori</th>', false);
+    }
+
     public function test_admin_can_create_update_and_delete_skill(): void
     {
         // 1. Create Skill with icon_svg and without proficiency_level
@@ -276,13 +306,76 @@ class AdminTest extends TestCase
         $this->assertDatabaseMissing('skills', ['id' => $skill->id]);
     }
 
-    public function test_skill_form_has_icon_input_and_no_percentage_field(): void
+    public function test_skill_form_has_icon_input_and_no_percentage_or_category_field(): void
     {
         $response = $this->actingAs($this->admin)->get('/admin/skills/create');
         $response->assertOk();
         $response->assertSee('Icon / Visual Keahlian');
         $response->assertSee('icon_svg');
+        $response->assertSee('icon_svg_file');
+        $response->assertSee('multipart/form-data');
         $response->assertDontSee('Tingkat Penguasaan (1 - 100%)');
+        $response->assertDontSee('name="category"', false);
+        $response->assertDontSee('id="category"', false);
+    }
+
+    public function test_admin_can_upload_svg_file_for_skill(): void
+    {
+        $svgContent = '<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>';
+        $file = UploadedFile::fake()->createWithContent('custom-skill.svg', $svgContent);
+
+        $payload = [
+            'name' => 'Custom Skill SVG',
+            'icon_svg_file' => $file,
+            'order_index' => 5,
+            'is_featured' => 1,
+        ];
+
+        $response = $this->actingAs($this->admin)->post('/admin/skills', $payload);
+        $response->assertRedirect('/admin/skills');
+
+        $skill = Skill::where('name', 'Custom Skill SVG')->first();
+        $this->assertNotNull($skill);
+        $this->assertStringContainsString('<svg', $skill->icon_svg);
+        $this->assertStringNotContainsString('<?xml', $skill->icon_svg);
+
+        // Test update with a new SVG file
+        $updateSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="10"/></svg>';
+        $updateFile = UploadedFile::fake()->createWithContent('updated-skill.svg', $updateSvg);
+
+        $updateResponse = $this->actingAs($this->admin)->put('/admin/skills/'.$skill->id, [
+            'name' => 'Custom Skill Updated',
+            'icon_svg_file' => $updateFile,
+        ]);
+        $updateResponse->assertRedirect('/admin/skills');
+
+        $skill->refresh();
+        $this->assertEquals('Custom Skill Updated', $skill->name);
+        $this->assertStringContainsString('<circle cx="16"', $skill->icon_svg);
+    }
+
+    public function test_admin_can_create_skill_without_category_and_tables_do_not_render_kategori_header(): void
+    {
+        $payload = [
+            'name' => 'Bun runtime',
+            'icon_svg' => '🥟',
+            'order_index' => 20,
+            'is_featured' => 1,
+        ];
+
+        $storeResponse = $this->actingAs($this->admin)->post('/admin/skills', $payload);
+        $storeResponse->assertRedirect('/admin/skills');
+        $storeResponse->assertSessionHas('success');
+
+        $this->assertDatabaseHas('skills', [
+            'name' => 'Bun runtime',
+            'category' => null,
+        ]);
+
+        // Skills index table does not show Kategori header
+        $indexRes = $this->actingAs($this->admin)->get('/admin/skills');
+        $indexRes->assertOk();
+        $indexRes->assertDontSee('<th class="px-4 py-3">Kategori</th>', false);
     }
 
     public function test_public_portfolio_does_not_display_skill_percentages(): void
@@ -337,6 +430,16 @@ class AdminTest extends TestCase
         $deleteResponse = $this->actingAs($this->admin)->delete('/admin/experiences/'.$experience->id);
         $deleteResponse->assertRedirect('/admin/experiences');
         $this->assertDatabaseMissing('experiences', ['id' => $experience->id]);
+
+        // Form shows order_index input
+        $formRes = $this->actingAs($this->admin)->get('/admin/experiences/create');
+        $formRes->assertOk();
+        $formRes->assertSee('name="order_index"', false);
+
+        // Index table shows Urutan header
+        $indexRes = $this->actingAs($this->admin)->get('/admin/experiences');
+        $indexRes->assertOk();
+        $indexRes->assertSee('<th class="px-4 py-3.5">Urutan</th>', false);
     }
 
     public function test_admin_can_create_update_and_delete_certificate(): void

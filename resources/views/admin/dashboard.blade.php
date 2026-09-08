@@ -5,150 +5,295 @@
 @section('content')
 <div id="dashboard" class="px-4 sm:px-6 lg:px-8 font-sans scroll-mt-28">
     <div class="max-w-7xl mx-auto space-y-10">
-        <!-- Top Banner Bar -->
-        <div class="border-b border-slate-200 dark:border-white/10 pb-6">
-            <span class="text-xs font-mono uppercase tracking-widest text-ps-primary dark:text-cyan-400 font-bold">CONTROL PANEL</span>
-            <h1 class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">Manajemen Portofolio &amp; Showcase</h1>
-            <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">Pusat kendali konten: Projects, Skills, Journey Timeline, dan Certificates.</p>
+        <!-- Top Command Header Banner -->
+        <div class="ps-card-dark p-6 sm:p-8 relative overflow-hidden">
+            <!-- Subtle Decorative Radial Glow Background -->
+            <div class="absolute -right-16 -top-16 w-64 h-64 bg-ps-primary/10 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2.5">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:bg-cyan-500/15 dark:text-cyan-300 border border-ps-primary/25 dark:border-cyan-500/30">
+                            <span class="w-2 h-2 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
+                            CONTROL HUB • v2.4
+                        </span>
+                        <span class="text-xs font-mono text-slate-400 dark:text-gray-500">
+                            Superadmin Active
+                        </span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-light text-slate-900 dark:text-white tracking-tight">
+                        Manajemen Portofolio <span class="font-bold text-ps-primary dark:text-cyan-400">&amp; Showcase</span>
+                    </h1>
+                    <p class="text-xs sm:text-sm text-slate-500 dark:text-gray-400 max-w-2xl leading-relaxed">
+                        Kelola etalase proyek, katalog keahlian teknis, linimasa perjalanan karier, dan sertifikasi digital secara terintegrasi.
+                    </p>
+                </div>
+
+                <!-- Quick Action Shortcuts -->
+                <div class="flex flex-wrap items-center gap-2.5 sm:gap-3">
+                    <a href="{{ route('admin.projects.create') }}" class="btn-ps-primary !py-2.5 !px-4 !text-xs !font-semibold flex items-center gap-1.5 shadow-sm">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        <span>+ Proyek</span>
+                    </a>
+                    <a href="{{ route('admin.skills.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-slate-800 dark:text-slate-100 bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 border border-slate-300/80 dark:border-white/10 transition-all">
+                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        <span>+ Skill</span>
+                    </a>
+                    <a href="{{ route('resume.download') }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 transition-all" title="Unduh Berkas CV Aktif">
+                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        <span>Unduh CV</span>
+                    </a>
+                </div>
+            </div>
         </div>
 
         @if(session('success'))
-            <div class="p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-sm">
-                {{ session('success') }}
+            <div class="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-sm flex items-center gap-3">
+                <svg class="w-5 h-5 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>{{ session('success') }}</span>
             </div>
         @endif
 
-        <!-- Metric Cards Grid -->
+        <!-- Sleek KPI Metric Cards Grid -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="ps-card-dark p-5 space-y-1">
-                <div class="text-xs text-slate-500 dark:text-gray-400 font-mono uppercase">Proyek</div>
-                <div class="text-3xl font-light text-slate-900 dark:text-white">{{ $totalProjects }}</div>
-                <a href="{{ route('admin.projects.index') }}" class="text-[11px] text-ps-primary dark:text-cyan-400 hover:underline block pt-1">Kelola Proyek →</a>
+            <!-- 1. Proyek -->
+            <div class="ps-card-dark p-5 flex flex-col justify-between group hover:-translate-y-1 hover:border-blue-500/40 transition-all duration-300">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] text-slate-500 dark:text-gray-400 font-mono uppercase font-bold tracking-wider">Proyek</span>
+                        <div class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">{{ $totalProjects }}</div>
+                </div>
+                <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
+                    <a href="{{ route('admin.projects.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-cyan-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                        <span>Kelola Proyek</span>
+                        <span>→</span>
+                    </a>
+                </div>
             </div>
-            <div class="ps-card-dark p-5 space-y-1">
-                <div class="text-xs text-slate-500 dark:text-gray-400 font-mono uppercase">Keahlian</div>
-                <div class="text-3xl font-light text-slate-900 dark:text-white">{{ $totalSkills }}</div>
-                <a href="{{ route('admin.skills.index') }}" class="text-[11px] text-ps-primary dark:text-cyan-400 hover:underline block pt-1">Kelola Skills →</a>
+
+            <!-- 2. Keahlian -->
+            <div class="ps-card-dark p-5 flex flex-col justify-between group hover:-translate-y-1 hover:border-cyan-500/40 transition-all duration-300">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] text-slate-500 dark:text-gray-400 font-mono uppercase font-bold tracking-wider">Keahlian</span>
+                        <div class="w-7 h-7 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 border border-cyan-500/20 flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">{{ $totalSkills }}</div>
+                </div>
+                <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
+                    <a href="{{ route('admin.skills.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-cyan-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                        <span>Kelola Skills</span>
+                        <span>→</span>
+                    </a>
+                </div>
             </div>
-            <div class="ps-card-dark p-5 space-y-1">
-                <div class="text-xs text-slate-500 dark:text-gray-400 font-mono uppercase">Pengalaman</div>
-                <div class="text-3xl font-light text-slate-900 dark:text-white">{{ $totalExperiences }}</div>
-                <a href="{{ route('admin.experiences.index') }}" class="text-[11px] text-ps-primary dark:text-cyan-400 hover:underline block pt-1">Kelola Journey →</a>
+
+            <!-- 3. Pengalaman -->
+            <div class="ps-card-dark p-5 flex flex-col justify-between group hover:-translate-y-1 hover:border-purple-500/40 transition-all duration-300">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] text-slate-500 dark:text-gray-400 font-mono uppercase font-bold tracking-wider">Pengalaman</span>
+                        <div class="w-7 h-7 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">{{ $totalExperiences }}</div>
+                </div>
+                <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
+                    <a href="{{ route('admin.experiences.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-cyan-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                        <span>Kelola Journey</span>
+                        <span>→</span>
+                    </a>
+                </div>
             </div>
-            <div class="ps-card-dark p-5 space-y-1">
-                <div class="text-xs text-slate-500 dark:text-gray-400 font-mono uppercase">Sertifikat</div>
-                <div class="text-3xl font-light text-slate-900 dark:text-white">{{ $totalCertificates }}</div>
-                <a href="{{ route('admin.certificates.index') }}" class="text-[11px] text-ps-primary dark:text-cyan-400 hover:underline block pt-1">Kelola Sertifikat →</a>
+
+            <!-- 4. Sertifikat -->
+            <div class="ps-card-dark p-5 flex flex-col justify-between group hover:-translate-y-1 hover:border-amber-500/40 transition-all duration-300">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] text-slate-500 dark:text-gray-400 font-mono uppercase font-bold tracking-wider">Sertifikat</span>
+                        <div class="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">{{ $totalCertificates }}</div>
+                </div>
+                <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
+                    <a href="{{ route('admin.certificates.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-cyan-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                        <span>Kelola Sertifikat</span>
+                        <span>→</span>
+                    </a>
+                </div>
             </div>
-            <div class="ps-card-dark p-5 space-y-1">
-                <div class="text-xs text-slate-500 dark:text-gray-400 font-mono uppercase">Total Pesan</div>
-                <div class="text-3xl font-light text-slate-900 dark:text-white">{{ $totalMessages }}</div>
-                <span class="text-[11px] text-slate-400 dark:text-gray-500 block pt-1">Masuk via formulir</span>
+
+            <!-- 5. Total Pesan -->
+            <div class="ps-card-dark p-5 flex flex-col justify-between group hover:-translate-y-1 hover:border-emerald-500/40 transition-all duration-300">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] text-slate-500 dark:text-gray-400 font-mono uppercase font-bold tracking-wider">Total Pesan</span>
+                        <div class="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">{{ $totalMessages }}</div>
+                </div>
+                <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
+                    <span class="text-[11px] text-slate-400 dark:text-gray-500 block">Masuk via formulir</span>
+                </div>
             </div>
-            <div class="ps-card-dark p-5 space-y-1">
-                <div class="text-xs text-slate-500 dark:text-gray-400 font-mono uppercase">Belum Dibaca</div>
-                <div class="text-3xl font-light text-slate-900 dark:text-white">{{ $unreadMessagesCount }}</div>
-                @if($unreadMessagesCount > 0)
-                    <span class="text-[11px] text-amber-600 dark:text-amber-400 font-semibold block pt-1">● Perlu ditinjau</span>
-                @else
-                    <span class="text-[11px] text-slate-400 dark:text-gray-500 block pt-1">Semua terbaca</span>
-                @endif
+
+            <!-- 6. Belum Dibaca -->
+            <div class="ps-card-dark p-5 flex flex-col justify-between group hover:-translate-y-1 hover:border-rose-500/40 transition-all duration-300">
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] text-slate-500 dark:text-gray-400 font-mono uppercase font-bold tracking-wider">Belum Dibaca</span>
+                        <div class="w-7 h-7 rounded-lg {{ $unreadMessagesCount > 0 ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/25' : 'bg-slate-500/10 text-slate-500 border border-slate-500/20' }} flex items-center justify-center">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">{{ $unreadMessagesCount }}</div>
+                </div>
+                <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
+                    @if($unreadMessagesCount > 0)
+                        <span class="inline-flex items-center gap-1.5 text-[11px] text-rose-600 dark:text-rose-400 font-semibold">
+                            <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span>
+                            Perlu ditinjau
+                        </span>
+                    @else
+                        <span class="text-[11px] text-slate-400 dark:text-gray-500 block">Semua terbaca</span>
+                    @endif
+                </div>
             </div>
         </div>
 
-        <!-- Inquiries & Messages List (PRD ADM-3) -->
+        <!-- Inquiries & Messages List (Refined Inbox Card) -->
         <div class="ps-card-dark p-6 sm:p-8 space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                    <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Pesan &amp; Tawaran Kerja Sama Masuk</h2>
-                    <p class="text-xs text-slate-500 dark:text-gray-400 mt-1">Daftar pertanyaan dan penawaran dari formulir Contacts publik.</p>
-                </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-5">
                 <div class="flex items-center gap-3">
-                    <a href="{{ route('resume.download') }}" class="btn-ps-outline-dark !py-2 !px-4 !text-xs !bg-white/70 dark:!bg-transparent !border-slate-300 dark:!border-white/15 !text-slate-800 dark:!text-white flex items-center gap-1.5" title="Unduh Berkas CV Aktif">
-                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        <span>Unduh CV Aktif</span>
-                    </a>
-                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400 bg-slate-100 dark:bg-white/5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-white/10">Total: {{ $totalMessages }}</span>
+                    <div class="w-9 h-9 rounded-xl bg-ps-primary/10 text-ps-primary dark:text-cyan-300 border border-ps-primary/20 flex items-center justify-center">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Pesan &amp; Tawaran Kerja Sama Masuk</h2>
+                        <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">Daftar pertanyaan dan penawaran dari formulir Contacts publik.</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs font-mono text-slate-500 dark:text-gray-400 bg-slate-100 dark:bg-white/5 px-3 py-1.5 rounded-full border border-slate-200 dark:border-white/10">
+                        Total: <span class="font-bold text-slate-800 dark:text-slate-200">{{ $totalMessages }}</span>
+                    </span>
+                    @if($unreadMessagesCount > 0)
+                        <span class="text-xs font-mono text-rose-600 dark:text-rose-400 bg-rose-500/10 px-3 py-1.5 rounded-full border border-rose-500/20 font-bold">
+                            {{ $unreadMessagesCount }} Baru
+                        </span>
+                    @endif
                 </div>
             </div>
 
-                @if($messages->isEmpty())
-                    <div class="text-center py-12 border border-dashed border-slate-200 dark:border-white/15 rounded-xl text-slate-400 text-sm">
-                        Belum ada pesan masuk dari pengunjung.
+            @if($messages->isEmpty())
+                <div class="text-center py-12 border border-dashed border-slate-200 dark:border-white/15 rounded-2xl text-slate-400 text-sm space-y-2">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center text-slate-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
                     </div>
-                @else
-                    <div class="space-y-4">
-                        @foreach($messages as $msg)
-                            <div class="p-4 rounded-xl border {{ $msg->is_read ? 'bg-slate-50/70 dark:bg-black/40 border-slate-200 dark:border-white/10' : 'bg-ps-primary/10 border-ps-primary/40' }} space-y-3">
-                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                                    <div class="flex items-center gap-2">
-                                        @if(!$msg->is_read)
-                                            <span class="w-2 h-2 rounded-full bg-ps-primary"></span>
-                                        @endif
+                    <p class="font-medium text-slate-600 dark:text-slate-300">Belum ada pesan masuk</p>
+                    <p class="text-xs text-slate-400 dark:text-gray-500">Pesan dari pengunjung akan otomatis tersimpan dan tertampil di sini.</p>
+                </div>
+            @else
+                <div class="space-y-3.5">
+                    @foreach($messages as $msg)
+                        <div class="p-4 sm:p-5 rounded-2xl border transition-all duration-200 {{ $msg->is_read ? 'bg-slate-50/60 dark:bg-black/30 border-slate-200/80 dark:border-white/10' : 'bg-ps-primary/[0.04] dark:bg-cyan-500/[0.04] border-ps-primary/30 dark:border-cyan-400/30 shadow-xs' }} space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full {{ $msg->is_read ? 'bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-300' : 'bg-ps-primary text-white' }} flex items-center justify-center font-bold text-xs shrink-0">
+                                        {{ strtoupper(substr($msg->sender_name, 0, 1)) }}
+                                    </div>
+                                    <div class="flex flex-wrap items-center gap-2">
                                         <span class="font-bold text-slate-900 dark:text-white text-sm">{{ $msg->sender_name }}</span>
-                                        <a href="mailto:{{ $msg->sender_email }}" class="text-xs text-ps-primary hover:underline font-mono">
-                                            &lt;{{ $msg->sender_email }}&gt;
+                                        <a href="mailto:{{ $msg->sender_email }}" class="text-xs text-ps-primary dark:text-cyan-400 hover:underline font-mono bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-slate-200 dark:border-white/5">
+                                            {{ $msg->sender_email }}
                                         </a>
+                                        @if(!$msg->is_read)
+                                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/25">
+                                                Baru
+                                            </span>
+                                        @endif
                                     </div>
-                                    <span class="text-xs text-slate-400 font-mono">
-                                        {{ $msg->created_at->format('d M Y H:i') }}
-                                    </span>
                                 </div>
+                                <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">
+                                    {{ $msg->created_at->format('d M Y, H:i') }}
+                                </span>
+                            </div>
 
-                                <div>
-                                    <div class="text-xs font-semibold text-slate-700 dark:text-gray-300 mb-1">Subjek: {{ $msg->subject }}</div>
-                                    <p class="text-sm text-slate-600 dark:text-gray-300 leading-relaxed font-light bg-slate-100/80 dark:bg-black/40 p-3 rounded-lg border border-slate-200/60 dark:border-white/5">
-                                        {{ $msg->message_body }}
-                                    </p>
+                            <div class="space-y-1.5 pl-0 sm:pl-11">
+                                <div class="text-xs font-semibold text-slate-800 dark:text-gray-200 flex items-center gap-1.5">
+                                    <span class="text-slate-400 dark:text-gray-500 font-normal">Subjek:</span>
+                                    <span>{{ $msg->subject }}</span>
                                 </div>
+                                <p class="text-sm text-slate-600 dark:text-gray-300 leading-relaxed font-light bg-white/70 dark:bg-black/40 p-3.5 rounded-xl border border-slate-200/60 dark:border-white/5">
+                                    {{ $msg->message_body }}
+                                </p>
+                            </div>
 
-                                <div class="flex items-center justify-between pt-1 text-xs">
-                                    <span class="text-slate-400 dark:text-gray-500 font-mono">IP: {{ $msg->ip_address ?? 'Local' }}</span>
-                                    
-                                    <div class="flex items-center gap-3">
-                                        <a href="mailto:{{ $msg->sender_email }}?subject=Re: {{ urlencode($msg->subject) }}" class="text-ps-primary hover:underline font-medium">
-                                            Balas via Email ↗
-                                        </a>
+                            <div class="flex flex-wrap items-center justify-between gap-3 pt-1 text-xs pl-0 sm:pl-11 border-t border-slate-200/50 dark:border-white/5">
+                                <span class="text-slate-400 dark:text-gray-500 font-mono text-[11px]">IP: {{ $msg->ip_address ?? 'Local' }}</span>
+                                
+                                <div class="flex items-center gap-2">
+                                    <a href="mailto:{{ $msg->sender_email }}?subject=Re: {{ urlencode($msg->subject) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
+                                        <span>Balas via Email ↗</span>
+                                    </a>
 
-                                        <form action="{{ route('admin.messages.toggle-read', $msg->id) }}" method="POST" class="inline">
-                                            @csrf
-                                            @method('PATCH')
-                                            <button type="submit" class="text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white underline">
-                                                {{ $msg->is_read ? 'Tandai Belum Terbaca' : 'Tandai Terbaca' }}
-                                            </button>
-                                        </form>
+                                    <form action="{{ route('admin.messages.toggle-read', $msg->id) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 dark:text-gray-300 bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 transition-all">
+                                            {{ $msg->is_read ? 'Tandai Belum Terbaca' : 'Tandai Terbaca' }}
+                                        </button>
+                                    </form>
 
-                                        <form action="{{ route('admin.messages.destroy', $msg->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus pesan ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-rose-500 hover:text-rose-600 underline">
-                                                Hapus
-                                            </button>
-                                        </form>
-                                    </div>
+                                    <form action="{{ route('admin.messages.destroy', $msg->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus pesan ini?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-rose-600 dark:text-rose-400 bg-rose-50 hover:bg-rose-100 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 border border-rose-200/60 dark:border-rose-400/20 transition-all">
+                                            Hapus
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
+                </div>
 
-                    <div class="pt-4">
+                @if(method_exists($messages, 'links'))
+                    <div class="pt-3">
                         {{ $messages->links() }}
                     </div>
                 @endif
-            </div>
+            @endif
         </div>
 
         <!-- 4-in-1 Showcase Management Hub -->
         <div class="space-y-8">
             <!-- SECTION 1: SKILLS -->
             <div id="skills" class="ps-card-dark p-6 sm:p-8 space-y-6 scroll-mt-28">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Katalog Keahlian &amp; Teknologi</h2>
-                        <p class="text-xs text-slate-500 dark:text-gray-400 mt-1">Daftar skill yang ditampilkan pada grid interaktif halaman publik.</p>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 border border-cyan-500/20 flex items-center justify-center">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Katalog Keahlian &amp; Teknologi</h2>
+                            <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">Daftar skill yang ditampilkan pada grid interaktif halaman publik.</p>
+                        </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('admin.skills.index') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white underline">
+                        <a href="{{ route('admin.skills.index') }}" class="text-xs font-semibold text-ps-primary dark:text-cyan-400 hover:underline">
                             Lihat Semua Skills →
                         </a>
                         <a href="{{ route('admin.skills.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
@@ -157,75 +302,87 @@
                     </div>
                 </div>
 
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
-                        <thead class="text-xs font-mono uppercase bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
-                            <tr>
-                                <th class="px-4 py-3">Urutan</th>
-                                <th class="px-4 py-3">Icon</th>
-                                <th class="px-4 py-3">Nama Skill</th>
-                                <th class="px-4 py-3">Kategori</th>
-                                <th class="px-4 py-3 text-right">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-200 dark:divide-white/5">
-                            @forelse($skills->take(6) as $s)
-                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
-                                    <td class="px-4 py-3 font-mono text-xs text-slate-400">#{{ $s->order_index }}</td>
-                                    <td class="px-4 py-3">
-                                        <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-ps-primary dark:text-cyan-300 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:max-w-full [&>svg]:max-h-full overflow-hidden">
-                                            @if(!empty($s->icon_svg))
-                                                @if(str_starts_with(trim($s->icon_svg), '<svg') || str_starts_with(trim($s->icon_svg), '<i '))
-                                                    {!! $s->icon_svg !!}
-                                                @elseif(str_starts_with(trim($s->icon_svg), 'http') || str_starts_with(trim($s->icon_svg), '/'))
-                                                    <img src="{{ $s->icon_svg }}" alt="{{ $s->name }}" class="w-5 h-5 object-contain">
-                                                @else
-                                                    <span class="text-base">{{ $s->icon_svg }}</span>
-                                                @endif
-                                            @else
-                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-4 h-4 text-slate-400">
-                                                    <polyline points="16 18 22 12 16 6"/>
-                                                    <polyline points="8 6 2 12 8 18"/>
-                                                </svg>
-                                            @endif
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">{{ $s->name }}</td>
-                                    <td class="px-4 py-3">
-                                        <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10">
-                                            {{ $s->category }}
-                                        </span>
-                                    </td>
-                                    <td class="px-4 py-3 text-right space-x-2">
-                                        <a href="{{ route('admin.skills.edit', $s->id) }}" class="text-xs text-ps-primary hover:underline font-semibold">Edit</a>
-                                        <form action="{{ route('admin.skills.destroy', $s->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus skill {{ $s->name }}?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-xs text-rose-500 hover:text-rose-600 underline">Hapus</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
+                <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
+                            <thead class="text-xs font-mono uppercase bg-slate-100/90 dark:bg-white/[0.04] text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
                                 <tr>
-                                    <td colspan="5" class="px-4 py-8 text-center text-slate-400">
-                                        Belum ada data skill. Klik tombol di atas untuk menambah skill.
-                                    </td>
+                                    <th class="px-4 py-3.5">Urutan</th>
+                                    <th class="px-4 py-3.5">Icon</th>
+                                    <th class="px-4 py-3.5">Nama Skill</th>
+                                    <th class="px-4 py-3.5 text-right">Aksi</th>
                                 </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-white/5">
+                                @forelse($skills->take(6) as $s)
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors">
+                                        <td class="px-4 py-3.5 font-mono text-xs text-slate-400">#{{ $s->order_index }}</td>
+                                        <td class="px-4 py-3.5">
+                                            <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-ps-primary dark:text-cyan-300 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:max-w-full [&>svg]:max-h-full overflow-hidden">
+                                                @if(!empty($s->icon_svg))
+                                                    @if(str_starts_with(trim($s->icon_svg), '<svg') || str_starts_with(trim($s->icon_svg), '<i '))
+                                                        {!! $s->icon_svg !!}
+                                                    @elseif(str_starts_with(trim($s->icon_svg), 'http') || str_starts_with(trim($s->icon_svg), '/'))
+                                                        <img src="{{ $s->icon_svg }}" alt="{{ $s->name }}" class="w-5 h-5 object-contain">
+                                                    @else
+                                                        <span class="text-base">{{ $s->icon_svg }}</span>
+                                                    @endif
+                                                @else
+                                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-4 h-4 text-slate-400">
+                                                        <polyline points="16 18 22 12 16 6"/>
+                                                        <polyline points="8 6 2 12 8 18"/>
+                                                    </svg>
+                                                @endif
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3.5 font-semibold text-slate-900 dark:text-white">
+                                            <span>{{ $s->name }}</span>
+                                            @if($s->is_featured)
+                                                <span class="ml-2 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">Featured</span>
+                                            @endif
+                                        </td>
+                                        <td class="px-4 py-3.5 text-right">
+                                            <div class="flex items-center justify-end gap-2 text-xs">
+                                                <a href="{{ route('admin.skills.edit', $s->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                                    Edit
+                                                </a>
+                                                <form action="{{ route('admin.skills.destroy', $s->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus skill {{ $s->name }}?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-rose-600 dark:text-rose-400 bg-rose-50 hover:bg-rose-100 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 transition-all">
+                                                        Hapus
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="4" class="px-4 py-8 text-center text-slate-400">
+                                            Belum ada data skill. Klik tombol di atas untuk menambah skill.
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
             <!-- SECTION 2: PROJECTS -->
             <div id="projects" class="ps-card-dark p-6 sm:p-8 space-y-6 scroll-mt-28">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Katalog Proyek</h2>
-                        <p class="text-xs text-slate-500 dark:text-gray-400 mt-1">Daftar proyek yang aktif ditampilkan pada halaman publik.</p>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Katalog Proyek</h2>
+                            <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">Daftar proyek yang aktif ditampilkan pada halaman publik.</p>
+                        </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('admin.projects.index') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white underline">
+                        <a href="{{ route('admin.projects.index') }}" class="text-xs font-semibold text-ps-primary dark:text-cyan-400 hover:underline">
                             Lihat Semua Proyek →
                         </a>
                         <a href="{{ route('admin.projects.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
@@ -234,77 +391,86 @@
                     </div>
                 </div>
 
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
-                        <thead class="text-xs font-mono uppercase bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
-                            <tr>
-                                <th class="px-4 py-3">Urutan</th>
-                                <th class="px-4 py-3">Judul Proyek</th>
-                                <th class="px-4 py-3">Kategori</th>
-                                <th class="px-4 py-3">Status</th>
-                                <th class="px-4 py-3">Featured</th>
-                                <th class="px-4 py-3 text-right">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-200 dark:divide-white/5">
-                            @forelse($projects->take(6) as $p)
-                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
-                                    <td class="px-4 py-3 font-mono text-xs">{{ $p->order_index }}</td>
-                                    <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">
-                                        {{ $p->title }}
-                                        <span class="block text-xs font-mono text-slate-400 dark:text-gray-500">{{ $p->slug }}</span>
-                                    </td>
-                                    <td class="px-4 py-3">
-                                        <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10">{{ $p->category }}</span>
-                                    </td>
-                                    <td class="px-4 py-3">
-                                        @if($p->is_published)
-                                             <span class="inline-flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
-                                                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Publik
-                                             </span>
-                                        @else
-                                            <span class="inline-flex items-center gap-1.5 text-xs text-slate-400 dark:text-gray-500">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Draft
-                                            </span>
-                                        @endif
-                                    </td>
-                                    <td class="px-4 py-3">
-                                        @if($p->is_featured)
-                                            <span class="text-xs text-amber-500 dark:text-yellow-400 font-semibold">★ Ya</span>
-                                        @else
-                                            <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">-</span>
-                                        @endif
-                                    </td>
-                                    <td class="px-4 py-3 text-right space-x-2">
-                                        <a href="{{ route('admin.projects.edit', $p->id) }}" class="text-xs text-ps-primary hover:underline font-semibold">Edit</a>
-                                        <form action="{{ route('admin.projects.destroy', $p->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus proyek ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-xs text-rose-500 hover:text-rose-600 underline">Hapus</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
+                <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
+                            <thead class="text-xs font-mono uppercase bg-slate-100/90 dark:bg-white/[0.04] text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
                                 <tr>
-                                    <td colspan="6" class="px-4 py-8 text-center text-slate-400">
-                                        Belum ada proyek. Klik tombol di atas untuk menambah proyek.
-                                    </td>
+                                    <th class="px-4 py-3.5">Urutan</th>
+                                    <th class="px-4 py-3.5">Judul Proyek</th>
+                                    <th class="px-4 py-3.5">Status</th>
+                                    <th class="px-4 py-3.5">Featured</th>
+                                    <th class="px-4 py-3.5 text-right">Aksi</th>
                                 </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-white/5">
+                                @forelse($projects->take(6) as $p)
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors">
+                                        <td class="px-4 py-3.5 font-mono text-xs text-slate-400">#{{ $p->order_index }}</td>
+                                        <td class="px-4 py-3.5 font-semibold text-slate-900 dark:text-white">
+                                            {{ $p->title }}
+                                            <span class="block text-xs font-mono text-slate-400 dark:text-gray-500 font-normal">{{ $p->slug }}</span>
+                                        </td>
+                                        <td class="px-4 py-3.5">
+                                            @if($p->is_published)
+                                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                                                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Publik
+                                                 </span>
+                                            @else
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-200/70 dark:bg-white/10 text-slate-500 dark:text-gray-400">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-slate-400"></span> Draft
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td class="px-4 py-3.5">
+                                            @if($p->is_featured)
+                                                <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">★ Ya</span>
+                                            @else
+                                                <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">-</span>
+                                            @endif
+                                        </td>
+                                        <td class="px-4 py-3.5 text-right">
+                                            <div class="flex items-center justify-end gap-2 text-xs">
+                                                <a href="{{ route('admin.projects.edit', $p->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                                    Edit
+                                                </a>
+                                                <form action="{{ route('admin.projects.destroy', $p->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus proyek ini?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-rose-600 dark:text-rose-400 bg-rose-50 hover:bg-rose-100 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 transition-all">
+                                                        Hapus
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="px-4 py-8 text-center text-slate-400">
+                                            Belum ada proyek. Klik tombol di atas untuk menambah proyek.
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
             <!-- SECTION 3: EXPERIENCES (JOURNEY) -->
             <div id="experiences" class="ps-card-dark p-6 sm:p-8 space-y-6 scroll-mt-28">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Linimasa Karier (Journey Timeline)</h2>
-                        <p class="text-xs text-slate-500 dark:text-gray-400 mt-1">Daftar pengalaman kerja yang ditampilkan pada timeline halaman publik.</p>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 flex items-center justify-center">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Linimasa Karier (Journey Timeline)</h2>
+                            <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">Daftar pengalaman kerja yang ditampilkan pada timeline halaman publik.</p>
+                        </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('admin.experiences.index') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white underline">
+                        <a href="{{ route('admin.experiences.index') }}" class="text-xs font-semibold text-ps-primary dark:text-cyan-400 hover:underline">
                             Lihat Semua Journey →
                         </a>
                         <a href="{{ route('admin.experiences.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
@@ -313,66 +479,81 @@
                     </div>
                 </div>
 
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
-                        <thead class="text-xs font-mono uppercase bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
-                            <tr>
-                                <th class="px-4 py-3">Periode</th>
-                                <th class="px-4 py-3">Posisi</th>
-                                <th class="px-4 py-3">Perusahaan</th>
-                                <th class="px-4 py-3">Status</th>
-                                <th class="px-4 py-3 text-right">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-200 dark:divide-white/5">
-                            @forelse($experiences->take(5) as $exp)
-                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
-                                    <td class="px-4 py-3 font-mono text-xs text-slate-500 dark:text-gray-400">
-                                        {{ $exp->start_date->format('M Y') }} — {{ $exp->is_current ? 'Present' : ($exp->end_date ? $exp->end_date->format('M Y') : '-') }}
-                                    </td>
-                                    <td class="px-4 py-3 font-semibold text-slate-900 dark:text-white">{{ $exp->role_title }}</td>
-                                    <td class="px-4 py-3 text-ps-primary dark:text-cyan-400 font-medium">{{ $exp->company_name }}</td>
-                                    <td class="px-4 py-3">
-                                        @if($exp->is_current)
-                                            <span class="inline-flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
-                                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Aktif
-                                            </span>
-                                        @else
-                                            <span class="inline-flex items-center gap-1.5 text-xs text-slate-400 dark:text-gray-500 font-mono">
-                                                Selesai
-                                            </span>
-                                        @endif
-                                    </td>
-                                    <td class="px-4 py-3 text-right space-x-2">
-                                        <a href="{{ route('admin.experiences.edit', $exp->id) }}" class="text-xs text-ps-primary hover:underline font-semibold">Edit</a>
-                                        <form action="{{ route('admin.experiences.destroy', $exp->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus pengalaman ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-xs text-rose-500 hover:text-rose-600 underline">Hapus</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
+                <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
+                            <thead class="text-xs font-mono uppercase bg-slate-100/90 dark:bg-white/[0.04] text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
                                 <tr>
-                                    <td colspan="5" class="px-4 py-8 text-center text-slate-400">
-                                        Belum ada riwayat pengalaman. Klik tombol di atas untuk menambah data.
-                                    </td>
+                                    <th class="px-4 py-3.5">Urutan</th>
+                                    <th class="px-4 py-3.5">Periode</th>
+                                    <th class="px-4 py-3.5">Posisi</th>
+                                    <th class="px-4 py-3.5">Perusahaan</th>
+                                    <th class="px-4 py-3.5">Status</th>
+                                    <th class="px-4 py-3.5 text-right">Aksi</th>
                                 </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-white/5">
+                                @forelse($experiences->take(5) as $exp)
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors">
+                                        <td class="px-4 py-3.5 font-mono text-xs text-slate-400">#{{ $exp->order_index }}</td>
+                                        <td class="px-4 py-3.5 font-mono text-xs text-slate-500 dark:text-gray-400">
+                                            {{ $exp->start_date->format('M Y') }} — {{ $exp->is_current ? 'Present' : ($exp->end_date ? $exp->end_date->format('M Y') : '-') }}
+                                        </td>
+                                        <td class="px-4 py-3.5 font-semibold text-slate-900 dark:text-white">{{ $exp->role_title }}</td>
+                                        <td class="px-4 py-3.5 text-ps-primary dark:text-cyan-400 font-medium">{{ $exp->company_name }}</td>
+                                        <td class="px-4 py-3.5">
+                                            @if($exp->is_current)
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Aktif
+                                                </span>
+                                            @else
+                                                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs text-slate-500 dark:text-gray-400 bg-slate-100 dark:bg-white/5 font-mono">
+                                                    Selesai
+                                                </span>
+                                            @endif
+                                        </td>
+                                        <td class="px-4 py-3.5 text-right">
+                                            <div class="flex items-center justify-end gap-2 text-xs">
+                                                <a href="{{ route('admin.experiences.edit', $exp->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                                    Edit
+                                                </a>
+                                                <form action="{{ route('admin.experiences.destroy', $exp->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus pengalaman ini?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-rose-600 dark:text-rose-400 bg-rose-50 hover:bg-rose-100 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 transition-all">
+                                                        Hapus
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="px-4 py-8 text-center text-slate-400">
+                                            Belum ada riwayat pengalaman. Klik tombol di atas untuk menambah data.
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
             <!-- SECTION 4: CERTIFICATES -->
             <div id="certificates" class="ps-card-dark p-6 sm:p-8 space-y-6 scroll-mt-28">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Katalog Sertifikasi Digital</h2>
-                        <p class="text-xs text-slate-500 dark:text-gray-400 mt-1">Daftar sertifikasi resmi yang dapat diverifikasi publik.</p>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 flex items-center justify-center">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Katalog Sertifikasi Digital</h2>
+                            <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">Daftar sertifikasi resmi yang dapat diverifikasi publik.</p>
+                        </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('admin.certificates.index') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white underline">
+                        <a href="{{ route('admin.certificates.index') }}" class="text-xs font-semibold text-ps-primary dark:text-cyan-400 hover:underline">
                             Lihat Semua Sertifikat →
                         </a>
                         <a href="{{ route('admin.certificates.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
@@ -381,53 +562,61 @@
                     </div>
                 </div>
 
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
-                        <thead class="text-xs font-mono uppercase bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
-                            <tr>
-                                <th class="px-4 py-3">Urutan</th>
-                                <th class="px-4 py-3">Nama Sertifikat</th>
-                                <th class="px-4 py-3">Penerbit</th>
-                                <th class="px-4 py-3 font-mono">Tahun</th>
-                                <th class="px-4 py-3 text-right">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-200 dark:divide-white/5">
-                            @forelse($certificates->take(5) as $cert)
-                                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
-                                    <td class="px-4 py-3 font-mono text-xs text-slate-400">#{{ $cert->order_index }}</td>
-                                    <td class="px-4 py-3">
-                                        <div class="font-semibold text-slate-900 dark:text-white">{{ $cert->certificate_name }}</div>
-                                        @if($cert->category)
-                                            <div class="flex flex-wrap gap-1 mt-1">
-                                                @foreach(array_filter(array_map('trim', explode(',', $cert->category))) as $cat)
-                                                    <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10">{{ $cat }}</span>
-                                                @endforeach
-                                            </div>
-                                        @endif
-                                    </td>
-                                    <td class="px-4 py-3 text-ps-primary dark:text-cyan-400 font-medium">{{ $cert->issuer_organization }}</td>
-                                    <td class="px-4 py-3 font-mono text-xs font-semibold text-slate-700 dark:text-gray-300">
-                                        {{ $cert->issue_date ? $cert->issue_date->format('Y') : '-' }}
-                                    </td>
-                                    <td class="px-4 py-3 text-right space-x-2">
-                                        <a href="{{ route('admin.certificates.edit', $cert->id) }}" class="text-xs text-ps-primary hover:underline font-semibold">Edit</a>
-                                        <form action="{{ route('admin.certificates.destroy', $cert->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus sertifikat ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-xs text-rose-500 hover:text-rose-600 underline">Hapus</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @empty
+                <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-slate-700 dark:text-gray-300">
+                            <thead class="text-xs font-mono uppercase bg-slate-100/90 dark:bg-white/[0.04] text-slate-500 dark:text-gray-400 border-b border-slate-200 dark:border-white/10">
                                 <tr>
-                                    <td colspan="5" class="px-4 py-8 text-center text-slate-400">
-                                        Belum ada sertifikat. Klik tombol di atas untuk menambah sertifikat.
-                                    </td>
+                                    <th class="px-4 py-3.5">Urutan</th>
+                                    <th class="px-4 py-3.5">Nama Sertifikat</th>
+                                    <th class="px-4 py-3.5">Penerbit</th>
+                                    <th class="px-4 py-3.5 font-mono">Tahun</th>
+                                    <th class="px-4 py-3.5 text-right">Aksi</th>
                                 </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 dark:divide-white/5">
+                                @forelse($certificates->take(5) as $cert)
+                                    <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors">
+                                        <td class="px-4 py-3.5 font-mono text-xs text-slate-400">#{{ $cert->order_index }}</td>
+                                        <td class="px-4 py-3.5">
+                                            <div class="font-semibold text-slate-900 dark:text-white">{{ $cert->certificate_name }}</div>
+                                            @if($cert->category)
+                                                <div class="flex flex-wrap gap-1 mt-1">
+                                                    @foreach(array_filter(array_map('trim', explode(',', $cert->category))) as $cat)
+                                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10">{{ $cat }}</span>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="px-4 py-3.5 text-ps-primary dark:text-cyan-400 font-medium">{{ $cert->issuer_organization }}</td>
+                                        <td class="px-4 py-3.5 font-mono text-xs font-semibold text-slate-700 dark:text-gray-300">
+                                            {{ $cert->issue_date ? $cert->issue_date->format('Y') : '-' }}
+                                        </td>
+                                        <td class="px-4 py-3.5 text-right">
+                                            <div class="flex items-center justify-end gap-2 text-xs">
+                                                <a href="{{ route('admin.certificates.edit', $cert->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                                    Edit
+                                                </a>
+                                                <form action="{{ route('admin.certificates.destroy', $cert->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus sertifikat ini?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-rose-600 dark:text-rose-400 bg-rose-50 hover:bg-rose-100 dark:bg-rose-500/10 dark:hover:bg-rose-500/20 transition-all">
+                                                        Hapus
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="px-4 py-8 text-center text-slate-400">
+                                            Belum ada sertifikat. Klik tombol di atas untuk menambah sertifikat.
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

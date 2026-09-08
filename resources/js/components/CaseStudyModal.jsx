@@ -4,12 +4,34 @@ export default function CaseStudyModal({ project, onClose }) {
     const [activeTab, setActiveTab] = useState('overview');
 
     useEffect(() => {
+        if (!project) return;
+
         const handleKeyDown = (e) => {
             if (e.key === 'Escape') onClose();
         };
         window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [onClose]);
+
+        // Lock background scrolling on body and html
+        const originalBodyOverflow = document.body.style.overflow;
+        const originalHtmlOverflow = document.documentElement.style.overflow;
+        const originalBodyPaddingRight = document.body.style.paddingRight;
+
+        // Prevent layout shift from scrollbar disappearing
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        if (scrollbarWidth > 0) {
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+        }
+
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = originalBodyOverflow;
+            document.documentElement.style.overflow = originalHtmlOverflow;
+            document.body.style.paddingRight = originalBodyPaddingRight;
+        };
+    }, [project, onClose]);
 
     if (!project) return null;
 
@@ -26,11 +48,13 @@ export default function CaseStudyModal({ project, onClose }) {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 animate-fadeIn overscroll-contain">
             {/* Backdrop */}
             <div
-                className="fixed inset-0 modal-backdrop"
+                className="fixed inset-0 modal-backdrop overscroll-contain"
                 onClick={onClose}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
             />
 
             {/* Dialog Box */}
@@ -39,7 +63,7 @@ export default function CaseStudyModal({ project, onClose }) {
                 <div className="sticky top-0 z-20 bg-white/95 dark:bg-[#0d1322]/95 backdrop-blur-md px-6 py-4 border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
                     <div>
                         <span className="text-xs font-mono uppercase tracking-widest text-ps-primary dark:text-cyan-400 font-bold">
-                            {project.category}
+                            CASE STUDY ARCHITECTURE
                         </span>
                         <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">{project.title}</h3>
                     </div>

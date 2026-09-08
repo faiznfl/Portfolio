@@ -2,12 +2,34 @@ import React, { useEffect } from 'react';
 
 export default function ProjectDetailModal({ project, onClose }) {
     useEffect(() => {
+        if (!project) return;
+
         const handleKeyDown = (e) => {
             if (e.key === 'Escape') onClose();
         };
         window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [onClose]);
+
+        // Lock background scrolling on body and html
+        const originalBodyOverflow = document.body.style.overflow;
+        const originalHtmlOverflow = document.documentElement.style.overflow;
+        const originalBodyPaddingRight = document.body.style.paddingRight;
+
+        // Prevent layout shift from scrollbar disappearing
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        if (scrollbarWidth > 0) {
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
+        }
+
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = originalBodyOverflow;
+            document.documentElement.style.overflow = originalHtmlOverflow;
+            document.body.style.paddingRight = originalBodyPaddingRight;
+        };
+    }, [project, onClose]);
 
     if (!project) return null;
 
@@ -25,20 +47,22 @@ export default function ProjectDetailModal({ project, onClose }) {
     const features = (Array.isArray(rawFeatures) ? rawFeatures : []).map(f => typeof f === 'string' ? f.trim() : f).filter(Boolean);
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto overscroll-contain">
             {/* Soft Ambient Backdrop with Rich Blur */}
             <div
-                className="fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-md transition-opacity duration-300"
+                className="fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-md transition-opacity duration-300 overscroll-contain"
                 onClick={onClose}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
             />
 
             {/* Modal Dialog Card */}
-            <div className="relative z-10 w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#0b0f19] text-slate-900 dark:text-white border border-slate-200 dark:border-white/15 shadow-2xl dark:shadow-cyan-950/30 rounded-3xl overflow-hidden flex flex-col my-auto transition-all transform duration-300 animate-fadeIn">
+            <div className="relative z-10 w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#0b0f19] text-slate-900 dark:text-white border border-slate-200 dark:border-white/15 shadow-2xl dark:shadow-cyan-950/30 rounded-3xl overflow-hidden flex flex-col my-auto transition-all transform duration-300 animate-fadeIn overscroll-contain">
                 {/* Header Bar */}
                 <div className="sticky top-0 z-20 bg-white/95 dark:bg-[#0b0f19]/95 backdrop-blur-md px-6 sm:px-8 py-4 border-b border-slate-100 dark:border-white/10 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                         <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:text-cyan-400 border border-ps-primary/20 dark:border-cyan-500/30">
-                            {project.category || 'PROJECT'}
+                            PROJECT SHOWCASE
                         </span>
                         {project.is_featured && (
                             <span className="hidden sm:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-semibold">
@@ -60,7 +84,7 @@ export default function ProjectDetailModal({ project, onClose }) {
                 </div>
 
                 {/* Scrollable Content Body */}
-                <div className="overflow-y-auto p-6 sm:p-8">
+                <div className="overflow-y-auto p-6 sm:p-8 overscroll-contain">
                     {/* Responsive 2-Column Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                         {/* Left Column: Cover Mockup & Actions */}

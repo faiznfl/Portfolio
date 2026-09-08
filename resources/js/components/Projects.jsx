@@ -1,29 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function Projects({ projects = [], onSelectProject }) {
-    const [selectedCategory, setSelectedCategory] = useState('all');
-
-    // Extract unique categories dynamically from actual inputted projects
-    const availableCategories = Array.from(
-        new Set((projects || []).map(p => p.category?.trim()).filter(Boolean))
-    );
-
-    const activeCategory = (selectedCategory === 'all' || availableCategories.includes(selectedCategory))
-        ? selectedCategory
-        : 'all';
-
-    const filteredProjects = activeCategory === 'all'
-        ? projects
-        : projects.filter(p => p.category?.trim().toLowerCase() === activeCategory.toLowerCase());
-
-    const handleFilter = (cat) => {
-        setSelectedCategory(cat);
-    };
-
     return (
         <section id="projects" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
             <div className="max-w-7xl mx-auto space-y-12 relative z-10">
-                {/* Header (Matching Reference Image) */}
+                {/* Header */}
                 <div className="text-center space-y-2 max-w-2xl mx-auto">
                     <div className="section-tagline">TAKE A LOOK AT MY</div>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-slate-900 dark:text-white tracking-tight">
@@ -34,156 +15,115 @@ export default function Projects({ projects = [], onSelectProject }) {
                     </p>
                 </div>
 
-                {/* Projects Category Filter Chips (Only shown when categories exist) */}
-                {availableCategories.length > 0 && (
-                    <div className="w-full flex items-center justify-start sm:justify-center gap-2.5 overflow-x-auto py-2 px-1 max-w-5xl mx-auto scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                        <button
-                            type="button"
-                            onClick={() => handleFilter('all')}
-                            className={`filter-chip-dark whitespace-nowrap shrink-0 ${activeCategory === 'all' ? 'active' : ''}`}
-                        >
-                            All Projects
-                        </button>
-                        {availableCategories.map((cat) => (
-                            <button
-                                key={cat}
-                                type="button"
-                                onClick={() => handleFilter(cat)}
-                                className={`filter-chip-dark whitespace-nowrap shrink-0 ${activeCategory === cat ? 'active' : ''}`}
-                            >
-                                {cat}
-                            </button>
-                        ))}
-                    </div>
-                )}
-
                 {/* 3-Column Projects Grid */}
-                <div 
-                    key={selectedCategory} 
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" 
+                <div
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                     id="projects-grid"
                 >
-                    {filteredProjects.length === 0 ? (
+                    {projects.length === 0 ? (
                         <div className="col-span-full py-16 text-center text-slate-400 dark:text-gray-500 font-light border border-dashed border-slate-200 dark:border-white/10 rounded-2xl p-8">
                             <span className="text-3xl block mb-2">📁</span>
                             <span className="text-sm">Belum ada proyek yang ditambahkan.</span>
                         </div>
                     ) : (
-                        filteredProjects.map((project, index) => {
+                        projects.map((project, index) => {
                             const stacks = Array.isArray(project.tech_stacks)
                                 ? project.tech_stacks
                                 : (typeof project.tech_stacks === 'string' ? JSON.parse(project.tech_stacks) : []);
 
-                        return (
-                            <article
-                                key={project.id || project.slug}
-                                style={{ animationDelay: `${Math.min(index * 45, 250)}ms` }}
-                                onClick={() => onSelectProject && onSelectProject(project)}
-                                className="glass-panel filter-item-animate flex flex-col overflow-hidden group cursor-pointer hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1.5 shadow-md dark:shadow-xl"
-                                data-category={project.category}
-                            >
-                                {/* Project Cover Mockup */}
-                                <div className="relative w-full aspect-video bg-slate-100 dark:bg-[#0a0d1a] overflow-hidden border-b border-slate-200 dark:border-white/10">
-                                    <img
-                                        src={project.cover_image || '/assets/projects/project-omnipulse.svg'}
-                                        alt={project.title}
-                                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        loading="lazy"
-                                    />
-                                    <div className="absolute top-3 left-3">
-                                        <span className="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold tracking-wide uppercase bg-slate-900/80 text-cyan-300 border border-white/15 backdrop-blur-md">
-                                            {project.category}
-                                        </span>
-                                    </div>
-                                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                                        <span className="px-3 py-1.5 rounded-full text-xs font-medium bg-black/70 text-white backdrop-blur-md border border-white/20 shadow-lg">
-                                            Klik untuk melihat detail ↗
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Card Body */}
-                                <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
-                                    <div className="space-y-2">
-                                        <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
-                                            {project.title}
-                                        </h3>
-                                        <p className="text-sm text-slate-600 dark:text-gray-300 line-clamp-3 leading-relaxed font-light">
-                                            {project.summary}
-                                        </p>
+                            return (
+                                <article
+                                    key={project.id || project.slug}
+                                    style={{ animationDelay: `${Math.min(index * 45, 250)}ms` }}
+                                    onClick={() => onSelectProject && onSelectProject(project)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                            e.preventDefault();
+                                            onSelectProject && onSelectProject(project);
+                                        }
+                                    }}
+                                    tabIndex={0}
+                                    role="button"
+                                    className="glass-panel filter-item-animate flex flex-col overflow-hidden group cursor-pointer hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1.5 shadow-md dark:shadow-xl focus:outline-none focus:ring-2 focus:ring-ps-primary/50"
+                                >
+                                    {/* Project Cover Mockup */}
+                                    <div className="relative w-full aspect-video bg-slate-100 dark:bg-[#0a0d1a] overflow-hidden border-b border-slate-200 dark:border-white/10">
+                                        <img
+                                            src={project.cover_image || '/assets/projects/project-omnipulse.svg'}
+                                            alt={project.title}
+                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                            loading="lazy"
+                                        />
                                     </div>
 
-                                    {/* Tech Stack Pills */}
-                                    <div className="flex flex-wrap gap-1.5 pt-1">
-                                        {stacks.slice(0, 4).map((stack, idx) => (
-                                            <span
-                                                key={idx}
-                                                className="px-2.5 py-0.5 rounded text-[11px] font-mono font-medium bg-slate-200/80 dark:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/60 dark:border-white/10"
-                                            >
-                                                {stack}
-                                            </span>
-                                        ))}
-                                        {stacks.length > 4 && (
-                                            <span className="px-2 py-0.5 rounded text-[11px] font-mono text-slate-500 dark:text-gray-400 bg-slate-100 dark:bg-white/5">
-                                                +{stacks.length - 4}
-                                            </span>
-                                        )}
-                                    </div>
+                                    {/* Card Body */}
+                                    <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
+                                        <div className="space-y-2">
+                                            <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                                                {project.title}
+                                            </h3>
+                                            <p className="text-sm text-slate-600 dark:text-gray-300 line-clamp-3 leading-relaxed font-light">
+                                                {project.summary}
+                                            </p>
+                                        </div>
 
-                                    {/* Action Footer with Lihat Detail, Live Demo & Repository */}
-                                    <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between gap-3">
-                                        <button
-                                            type="button"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                if (onSelectProject) onSelectProject(project);
-                                            }}
-                                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-ps-primary dark:text-cyan-300 bg-ps-primary/10 dark:bg-cyan-500/10 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-400 dark:hover:text-black border border-ps-primary/20 dark:border-cyan-400/25 transition-all duration-200 group/btn shadow-xs cursor-pointer"
-                                        >
-                                            <span>Lihat Detail</span>
-                                            <svg className="w-3.5 h-3.5 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                                            </svg>
-                                        </button>
-
-                                        <div className="flex items-center gap-2">
-                                            {project.demo_url && (
-                                                <a
-                                                    href={project.demo_url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    onClick={(e) => e.stopPropagation()}
-                                                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-sm shadow-blue-500/20 hover:shadow-cyan-500/30 transition-all cursor-pointer"
-                                                    title="Buka Live Demo"
+                                        {/* Tech Stack Pills */}
+                                        <div className="flex flex-wrap gap-1.5 pt-1">
+                                            {stacks.slice(0, 4).map((stack, idx) => (
+                                                <span
+                                                    key={idx}
+                                                    className="px-2.5 py-0.5 rounded text-[11px] font-mono font-medium bg-slate-200/80 dark:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/60 dark:border-white/10"
                                                 >
-                                                    <span>Demo</span>
-                                                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                    </svg>
-                                                </a>
-                                            )}
-
-                                            {project.repo_url && (
-                                                <a
-                                                    href={project.repo_url}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    onClick={(e) => e.stopPropagation()}
-                                                    className="w-7 h-7 rounded-full inline-flex items-center justify-center text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.08] dark:hover:bg-white/[0.15] border border-slate-200 dark:border-white/10 transition-all cursor-pointer"
-                                                    title="Lihat Repositori GitHub"
-                                                >
-                                                    <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                                                        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-                                                    </svg>
-                                                </a>
+                                                    {stack}
+                                                </span>
+                                            ))}
+                                            {stacks.length > 4 && (
+                                                <span className="px-2 py-0.5 rounded text-[11px] font-mono text-slate-500 dark:text-gray-400 bg-slate-100 dark:bg-white/5">
+                                                    +{stacks.length - 4}
+                                                </span>
                                             )}
                                         </div>
+
+                                        {/* Action Footer with Live Demo & Repository */}
+                                        {(project.demo_url || project.repo_url) && (
+                                            <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-end gap-2">
+                                                {project.demo_url && (
+                                                    <a
+                                                        href={project.demo_url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-sm shadow-blue-500/20 hover:shadow-cyan-500/30 transition-all cursor-pointer"
+                                                        title="Buka Live Demo"
+                                                    >
+                                                        <span>Demo</span>
+                                                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                        </svg>
+                                                    </a>
+                                                )}
+
+                                                {project.repo_url && (
+                                                    <a
+                                                        href={project.repo_url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        onClick={(e) => e.stopPropagation()}
+                                                        className="w-7 h-7 rounded-full inline-flex items-center justify-center text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.08] dark:hover:bg-white/[0.15] border border-slate-200 dark:border-white/10 transition-all cursor-pointer"
+                                                        title="Lihat Repositori GitHub"
+                                                    >
+                                                        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                                                        </svg>
+                                                    </a>
+                                                )}
+                                            </div>
+                                        )}
                                     </div>
-                                </div>
-                            </article>
-                        );
-                    })
-                )}
+                                </article>
+                            );
+                        })
+                    )}
                 </div>
             </div>
         </section>

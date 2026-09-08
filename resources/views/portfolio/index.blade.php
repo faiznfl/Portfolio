@@ -330,66 +330,62 @@
     <section id="skills" class="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-white/10 overflow-hidden">
         <div class="absolute -right-20 top-1/3 w-[450px] h-[450px] bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto space-y-12 relative z-10">
+        <div class="max-w-3xl mx-auto space-y-10 relative z-10">
             <!-- Header -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                <div class="space-y-3 max-w-2xl">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-cyan-400">
-                        02 / TECHNICAL CAPABILITIES
-                    </div>
-                    <h2 class="ps-display-lg text-white font-light">
-                        Peta Keahlian &amp; <span class="text-gradient-ps font-normal">Ekosistem Teknologi</span>
-                    </h2>
-                    <p class="text-gray-400 text-sm sm:text-base font-light">
-                        Penguasaan mendalam terhadap bahasa pemrograman, framework enterprise, basis data terdistribusi, dan otomasi infrastruktur cloud.
-                    </p>
+            <div class="text-center space-y-2 max-w-xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-cyan-400">
+                    02 / TECHNICAL CAPABILITIES
                 </div>
-
-            @php
-                $skillCategories = $skills->pluck('category')->filter()->map(fn($c) => trim($c))->unique()->values();
-            @endphp
-
-            @if($skillCategories->isNotEmpty())
-                <!-- Category Filter Chips (Horizontal Single Row) -->
-                <div class="flex items-center gap-2 overflow-x-auto py-1 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex-nowrap">
-                    <button type="button" class="filter-chip-dark active whitespace-nowrap shrink-0" data-skill-filter="all">Semua</button>
-                    @foreach($skillCategories as $cat)
-                        <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-skill-filter="{{ $cat }}">{{ $cat == 'DevOps' ? 'DevOps & Cloud' : $cat }}</button>
-                    @endforeach
-                </div>
-            @endif
+                <h2 class="ps-display-lg text-white font-light">
+                    Peta Keahlian &amp; <span class="text-gradient-ps font-normal">Ekosistem Teknologi</span>
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base font-light">
+                    Penguasaan mendalam terhadap bahasa pemrograman, framework enterprise, basis data terdistribusi, dan otomasi infrastruktur cloud.
+                </p>
             </div>
 
-            <!-- Skills Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="skills-container">
+            <!-- 5-Column 3D Tiles Grid with Skill Names -->
+            <div class="grid grid-cols-5 gap-3 sm:gap-4 md:gap-4.5 max-w-[720px] mx-auto justify-items-center" id="skills-container">
                 @forelse($skills as $skill)
-                    <div class="skill-item glass-panel p-5" data-category="{{ $skill->category }}">
-                        <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-mono uppercase tracking-wider text-gray-400">{{ $skill->category }}</span>
-                            @if($skill->is_featured)
-                                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-ps-primary/20 text-cyan-300 border border-ps-primary/40">Core</span>
+                    <div class="group skill-card-item" title="{{ $skill->name }}" aria-label="{{ $skill->name }}">
+                        <!-- Centered Brand Icon -->
+                        <div class="mb-2 flex items-center justify-center">
+                            @if(!empty($skill->icon_svg))
+                                @php
+                                    $rawSvg = trim($skill->icon_svg);
+                                @endphp
+                                @if(str_contains($rawSvg, '<svg') || str_starts_with($rawSvg, '<i '))
+                                    @php
+                                        $svgStart = strpos($rawSvg, '<svg');
+                                        $cleanSvg = $svgStart !== false ? substr($rawSvg, $svgStart) : $rawSvg;
+                                    @endphp
+                                    <div class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 text-ps-primary dark:text-cyan-400 [&>svg]:w-full [&>svg]:h-full [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:object-contain transition-transform duration-200 group-hover:scale-110">
+                                        {!! $cleanSvg !!}
+                                    </div>
+                                @elseif(str_starts_with($rawSvg, 'http') || str_starts_with($rawSvg, '/'))
+                                    <img src="{{ $rawSvg }}" alt="{{ $skill->name }}" class="w-9 h-9 sm:w-10 sm:h-10 object-contain transition-transform duration-200 group-hover:scale-110">
+                                @else
+                                    <span class="text-2xl sm:text-3xl select-none leading-none transition-transform duration-200 group-hover:scale-110">{{ $rawSvg }}</span>
+                                @endif
+                            @else
+                                <svg class="w-9 h-9 sm:w-10 sm:h-10 text-ps-primary dark:text-cyan-400 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                    <polyline points="16 18 22 12 16 6"/>
+                                    <polyline points="8 6 2 12 8 18"/>
+                                </svg>
                             @endif
                         </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-ps-primary dark:text-cyan-400 [&>svg]:w-6 [&>svg]:h-6 [&>svg]:fill-current flex-shrink-0">
-                                @if(!empty($skill->icon_svg))
-                                    @if(str_starts_with(trim($skill->icon_svg), '<svg') || str_starts_with(trim($skill->icon_svg), '<i '))
-                                        {!! $skill->icon_svg !!}
-                                    @elseif(str_starts_with(trim($skill->icon_svg), 'http') || str_starts_with(trim($skill->icon_svg), '/'))
-                                        <img src="{{ $skill->icon_svg }}" alt="{{ $skill->name }}" class="w-6 h-6 object-contain">
-                                    @else
-                                        <span class="text-xl">{{ $skill->icon_svg }}</span>
-                                    @endif
-                                @else
-                                    <span class="text-lg">⚡</span>
-                                @endif
-                            </div>
-                            <h4 class="text-base font-semibold text-white">{{ $skill->name }}</h4>
+
+                        <!-- Tech Name Only -->
+                        <div class="w-full h-8 flex items-center justify-center px-1">
+                            <span class="text-[11px] sm:text-xs font-semibold text-slate-800 dark:text-slate-200 tracking-tight leading-tight line-clamp-2 text-center group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                                {{ $skill->name }}
+                            </span>
                         </div>
                     </div>
                 @empty
-                    <div class="col-span-full py-12 text-center text-gray-500 font-light border border-dashed border-white/10 rounded-xl">
-                        Belum ada keahlian yang ditambahkan.
+                    <div class="col-span-full py-16 text-center text-slate-400 dark:text-gray-500 font-light border border-dashed border-slate-200 dark:border-white/10 rounded-2xl p-8">
+                        <span class="text-3xl block mb-2">💻</span>
+                        <span class="text-sm">Belum ada keahlian yang ditambahkan.</span>
                     </div>
                 @endforelse
             </div>
@@ -416,37 +412,18 @@
                         Koleksi proyek pilihan dalam rekayasa sistem produksi, arsitektur terdistribusi, dan aplikasi web performa tinggi.
                     </p>
                 </div>
-
-            @php
-                $projectCategories = $projects->pluck('category')->filter()->map(fn($c) => trim($c))->unique()->values();
-            @endphp
-
-            @if($projectCategories->isNotEmpty())
-                <!-- Projects Category Filter Chips (Horizontal Single Row) -->
-                <div class="flex items-center gap-2 overflow-x-auto py-1 scrollbar-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden flex-nowrap">
-                    <button type="button" class="filter-chip-dark active whitespace-nowrap shrink-0" data-project-filter="all">Semua Proyek</button>
-                    @foreach($projectCategories as $cat)
-                        <button type="button" class="filter-chip-dark whitespace-nowrap shrink-0" data-project-filter="{{ $cat }}">{{ $cat }}</button>
-                    @endforeach
-                </div>
-            @endif
             </div>
 
             <!-- Projects Grid with 3D Interactive Tilt -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 tilt-card-container" id="projects-grid">
                 @forelse($projects as $project)
-                    <article class="project-card-item tilt-card glass-panel flex flex-col overflow-hidden group border border-white/10" data-category="{{ $project->category }}">
+                    <article class="project-card-item tilt-card glass-panel flex flex-col overflow-hidden group border border-white/10">
                         <!-- Project Cover Mockup -->
                         <div class="relative w-full aspect-video bg-[#0a0f1d] overflow-hidden border-b border-white/10">
                             <img src="{{ $project->cover_image ?? asset('assets/projects/project-omnipulse.svg') }}" 
                                  alt="{{ $project->title }}" 
                                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                                  loading="lazy">
-                            <div class="absolute top-3 left-3">
-                                <span class="px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wide uppercase bg-black/80 text-cyan-300 border border-white/15 backdrop-blur-md">
-                                    {{ $project->category }}
-                                </span>
-                            </div>
                         </div>
 
                         <!-- Card Body -->
@@ -477,15 +454,8 @@
                             </div>
 
                             <!-- Action Buttons -->
-                            <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-3">
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-cyan-300 bg-cyan-500/10 border border-cyan-400/25 group-hover:bg-cyan-400 group-hover:text-black transition-all">
-                                    <span>Lihat Detail</span>
-                                    <svg class="w-3.5 h-3.5 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                    </svg>
-                                </span>
-
-                                <div class="flex items-center gap-2">
+                            @if(!empty($project->demo_url) || !empty($project->repo_url))
+                                <div class="pt-4 border-t border-white/10 flex items-center justify-end gap-2">
                                     @if(!empty($project->demo_url))
                                         <a href="{{ $project->demo_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-sm shadow-blue-500/20 hover:shadow-cyan-500/30 transition-all" title="Buka Live Demo">
                                             <span>Demo</span>
@@ -503,7 +473,7 @@
                                         </a>
                                     @endif
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </article>
                 @empty

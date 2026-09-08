@@ -2,21 +2,34 @@ import React, { useEffect } from 'react';
 
 export default function CertificateDetailModal({ certificate, onClose }) {
     useEffect(() => {
+        if (!certificate) return;
+
         const handleKeyDown = (e) => {
             if (e.key === 'Escape') onClose();
         };
         window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [onClose]);
 
-    useEffect(() => {
-        if (certificate) {
-            document.body.style.overflow = 'hidden';
+        // Lock background scrolling on body and html
+        const originalBodyOverflow = document.body.style.overflow;
+        const originalHtmlOverflow = document.documentElement.style.overflow;
+        const originalBodyPaddingRight = document.body.style.paddingRight;
+
+        // Prevent layout shift from scrollbar disappearing
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        if (scrollbarWidth > 0) {
+            document.body.style.paddingRight = `${scrollbarWidth}px`;
         }
+
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+
         return () => {
-            document.body.style.overflow = '';
+            window.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = originalBodyOverflow;
+            document.documentElement.style.overflow = originalHtmlOverflow;
+            document.body.style.paddingRight = originalBodyPaddingRight;
         };
-    }, [certificate]);
+    }, [certificate, onClose]);
 
     if (!certificate) return null;
 
@@ -34,11 +47,13 @@ export default function CertificateDetailModal({ certificate, onClose }) {
     const tags = getTags();
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto overscroll-contain">
             {/* Ambient Backdrop */}
             <div
-                className="fixed inset-0 bg-slate-950/50 backdrop-blur-md transition-opacity duration-300"
+                className="fixed inset-0 bg-slate-950/50 backdrop-blur-md transition-opacity duration-300 overscroll-contain"
                 onClick={onClose}
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
             />
 
             {/* Modal Dialog Card (White Liquid Glass Aesthetic) */}

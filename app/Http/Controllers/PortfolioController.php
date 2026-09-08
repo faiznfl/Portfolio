@@ -27,7 +27,7 @@ class PortfolioController extends Controller
         $skills = Skill::orderBy('order_index')->get();
         $skillsByCategory = $skills->groupBy('category');
         $projects = Project::where('is_published', true)->orderBy('order_index')->get();
-        $experiences = Experience::orderBy('order_index')->get();
+        $experiences = Experience::orderBy('order_index')->orderByDesc('start_date')->orderByDesc('end_date')->get();
         $certificates = Certificate::orderBy('order_index')->get();
 
         return view('portfolio.index', compact(

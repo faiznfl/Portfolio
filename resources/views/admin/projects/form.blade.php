@@ -38,39 +38,15 @@
                         </h3>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <!-- Title -->
-                        <div class="space-y-2">
-                            <label for="title" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
-                                Judul Proyek <span class="text-red-500">*</span>
-                            </label>
-                            <input type="text" id="title" name="title" value="{{ old('title', $project->title) }}" required
-                                   placeholder="cth: OmniPulse: Commerce Engine"
-                                   class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
-                            @error('title') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
-                        </div>
-
-                        <!-- Category -->
-                        <div class="space-y-2">
-                            <label for="category" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
-                                Kategori <span class="text-red-500">*</span>
-                            </label>
-                            <input type="text" id="category" name="category" list="project-category-options" required
-                                   value="{{ old('category', $project->category) }}"
-                                   placeholder="Pilih atau ketik kategori (cth: Web Application, Full-Stack, Mobile App)"
-                                   class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
-                            <datalist id="project-category-options">
-                                <option value="Web Application">
-                                <option value="Full-Stack">
-                                <option value="Backend & Systems">
-                                <option value="Frontend">
-                                <option value="UI/UX Design">
-                                <option value="Mobile App">
-                                <option value="Cloud & DevOps">
-                                <option value="AI & Realtime">
-                            </datalist>
-                            @error('category') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
-                        </div>
+                    <!-- Title -->
+                    <div class="space-y-2">
+                        <label for="title" class="block text-xs font-semibold uppercase text-slate-700 dark:text-gray-300">
+                            Judul Proyek <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text" id="title" name="title" value="{{ old('title', $project->title) }}" required
+                               placeholder="cth: OmniPulse: Commerce Engine"
+                               class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
+                        @error('title') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
 
                     <!-- Cover Image (Lewat Direktori Lokal) -->

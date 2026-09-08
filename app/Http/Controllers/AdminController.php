@@ -78,7 +78,7 @@ class AdminController extends Controller
         $messages = Message::orderByDesc('created_at')->paginate(10);
         $projects = Project::orderBy('order_index')->get();
         $skills = Skill::orderBy('order_index')->get();
-        $experiences = Experience::orderByDesc('start_date')->get();
+        $experiences = Experience::orderBy('order_index')->orderByDesc('start_date')->orderByDesc('end_date')->get();
         $certificates = Certificate::orderBy('order_index')->get();
 
         return view('admin.dashboard', compact(
@@ -169,7 +169,7 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:200'],
-            'category' => ['required', 'string', 'max:100'],
+            'category' => ['nullable', 'string', 'max:100'],
             'summary' => ['required', 'string'],
             'cover_image' => ['nullable', 'string', 'max:255'],
             'project_image' => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
@@ -246,7 +246,7 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:200'],
-            'category' => ['required', 'string', 'max:100'],
+            'category' => ['nullable', 'string', 'max:100'],
             'summary' => ['required', 'string'],
             'cover_image' => ['nullable', 'string', 'max:255'],
             'project_image' => ['nullable', 'file', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
@@ -337,12 +337,40 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:100'],
-            'category' => ['required', 'string', 'max:100'],
+            'category' => ['nullable', 'string', 'max:100'],
             'proficiency_level' => ['nullable', 'integer', 'min:1', 'max:100'],
             'order_index' => ['nullable', 'integer'],
             'is_featured' => ['boolean'],
             'icon_svg' => ['nullable', 'string'],
+            'icon_svg_file' => ['nullable', 'file', 'max:2048'],
         ]);
+
+        if ($request->hasFile('icon_svg_file')) {
+            $file = $request->file('icon_svg_file');
+            $extension = strtolower($file->getClientOriginalExtension() ?: 'svg');
+            if (! in_array($extension, ['svg', 'xml', 'png', 'webp', 'jpg', 'jpeg'])) {
+                return back()->withErrors(['icon_svg_file' => 'Berkas harus berupa file SVG (.svg).'])->withInput();
+            }
+
+            $content = file_get_contents($file->getRealPath());
+            $cleanSvg = preg_replace('/^<\?xml[^>]*\?>/i', '', trim($content));
+            $cleanSvg = preg_replace('/^<!DOCTYPE[^>]*>/i', '', trim($cleanSvg));
+            $cleanSvg = trim($cleanSvg);
+
+            if (str_contains($cleanSvg, '<svg')) {
+                $svgStart = strpos($cleanSvg, '<svg');
+                $validated['icon_svg'] = substr($cleanSvg, $svgStart);
+            } else {
+                $destination = public_path('assets/skills');
+                if (! file_exists($destination)) {
+                    mkdir($destination, 0755, true);
+                }
+                $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$extension;
+                $file->move($destination, $filename);
+                $validated['icon_svg'] = '/assets/skills/'.$filename;
+            }
+        }
+        unset($validated['icon_svg_file']);
 
         $validated['proficiency_level'] = $request->input('proficiency_level', 100) ?: 100;
         $validated['order_index'] = $request->input('order_index', 0);
@@ -365,12 +393,44 @@ class AdminController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:100'],
-            'category' => ['required', 'string', 'max:100'],
+            'category' => ['nullable', 'string', 'max:100'],
             'proficiency_level' => ['nullable', 'integer', 'min:1', 'max:100'],
             'order_index' => ['nullable', 'integer'],
             'is_featured' => ['boolean'],
             'icon_svg' => ['nullable', 'string'],
+            'icon_svg_file' => ['nullable', 'file', 'max:2048'],
         ]);
+
+        if ($request->hasFile('icon_svg_file')) {
+            $file = $request->file('icon_svg_file');
+            $extension = strtolower($file->getClientOriginalExtension() ?: 'svg');
+            if (! in_array($extension, ['svg', 'xml', 'png', 'webp', 'jpg', 'jpeg'])) {
+                return back()->withErrors(['icon_svg_file' => 'Berkas harus berupa file SVG (.svg).'])->withInput();
+            }
+
+            $content = file_get_contents($file->getRealPath());
+            $cleanSvg = preg_replace('/^<\?xml[^>]*\?>/i', '', trim($content));
+            $cleanSvg = preg_replace('/^<!DOCTYPE[^>]*>/i', '', trim($cleanSvg));
+            $cleanSvg = trim($cleanSvg);
+
+            if (str_contains($cleanSvg, '<svg')) {
+                $svgStart = strpos($cleanSvg, '<svg');
+                $validated['icon_svg'] = substr($cleanSvg, $svgStart);
+            } else {
+                $destination = public_path('assets/skills');
+                if (! file_exists($destination)) {
+                    mkdir($destination, 0755, true);
+                }
+                $filename = time().'_'.Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)).'.'.$extension;
+                $file->move($destination, $filename);
+                $validated['icon_svg'] = '/assets/skills/'.$filename;
+            }
+        } elseif ($request->has('icon_svg')) {
+            $validated['icon_svg'] = $request->input('icon_svg');
+        } else {
+            $validated['icon_svg'] = $skill->icon_svg;
+        }
+        unset($validated['icon_svg_file']);
 
         $validated['proficiency_level'] = $request->input('proficiency_level', $skill->proficiency_level ?: 100) ?: 100;
         $validated['order_index'] = $request->input('order_index', $skill->order_index);
@@ -394,7 +454,7 @@ class AdminController extends Controller
 
     public function experiencesIndex(): View
     {
-        $experiences = Experience::orderByDesc('start_date')->paginate(15);
+        $experiences = Experience::orderBy('order_index')->orderByDesc('start_date')->orderByDesc('end_date')->paginate(15);
 
         return view('admin.experiences.index', compact('experiences'));
     }
