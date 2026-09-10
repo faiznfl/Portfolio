@@ -29,7 +29,8 @@
                 <input type="email" 
                        id="email" 
                        name="email" 
-                       value="{{ old('email', 'admin@portfolio.local') }}" 
+                       value="{{ old('email') }}" 
+                       placeholder="admin@example.com"
                        required 
                        autofocus
                        class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-sm">
@@ -46,7 +47,7 @@
                 <input type="password" 
                        id="password" 
                        name="password" 
-                       value="password"
+                       placeholder="••••••••"
                        required
                        class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-sm">
                 @error('password')

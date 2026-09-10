@@ -11,7 +11,9 @@ use App\Models\Skill;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class AdminController extends Controller
@@ -692,5 +694,63 @@ class AdminController extends Controller
         $certificate->delete();
 
         return redirect()->route('admin.certificates.index')->with('success', 'Sertifikat berhasil dihapus.');
+    }
+
+    /**
+     * Show admin account and credentials settings page.
+     */
+    public function accountIndex(): View
+    {
+        $user = Auth::user();
+
+        return view('admin.account', compact('user'));
+    }
+
+    /**
+     * Update admin profile name and email address.
+     */
+    public function accountUpdate(Request $request): RedirectResponse
+    {
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+        ], [
+            'name.required' => 'Nama admin wajib diisi.',
+            'email.required' => 'Alamat email wajib diisi.',
+            'email.email' => 'Format alamat email tidak valid.',
+            'email.unique' => 'Alamat email ini sudah digunakan oleh akun lain.',
+        ]);
+
+        $user->fill($validated);
+        $user->save();
+
+        return redirect()->route('admin.account.index')->with('profile_success', 'Informasi profil dan alamat email admin berhasil diperbarui.');
+    }
+
+    /**
+     * Update admin account password.
+     */
+    public function passwordUpdate(Request $request): RedirectResponse
+    {
+        $user = $request->user();
+
+        $validated = $request->validate([
+            'current_password' => ['required', 'string', 'current_password'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ], [
+            'current_password.required' => 'Kata sandi saat ini wajib diisi.',
+            'current_password.current_password' => 'Kata sandi saat ini yang Anda masukkan salah.',
+            'password.required' => 'Kata sandi baru wajib diisi.',
+            'password.min' => 'Kata sandi baru minimal harus 8 karakter.',
+            'password.confirmed' => 'Konfirmasi kata sandi baru tidak cocok.',
+        ]);
+
+        $user->update([
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        return redirect()->route('admin.account.index')->with('password_success', 'Kata sandi admin berhasil diperbarui.');
     }
 }

@@ -27,6 +27,11 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::put('/availability', [AdminController::class, 'updateAvailability'])->name('availability.update');
 
+    // Account & Credentials Management
+    Route::get('/account', [AdminController::class, 'accountIndex'])->name('account.index');
+    Route::put('/account', [AdminController::class, 'accountUpdate'])->name('account.update');
+    Route::put('/account/password', [AdminController::class, 'passwordUpdate'])->name('account.password.update');
+
     // Messages Management
     Route::patch('/messages/{message}/toggle-read', [AdminController::class, 'toggleMessageRead'])->name('messages.toggle-read');
     Route::delete('/messages/{message}', [AdminController::class, 'deleteMessage'])->name('messages.destroy');

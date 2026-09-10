@@ -99,6 +99,16 @@
                 </svg>
             </button>
 
+            <!-- Account Settings Button -->
+            <a href="{{ route('admin.account.index') }}" 
+               class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium {{ request()->routeIs('admin.account.*') ? 'text-ps-primary dark:text-cyan-300 bg-ps-primary/10 border-ps-primary/30 font-semibold shadow-sm' : 'text-slate-700 dark:text-slate-300 bg-slate-200/60 dark:bg-white/5 hover:bg-slate-300/70 dark:hover:bg-white/10 border border-slate-300/60 dark:border-white/10' }} transition-colors"
+               title="Pengaturan Akun & Kata Sandi">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span class="hidden sm:inline">Akun</span>
+            </a>
+
             <!-- Public Website Link Button -->
             <a href="{{ route('home') }}" target="_blank" 
                class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-200/60 dark:bg-white/5 hover:bg-slate-300/70 dark:hover:bg-white/10 border border-slate-300/60 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-colors"
@@ -148,6 +158,9 @@
         </a>
         <a href="{{ route('admin.dashboard') }}#certificates" data-section="certificates" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.certificates.*') ? 'text-ps-primary dark:text-cyan-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
             Certificates
+        </a>
+        <a href="{{ route('admin.account.index') }}" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.account.*') ? 'text-ps-primary dark:text-cyan-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
+            Pengaturan Akun
         </a>
         <div class="pt-2 border-t border-slate-200 dark:border-white/10">
             <a href="{{ route('home') }}" target="_blank" class="block px-3 py-2 rounded-xl text-ps-primary dark:text-cyan-400 font-semibold hover:underline">

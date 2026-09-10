@@ -663,4 +663,96 @@ class AdminTest extends TestCase
         $this->assertNull($exp->company_url);
         $this->assertEquals('Membantu pengembangan arsitektur mikroservis dan integrasi payment gateway.', $exp->summary);
     }
+
+    public function test_unauthenticated_user_cannot_access_admin_account_page(): void
+    {
+        $response = $this->get('/admin/account');
+
+        $response->assertRedirect('/admin/login');
+    }
+
+    public function test_authenticated_admin_can_view_account_page(): void
+    {
+        $response = $this->actingAs($this->admin)->get('/admin/account');
+
+        $response->assertStatus(200);
+        $response->assertSee('Pengaturan Akun &amp; Kredensial', false);
+        $response->assertSee('Alamat Email Login');
+        $response->assertSee('Perbarui Kata Sandi (Password)');
+        $response->assertSee($this->admin->email);
+    }
+
+    public function test_admin_can_update_profile_name_and_email(): void
+    {
+        $response = $this->actingAs($this->admin)->put('/admin/account', [
+            'name' => 'Faiz Naufal Admin',
+            'email' => 'newadmin@portfolio.local',
+        ]);
+
+        $response->assertRedirect('/admin/account');
+        $response->assertSessionHas('profile_success');
+
+        $this->admin->refresh();
+        $this->assertEquals('Faiz Naufal Admin', $this->admin->name);
+        $this->assertEquals('newadmin@portfolio.local', $this->admin->email);
+    }
+
+    public function test_admin_cannot_update_email_to_already_taken_email(): void
+    {
+        User::factory()->create([
+            'email' => 'otheradmin@portfolio.local',
+        ]);
+
+        $response = $this->actingAs($this->admin)->put('/admin/account', [
+            'name' => 'Faiz Admin',
+            'email' => 'otheradmin@portfolio.local',
+        ]);
+
+        $response->assertSessionHasErrors('email');
+        $this->admin->refresh();
+        $this->assertNotEquals('otheradmin@portfolio.local', $this->admin->email);
+    }
+
+    public function test_admin_can_update_password_with_valid_current_password(): void
+    {
+        $response = $this->actingAs($this->admin)->put('/admin/account/password', [
+            'current_password' => 'password',
+            'password' => 'newSecretPassword123!',
+            'password_confirmation' => 'newSecretPassword123!',
+        ]);
+
+        $response->assertRedirect('/admin/account');
+        $response->assertSessionHas('password_success');
+
+        // Verify that the new password works for login
+        $this->post('/admin/logout');
+        $loginResponse = $this->post('/admin/login', [
+            'email' => $this->admin->email,
+            'password' => 'newSecretPassword123!',
+        ]);
+        $loginResponse->assertRedirect('/admin');
+        $this->assertAuthenticatedAs($this->admin);
+    }
+
+    public function test_admin_cannot_update_password_with_invalid_current_password(): void
+    {
+        $response = $this->actingAs($this->admin)->put('/admin/account/password', [
+            'current_password' => 'wrongPassword',
+            'password' => 'newSecretPassword123!',
+            'password_confirmation' => 'newSecretPassword123!',
+        ]);
+
+        $response->assertSessionHasErrors('current_password');
+    }
+
+    public function test_admin_cannot_update_password_when_confirmation_does_not_match(): void
+    {
+        $response = $this->actingAs($this->admin)->put('/admin/account/password', [
+            'current_password' => 'password',
+            'password' => 'newSecretPassword123!',
+            'password_confirmation' => 'differentConfirmation123!',
+        ]);
+
+        $response->assertSessionHasErrors('password');
+    }
 }
