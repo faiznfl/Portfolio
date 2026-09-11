@@ -39,7 +39,15 @@
                         <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         <span>+ Skill</span>
                     </a>
-                    <a href="{{ route('resume.download') }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 transition-all" title="Unduh Berkas CV Aktif">
+                    <button type="button" onclick="openCvModal()" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary/20 dark:bg-cyan-500/10 dark:hover:bg-cyan-500/20 border border-ps-primary/30 dark:border-cyan-500/30 transition-all shadow-sm cursor-pointer" title="Unggah Berkas CV / Resume Baru">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                        <span>Upload CV</span>
+                    </button>
+                    <a href="{{ route('resume.preview') }}" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 transition-all" title="Lihat Berkas CV Aktif ({{ $cvInfo['filename'] ?? 'resume.pdf' }})">
+                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        <span>Lihat CV</span>
+                    </a>
+                    <a href="{{ route('resume.download') }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 transition-all" title="Unduh Berkas CV Aktif ({{ $cvInfo['filename'] ?? 'resume.pdf' }})">
                         <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                         <span>Unduh CV</span>
                     </a>
@@ -626,4 +634,234 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Upload Berkas CV -->
+<div id="cv-upload-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm transition-opacity duration-300">
+    <div class="ps-card-dark max-w-lg w-full p-6 sm:p-7 space-y-6 shadow-2xl relative border border-slate-200 dark:border-white/15 animate-in fade-in zoom-in duration-200" onclick="event.stopPropagation()">
+        <!-- Modal Header -->
+        <div class="flex items-start justify-between border-b border-slate-200 dark:border-white/10 pb-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-ps-primary/10 text-ps-primary dark:text-cyan-400 border border-ps-primary/20 flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight">Upload &amp; Perbarui Berkas CV</h3>
+                    <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">Unggah berkas CV terbaru yang langsung terhubung ke publik.</p>
+                </div>
+            </div>
+            <button type="button" onclick="closeCvModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-lg hover:bg-slate-100 dark:hover:bg-white/10 transition-colors" title="Tutup Modal">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <!-- Current Active CV Status Widget -->
+        <div class="p-4 rounded-xl bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 space-y-2.5 text-xs">
+            <div class="flex items-center justify-between">
+                <span class="font-mono uppercase font-bold text-[10px] tracking-wider text-slate-500 dark:text-gray-400">Berkas CV Aktif Saat Ini:</span>
+                @if($cvInfo['exists'])
+                    <span class="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-semibold">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        Tersedia
+                    </span>
+                @else
+                    <span class="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-semibold">
+                        Belum Diunggah
+                    </span>
+                @endif
+            </div>
+            <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2 truncate">
+                    <svg class="w-4 h-4 text-ps-primary dark:text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                    </svg>
+                    <span class="font-semibold text-slate-800 dark:text-slate-200 truncate font-mono text-[11px]" title="{{ $cvInfo['filename'] }}">{{ $cvInfo['filename'] }}</span>
+                </div>
+                <span class="font-mono text-slate-500 dark:text-gray-400 text-[11px] shrink-0">{{ $cvInfo['size'] }}</span>
+            </div>
+            @if($cvInfo['updated_at'])
+                <div class="text-[11px] text-slate-400 dark:text-gray-500">
+                    Terakhir diperbarui: <span class="font-mono text-slate-600 dark:text-gray-300">{{ $cvInfo['updated_at'] }}</span>
+                </div>
+            @endif
+            <div class="pt-1 flex items-center gap-4">
+                <a href="{{ route('resume.preview') }}" target="_blank" class="text-ps-primary dark:text-cyan-400 hover:underline inline-flex items-center gap-1 font-semibold text-[11px]">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    <span>Lihat / Preview CV</span>
+                </a>
+                <a href="{{ route('resume.download') }}" class="text-slate-500 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white inline-flex items-center gap-1 text-[11px]">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    <span>Download CV Langsung</span>
+                </a>
+            </div>
+        </div>
+
+        @error('cv_file')
+            <div class="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-400 text-xs flex items-center gap-2">
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span>{{ $message }}</span>
+            </div>
+        @enderror
+
+        <!-- Form Upload -->
+        <form action="{{ route('admin.cv.upload') }}" method="POST" enctype="multipart/form-data" class="space-y-5" id="cv-modal-form">
+            @csrf
+
+            <!-- Dropzone Area -->
+            <div id="cv-dropzone" 
+                 class="relative border-2 border-dashed border-slate-300 dark:border-white/20 hover:border-ps-primary dark:hover:border-cyan-400 rounded-2xl p-6 text-center cursor-pointer transition-all bg-slate-50/50 hover:bg-ps-primary/[0.02] dark:bg-white/[0.02] dark:hover:bg-cyan-500/[0.03] group">
+                <input type="file" 
+                       id="modal_cv_file" 
+                       name="cv_file" 
+                       accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
+                       required 
+                       class="hidden" 
+                       onchange="handleCvFileSelect(this)">
+
+                <div id="dropzone-idle" class="space-y-3">
+                    <div class="w-12 h-12 rounded-2xl bg-ps-primary/10 text-ps-primary dark:bg-cyan-500/10 dark:text-cyan-400 border border-ps-primary/20 dark:border-cyan-500/30 mx-auto flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">
+                            Tarik &amp; letakkan berkas CV ke sini, atau <span class="text-ps-primary dark:text-cyan-400 underline">pilih berkas</span>
+                        </p>
+                        <p class="text-xs text-slate-500 dark:text-gray-400">
+                            Format yang didukung: <span class="font-semibold text-slate-700 dark:text-slate-300">PDF, DOC, DOCX</span> (Maksimal 10 MB)
+                        </p>
+                    </div>
+                </div>
+
+                <div id="dropzone-selected" class="hidden space-y-3">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 mx-auto flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-1">
+                        <p id="selected-cv-name" class="text-sm font-bold text-slate-900 dark:text-white font-mono truncate max-w-xs mx-auto"></p>
+                        <p id="selected-cv-size" class="text-xs text-emerald-600 dark:text-emerald-400 font-mono font-medium"></p>
+                    </div>
+                    <button type="button" onclick="resetCvFileInput(event)" class="text-xs text-rose-500 hover:text-rose-600 underline font-medium">
+                        Pilih Berkas Lain
+                    </button>
+                </div>
+            </div>
+
+            <!-- Footer Actions -->
+            <div class="flex items-center justify-end gap-3 pt-2">
+                <button type="button" onclick="closeCvModal()" class="px-4 py-2.5 rounded-full text-xs font-semibold text-slate-600 dark:text-gray-300 hover:bg-slate-200/70 dark:hover:bg-white/10 transition-colors">
+                    Batal
+                </button>
+                <button type="submit" id="btn-submit-cv" class="btn-ps-primary !py-2.5 !px-6 !text-xs !font-bold flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                    <span>Upload &amp; Terapkan CV</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    const cvModal = document.getElementById('cv-upload-modal');
+    const cvDropzone = document.getElementById('cv-dropzone');
+    const cvFileInput = document.getElementById('modal_cv_file');
+    const dropzoneIdle = document.getElementById('dropzone-idle');
+    const dropzoneSelected = document.getElementById('dropzone-selected');
+    const selectedCvName = document.getElementById('selected-cv-name');
+    const selectedCvSize = document.getElementById('selected-cv-size');
+
+    function openCvModal() {
+        if (!cvModal) return;
+        cvModal.classList.remove('hidden');
+        cvModal.classList.add('flex');
+    }
+
+    function closeCvModal() {
+        if (!cvModal) return;
+        cvModal.classList.add('hidden');
+        cvModal.classList.remove('flex');
+    }
+
+    // Close on backdrop click
+    if (cvModal) {
+        cvModal.addEventListener('click', function(e) {
+            if (e.target === cvModal) {
+                closeCvModal();
+            }
+        });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && cvModal && !cvModal.classList.contains('hidden')) {
+            closeCvModal();
+        }
+    });
+
+    if (cvDropzone && cvFileInput) {
+        cvDropzone.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'BUTTON' && !e.target.closest('button')) {
+                cvFileInput.click();
+            }
+        });
+
+        // Drag and drop events
+        ['dragenter', 'dragover'].forEach(eventName => {
+            cvDropzone.addEventListener(eventName, function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                cvDropzone.classList.add('border-ps-primary', 'dark:border-cyan-400', 'bg-ps-primary/5', 'dark:bg-cyan-500/10');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            cvDropzone.addEventListener(eventName, function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                cvDropzone.classList.remove('border-ps-primary', 'dark:border-cyan-400', 'bg-ps-primary/5', 'dark:bg-cyan-500/10');
+            }, false);
+        });
+
+        cvDropzone.addEventListener('drop', function(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length > 0) {
+                cvFileInput.files = files;
+                handleCvFileSelect(cvFileInput);
+            }
+        });
+    }
+
+    function handleCvFileSelect(input) {
+        if (input.files && input.files[0]) {
+            const file = input.files[0];
+            selectedCvName.textContent = file.name;
+            const sizeInKb = (file.size / 1024);
+            if (sizeInKb >= 1024) {
+                selectedCvSize.textContent = (sizeInKb / 1024).toFixed(2) + ' MB';
+            } else {
+                selectedCvSize.textContent = sizeInKb.toFixed(1) + ' KB';
+            }
+            dropzoneIdle.classList.add('hidden');
+            dropzoneSelected.classList.remove('hidden');
+        }
+    }
+
+    function resetCvFileInput(event) {
+        if (event) event.stopPropagation();
+        if (cvFileInput) cvFileInput.value = '';
+        dropzoneIdle.classList.remove('hidden');
+        dropzoneSelected.classList.add('hidden');
+    }
+
+    @if($errors->has('cv_file'))
+        document.addEventListener('DOMContentLoaded', function() {
+            openCvModal();
+        });
+    @endif
+</script>
 @endsection

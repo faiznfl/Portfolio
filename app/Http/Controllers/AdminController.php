@@ -82,9 +82,11 @@ class AdminController extends Controller
         $skills = Skill::orderBy('order_index')->get();
         $experiences = Experience::orderBy('order_index')->orderByDesc('start_date')->orderByDesc('end_date')->get();
         $certificates = Certificate::orderBy('order_index')->get();
+        $cvInfo = $this->getCvFileInfo($profile);
 
         return view('admin.dashboard', compact(
             'profile',
+            'cvInfo',
             'totalProjects',
             'totalSkills',
             'totalExperiences',
@@ -702,8 +704,10 @@ class AdminController extends Controller
     public function accountIndex(): View
     {
         $user = Auth::user();
+        $profile = Profile::first();
+        $cvInfo = $this->getCvFileInfo($profile);
 
-        return view('admin.account', compact('user'));
+        return view('admin.account', compact('user', 'profile', 'cvInfo'));
     }
 
     /**
@@ -752,5 +756,96 @@ class AdminController extends Controller
         ]);
 
         return redirect()->route('admin.account.index')->with('password_success', 'Kata sandi admin berhasil diperbarui.');
+    }
+
+    /**
+     * Upload and update the developer CV / resume file.
+     */
+    public function uploadCv(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'cv_file' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:10240'],
+        ], [
+            'cv_file.required' => 'Pilih berkas CV terlebih dahulu sebelum mengunggah.',
+            'cv_file.file' => 'Berkas yang diunggah harus berupa file yang valid.',
+            'cv_file.mimes' => 'Format berkas CV harus berupa PDF, DOC, atau DOCX.',
+            'cv_file.max' => 'Ukuran berkas CV maksimal adalah 10 MB.',
+        ]);
+
+        $file = $request->file('cv_file');
+        $originalName = $file->getClientOriginalName();
+        $extension = strtolower($file->getClientOriginalExtension() ?: 'pdf');
+        $filename = 'cv-faiz-naufal-'.time().'-'.Str::random(6).'.'.$extension;
+        $targetDirectory = public_path('assets/cv');
+
+        if (! is_dir($targetDirectory)) {
+            mkdir($targetDirectory, 0755, true);
+        }
+
+        $profile = Profile::first();
+        if (! $profile) {
+            $profile = Profile::create([
+                'full_name' => 'Faiz Naufal Putra Permana',
+                'headline' => 'Web Developer | UI/UX Enthusiast',
+                'bio_about' => 'Fresh Graduate Sistem Informasi Universitas Pamulang.',
+            ]);
+        }
+
+        // Clean up previously uploaded custom CV in assets/cv if exists
+        if ($profile->resume_file_path && str_starts_with($profile->resume_file_path, '/assets/cv/')) {
+            $oldPath = public_path(ltrim($profile->resume_file_path, '/\\'));
+            if (file_exists($oldPath)) {
+                @unlink($oldPath);
+            }
+        }
+
+        $file->move($targetDirectory, $filename);
+        $newRelativePath = '/assets/cv/'.$filename;
+
+        $profile->update([
+            'resume_file_path' => $newRelativePath,
+            'resume_original_name' => $originalName,
+        ]);
+
+        return back()
+            ->with('cv_success', 'Berkas CV baru ('.$originalName.') berhasil diunggah dan aktif secara instan!')
+            ->with('success', 'Berkas CV baru berhasil diunggah.');
+    }
+
+    /**
+     * Get active CV file information (path, filename, size, last updated, exists).
+     *
+     * @return array{path: string, filename: string, exists: bool, size: string, updated_at: ?string, preview_url: string, download_url: string}
+     */
+    private function getCvFileInfo(?Profile $profile): array
+    {
+        $relativePath = $profile?->resume_file_path ?: '/assets/resume-faiz-naufal.pdf';
+        $fullPath = public_path(ltrim($relativePath, '/\\'));
+        $exists = file_exists($fullPath);
+
+        $size = '0 KB';
+        $updatedAt = null;
+
+        if ($exists) {
+            $bytes = filesize($fullPath);
+            if ($bytes >= 1048576) {
+                $size = round($bytes / 1048576, 2).' MB';
+            } else {
+                $size = round($bytes / 1024, 1).' KB';
+            }
+            $updatedAt = date('d M Y, H:i', filemtime($fullPath));
+        }
+
+        $displayFileName = $profile?->resume_original_name ?: basename($relativePath);
+
+        return [
+            'path' => $relativePath,
+            'filename' => $displayFileName,
+            'exists' => $exists,
+            'size' => $size,
+            'updated_at' => $updatedAt,
+            'preview_url' => route('resume.preview'),
+            'download_url' => route('resume.download'),
+        ];
     }
 }

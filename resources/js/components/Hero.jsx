@@ -5,9 +5,12 @@ import { smoothScrollTo } from '../utils/smoothScroll';
 
 const LanyardBadge3D = lazy(() => import('./LanyardBadge3D'));
 
-export default function Hero({ profile, resumeUrl }) {
+export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
     const scrollTo = (id) => {
-        smoothScrollTo(id, { offset: 80 });
+        const el = document.getElementById(id);
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     const githubUrl = profile?.social_links?.github || 'https://github.com/faiznfl';
@@ -15,27 +18,36 @@ export default function Hero({ profile, resumeUrl }) {
     const emailAddress = profile?.social_links?.email || profile?.email || 'faiznfl20@gmail.com';
 
     return (
-        <section id="home" className="relative min-h-[92vh] flex items-center pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
-            {/* Interactive Ambient Particle Canvas */}
-            <AmbientCanvas />
-
-            {/* Ambient Background Glows */}
-            <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ps-primary/10 dark:bg-ps-primary/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
-            <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+        <section id="home" className="relative min-h-[92vh] flex items-center pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
+            {/* Ambient Background Glow Spheres */}
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ps-primary/15 dark:bg-ps-primary/20 rounded-full blur-[130px] pointer-events-none z-0"></div>
+            <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-cyan-500/10 dark:bg-cyan-500/15 rounded-full blur-[110px] pointer-events-none z-0"></div>
+            <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-indigo-600/10 dark:bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
             <div className="max-w-7xl mx-auto w-full relative z-10 pointer-events-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-                    {/* Left Column: Greeting, Role & CTAs */}
-                    <div className="lg:col-span-7 space-y-6 text-left relative z-20 pointer-events-auto">
+                    {/* Left Column: Story & CTAs */}
+                    <div className="lg:col-span-7 space-y-7 text-left">
+                        {/* Live Availability Badge */}
+                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-200/80 dark:bg-white/[0.05] border border-slate-300/80 dark:border-white/10 text-xs font-mono backdrop-blur-md">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span className="text-slate-700 dark:text-gray-300 font-medium">
+                                {profile?.availability_text || 'Tersedia untuk Kontrak & Posisi Penuh'}
+                            </span>
+                        </div>
 
-                        {/* Main Title matching reference */}
-                        <div className="space-y-2">
-                            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-slate-900 dark:text-white leading-none">
-                                Hi, I'm <span className="text-gradient-ps font-semibold">{profile?.full_name || 'Faiz Naufal Putra Permana'}</span>
+                        {/* Main Headline */}
+                        <div className="space-y-3">
+                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+                                Crafting Resilient <br className="hidden sm:inline" />
+                                <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 bg-clip-text text-transparent font-normal">
+                                    Digital Products
+                                </span> <br className="hidden sm:inline" />
+                                &amp; Web Architectures.
                             </h1>
-                            <div className="text-xl sm:text-2xl font-normal text-ps-primary dark:text-cyan-300 font-sans tracking-wide pt-1">
-                                {profile?.headline || 'Web Developer'}
-                            </div>
+                            <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-400 font-normal">
+                                Halo, saya <span className="text-slate-900 dark:text-white font-semibold">{profile?.full_name || 'Faiz Naufal Putra Permana'}</span> — {profile?.headline || 'Web Developer'}.
+                            </p>
                         </div>
 
                         {/* Short Bio Description */}
@@ -46,13 +58,16 @@ export default function Hero({ profile, resumeUrl }) {
                         {/* 3 Action Buttons (ATM Reference Pill Buttons) */}
                         <div className="flex flex-wrap items-center gap-3.5 pt-3 relative z-30 pointer-events-auto">
                             <a
-                                href={resumeUrl || '/resume/download'}
-                                className="btn-ps-primary !bg-gradient-to-r !from-indigo-600 !via-ps-primary !to-cyan-500 !shadow-lg !shadow-indigo-600/30"
+                                href={resumePreviewUrl || '/resume/preview'}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="btn-ps-primary !bg-gradient-to-r !from-indigo-600 !via-ps-primary !to-cyan-500 !shadow-lg !shadow-indigo-600/30 cursor-pointer flex items-center gap-2"
+                                title="Download CV"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
-                                <span>Resume / CV</span>
+                                <span>Download CV</span>
                             </a>
                             <button
                                 onClick={() => scrollTo('contacts')}

@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 // Public Portfolio Showcase Routes
 Route::get('/', [PortfolioController::class, 'index'])->name('home');
 Route::get('/projects/{slug}', [PortfolioController::class, 'project'])->name('projects.show');
+Route::get('/resume', [PortfolioController::class, 'previewCv'])->name('resume.view');
+Route::get('/resume/preview', [PortfolioController::class, 'previewCv'])->name('resume.preview');
 Route::get('/resume/download', [PortfolioController::class, 'downloadCv'])->name('resume.download');
 Route::post('/contact/submit', [PortfolioController::class, 'submitContact'])->name('contact.submit');
 
@@ -31,6 +33,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/account', [AdminController::class, 'accountIndex'])->name('account.index');
     Route::put('/account', [AdminController::class, 'accountUpdate'])->name('account.update');
     Route::put('/account/password', [AdminController::class, 'passwordUpdate'])->name('account.password.update');
+    Route::post('/cv/upload', [AdminController::class, 'uploadCv'])->name('cv.upload');
 
     // Messages Management
     Route::patch('/messages/{message}/toggle-read', [AdminController::class, 'toggleMessageRead'])->name('messages.toggle-read');

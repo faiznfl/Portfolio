@@ -57,18 +57,73 @@ class PortfolioController extends Controller
     }
 
     /**
-     * Download the verified developer CV / resume file.
+     * Preview the verified developer CV / resume file inline in browser.
      */
-    public function downloadCv(): BinaryFileResponse|RedirectResponse
+    public function previewCv(): BinaryFileResponse|RedirectResponse
     {
-        $filePath = public_path('assets/resume-faiz-naufal.pdf');
+        $profile = Profile::first();
+        $resumeFilePath = $profile?->resume_file_path;
+
+        $filePath = $resumeFilePath ? public_path(ltrim($resumeFilePath, '/\\')) : null;
+
+        $isFallback = false;
+        if (! $filePath || ! file_exists($filePath)) {
+            $filePath = public_path('assets/resume-faiz-naufal.pdf');
+            $isFallback = true;
+        }
 
         if (! file_exists($filePath)) {
             return redirect()->route('home')->with('error', 'Berkas resume sedang diperbarui. Silakan hubungi via formulir kontak.');
         }
 
-        return response()->download($filePath, 'CV-Faiz-Naufal-Software-Engineer.pdf', [
-            'Content-Type' => 'application/pdf',
+        $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION) ?: 'pdf');
+        $displayFileName = (! $isFallback && $profile?->resume_original_name) ? $profile->resume_original_name : basename($filePath);
+
+        $contentType = match ($extension) {
+            'pdf' => 'application/pdf',
+            'doc' => 'application/msword',
+            'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            default => 'application/octet-stream',
+        };
+
+        return response()->file($filePath, [
+            'Content-Type' => $contentType,
+            'Content-Disposition' => 'inline; filename="'.$displayFileName.'"',
+        ]);
+    }
+
+    /**
+     * Download the verified developer CV / resume file.
+     */
+    public function downloadCv(): BinaryFileResponse|RedirectResponse
+    {
+        $profile = Profile::first();
+        $resumeFilePath = $profile?->resume_file_path;
+
+        $filePath = $resumeFilePath ? public_path(ltrim($resumeFilePath, '/\\')) : null;
+
+        $isFallback = false;
+        if (! $filePath || ! file_exists($filePath)) {
+            $filePath = public_path('assets/resume-faiz-naufal.pdf');
+            $isFallback = true;
+        }
+
+        if (! file_exists($filePath)) {
+            return redirect()->route('home')->with('error', 'Berkas resume sedang diperbarui. Silakan hubungi via formulir kontak.');
+        }
+
+        $extension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION) ?: 'pdf');
+        $downloadFileName = (! $isFallback && $profile?->resume_original_name) ? $profile->resume_original_name : basename($filePath);
+
+        $contentType = match ($extension) {
+            'pdf' => 'application/pdf',
+            'doc' => 'application/msword',
+            'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            default => 'application/octet-stream',
+        };
+
+        return response()->download($filePath, $downloadFileName, [
+            'Content-Type' => $contentType,
         ]);
     }
 

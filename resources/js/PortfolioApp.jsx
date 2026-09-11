@@ -21,7 +21,9 @@ export default function PortfolioApp({ initialData = {} }) {
         certificates = [],
         csrfToken = '',
         contactSubmitUrl = '/contact/submit',
-        resumeDownloadUrl = '/resume/download'
+        resumeDownloadUrl = '/resume/download',
+        resumePreviewUrl = '/resume/preview',
+        resumeFileName = 'CV-Faiz-Naufal.pdf'
     } = initialData;
 
     const [selectedProject, setSelectedProject] = useState(null);
@@ -70,7 +72,12 @@ export default function PortfolioApp({ initialData = {} }) {
             {/* Main Content Sections */}
             <main className="flex-grow">
                 {/* 1. Hero with Hanging Lanyard ID Card */}
-                <Hero profile={profile} resumeUrl={resumeDownloadUrl} theme={theme} />
+                <Hero
+                    profile={profile}
+                    resumeUrl={resumeDownloadUrl}
+                    resumePreviewUrl={resumePreviewUrl}
+                    theme={theme}
+                />
 
                 {/* 2. About Me with Split Info Capsules */}
                 <About profile={profile} />

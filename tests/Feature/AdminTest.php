@@ -755,4 +755,113 @@ class AdminTest extends TestCase
 
         $response->assertSessionHasErrors('password');
     }
+
+    public function test_unauthenticated_user_cannot_upload_cv(): void
+    {
+        $file = UploadedFile::fake()->create('new-resume.pdf', 200, 'application/pdf');
+
+        $response = $this->post('/admin/cv/upload', [
+            'cv_file' => $file,
+        ]);
+
+        $response->assertRedirect('/admin/login');
+    }
+
+    public function test_admin_can_upload_new_cv_successfully(): void
+    {
+        $file = UploadedFile::fake()->create('faiz-naufal-resume-2026.pdf', 350, 'application/pdf');
+
+        $response = $this->actingAs($this->admin)->post('/admin/cv/upload', [
+            'cv_file' => $file,
+        ]);
+
+        $response->assertSessionHas('cv_success');
+
+        $profile = Profile::first();
+        $this->assertNotNull($profile->resume_file_path);
+        $this->assertEquals('faiz-naufal-resume-2026.pdf', $profile->resume_original_name);
+        $this->assertStringStartsWith('/assets/cv/cv-faiz-naufal-', $profile->resume_file_path);
+        $this->assertStringEndsWith('.pdf', $profile->resume_file_path);
+
+        $createdFilePath = public_path(ltrim($profile->resume_file_path, '/\\'));
+        $this->assertFileExists($createdFilePath);
+
+        // Clean up test uploaded file safely
+        if (str_starts_with($profile->resume_file_path, '/assets/cv/') && file_exists($createdFilePath)) {
+            @unlink($createdFilePath);
+        }
+    }
+
+    public function test_admin_cannot_upload_invalid_cv_extension(): void
+    {
+        $file = UploadedFile::fake()->create('dangerous-file.exe', 100, 'application/octet-stream');
+
+        $response = $this->actingAs($this->admin)->post('/admin/cv/upload', [
+            'cv_file' => $file,
+        ]);
+
+        $response->assertSessionHasErrors('cv_file');
+    }
+
+    public function test_admin_cannot_upload_cv_exceeding_max_size(): void
+    {
+        // 12 MB file (max is 10 MB / 10240 KB)
+        $file = UploadedFile::fake()->create('huge-portfolio.pdf', 12288, 'application/pdf');
+
+        $response = $this->actingAs($this->admin)->post('/admin/cv/upload', [
+            'cv_file' => $file,
+        ]);
+
+        $response->assertSessionHasErrors('cv_file');
+    }
+
+    public function test_public_resume_download_serves_the_newly_uploaded_cv(): void
+    {
+        $file = UploadedFile::fake()->create('dynamic-latest-cv.pdf', 150, 'application/pdf');
+
+        $this->actingAs($this->admin)->post('/admin/cv/upload', [
+            'cv_file' => $file,
+        ]);
+
+        $profile = Profile::first()->fresh();
+        $downloadResponse = $this->get('/resume/download');
+
+        $downloadResponse->assertStatus(200);
+        $downloadResponse->assertHeader('content-type', 'application/pdf');
+        $this->assertStringContainsString('attachment', $downloadResponse->headers->get('content-disposition'));
+        $this->assertStringContainsString('dynamic-latest-cv.pdf', $downloadResponse->headers->get('content-disposition'));
+
+        // Clean up test file safely
+        if ($profile && str_starts_with($profile->resume_file_path, '/assets/cv/')) {
+            $createdFilePath = public_path(ltrim($profile->resume_file_path, '/\\'));
+            if (file_exists($createdFilePath)) {
+                @unlink($createdFilePath);
+            }
+        }
+    }
+
+    public function test_public_resume_preview_serves_inline_file(): void
+    {
+        $file = UploadedFile::fake()->create('preview-latest-cv.pdf', 150, 'application/pdf');
+
+        $this->actingAs($this->admin)->post('/admin/cv/upload', [
+            'cv_file' => $file,
+        ]);
+
+        $profile = Profile::first()->fresh();
+        $previewResponse = $this->get('/resume/preview');
+
+        $previewResponse->assertStatus(200);
+        $previewResponse->assertHeader('content-type', 'application/pdf');
+        $this->assertStringContainsString('inline', $previewResponse->headers->get('content-disposition'));
+        $this->assertStringContainsString('preview-latest-cv.pdf', $previewResponse->headers->get('content-disposition'));
+
+        // Clean up test file safely
+        if ($profile && str_starts_with($profile->resume_file_path, '/assets/cv/')) {
+            $createdFilePath = public_path(ltrim($profile->resume_file_path, '/\\'));
+            if (file_exists($createdFilePath)) {
+                @unlink($createdFilePath);
+            }
+        }
+    }
 }

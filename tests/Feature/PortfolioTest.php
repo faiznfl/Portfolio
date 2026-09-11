@@ -40,6 +40,7 @@ class PortfolioTest extends TestCase
         // Assert seeded profile content
         $response->assertSee('Faiz Naufal');
         $response->assertSee('Web Developer');
+        $response->assertSee('Download CV');
     }
 
     public function test_portfolio_works_completely_without_database_seeder(): void
@@ -113,6 +114,15 @@ class PortfolioTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertHeader('content-type', 'application/pdf');
+    }
+
+    public function test_resume_preview_endpoint_returns_inline_file(): void
+    {
+        $response = $this->get('/resume/preview');
+
+        $response->assertStatus(200);
+        $response->assertHeader('content-type', 'application/pdf');
+        $this->assertStringContainsString('inline', $response->headers->get('content-disposition'));
     }
 
     public function test_contact_form_submits_successfully_and_persists_in_database(): void

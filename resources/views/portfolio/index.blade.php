@@ -15,6 +15,8 @@
             'csrfToken' => csrf_token(),
             'contactSubmitUrl' => route('contact.submit'),
             'resumeDownloadUrl' => route('resume.download'),
+            'resumePreviewUrl' => route('resume.preview'),
+            'resumeFileName' => $profile->resume_original_name ?? 'CV-Faiz-Naufal-Software-Engineer.pdf',
         ]) !!}
     </script>
 
@@ -49,18 +51,18 @@
                     </div>
 
                     <!-- Action Buttons (Clean & Focused) -->
-                    <div class="flex flex-wrap items-center gap-4 pt-2">
-                        <a href="#projects" class="btn-ps-primary">
-                            <span>Lihat Portofolio Proyek</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                            </svg>
-                        </a>
-                        <a href="{{ route('resume.download') }}" class="btn-ps-outline-dark">
+                    <div class="flex flex-wrap items-center gap-3.5 pt-3">
+                        <a href="{{ route('resume.preview') }}" target="_blank" rel="noopener noreferrer" class="btn-ps-primary !bg-gradient-to-r !from-indigo-600 !via-ps-primary !to-cyan-500 !shadow-lg !shadow-indigo-600/30 flex items-center gap-2" title="Download CV">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
-                            <span>Unduh CV Resmi (.pdf)</span>
+                            <span>Download CV</span>
+                        </a>
+                        <a href="#contacts" class="btn-ps-outline-dark">
+                            <span>Contact Me</span>
+                        </a>
+                        <a href="#projects" class="btn-ps-outline-dark">
+                            <span>Projects</span>
                         </a>
                     </div>
 
