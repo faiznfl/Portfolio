@@ -1,16 +1,13 @@
-import React, { lazy, Suspense } from 'react';
-import AmbientCanvas from './AmbientCanvas';
+import React, { Suspense, lazy } from 'react';
 import Interactive3DCard from './Interactive3DCard';
+import AmbientCanvas from './AmbientCanvas';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
 const LanyardBadge3D = lazy(() => import('./LanyardBadge3D'));
 
 export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
     const scrollTo = (id) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
-        }
+        smoothScrollTo(id, { offset: 80 });
     };
 
     const githubUrl = profile?.social_links?.github || 'https://github.com/faiznfl';
@@ -18,36 +15,27 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
     const emailAddress = profile?.social_links?.email || profile?.email || 'faiznfl20@gmail.com';
 
     return (
-        <section id="home" className="relative min-h-[92vh] flex items-center pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden select-none">
-            {/* Ambient Background Glow Spheres */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ps-primary/15 dark:bg-ps-primary/20 rounded-full blur-[130px] pointer-events-none z-0"></div>
-            <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-cyan-500/10 dark:bg-cyan-500/15 rounded-full blur-[110px] pointer-events-none z-0"></div>
-            <div className="absolute bottom-10 left-10 w-[450px] h-[450px] bg-indigo-600/10 dark:bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none z-0"></div>
+        <section id="home" className="relative min-h-[92vh] flex items-center pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            {/* Interactive Ambient Particle Canvas */}
+            <AmbientCanvas />
+
+            {/* Ambient Background Glows */}
+            <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ps-primary/10 dark:bg-ps-primary/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
+            <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
             <div className="max-w-7xl mx-auto w-full relative z-10 pointer-events-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-                    {/* Left Column: Story & CTAs */}
-                    <div className="lg:col-span-7 space-y-7 text-left">
-                        {/* Live Availability Badge */}
-                        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-200/80 dark:bg-white/[0.05] border border-slate-300/80 dark:border-white/10 text-xs font-mono backdrop-blur-md">
-                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span className="text-slate-700 dark:text-gray-300 font-medium">
-                                {profile?.availability_text || 'Tersedia untuk Kontrak & Posisi Penuh'}
-                            </span>
-                        </div>
+                    {/* Left Column: Greeting, Role & CTAs */}
+                    <div className="lg:col-span-7 space-y-6 text-left relative z-20 pointer-events-auto">
 
-                        {/* Main Headline */}
-                        <div className="space-y-3">
-                            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-slate-900 dark:text-white leading-[1.15]">
-                                Crafting Resilient <br className="hidden sm:inline" />
-                                <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-400 bg-clip-text text-transparent font-normal">
-                                    Digital Products
-                                </span> <br className="hidden sm:inline" />
-                                &amp; Web Architectures.
+                        {/* Main Title matching reference */}
+                        <div className="space-y-2">
+                            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-slate-900 dark:text-white leading-none">
+                                Hi, I'm <span className="text-gradient-ps font-semibold">{profile?.full_name || 'Faiz Naufal Putra Permana'}</span>
                             </h1>
-                            <p className="text-lg sm:text-xl text-slate-600 dark:text-gray-400 font-normal">
-                                Halo, saya <span className="text-slate-900 dark:text-white font-semibold">{profile?.full_name || 'Faiz Naufal Putra Permana'}</span> — {profile?.headline || 'Web Developer'}.
-                            </p>
+                            <div className="text-xl sm:text-2xl font-normal text-ps-primary dark:text-cyan-300 font-sans tracking-wide pt-1">
+                                {profile?.headline || 'Web Developer'}
+                            </div>
                         </div>
 
                         {/* Short Bio Description */}
@@ -95,7 +83,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
                                 aria-label="GitHub Profile"
                             >
                                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
                                 </svg>
                             </a>
 
@@ -109,7 +97,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
                                 aria-label="LinkedIn Profile"
                             >
                                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                                 </svg>
                             </a>
 
@@ -121,7 +109,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
                                 aria-label="Send Email"
                             >
                                 <svg className="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                             </a>
                         </div>

@@ -37,18 +37,21 @@
         <div class="max-w-7xl mx-auto w-full relative z-10 pointer-events-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
                 <!-- Left Column: Story & CTAs -->
-                <div class="lg:col-span-7 space-y-8 text-left">
-                    <!-- Main Headline (Fluid Gradient, Non-Rigid) -->
-                    <div class="space-y-4">
-                        <h1 class="ps-display-xl font-light tracking-tight text-white">
-                            Crafting Resilient <br class="hidden sm:inline">
-                            <span class="text-gradient-ps font-normal">Distributed Systems</span> <br class="hidden sm:inline">
-                            &amp; Digital Products.
+                <div class="lg:col-span-7 space-y-6 text-left relative z-20 pointer-events-auto">
+                    <!-- Main Title -->
+                    <div class="space-y-2">
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-slate-900 dark:text-white leading-none">
+                            Hi, I'm <span class="text-gradient-ps font-semibold">{{ $profile->full_name ?? 'Faiz Naufal Putra Permana' }}</span>
                         </h1>
-                        <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed max-w-2xl">
-                            Halo, saya <span class="text-white font-medium">{{ $profile->full_name ?? 'Faiz Naufal Putra Permana' }}</span> — Web Developer. Mengubah arsitektur kompleks menjadi solusi web berkecepatan tinggi, tangguh di bawah beban jutaan transaksi, dan menyenangkan untuk digunakan.
-                        </p>
+                        <div class="text-xl sm:text-2xl font-normal text-ps-primary dark:text-cyan-300 font-sans tracking-wide pt-1">
+                            {{ $profile->headline ?? 'Web Developer' }}
+                        </div>
                     </div>
+
+                    <!-- Short Bio Description -->
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-gray-300 font-light leading-relaxed max-w-xl">
+                        {{ $profile->bio_about ?? 'Selamat datang di portofolio saya. Silakan tambahkan informasi profil dan portofolio Anda melalui panel admin.' }}
+                    </p>
 
                     <!-- Action Buttons (Clean & Focused) -->
                     <div class="flex flex-wrap items-center gap-3.5 pt-3">
