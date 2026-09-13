@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 
 @section('title', 'Faiz Naufal Putra Permana - ' . ($isEdit ? 'Edit Keahlian' : 'Tambah Keahlian'))
 
@@ -50,7 +50,7 @@
                                 Icon / Visual Keahlian (Upload File SVG)
                             </label>
                             <p class="text-xs text-slate-500 dark:text-gray-400 mt-0.5">
-                                Unggah berkas vektor icon berformat <strong class="text-ps-primary dark:text-cyan-400">.svg</strong> langsung dari komputer Anda.
+                                Unggah berkas vektor icon berformat <strong class="text-ps-primary dark:text-blue-400">.svg</strong> langsung dari komputer Anda.
                             </p>
                         </div>
                         <button type="button" id="btn-clear-icon" class="text-xs text-rose-500 hover:text-rose-600 font-medium underline self-start sm:self-auto">
@@ -62,7 +62,7 @@
                     <div class="flex flex-col sm:flex-row items-start sm:items-center gap-5 pt-1">
                         <!-- Live Preview Box -->
                         <div class="flex flex-col items-center gap-1.5 flex-shrink-0">
-                            <div id="icon-preview-box" class="w-20 h-20 rounded-2xl bg-slate-200/80 dark:bg-white/10 border border-slate-300 dark:border-white/15 flex items-center justify-center text-3xl text-ps-primary dark:text-cyan-400 shadow-inner overflow-hidden transition-all duration-200">
+                            <div id="icon-preview-box" class="w-20 h-20 rounded-2xl bg-slate-200/80 dark:bg-white/10 border border-slate-300 dark:border-white/15 flex items-center justify-center text-3xl text-ps-primary dark:text-blue-400 shadow-inner overflow-hidden transition-all duration-200">
                                 <span id="icon-preview-placeholder" class="text-xs font-mono text-slate-400 font-bold">&lt;/&gt;</span>
                             </div>
                             <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Preview Icon</span>
@@ -72,15 +72,15 @@
                         <div class="flex-1 w-full space-y-2">
                             <label for="icon_svg_file"
                                    id="dropzone"
-                                   class="group relative flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl border-2 border-dashed border-slate-300 dark:border-white/20 hover:border-ps-primary dark:hover:border-cyan-400/60 bg-white dark:bg-black/40 hover:bg-slate-50 dark:hover:bg-white/[0.04] transition-all cursor-pointer">
+                                   class="group relative flex flex-col sm:flex-row items-center justify-between gap-4 p-4 rounded-xl border-2 border-dashed border-slate-300 dark:border-white/20 hover:border-ps-primary dark:hover:border-blue-400/60 bg-white dark:bg-black/40 hover:bg-slate-50 dark:hover:bg-white/[0.04] transition-all cursor-pointer">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-xl bg-ps-primary/10 dark:bg-cyan-500/10 text-ps-primary dark:text-cyan-400 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                                    <div class="w-10 h-10 rounded-xl bg-ps-primary/10 dark:bg-blue-500/10 text-ps-primary dark:text-blue-400 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                                         </svg>
                                     </div>
                                     <div>
-                                        <div class="text-xs font-semibold text-slate-900 dark:text-white group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                                        <div class="text-xs font-semibold text-slate-900 dark:text-white group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                             Pilih Berkas SVG dari Komputer
                                         </div>
                                         <div class="text-[11px] text-slate-500 dark:text-gray-400">
@@ -103,7 +103,7 @@
                                 <span id="file-name-info" class="font-mono text-slate-500 dark:text-gray-400 truncate max-w-sm">
                                     {{ $skill->icon_svg ? 'Icon saat ini telah terpasang' : 'Belum ada berkas SVG dipilih' }}
                                 </span>
-                                <span id="icon-type-indicator" class="font-mono text-[11px] text-ps-primary dark:text-cyan-300"></span>
+                                <span id="icon-type-indicator" class="font-mono text-[11px] text-ps-primary dark:text-blue-300"></span>
                             </div>
 
                             @error('icon_svg_file') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (val.startsWith('<svg') || val.startsWith('<i ') || val.includes('<svg')) {
             const svgStart = val.indexOf('<svg');
             const svgContent = svgStart !== -1 ? val.substring(svgStart) : val;
-            previewBox.innerHTML = `<div class="w-10 h-10 inline-flex items-center justify-center text-ps-primary dark:text-cyan-400 [&>svg]:w-9 [&>svg]:h-9 [&>svg]:max-w-full [&>svg]:max-h-full">${svgContent}</div>`;
+            previewBox.innerHTML = `<div class="w-10 h-10 inline-flex items-center justify-center text-ps-primary dark:text-blue-400 [&>svg]:w-9 [&>svg]:h-9 [&>svg]:max-w-full [&>svg]:max-h-full">${svgContent}</div>`;
             iconTypeIndicator.textContent = 'Format: Vektor SVG';
         } else if (val.startsWith('http://') || val.startsWith('https://') || val.startsWith('/') || val.endsWith('.svg') || val.endsWith('.png')) {
             previewBox.innerHTML = `<img src="${val}" alt="Icon Preview" class="w-10 h-10 object-contain" />`;

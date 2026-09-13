@@ -57,11 +57,11 @@ export default function ProjectDetailModal({ project, onClose }) {
             />
 
             {/* Modal Dialog Card */}
-            <div className="relative z-10 w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#0b0f19] text-slate-900 dark:text-white border border-slate-200 dark:border-white/15 shadow-2xl dark:shadow-cyan-950/30 rounded-3xl overflow-hidden flex flex-col my-auto transition-all transform duration-300 animate-fadeIn overscroll-contain">
+            <div className="relative z-10 w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#0d1527] text-slate-900 dark:text-white border border-slate-200 dark:border-white/15 shadow-2xl dark:shadow-blue-950/30 rounded-3xl overflow-hidden flex flex-col my-auto transition-all transform duration-300 animate-fadeIn overscroll-contain">
                 {/* Header Bar */}
-                <div className="sticky top-0 z-20 bg-white/95 dark:bg-[#0b0f19]/95 backdrop-blur-md px-6 sm:px-8 py-4 border-b border-slate-100 dark:border-white/10 flex items-center justify-between">
+                <div className="sticky top-0 z-20 bg-white/95 dark:bg-[#0d1527]/95 backdrop-blur-md px-6 sm:px-8 py-4 border-b border-slate-100 dark:border-white/10 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:text-cyan-400 border border-ps-primary/20 dark:border-cyan-500/30">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:text-blue-400 border border-ps-primary/20 dark:border-blue-500/30">
                             PROJECT SHOWCASE
                         </span>
                         {project.is_featured && (
@@ -105,7 +105,7 @@ export default function ProjectDetailModal({ project, onClose }) {
                                             href={project.demo_url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-gradient-to-r from-blue-600 via-ps-primary to-cyan-500 hover:from-blue-500 hover:via-ps-primary hover:to-cyan-400 shadow-md shadow-blue-500/25 hover:shadow-lg hover:shadow-cyan-500/35 hover:-translate-y-0.5 active:translate-y-0 transition-all text-center cursor-pointer group"
+                                            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 shadow-md shadow-blue-600/30 hover:-translate-y-0.5 active:translate-y-0 transition-all text-center cursor-pointer group"
                                         >
                                             <span>Live Demo</span>
                                             <svg className="w-3.5 h-3.5 shrink-0 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -145,8 +145,8 @@ export default function ProjectDetailModal({ project, onClose }) {
 
                             {/* Fitur Utama (Key Features) */}
                             {features.length > 0 && (
-                                <div className="p-4 sm:p-5 rounded-2xl bg-cyan-500/5 dark:bg-cyan-950/20 border border-cyan-500/20 space-y-3">
-                                    <div className="flex items-center gap-2 text-ps-primary dark:text-cyan-400">
+                                <div className="p-4 sm:p-5 rounded-2xl bg-blue-500/5 dark:bg-blue-950/20 border border-blue-500/20 space-y-3">
+                                    <div className="flex items-center gap-2 text-ps-primary dark:text-blue-400">
                                         <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         </svg>
@@ -157,9 +157,7 @@ export default function ProjectDetailModal({ project, onClose }) {
                                     <ul className="space-y-2">
                                         {features.map((feature, idx) => (
                                             <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-gray-200 leading-relaxed">
-                                                <span className="w-4 h-4 rounded-full bg-cyan-500/20 text-ps-primary dark:text-cyan-300 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">
-                                                    ✓
-                                                </span>
+                                                <span className="w-4 h-4 rounded-full bg-blue-500/20 text-ps-primary dark:text-blue-300 flex items-center justify-center shrink-0 mt-0.5"><svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" /></svg></span>
                                                 <span>{feature}</span>
                                             </li>
                                         ))}

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 
 @section('title', 'Faiz Naufal Putra Permana - ' . ($isEdit ? 'Edit Proyek' : 'Tambah Proyek'))
 
@@ -33,7 +33,7 @@
                 <!-- SECTION 1: Informasi Pokok -->
                 <div class="space-y-5">
                     <div class="border-b border-slate-200 dark:border-white/10 pb-2">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-ps-primary dark:text-cyan-400 font-mono">
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-ps-primary dark:text-blue-400 font-mono">
                             01. Informasi Pokok &amp; Gambar
                         </h3>
                     </div>
@@ -88,12 +88,12 @@
                         <!-- Quick Preset Selector from public/assets/projects -->
                         <div class="pt-2 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center gap-2">
                             <span class="text-[11px] text-slate-400 dark:text-gray-500">Atau pilih dari aset lokal yang tersedia:</span>
-                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-omnipulse.svg', 'OmniPulse Commerce')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">OmniPulse</button>
-                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-hyperion.svg', 'Hyperion K8s')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">Hyperion</button>
-                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-aethermesh.svg', 'AetherMesh Service')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">AetherMesh</button>
-                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-nexus.svg', 'Nexus API Gateway')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">Nexus</button>
-                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-sentinel.svg', 'Sentinel Security')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">Sentinel</button>
-                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-collab.svg', 'Collab Platform')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">Collab</button>
+                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-omnipulse.svg', 'OmniPulse Commerce')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all font-mono">OmniPulse</button>
+                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-hyperion.svg', 'Hyperion K8s')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all font-mono">Hyperion</button>
+                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-aethermesh.svg', 'AetherMesh Service')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all font-mono">AetherMesh</button>
+                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-nexus.svg', 'Nexus API Gateway')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all font-mono">Nexus</button>
+                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-sentinel.svg', 'Sentinel Security')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all font-mono">Sentinel</button>
+                            <button type="button" onclick="selectProjectLocalPreset('/assets/projects/project-collab.svg', 'Collab Platform')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all font-mono">Collab</button>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                 <!-- SECTION 2: Deskripsi, Fitur Utama & Tech Stack -->
                 <div class="space-y-5">
                     <div class="border-b border-slate-200 dark:border-white/10 pb-2">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-ps-primary dark:text-cyan-400 font-mono">
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-ps-primary dark:text-blue-400 font-mono">
                             02. Deskripsi, Fitur Utama &amp; Tech Stack
                         </h3>
                     </div>
@@ -162,7 +162,7 @@
                 <!-- SECTION 3: Tautan & Pengaturan -->
                 <div class="space-y-5">
                     <div class="border-b border-slate-200 dark:border-white/10 pb-2">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-ps-primary dark:text-cyan-400 font-mono">
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-ps-primary dark:text-blue-400 font-mono">
                             03. Tautan Demo/Repo &amp; Status
                         </h3>
                     </div>

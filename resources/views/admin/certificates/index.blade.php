@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 
 @section('title', 'Faiz Naufal Putra Permana - Manajemen Sertifikat')
 
@@ -9,7 +9,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-6">
             <div class="space-y-1">
                 <div class="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-gray-400">
-                    <a href="{{ route('admin.dashboard') }}" class="hover:text-ps-primary dark:hover:text-cyan-400">Dashboard</a>
+                    <a href="{{ route('admin.dashboard') }}" class="hover:text-ps-primary dark:hover:text-blue-400">Dashboard</a>
                     <span>/</span>
                     <span class="text-slate-800 dark:text-gray-200 font-semibold">Sertifikat</span>
                 </div>
@@ -36,7 +36,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="text-xs font-mono uppercase font-bold text-slate-500 dark:text-gray-400">Daftar Sertifikasi Resmi</span>
-                    <span class="text-xs font-mono text-ps-primary dark:text-cyan-400 bg-ps-primary/10 dark:bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-ps-primary/20 dark:border-cyan-400/20 font-bold">
+                    <span class="text-xs font-mono text-ps-primary dark:text-blue-400 bg-ps-primary/10 dark:bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-ps-primary/20 dark:border-blue-400/20 font-bold">
                         {{ $certificates->count() }} Data
                     </span>
                 </div>
@@ -70,7 +70,7 @@
                                                 <div class="flex flex-wrap gap-1 mt-1">
                                                     @if($cert->category)
                                                         @foreach(array_filter(array_map('trim', explode(',', $cert->category))) as $cat)
-                                                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10">{{ $cat }}</span>
+                                                            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-blue-300 border border-slate-200 dark:border-white/10">{{ $cat }}</span>
                                                         @endforeach
                                                     @else
                                                         <span class="text-[11px] font-mono text-slate-400 dark:text-gray-500">Sertifikasi</span>
@@ -79,13 +79,13 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-3.5 text-ps-primary dark:text-cyan-400 font-semibold">{{ $cert->issuer_organization }}</td>
+                                    <td class="px-4 py-3.5 text-ps-primary dark:text-blue-400 font-semibold">{{ $cert->issuer_organization }}</td>
                                     <td class="px-4 py-3.5 font-mono text-xs font-semibold text-slate-700 dark:text-gray-300">
                                         {{ $cert->issue_date ? $cert->issue_date->format('Y') : '-' }}
                                     </td>
                                     <td class="px-4 py-3.5 text-right">
                                         <div class="flex items-center justify-end gap-2 text-xs">
-                                            <a href="{{ route('admin.certificates.edit', $cert->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                            <a href="{{ route('admin.certificates.edit', $cert->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-blue-500/10 dark:hover:bg-blue-600 dark:hover:text-white transition-all">
                                                 Edit
                                             </a>
                                             <form action="{{ route('admin.certificates.destroy', $cert->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus sertifikat {{ $cert->certificate_name }}?')">

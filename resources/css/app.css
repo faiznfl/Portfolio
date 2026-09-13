@@ -9,15 +9,29 @@
     --font-sans: 'Instrument Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-display: 'Instrument Sans', 'Inter', system-ui, sans-serif;
 
-    --color-ps-primary: #0070d1;
-    --color-ps-primary-pressed: #0064b7;
-    --color-ps-primary-active: #004d8d;
-    --color-ps-commerce: #d53b00;
-    --color-ps-commerce-pressed: #aa2f00;
+    /* Primary Brand: Pure Electric Tech Blue (Unambiguous true blue, zero purple/magenta tint) */
+    --color-ps-primary: #0066db;
+    --color-ps-primary-pressed: #0052b3;
+    --color-ps-primary-active: #003e8a;
+    --color-ps-commerce: #0066db;
+    --color-ps-commerce-pressed: #0052b3;
 
-    --color-ps-canvas-dark: #070a12;
-    --color-ps-surface-dark-elevated: #0f1523;
-    --color-ps-surface-dark-card: #131b2e;
+    /* True Blue Spectrum Overrides for all Tailwind blue-* utilities */
+    --color-blue-50: #edf6ff;
+    --color-blue-100: #d6ebff;
+    --color-blue-200: #b5dcff;
+    --color-blue-300: #7cc2ff;
+    --color-blue-400: #389fff;
+    --color-blue-500: #007bfb;
+    --color-blue-600: #0066db;
+    --color-blue-700: #0052b3;
+    --color-blue-800: #003e8a;
+    --color-blue-900: #00326e;
+    --color-blue-950: #001f47;
+
+    --color-ps-canvas-dark: #080d1a;
+    --color-ps-surface-dark-elevated: #0f172a;
+    --color-ps-surface-dark-card: #0d1527;
 
     --color-ps-hairline-dark: rgba(255, 255, 255, 0.08);
 
@@ -27,10 +41,10 @@
 }
 
 :root {
-    --ps-blue: #0070d1;
-    --ps-blue-pressed: #0064b7;
-    --ps-blue-glow: rgba(0, 112, 209, 0.25);
-    --ps-cyan: #00d4ff;
+    --ps-blue: #0066db;
+    --ps-blue-pressed: #0052b3;
+    --ps-blue-glow: rgba(0, 102, 219, 0.35);
+    --ps-cyan: #389fff;
 
     /* Light Theme (Default) */
     --bg-page: #f8fafc;
@@ -39,28 +53,28 @@
     --text-main: #0f172a;
     --text-muted: #64748b;
     --border-panel: rgba(0, 0, 0, 0.08);
-    --border-panel-hover: rgba(0, 112, 209, 0.4);
-    --liquid-bg: rgba(255, 255, 255, 0.55);
-    --liquid-border: rgba(255, 255, 255, 0.5);
-    --liquid-shine: rgba(255, 255, 255, 0.8);
-    --liquid-shadow: rgba(0, 0, 0, 0.09);
+    --border-panel-hover: rgba(0, 102, 219, 0.35);
+    --liquid-bg: rgba(255, 255, 255, 0.65);
+    --liquid-border: rgba(255, 255, 255, 0.6);
+    --liquid-shine: rgba(255, 255, 255, 0.85);
+    --liquid-shadow: rgba(0, 0, 0, 0.08);
 }
 
 html.dark {
     color-scheme: dark;
 
     /* Dark Theme */
-    --bg-page: #070a13;
-    --bg-surface: rgba(15, 21, 35, 0.75);
-    --bg-surface-elevated: #0f1523;
+    --bg-page: #080d1a;
+    --bg-surface: rgba(13, 21, 39, 0.8);
+    --bg-surface-elevated: #0f172a;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
-    --border-panel: rgba(255, 255, 255, 0.1);
-    --border-panel-hover: rgba(0, 212, 255, 0.4);
-    --liquid-bg: rgba(10, 14, 26, 0.45);
+    --border-panel: rgba(255, 255, 255, 0.08);
+    --border-panel-hover: rgba(56, 159, 255, 0.35);
+    --liquid-bg: rgba(13, 21, 39, 0.6);
     --liquid-border: rgba(255, 255, 255, 0.12);
-    --liquid-shine: rgba(255, 255, 255, 0.16);
-    --liquid-shadow: rgba(0, 0, 0, 0.45);
+    --liquid-shine: rgba(255, 255, 255, 0.14);
+    --liquid-shadow: rgba(0, 0, 0, 0.5);
 }
 
 html {
@@ -139,9 +153,11 @@ body {
 }
 
 .text-gradient-ps {
-    background: linear-gradient(135deg, #60a5fa 0%, #0070d1 50%, #00d4ff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #0066db;
+}
+
+html.dark .text-gradient-ps {
+    color: #389fff;
 }
 
 .text-gradient-gold {
@@ -178,7 +194,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    background: linear-gradient(135deg, #0070d1 0%, #0056a3 100%);
+    background: #0066db;
     color: #ffffff;
     font-size: 0.95rem;
     font-weight: 600;
@@ -186,22 +202,23 @@ body {
     padding: 0.8rem 1.85rem;
     border-radius: 9999px;
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 4px 20px rgba(0, 112, 209, 0.35);
+    box-shadow: 0 4px 18px rgba(0, 102, 219, 0.4);
 }
 
 .btn-ps-primary:hover {
-    background: linear-gradient(135deg, #1a85e8 0%, #0064b7 100%);
+    background: #0052b3;
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(0, 112, 209, 0.55), 0 0 15px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 102, 219, 0.5), 0 0 15px rgba(56, 159, 255, 0.3);
     color: #ffffff;
 }
 
 .btn-ps-primary:active {
+    background: #003e8a;
     transform: translateY(1px);
-    box-shadow: 0 2px 10px rgba(0, 112, 209, 0.4);
+    box-shadow: 0 2px 10px rgba(0, 102, 219, 0.4);
 }
 
 .btn-ps-commerce {
@@ -268,7 +285,7 @@ body {
 
 .glass-panel:hover {
     border-color: var(--border-panel-hover);
-    box-shadow: 0 15px 40px var(--liquid-shadow), 0 0 25px rgba(0, 112, 209, 0.12);
+    box-shadow: 0 15px 40px var(--liquid-shadow), 0 0 25px rgba(0, 102, 219, 0.15);
 }
 
 /* Admin Card with Adaptive Theme Support */
@@ -314,10 +331,10 @@ body {
 }
 
 .filter-chip-dark.active {
-    background: linear-gradient(135deg, #0070d1 0%, #0056a3 100%);
+    background: #0066db;
     color: #ffffff;
-    border-color: rgba(0, 212, 255, 0.4);
-    box-shadow: 0 4px 18px rgba(0, 112, 209, 0.45);
+    border-color: rgba(56, 159, 255, 0.5);
+    box-shadow: 0 4px 18px rgba(0, 102, 219, 0.4);
     transform: translateY(-1px);
 }
 
@@ -456,7 +473,7 @@ body {
 .eq-bar {
     display: inline-block;
     width: 2px;
-    background-color: #0070d1;
+    background-color: #0066db;
     border-radius: 9999px;
 }
 
@@ -492,9 +509,9 @@ body {
 }
 
 .modal-tab-btn.active {
-    color: #38bdf8;
-    border-bottom-color: #0070d1;
-    background: rgba(0, 112, 209, 0.1);
+    color: #389fff;
+    border-bottom-color: #0066db;
+    background: rgba(0, 102, 219, 0.1);
 }
 
 /* Command Palette */
@@ -548,10 +565,10 @@ body {
 }
 
 .id-badge-card {
-    background: linear-gradient(145deg, #101428 0%, #0a0d1b 100%);
+    background: linear-gradient(145deg, #0d1527 0%, #080d1a 100%);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 26px;
-    box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(0, 112, 209, 0.2);
+    box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(0, 102, 219, 0.25);
     position: relative;
     user-select: none;
     -webkit-user-select: none;
@@ -560,7 +577,7 @@ body {
 [data-theme="light"] .id-badge-card {
     background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.18), 0 0 30px rgba(0, 112, 209, 0.12);
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.18), 0 0 30px rgba(0, 102, 219, 0.15);
 }
 
 .id-badge-slot {
@@ -608,14 +625,14 @@ html:not(.dark) .skill-card-item,
 
 .skill-card-item:hover {
     transform: translateY(-3px);
-    border-color: rgba(0, 112, 209, 0.4);
-    box-shadow: 0 8px 0 #101624, 0 14px 24px rgba(0, 112, 209, 0.2);
+    border-color: rgba(0, 102, 219, 0.45);
+    box-shadow: 0 8px 0 #101624, 0 14px 24px rgba(0, 102, 219, 0.2);
 }
 
 html:not(.dark) .skill-card-item:hover,
 [data-theme="light"] .skill-card-item:hover {
-    border-color: rgba(0, 112, 209, 0.4);
-    box-shadow: 0 8px 0 #cbd5e1, 0 14px 22px rgba(0, 112, 209, 0.15);
+    border-color: rgba(0, 102, 219, 0.45);
+    box-shadow: 0 8px 0 #cbd5e1, 0 14px 22px rgba(0, 102, 219, 0.15);
 }
 
 .skill-card-item:active {
@@ -668,6 +685,10 @@ html:not(.dark) .skill-tooltip,
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #38bdf8;
+    color: #0066db;
     margin-bottom: 0.4rem;
+}
+
+html.dark .section-tagline {
+    color: #389fff;
 }

@@ -66,7 +66,7 @@ export default function AmbientCanvas() {
 
                     if (dist < 100) {
                         const alpha = (1 - dist / 100) * 0.12;
-                        ctx.strokeStyle = `rgba(0, 112, 209, ${alpha})`;
+                        ctx.strokeStyle = `rgba(0, 102, 219, ${alpha})`;
                         ctx.lineWidth = 0.75;
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
@@ -102,13 +102,13 @@ export default function AmbientCanvas() {
                     ctx.translate(p.x, p.y);
                     ctx.rotate(p.angle);
                     ctx.font = `${p.symbolSize}px sans-serif`;
-                    ctx.fillStyle = `rgba(0, 112, 209, ${p.alpha * 0.8})`;
+                    ctx.fillStyle = `rgba(0, 102, 219, ${p.alpha * 0.8})`;
                     ctx.textAlign = 'center';
                     ctx.textBaseline = 'middle';
                     ctx.fillText(p.symbol, 0, 0);
                     ctx.restore();
                 } else {
-                    ctx.fillStyle = `rgba(56, 189, 248, ${p.alpha})`;
+                    ctx.fillStyle = `rgba(56, 159, 255, ${p.alpha})`;
                     ctx.beginPath();
                     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
                     ctx.fill();

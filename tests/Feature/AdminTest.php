@@ -578,27 +578,27 @@ class AdminTest extends TestCase
         // 1. Dashboard active
         $dashRes = $this->actingAs($this->admin)->get('/admin');
         $dashRes->assertStatus(200);
-        $dashRes->assertSee('data-section="dashboard"'."\n".'               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none text-ps-primary dark:text-cyan-300 font-semibold active-nav', false);
+        $dashRes->assertSee('data-section="dashboard"'."\n".'               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none text-ps-primary dark:text-blue-300 font-semibold active-nav', false);
 
         // 2. Certificate create active on certificates
         $certRes = $this->actingAs($this->admin)->get('/admin/certificates/create');
         $certRes->assertStatus(200);
-        $certRes->assertSee('data-section="certificates"'."\n".'               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none text-ps-primary dark:text-cyan-300 font-semibold active-nav', false);
+        $certRes->assertSee('data-section="certificates"'."\n".'               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none text-ps-primary dark:text-blue-300 font-semibold active-nav', false);
 
         // 3. Project create active on projects
         $projRes = $this->actingAs($this->admin)->get('/admin/projects/create');
         $projRes->assertStatus(200);
-        $projRes->assertSee('data-section="projects"'."\n".'               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none text-ps-primary dark:text-cyan-300 font-semibold active-nav', false);
+        $projRes->assertSee('data-section="projects"'."\n".'               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none text-ps-primary dark:text-blue-300 font-semibold active-nav', false);
 
         // 4. Skills create active on skills
         $skillRes = $this->actingAs($this->admin)->get('/admin/skills/create');
         $skillRes->assertStatus(200);
-        $skillRes->assertSee('data-section="skills"'."\n".'               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none text-ps-primary dark:text-cyan-300 font-semibold active-nav', false);
+        $skillRes->assertSee('data-section="skills"'."\n".'               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none text-ps-primary dark:text-blue-300 font-semibold active-nav', false);
 
         // 5. Experience create active on experiences
         $expRes = $this->actingAs($this->admin)->get('/admin/experiences/create');
         $expRes->assertStatus(200);
-        $expRes->assertSee('data-section="experiences"'."\n".'               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none text-ps-primary dark:text-cyan-300 font-semibold active-nav', false);
+        $expRes->assertSee('data-section="experiences"'."\n".'               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none text-ps-primary dark:text-blue-300 font-semibold active-nav', false);
     }
 
     public function test_admin_certificate_form_renders_category_input_and_presets(): void

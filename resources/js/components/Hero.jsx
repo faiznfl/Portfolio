@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+﻿import React, { Suspense, lazy } from 'react';
 import Interactive3DCard from './Interactive3DCard';
 import AmbientCanvas from './AmbientCanvas';
 import { smoothScrollTo } from '../utils/smoothScroll';
@@ -21,7 +21,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
 
             {/* Ambient Background Glows */}
             <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ps-primary/10 dark:bg-ps-primary/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
-            <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+            <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
             <div className="max-w-7xl mx-auto w-full relative z-10 pointer-events-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -33,7 +33,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
                             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-slate-900 dark:text-white leading-none">
                                 Hi, I'm <span className="text-gradient-ps font-semibold">{profile?.full_name || 'Faiz Naufal Putra Permana'}</span>
                             </h1>
-                            <div className="text-xl sm:text-2xl font-normal text-ps-primary dark:text-cyan-300 font-sans tracking-wide pt-1">
+                            <div className="text-xl sm:text-2xl font-normal text-ps-primary dark:text-blue-300 font-sans tracking-wide pt-1">
                                 {profile?.headline || 'Web Developer'}
                             </div>
                         </div>
@@ -49,7 +49,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
                                 href={resumePreviewUrl || '/resume/preview'}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="btn-ps-primary !bg-gradient-to-r !from-indigo-600 !via-ps-primary !to-cyan-500 !shadow-lg !shadow-indigo-600/30 cursor-pointer flex items-center gap-2"
+                                className="btn-ps-primary !bg-blue-600 hover:!bg-blue-500 !shadow-lg !shadow-blue-600/30 cursor-pointer flex items-center gap-2"
                                 title="Download CV"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,7 +78,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
                                 href={githubUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-full bg-slate-200/70 dark:bg-white/[0.05] border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:bg-ps-primary/10 dark:hover:bg-cyan-500/10 text-slate-700 dark:text-slate-300 hover:text-ps-primary dark:hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
+                                className="w-10 h-10 rounded-full bg-slate-200/70 dark:bg-white/[0.05] border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/50 hover:bg-ps-primary/10 dark:hover:bg-blue-500/10 text-slate-700 dark:text-slate-300 hover:text-ps-primary dark:hover:text-blue-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
                                 title="GitHub Profile"
                                 aria-label="GitHub Profile"
                             >
@@ -92,7 +92,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
                                 href={linkedinUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-10 h-10 rounded-full bg-slate-200/70 dark:bg-white/[0.05] border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:bg-ps-primary/10 dark:hover:bg-cyan-500/10 text-slate-700 dark:text-slate-300 hover:text-ps-primary dark:hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
+                                className="w-10 h-10 rounded-full bg-slate-200/70 dark:bg-white/[0.05] border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/50 hover:bg-ps-primary/10 dark:hover:bg-blue-500/10 text-slate-700 dark:text-slate-300 hover:text-ps-primary dark:hover:text-blue-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
                                 title="LinkedIn Profile"
                                 aria-label="LinkedIn Profile"
                             >
@@ -104,7 +104,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
                             {/* Email / Gmail Button */}
                             <a
                                 href={`mailto:${emailAddress}`}
-                                className="w-10 h-10 rounded-full bg-slate-200/70 dark:bg-white/[0.05] border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:bg-ps-primary/10 dark:hover:bg-cyan-500/10 text-slate-700 dark:text-slate-300 hover:text-ps-primary dark:hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
+                                className="w-10 h-10 rounded-full bg-slate-200/70 dark:bg-white/[0.05] border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/50 hover:bg-ps-primary/10 dark:hover:bg-blue-500/10 text-slate-700 dark:text-slate-300 hover:text-ps-primary dark:hover:text-blue-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
                                 title={`Email: ${emailAddress}`}
                                 aria-label="Send Email"
                             >

@@ -22,7 +22,11 @@ export default function Projects({ projects = [], onSelectProject }) {
                 >
                     {projects.length === 0 ? (
                         <div className="col-span-full py-16 text-center text-slate-400 dark:text-gray-500 font-light border border-dashed border-slate-200 dark:border-white/10 rounded-2xl p-8">
-                            <span className="text-3xl block mb-2">📁</span>
+                            <div className="w-10 h-10 mx-auto mb-3 text-slate-400 dark:text-gray-500 flex items-center justify-center">
+                                <svg className="w-8 h-8 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                                </svg>
+                            </div>
                             <span className="text-sm">Belum ada proyek yang ditambahkan.</span>
                         </div>
                     ) : (
@@ -44,7 +48,7 @@ export default function Projects({ projects = [], onSelectProject }) {
                                     }}
                                     tabIndex={0}
                                     role="button"
-                                    className="glass-panel filter-item-animate flex flex-col overflow-hidden group cursor-pointer hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:-translate-y-1.5 shadow-md dark:shadow-xl focus:outline-none focus:ring-2 focus:ring-ps-primary/50"
+                                    className="glass-panel filter-item-animate flex flex-col overflow-hidden group cursor-pointer hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:-translate-y-1.5 shadow-md dark:shadow-xl focus:outline-none focus:ring-2 focus:ring-ps-primary/50"
                                 >
                                     {/* Project Cover Mockup */}
                                     <div className="relative w-full aspect-video bg-slate-100 dark:bg-[#0a0d1a] overflow-hidden border-b border-slate-200 dark:border-white/10">
@@ -59,7 +63,7 @@ export default function Projects({ projects = [], onSelectProject }) {
                                     {/* Card Body */}
                                     <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
                                         <div className="space-y-2">
-                                            <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                                            <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                                 {project.title}
                                             </h3>
                                             <p className="text-sm text-slate-600 dark:text-gray-300 line-clamp-3 leading-relaxed font-light">
@@ -93,7 +97,7 @@ export default function Projects({ projects = [], onSelectProject }) {
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         onClick={(e) => e.stopPropagation()}
-                                                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-sm shadow-blue-500/20 hover:shadow-cyan-500/30 transition-all cursor-pointer"
+                                                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-white bg-blue-600 hover:bg-blue-500 shadow-sm shadow-blue-600/30 transition-all cursor-pointer"
                                                         title="Buka Live Demo"
                                                     >
                                                         <span>Demo</span>

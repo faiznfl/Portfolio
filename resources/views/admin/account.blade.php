@@ -31,7 +31,7 @@
         <div class="ps-card-dark p-6 sm:p-8 space-y-6">
             <div class="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-cyan-400 border border-blue-500/20 flex items-center justify-center">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
@@ -41,7 +41,7 @@
                         <p class="text-xs text-slate-500 dark:text-gray-400">Email ini digunakan sebagai kredensial utama saat masuk ke Control Hub.</p>
                     </div>
                 </div>
-                <span class="hidden sm:inline-flex px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase bg-ps-primary/10 text-ps-primary dark:text-cyan-300 border border-ps-primary/20">
+                <span class="hidden sm:inline-flex px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase bg-ps-primary/10 text-ps-primary dark:text-blue-300 border border-ps-primary/20">
                     Aktif
                 </span>
             </div>
@@ -215,7 +215,7 @@
         <div class="ps-card-dark p-6 sm:p-8 space-y-6">
             <div class="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 flex items-center justify-center">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
@@ -225,7 +225,7 @@
                         <p class="text-xs text-slate-500 dark:text-gray-400">Unggah berkas CV terbaru yang dapat diunduh oleh pengunjung pada halaman depan portofolio.</p>
                     </div>
                 </div>
-                <span class="hidden sm:inline-flex px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+                <span class="hidden sm:inline-flex px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
                     Dokumen
                 </span>
             </div>
@@ -255,7 +255,7 @@
 
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
                     <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-lg bg-ps-primary/10 text-ps-primary dark:text-cyan-400 border border-ps-primary/20 flex items-center justify-center shrink-0">
+                        <div class="w-8 h-8 rounded-lg bg-ps-primary/10 text-ps-primary dark:text-blue-400 border border-ps-primary/20 flex items-center justify-center shrink-0">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                             </svg>
@@ -265,7 +265,7 @@
                             <div class="text-[11px] text-slate-400 dark:text-gray-500">
                                 Ukuran: <span class="font-mono text-slate-700 dark:text-gray-300 font-semibold">{{ $cvInfo['size'] }}</span>
                                 @if($cvInfo['updated_at'])
-                                    • Diperbarui: <span class="font-mono text-slate-700 dark:text-gray-300">{{ $cvInfo['updated_at'] }}</span>
+                                    â€¢ Diperbarui: <span class="font-mono text-slate-700 dark:text-gray-300">{{ $cvInfo['updated_at'] }}</span>
                                 @endif
                             </div>
                         </div>
@@ -273,10 +273,10 @@
 
                     <div class="flex items-center gap-2 self-start sm:self-auto">
                         <a href="{{ route('resume.preview') }}" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-200/70 hover:bg-slate-300/80 dark:bg-white/10 dark:hover:bg-white/15 border border-slate-300/80 dark:border-white/10 transition-all" title="Lihat Berkas CV di Tab Baru">
-                            <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                            <svg class="w-3.5 h-3.5 text-ps-primary dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                             <span>Lihat CV</span>
                         </a>
-                        <a href="{{ route('resume.download') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-ps-primary dark:text-cyan-400 bg-ps-primary/10 hover:bg-ps-primary/20 dark:bg-cyan-500/10 dark:hover:bg-cyan-500/20 border border-ps-primary/30 dark:border-cyan-500/30 transition-all" title="Download Berkas CV">
+                        <a href="{{ route('resume.download') }}" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-ps-primary dark:text-blue-400 bg-ps-primary/10 hover:bg-ps-primary/20 dark:bg-blue-500/10 dark:hover:bg-blue-500/20 border border-ps-primary/30 dark:border-blue-500/30 transition-all" title="Download Berkas CV">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                             <span>Download CV</span>
                         </a>
@@ -290,7 +290,7 @@
 
                 <!-- Dropzone Area -->
                 <div id="account-cv-dropzone" 
-                     class="relative border-2 border-dashed border-slate-300 dark:border-white/20 hover:border-ps-primary dark:hover:border-cyan-400 rounded-2xl p-6 text-center cursor-pointer transition-all bg-slate-50/50 hover:bg-ps-primary/[0.02] dark:bg-white/[0.02] dark:hover:bg-cyan-500/[0.03] group">
+                     class="relative border-2 border-dashed border-slate-300 dark:border-white/20 hover:border-ps-primary dark:hover:border-blue-400 rounded-2xl p-6 text-center cursor-pointer transition-all bg-slate-50/50 hover:bg-ps-primary/[0.02] dark:bg-white/[0.02] dark:hover:bg-blue-500/[0.03] group">
                     <input type="file" 
                            id="account_cv_file" 
                            name="cv_file" 
@@ -300,17 +300,17 @@
                            onchange="handleAccountCvFileSelect(this)">
 
                     <div id="account-dropzone-idle" class="space-y-3">
-                        <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-600 dark:bg-purple-500/15 dark:text-purple-400 border border-purple-500/20 mx-auto flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400 border border-blue-500/20 mx-auto flex items-center justify-center group-hover:scale-110 transition-transform">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
                             </svg>
                         </div>
                         <div class="space-y-1">
                             <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">
-                                Tarik &amp; letakkan berkas CV baru ke sini, atau <span class="text-ps-primary dark:text-cyan-400 underline">pilih dari komputer</span>
+                                Tarik &amp; letakkan berkas CV baru ke sini, atau <span class="text-ps-primary dark:text-blue-400 underline">pilih dari komputer</span>
                             </p>
                             <p class="text-xs text-slate-500 dark:text-gray-400">
-                                Format: <span class="font-semibold text-slate-700 dark:text-slate-300">PDF, DOC, DOCX</span> • Ukuran maksimal: <span class="font-semibold text-slate-700 dark:text-slate-300">10 MB</span>
+                                Format: <span class="font-semibold text-slate-700 dark:text-slate-300">PDF, DOC, DOCX</span> â€¢ Ukuran maksimal: <span class="font-semibold text-slate-700 dark:text-slate-300">10 MB</span>
                             </p>
                         </div>
                     </div>
@@ -377,7 +377,7 @@
             accCvDropzone.addEventListener(eventName, function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                accCvDropzone.classList.add('border-ps-primary', 'dark:border-cyan-400', 'bg-ps-primary/5', 'dark:bg-cyan-500/10');
+                accCvDropzone.classList.add('border-ps-primary', 'dark:border-blue-400', 'bg-ps-primary/5', 'dark:bg-blue-500/10');
             }, false);
         });
 
@@ -385,7 +385,7 @@
             accCvDropzone.addEventListener(eventName, function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                accCvDropzone.classList.remove('border-ps-primary', 'dark:border-cyan-400', 'bg-ps-primary/5', 'dark:bg-cyan-500/10');
+                accCvDropzone.classList.remove('border-ps-primary', 'dark:border-blue-400', 'bg-ps-primary/5', 'dark:bg-blue-500/10');
             }, false);
         });
 

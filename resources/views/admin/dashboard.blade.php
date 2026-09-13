@@ -8,21 +8,21 @@
         <!-- Top Command Header Banner -->
         <div class="ps-card-dark p-6 sm:p-8 relative overflow-hidden">
             <!-- Subtle Decorative Radial Glow Background -->
-            <div class="absolute -right-16 -top-16 w-64 h-64 bg-ps-primary/10 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -right-16 -top-16 w-64 h-64 bg-ps-primary/10 dark:bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
             <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
                 <div class="space-y-2">
                     <div class="flex items-center gap-2.5">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:bg-cyan-500/15 dark:text-cyan-300 border border-ps-primary/25 dark:border-cyan-500/30">
-                            <span class="w-2 h-2 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
-                            CONTROL HUB • v2.4
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:bg-blue-500/15 dark:text-blue-300 border border-ps-primary/25 dark:border-blue-500/30">
+                            <span class="w-2 h-2 rounded-full bg-ps-primary dark:bg-blue-400 animate-pulse"></span>
+                            CONTROL HUB Ã¢â‚¬Â¢ v2.4
                         </span>
                         <span class="text-xs font-mono text-slate-400 dark:text-gray-500">
                             Superadmin Active
                         </span>
                     </div>
                     <h1 class="text-2xl sm:text-3xl font-light text-slate-900 dark:text-white tracking-tight">
-                        Manajemen Portofolio <span class="font-bold text-ps-primary dark:text-cyan-400">&amp; Showcase</span>
+                        Manajemen Portofolio <span class="font-bold text-ps-primary dark:text-blue-400">&amp; Showcase</span>
                     </h1>
                     <p class="text-xs sm:text-sm text-slate-500 dark:text-gray-400 max-w-2xl leading-relaxed">
                         Kelola etalase proyek, katalog keahlian teknis, linimasa perjalanan karier, dan sertifikasi digital secara terintegrasi.
@@ -36,23 +36,23 @@
                         <span>+ Proyek</span>
                     </a>
                     <a href="{{ route('admin.skills.create') }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-slate-800 dark:text-slate-100 bg-slate-100 hover:bg-slate-200 dark:bg-white/10 dark:hover:bg-white/15 border border-slate-300/80 dark:border-white/10 transition-all">
-                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                         <span>+ Skill</span>
                     </a>
-                    <button type="button" onclick="openCvModal()" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary/20 dark:bg-cyan-500/10 dark:hover:bg-cyan-500/20 border border-ps-primary/30 dark:border-cyan-500/30 transition-all shadow-sm cursor-pointer" title="Unggah Berkas CV / Resume Baru">
+                    <button type="button" onclick="openCvModal()" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary/20 dark:bg-blue-500/10 dark:hover:bg-blue-500/20 border border-ps-primary/30 dark:border-blue-500/30 transition-all shadow-sm cursor-pointer" title="Unggah Berkas CV / Resume Baru">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
                         <span>Upload CV</span>
                     </button>
                     <a href="{{ route('resume.preview') }}" target="_blank" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 transition-all" title="Lihat Berkas CV Aktif ({{ $cvInfo['filename'] ?? 'resume.pdf' }})">
-                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                         <span>Lihat CV</span>
                     </a>
                     <a href="{{ route('resume.download') }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 transition-all" title="Unduh Berkas CV Aktif ({{ $cvInfo['filename'] ?? 'resume.pdf' }})">
-                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                         <span>Unduh CV</span>
                     </a>
                     <a href="{{ route('admin.account.index') }}" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 border border-slate-300 dark:border-white/10 transition-all" title="Pengaturan Email & Kata Sandi Admin">
-                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        <svg class="w-3.5 h-3.5 text-ps-primary dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                         <span>Akun Admin</span>
                     </a>
                 </div>
@@ -80,47 +80,47 @@
                     <div class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">{{ $totalProjects }}</div>
                 </div>
                 <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
-                    <a href="{{ route('admin.projects.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-cyan-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                    <a href="{{ route('admin.projects.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-blue-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                         <span>Kelola Proyek</span>
-                        <span>→</span>
+                        <span>Ã¢â€ â€™</span>
                     </a>
                 </div>
             </div>
 
             <!-- 2. Keahlian -->
-            <div class="ps-card-dark p-5 flex flex-col justify-between group hover:-translate-y-1 hover:border-cyan-500/40 transition-all duration-300">
+            <div class="ps-card-dark p-5 flex flex-col justify-between group hover:-translate-y-1 hover:border-blue-500/40 transition-all duration-300">
                 <div class="space-y-2">
                     <div class="flex items-center justify-between">
                         <span class="text-[11px] text-slate-500 dark:text-gray-400 font-mono uppercase font-bold tracking-wider">Keahlian</span>
-                        <div class="w-7 h-7 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 border border-cyan-500/20 flex items-center justify-center">
+                        <div class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-300 border border-blue-500/20 flex items-center justify-center">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                         </div>
                     </div>
                     <div class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">{{ $totalSkills }}</div>
                 </div>
                 <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
-                    <a href="{{ route('admin.skills.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-cyan-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                    <a href="{{ route('admin.skills.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-blue-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                         <span>Kelola Skills</span>
-                        <span>→</span>
+                        <span>Ã¢â€ â€™</span>
                     </a>
                 </div>
             </div>
 
             <!-- 3. Pengalaman -->
-            <div class="ps-card-dark p-5 flex flex-col justify-between group hover:-translate-y-1 hover:border-purple-500/40 transition-all duration-300">
+            <div class="ps-card-dark p-5 flex flex-col justify-between group hover:-translate-y-1 hover:border-blue-500/40 transition-all duration-300">
                 <div class="space-y-2">
                     <div class="flex items-center justify-between">
                         <span class="text-[11px] text-slate-500 dark:text-gray-400 font-mono uppercase font-bold tracking-wider">Pengalaman</span>
-                        <div class="w-7 h-7 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 flex items-center justify-center">
+                        <div class="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         </div>
                     </div>
                     <div class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">{{ $totalExperiences }}</div>
                 </div>
                 <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
-                    <a href="{{ route('admin.experiences.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-cyan-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                    <a href="{{ route('admin.experiences.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-blue-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                         <span>Kelola Journey</span>
-                        <span>→</span>
+                        <span>Ã¢â€ â€™</span>
                     </a>
                 </div>
             </div>
@@ -137,9 +137,9 @@
                     <div class="text-3xl font-light text-slate-900 dark:text-white tracking-tight">{{ $totalCertificates }}</div>
                 </div>
                 <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
-                    <a href="{{ route('admin.certificates.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-cyan-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+                    <a href="{{ route('admin.certificates.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-blue-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                         <span>Kelola Sertifikat</span>
-                        <span>→</span>
+                        <span>Ã¢â€ â€™</span>
                     </a>
                 </div>
             </div>
@@ -188,7 +188,7 @@
         <div class="ps-card-dark p-6 sm:p-8 space-y-6">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-5">
                 <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-ps-primary/10 text-ps-primary dark:text-cyan-300 border border-ps-primary/20 flex items-center justify-center">
+                    <div class="w-9 h-9 rounded-xl bg-ps-primary/10 text-ps-primary dark:text-blue-300 border border-ps-primary/20 flex items-center justify-center">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                     </div>
                     <div>
@@ -219,7 +219,7 @@
             @else
                 <div class="space-y-3.5">
                     @foreach($messages as $msg)
-                        <div class="p-4 sm:p-5 rounded-2xl border transition-all duration-200 {{ $msg->is_read ? 'bg-slate-50/60 dark:bg-black/30 border-slate-200/80 dark:border-white/10' : 'bg-ps-primary/[0.04] dark:bg-cyan-500/[0.04] border-ps-primary/30 dark:border-cyan-400/30 shadow-xs' }} space-y-3">
+                        <div class="p-4 sm:p-5 rounded-2xl border transition-all duration-200 {{ $msg->is_read ? 'bg-slate-50/60 dark:bg-black/30 border-slate-200/80 dark:border-white/10' : 'bg-ps-primary/[0.04] dark:bg-blue-500/[0.04] border-ps-primary/30 dark:border-blue-400/30 shadow-xs' }} space-y-3">
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                 <div class="flex items-center gap-3">
                                     <div class="w-8 h-8 rounded-full {{ $msg->is_read ? 'bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-300' : 'bg-ps-primary text-white' }} flex items-center justify-center font-bold text-xs shrink-0">
@@ -227,7 +227,7 @@
                                     </div>
                                     <div class="flex flex-wrap items-center gap-2">
                                         <span class="font-bold text-slate-900 dark:text-white text-sm">{{ $msg->sender_name }}</span>
-                                        <a href="mailto:{{ $msg->sender_email }}" class="text-xs text-ps-primary dark:text-cyan-400 hover:underline font-mono bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-slate-200 dark:border-white/5">
+                                        <a href="mailto:{{ $msg->sender_email }}" class="text-xs text-ps-primary dark:text-blue-400 hover:underline font-mono bg-slate-100 dark:bg-white/5 px-2 py-0.5 rounded-md border border-slate-200 dark:border-white/5">
                                             {{ $msg->sender_email }}
                                         </a>
                                         @if(!$msg->is_read)
@@ -256,9 +256,9 @@
                                 <span class="text-slate-400 dark:text-gray-500 font-mono text-[11px]">IP: {{ $msg->ip_address ?? 'Local' }}</span>
                                 
                                 <div class="flex items-center gap-2">
-                                    <a href="mailto:{{ $msg->sender_email }}?subject=Re: {{ urlencode($msg->subject) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                    <a href="mailto:{{ $msg->sender_email }}?subject=Re: {{ urlencode($msg->subject) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-blue-500/10 dark:hover:bg-blue-600 dark:hover:text-white transition-all">
                                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
-                                        <span>Balas via Email ↗</span>
+                                        <span>Balas via Email Ã¢â€ â€”</span>
                                     </a>
 
                                     <form action="{{ route('admin.messages.toggle-read', $msg->id) }}" method="POST" class="inline">
@@ -296,7 +296,7 @@
             <div id="skills" class="ps-card-dark p-6 sm:p-8 space-y-6 scroll-mt-28">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-5">
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 border border-cyan-500/20 flex items-center justify-center">
+                        <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-300 border border-blue-500/20 flex items-center justify-center">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                         </div>
                         <div>
@@ -305,8 +305,8 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('admin.skills.index') }}" class="text-xs font-semibold text-ps-primary dark:text-cyan-400 hover:underline">
-                            Lihat Semua Skills →
+                        <a href="{{ route('admin.skills.index') }}" class="text-xs font-semibold text-ps-primary dark:text-blue-400 hover:underline">
+                            Lihat Semua Skills Ã¢â€ â€™
                         </a>
                         <a href="{{ route('admin.skills.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Skill Baru</span>
@@ -330,7 +330,7 @@
                                     <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors">
                                         <td class="px-4 py-3.5 font-mono text-xs text-slate-400">#{{ $s->order_index }}</td>
                                         <td class="px-4 py-3.5">
-                                            <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-ps-primary dark:text-cyan-300 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:max-w-full [&>svg]:max-h-full overflow-hidden">
+                                            <div class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-ps-primary dark:text-blue-300 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:max-w-full [&>svg]:max-h-full overflow-hidden">
                                                 @if(!empty($s->icon_svg))
                                                     @if(str_starts_with(trim($s->icon_svg), '<svg') || str_starts_with(trim($s->icon_svg), '<i '))
                                                         {!! $s->icon_svg !!}
@@ -355,7 +355,7 @@
                                         </td>
                                         <td class="px-4 py-3.5 text-right">
                                             <div class="flex items-center justify-end gap-2 text-xs">
-                                                <a href="{{ route('admin.skills.edit', $s->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                                <a href="{{ route('admin.skills.edit', $s->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-blue-500/10 dark:hover:bg-blue-600 dark:hover:text-white transition-all">
                                                     Edit
                                                 </a>
                                                 <form action="{{ route('admin.skills.destroy', $s->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus skill {{ $s->name }}?')">
@@ -394,8 +394,8 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('admin.projects.index') }}" class="text-xs font-semibold text-ps-primary dark:text-cyan-400 hover:underline">
-                            Lihat Semua Proyek →
+                        <a href="{{ route('admin.projects.index') }}" class="text-xs font-semibold text-ps-primary dark:text-blue-400 hover:underline">
+                            Lihat Semua Proyek Ã¢â€ â€™
                         </a>
                         <a href="{{ route('admin.projects.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Proyek Baru</span>
@@ -436,14 +436,14 @@
                                         </td>
                                         <td class="px-4 py-3.5">
                                             @if($p->is_featured)
-                                                <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">★ Ya</span>
+                                                <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">Ã¢Ëœâ€¦ Ya</span>
                                             @else
                                                 <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">-</span>
                                             @endif
                                         </td>
                                         <td class="px-4 py-3.5 text-right">
                                             <div class="flex items-center justify-end gap-2 text-xs">
-                                                <a href="{{ route('admin.projects.edit', $p->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                                <a href="{{ route('admin.projects.edit', $p->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-blue-500/10 dark:hover:bg-blue-600 dark:hover:text-white transition-all">
                                                     Edit
                                                 </a>
                                                 <form action="{{ route('admin.projects.destroy', $p->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus proyek ini?')">
@@ -473,7 +473,7 @@
             <div id="experiences" class="ps-card-dark p-6 sm:p-8 space-y-6 scroll-mt-28">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-5">
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20 flex items-center justify-center">
+                        <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 flex items-center justify-center">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                         </div>
                         <div>
@@ -482,8 +482,8 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('admin.experiences.index') }}" class="text-xs font-semibold text-ps-primary dark:text-cyan-400 hover:underline">
-                            Lihat Semua Journey →
+                        <a href="{{ route('admin.experiences.index') }}" class="text-xs font-semibold text-ps-primary dark:text-blue-400 hover:underline">
+                            Lihat Semua Journey Ã¢â€ â€™
                         </a>
                         <a href="{{ route('admin.experiences.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Pengalaman Baru</span>
@@ -509,10 +509,10 @@
                                     <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors">
                                         <td class="px-4 py-3.5 font-mono text-xs text-slate-400">#{{ $exp->order_index }}</td>
                                         <td class="px-4 py-3.5 font-mono text-xs text-slate-500 dark:text-gray-400">
-                                            {{ $exp->start_date->format('M Y') }} — {{ $exp->is_current ? 'Present' : ($exp->end_date ? $exp->end_date->format('M Y') : '-') }}
+                                            {{ $exp->start_date->format('M Y') }} Ã¢â‚¬â€ {{ $exp->is_current ? 'Present' : ($exp->end_date ? $exp->end_date->format('M Y') : '-') }}
                                         </td>
                                         <td class="px-4 py-3.5 font-semibold text-slate-900 dark:text-white">{{ $exp->role_title }}</td>
-                                        <td class="px-4 py-3.5 text-ps-primary dark:text-cyan-400 font-medium">{{ $exp->company_name }}</td>
+                                        <td class="px-4 py-3.5 text-ps-primary dark:text-blue-400 font-medium">{{ $exp->company_name }}</td>
                                         <td class="px-4 py-3.5">
                                             @if($exp->is_current)
                                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
@@ -526,7 +526,7 @@
                                         </td>
                                         <td class="px-4 py-3.5 text-right">
                                             <div class="flex items-center justify-end gap-2 text-xs">
-                                                <a href="{{ route('admin.experiences.edit', $exp->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                                <a href="{{ route('admin.experiences.edit', $exp->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-blue-500/10 dark:hover:bg-blue-600 dark:hover:text-white transition-all">
                                                     Edit
                                                 </a>
                                                 <form action="{{ route('admin.experiences.destroy', $exp->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus pengalaman ini?')">
@@ -565,8 +565,8 @@
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
-                        <a href="{{ route('admin.certificates.index') }}" class="text-xs font-semibold text-ps-primary dark:text-cyan-400 hover:underline">
-                            Lihat Semua Sertifikat →
+                        <a href="{{ route('admin.certificates.index') }}" class="text-xs font-semibold text-ps-primary dark:text-blue-400 hover:underline">
+                            Lihat Semua Sertifikat Ã¢â€ â€™
                         </a>
                         <a href="{{ route('admin.certificates.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Sertifikat Baru</span>
@@ -595,18 +595,18 @@
                                             @if($cert->category)
                                                 <div class="flex flex-wrap gap-1 mt-1">
                                                     @foreach(array_filter(array_map('trim', explode(',', $cert->category))) as $cat)
-                                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-cyan-300 border border-slate-200 dark:border-white/10">{{ $cat }}</span>
+                                                        <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-slate-100 dark:bg-white/10 text-ps-primary dark:text-blue-300 border border-slate-200 dark:border-white/10">{{ $cat }}</span>
                                                     @endforeach
                                                 </div>
                                             @endif
                                         </td>
-                                        <td class="px-4 py-3.5 text-ps-primary dark:text-cyan-400 font-medium">{{ $cert->issuer_organization }}</td>
+                                        <td class="px-4 py-3.5 text-ps-primary dark:text-blue-400 font-medium">{{ $cert->issuer_organization }}</td>
                                         <td class="px-4 py-3.5 font-mono text-xs font-semibold text-slate-700 dark:text-gray-300">
                                             {{ $cert->issue_date ? $cert->issue_date->format('Y') : '-' }}
                                         </td>
                                         <td class="px-4 py-3.5 text-right">
                                             <div class="flex items-center justify-end gap-2 text-xs">
-                                                <a href="{{ route('admin.certificates.edit', $cert->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                                <a href="{{ route('admin.certificates.edit', $cert->id) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-blue-500/10 dark:hover:bg-blue-600 dark:hover:text-white transition-all">
                                                     Edit
                                                 </a>
                                                 <form action="{{ route('admin.certificates.destroy', $cert->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus sertifikat ini?')">
@@ -641,7 +641,7 @@
         <!-- Modal Header -->
         <div class="flex items-start justify-between border-b border-slate-200 dark:border-white/10 pb-4">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-ps-primary/10 text-ps-primary dark:text-cyan-400 border border-ps-primary/20 flex items-center justify-center shrink-0">
+                <div class="w-10 h-10 rounded-xl bg-ps-primary/10 text-ps-primary dark:text-blue-400 border border-ps-primary/20 flex items-center justify-center shrink-0">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
@@ -673,7 +673,7 @@
             </div>
             <div class="flex items-center justify-between gap-2">
                 <div class="flex items-center gap-2 truncate">
-                    <svg class="w-4 h-4 text-ps-primary dark:text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 text-ps-primary dark:text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                     </svg>
                     <span class="font-semibold text-slate-800 dark:text-slate-200 truncate font-mono text-[11px]" title="{{ $cvInfo['filename'] }}">{{ $cvInfo['filename'] }}</span>
@@ -686,7 +686,7 @@
                 </div>
             @endif
             <div class="pt-1 flex items-center gap-4">
-                <a href="{{ route('resume.preview') }}" target="_blank" class="text-ps-primary dark:text-cyan-400 hover:underline inline-flex items-center gap-1 font-semibold text-[11px]">
+                <a href="{{ route('resume.preview') }}" target="_blank" class="text-ps-primary dark:text-blue-400 hover:underline inline-flex items-center gap-1 font-semibold text-[11px]">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                     <span>Lihat / Preview CV</span>
                 </a>
@@ -710,7 +710,7 @@
 
             <!-- Dropzone Area -->
             <div id="cv-dropzone" 
-                 class="relative border-2 border-dashed border-slate-300 dark:border-white/20 hover:border-ps-primary dark:hover:border-cyan-400 rounded-2xl p-6 text-center cursor-pointer transition-all bg-slate-50/50 hover:bg-ps-primary/[0.02] dark:bg-white/[0.02] dark:hover:bg-cyan-500/[0.03] group">
+                 class="relative border-2 border-dashed border-slate-300 dark:border-white/20 hover:border-ps-primary dark:hover:border-blue-400 rounded-2xl p-6 text-center cursor-pointer transition-all bg-slate-50/50 hover:bg-ps-primary/[0.02] dark:bg-white/[0.02] dark:hover:bg-blue-500/[0.03] group">
                 <input type="file" 
                        id="modal_cv_file" 
                        name="cv_file" 
@@ -720,14 +720,14 @@
                        onchange="handleCvFileSelect(this)">
 
                 <div id="dropzone-idle" class="space-y-3">
-                    <div class="w-12 h-12 rounded-2xl bg-ps-primary/10 text-ps-primary dark:bg-cyan-500/10 dark:text-cyan-400 border border-ps-primary/20 dark:border-cyan-500/30 mx-auto flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div class="w-12 h-12 rounded-2xl bg-ps-primary/10 text-ps-primary dark:bg-blue-500/10 dark:text-blue-400 border border-ps-primary/20 dark:border-blue-500/30 mx-auto flex items-center justify-center group-hover:scale-110 transition-transform">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
                         </svg>
                     </div>
                     <div class="space-y-1">
                         <p class="text-sm font-semibold text-slate-800 dark:text-slate-200">
-                            Tarik &amp; letakkan berkas CV ke sini, atau <span class="text-ps-primary dark:text-cyan-400 underline">pilih berkas</span>
+                            Tarik &amp; letakkan berkas CV ke sini, atau <span class="text-ps-primary dark:text-blue-400 underline">pilih berkas</span>
                         </p>
                         <p class="text-xs text-slate-500 dark:text-gray-400">
                             Format yang didukung: <span class="font-semibold text-slate-700 dark:text-slate-300">PDF, DOC, DOCX</span> (Maksimal 10 MB)
@@ -814,7 +814,7 @@
             cvDropzone.addEventListener(eventName, function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                cvDropzone.classList.add('border-ps-primary', 'dark:border-cyan-400', 'bg-ps-primary/5', 'dark:bg-cyan-500/10');
+                cvDropzone.classList.add('border-ps-primary', 'dark:border-blue-400', 'bg-ps-primary/5', 'dark:bg-blue-500/10');
             }, false);
         });
 
@@ -822,7 +822,7 @@
             cvDropzone.addEventListener(eventName, function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                cvDropzone.classList.remove('border-ps-primary', 'dark:border-cyan-400', 'bg-ps-primary/5', 'dark:bg-cyan-500/10');
+                cvDropzone.classList.remove('border-ps-primary', 'dark:border-blue-400', 'bg-ps-primary/5', 'dark:bg-blue-500/10');
             }, false);
         });
 

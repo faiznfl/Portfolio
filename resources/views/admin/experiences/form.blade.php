@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+﻿@extends('layouts.admin')
 
 @section('title', 'Faiz Naufal Putra Permana - ' . ($isEdit ? 'Edit Pengalaman' : 'Tambah Pengalaman'))
 
@@ -84,11 +84,11 @@
                             <option value="Remote">
                         </datalist>
                         <div class="flex flex-wrap items-center gap-1.5 pt-1">
-                            <button type="button" onclick="document.getElementById('employment_type').value = 'Full-time'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Full-time</button>
-                            <button type="button" onclick="document.getElementById('employment_type').value = 'Contract'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Contract</button>
-                            <button type="button" onclick="document.getElementById('employment_type').value = 'Freelance'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Freelance</button>
-                            <button type="button" onclick="document.getElementById('employment_type').value = 'Magang'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Magang</button>
-                            <button type="button" onclick="document.getElementById('employment_type').value = 'Part-time'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Part-time</button>
+                            <button type="button" onclick="document.getElementById('employment_type').value = 'Full-time'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Full-time</button>
+                            <button type="button" onclick="document.getElementById('employment_type').value = 'Contract'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Contract</button>
+                            <button type="button" onclick="document.getElementById('employment_type').value = 'Freelance'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Freelance</button>
+                            <button type="button" onclick="document.getElementById('employment_type').value = 'Magang'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Magang</button>
+                            <button type="button" onclick="document.getElementById('employment_type').value = 'Part-time'" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 transition-all font-mono">Part-time</button>
                         </div>
                         @error('employment_type') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>

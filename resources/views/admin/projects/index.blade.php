@@ -9,7 +9,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-6">
             <div class="space-y-1">
                 <div class="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-gray-400">
-                    <a href="{{ route('admin.dashboard') }}" class="hover:text-ps-primary dark:hover:text-cyan-400">Dashboard</a>
+                    <a href="{{ route('admin.dashboard') }}" class="hover:text-ps-primary dark:hover:text-blue-400">Dashboard</a>
                     <span>/</span>
                     <span class="text-slate-800 dark:text-gray-200 font-semibold">Proyek</span>
                 </div>
@@ -36,7 +36,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="text-xs font-mono uppercase font-bold text-slate-500 dark:text-gray-400">Daftar Proyek Showcase</span>
-                    <span class="text-xs font-mono text-ps-primary dark:text-cyan-400 bg-ps-primary/10 dark:bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-ps-primary/20 dark:border-cyan-400/20 font-bold">
+                    <span class="text-xs font-mono text-ps-primary dark:text-blue-400 bg-ps-primary/10 dark:bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-ps-primary/20 dark:border-blue-400/20 font-bold">
                         {{ $projects->count() }} Data
                     </span>
                 </div>
@@ -75,14 +75,14 @@
                                     </td>
                                     <td class="px-4 py-3.5">
                                         @if($project->is_featured)
-                                            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">★ Ya</span>
+                                            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">â˜… Ya</span>
                                         @else
                                             <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">-</span>
                                         @endif
                                     </td>
                                     <td class="px-4 py-3.5 text-right">
                                         <div class="flex items-center justify-end gap-2 text-xs">
-                                            <a href="{{ route('admin.projects.edit', $project->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                            <a href="{{ route('admin.projects.edit', $project->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-blue-500/10 dark:hover:bg-blue-600 dark:hover:text-white transition-all">
                                                 Edit
                                             </a>
                                             <form action="{{ route('admin.projects.destroy', $project->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus proyek ini?')">

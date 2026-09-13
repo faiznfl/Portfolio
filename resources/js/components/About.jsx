@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function About({ profile }) {
     const educationList = [
@@ -83,7 +83,7 @@ export default function About({ profile }) {
         <section id="about" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
             {/* Ambient Background Glow matching other sections */}
             <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-ps-primary/10 dark:bg-ps-primary/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
-            <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+            <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
             <div className="max-w-7xl mx-auto space-y-12 relative z-10">
                 {/* Header conforming strictly to the site-wide design system */}
@@ -103,8 +103,8 @@ export default function About({ profile }) {
                     <div className="lg:col-span-6 space-y-4">
                         {/* Section Tag Indicator (Aligned with Right Column) */}
                         <div className="flex items-center gap-2 px-1">
-                            <span className="w-2 h-2 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
-                            <span className="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-cyan-400">
+                            <span className="w-2 h-2 rounded-full bg-ps-primary dark:bg-blue-400 animate-pulse"></span>
+                            <span className="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-blue-400">
                                 BIOGRAPHY &amp; EDUCATION
                             </span>
                         </div>
@@ -121,20 +121,19 @@ export default function About({ profile }) {
                             {educationList.map((edu, idx) => (
                                 <div
                                     key={idx}
-                                    className="glass-panel p-5 flex items-center gap-4 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.01] shadow-sm dark:shadow-none group"
+                                    className="glass-panel p-5 flex items-center gap-4 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.01] shadow-sm dark:shadow-none group"
                                 >
                                     <div
-                                        className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-transform duration-300 group-hover:scale-105 ${
-                                            edu.color === 'primary'
-                                                ? 'bg-ps-primary/10 dark:bg-ps-primary/20 text-ps-primary dark:text-cyan-400 border-ps-primary/25 dark:border-cyan-400/30 group-hover:bg-ps-primary/15 dark:group-hover:bg-cyan-400/20'
-                                                : 'bg-cyan-500/10 dark:bg-cyan-500/20 text-cyan-600 dark:text-cyan-300 border-cyan-500/25 dark:border-cyan-400/30 group-hover:bg-cyan-500/15'
-                                        }`}
+                                        className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border transition-transform duration-300 group-hover:scale-105 ${edu.color === 'primary'
+                                                ? 'bg-ps-primary/10 dark:bg-ps-primary/20 text-ps-primary dark:text-blue-400 border-ps-primary/25 dark:border-blue-400/30 group-hover:bg-ps-primary/15 dark:group-hover:bg-blue-400/20'
+                                                : 'bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/25 dark:border-blue-400/30 group-hover:bg-blue-500/15'
+                                            }`}
                                     >
                                         {edu.icon}
                                     </div>
                                     <div className="min-w-0 flex-1 space-y-1">
                                         <div className="flex flex-wrap items-center justify-between gap-x-2">
-                                            <h4 className="text-base font-semibold text-slate-900 dark:text-white tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                                            <h4 className="text-base font-semibold text-slate-900 dark:text-white tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                                 {edu.institution}
                                             </h4>
                                             {edu.gpa && (
@@ -145,7 +144,7 @@ export default function About({ profile }) {
                                             )}
                                         </div>
                                         <div className="flex flex-wrap items-center justify-between gap-x-2">
-                                            <p className="text-xs sm:text-sm text-ps-primary dark:text-cyan-300 font-medium">
+                                            <p className="text-xs sm:text-sm text-ps-primary dark:text-blue-300 font-medium">
                                                 {edu.major}
                                             </p>
                                             {edu.period && (
@@ -164,8 +163,8 @@ export default function About({ profile }) {
                     <div className="lg:col-span-6 space-y-4">
                         {/* Section Tag Indicator */}
                         <div className="flex items-center gap-2 px-1">
-                            <span className="w-2 h-2 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
-                            <span className="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-cyan-400">
+                            <span className="w-2 h-2 rounded-full bg-ps-primary dark:bg-blue-400 animate-pulse"></span>
+                            <span className="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-blue-400">
                                 INTERESTS &amp; FOCUS AREAS
                             </span>
                         </div>
@@ -175,12 +174,12 @@ export default function About({ profile }) {
                             {interests.map((item, idx) => (
                                 <div
                                     key={idx}
-                                    className="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default"
+                                    className="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default"
                                 >
-                                    <div className="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
+                                    <div className="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-blue-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-blue-400/10 transition-all duration-200">
                                         {item.icon}
                                     </div>
-                                    <span className="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                                    <span className="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                         {item.name}
                                     </span>
                                 </div>

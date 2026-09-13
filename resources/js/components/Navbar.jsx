@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
 export default function Navbar({ resumeUrl, theme = 'dark', onToggleTheme }) {
@@ -144,13 +144,13 @@ export default function Navbar({ resumeUrl, theme = 'dark', onToggleTheme }) {
             {/* Floating Liquid Glass Navbar Container */}
             <header className="fixed top-4 sm:top-5 inset-x-3 sm:inset-x-0 mx-auto max-w-5xl z-50 rounded-full liquid-glass-nav px-3 sm:px-6 h-14 sm:h-16 flex items-center justify-between shadow-2xl transition-all duration-300">
                 {/* Brand Text (No logo, pure typography) */}
-                <a 
-                    href="#home" 
+                <a
+                    href="#home"
                     onClick={(e) => { e.preventDefault(); scrollTo('home'); }}
-                    className="text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-white hover:text-ps-primary dark:hover:text-cyan-400 transition-colors shrink-0"
+                    className="text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-white hover:text-ps-primary dark:hover:text-blue-400 transition-colors shrink-0"
                     title="Faiz Naufal - Portfolio Home"
                 >
-                    <span>Faiz</span> <span className="text-ps-primary dark:text-cyan-400 font-light">Naufal.</span>
+                    <span>Faiz</span> <span className="text-ps-primary dark:text-blue-400 font-light">Naufal.</span>
                 </a>
 
                 {/* Desktop Navigation Links with Physical Sliding Pill Track */}
@@ -160,7 +160,7 @@ export default function Navbar({ resumeUrl, theme = 'dark', onToggleTheme }) {
                 >
                     {/* Animated Sliding Liquid Glass Pill */}
                     <div
-                        className="absolute top-0 left-0 rounded-full bg-white dark:bg-white/[0.12] border border-slate-300/80 dark:border-cyan-400/40 shadow-sm dark:shadow-[0_0_16px_rgba(0,212,255,0.25)] pointer-events-none z-0 transition-all duration-300 ease-out"
+                        className="absolute top-0 left-0 rounded-full bg-white dark:bg-white/[0.12] border border-slate-300/80 dark:border-blue-400/40 shadow-sm dark:shadow-[0_0_16px_rgba(37,99,235,0.25)] pointer-events-none z-0 transition-all duration-300 ease-out"
                         style={{
                             transform: `translate3d(${pillStyle.left}px, ${pillStyle.top}px, 0)`,
                             width: `${pillStyle.width}px`,
@@ -176,11 +176,10 @@ export default function Navbar({ resumeUrl, theme = 'dark', onToggleTheme }) {
                                 key={item.id}
                                 ref={(el) => { itemRefs.current[item.id] = el; }}
                                 onClick={() => scrollTo(item.id)}
-                                className={`relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 cursor-pointer select-none ${
-                                    isActive 
-                                        ? 'text-ps-primary dark:text-cyan-300 font-semibold' 
+                                className={`relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 cursor-pointer select-none ${isActive
+                                        ? 'text-ps-primary dark:text-blue-300 font-semibold'
                                         : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white'
-                                }`}
+                                    }`}
                             >
                                 {item.label}
                             </button>
@@ -248,7 +247,7 @@ export default function Navbar({ resumeUrl, theme = 'dark', onToggleTheme }) {
                             <button
                                 key={item.id}
                                 onClick={() => scrollTo(item.id)}
-                                className="text-left text-slate-800 dark:text-gray-200 hover:text-ps-primary dark:hover:text-cyan-400 py-1"
+                                className="text-left text-slate-800 dark:text-gray-200 hover:text-ps-primary dark:hover:text-blue-400 py-1"
                             >
                                 {idx + 1}. {item.label}
                             </button>

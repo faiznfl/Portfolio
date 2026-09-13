@@ -31,8 +31,8 @@
 
         <!-- Ambient Glow Spheres (Soft & Atmospheric) -->
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-ps-primary/15 rounded-full blur-[130px] pointer-events-none z-0"></div>
-        <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[110px] pointer-events-none z-0"></div>
-        <div class="absolute bottom-10 left-10 w-[450px] h-[450px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+        <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[110px] pointer-events-none z-0"></div>
+        <div class="absolute bottom-10 left-10 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
         <div class="max-w-7xl mx-auto w-full relative z-10 pointer-events-auto">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -43,7 +43,7 @@
                         <h1 class="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-slate-900 dark:text-white leading-none">
                             Hi, I'm <span class="text-gradient-ps font-semibold">{{ $profile->full_name ?? 'Faiz Naufal Putra Permana' }}</span>
                         </h1>
-                        <div class="text-xl sm:text-2xl font-normal text-ps-primary dark:text-cyan-300 font-sans tracking-wide pt-1">
+                        <div class="text-xl sm:text-2xl font-normal text-ps-primary dark:text-blue-300 font-sans tracking-wide pt-1">
                             {{ $profile->headline ?? 'Web Developer' }}
                         </div>
                     </div>
@@ -55,7 +55,7 @@
 
                     <!-- Action Buttons (Clean & Focused) -->
                     <div class="flex flex-wrap items-center gap-3.5 pt-3">
-                        <a href="{{ route('resume.preview') }}" target="_blank" rel="noopener noreferrer" class="btn-ps-primary !bg-gradient-to-r !from-indigo-600 !via-ps-primary !to-cyan-500 !shadow-lg !shadow-indigo-600/30 flex items-center gap-2" title="Download CV">
+                        <a href="{{ route('resume.preview') }}" target="_blank" rel="noopener noreferrer" class="btn-ps-primary !bg-blue-600 hover:!bg-blue-500 !shadow-lg !shadow-blue-600/30 flex items-center gap-2" title="Download CV">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
@@ -76,7 +76,7 @@
                             href="{{ $profile->social_links['github'] ?? 'https://github.com/faiznfl' }}"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
+                            class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-blue-400/50 hover:bg-blue-500/10 text-slate-300 hover:text-blue-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
                             title="GitHub Profile"
                             aria-label="GitHub Profile"
                         >
@@ -90,7 +90,7 @@
                             href="{{ $profile->social_links['linkedin'] ?? 'https://www.linkedin.com/in/faiz-naufal-putra-permana' }}"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
+                            class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-blue-400/50 hover:bg-blue-500/10 text-slate-300 hover:text-blue-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
                             title="LinkedIn Profile"
                             aria-label="LinkedIn Profile"
                         >
@@ -102,7 +102,7 @@
                         <!-- Email / Gmail -->
                         <a
                             href="mailto:{{ $profile->social_links['email'] ?? ($profile->email ?? 'faiznfl20@gmail.com') }}"
-                            class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
+                            class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-blue-400/50 hover:bg-blue-500/10 text-slate-300 hover:text-blue-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95"
                             title="Email: {{ $profile->social_links['email'] ?? ($profile->email ?? 'faiznfl20@gmail.com') }}"
                             aria-label="Send Email"
                         >
@@ -136,10 +136,10 @@
                 <!-- Right Column: Editorial Portrait Photograph (Clean & Prestigious) -->
                 <div class="lg:col-span-5 relative flex justify-center items-center">
                     <!-- Soft Cinematic Ambient Glow Backlight -->
-                    <div class="absolute inset-0 bg-gradient-to-tr from-ps-primary/20 via-cyan-500/10 to-indigo-600/10 rounded-3xl blur-3xl transform scale-90 pointer-events-none"></div>
+                    <div class="absolute inset-0 bg-blue-600/15 rounded-3xl blur-3xl transform scale-90 pointer-events-none"></div>
 
                     <!-- Clean Framed Portrait Photo -->
-                    <div class="relative z-10 w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden glass-panel border border-white/15 shadow-2xl group transition-all duration-500 hover:border-cyan-400/40">
+                    <div class="relative z-10 w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden glass-panel border border-white/15 shadow-2xl group transition-all duration-500 hover:border-blue-400/40">
                         <div class="aspect-[3/4] w-full overflow-hidden relative">
                             <img src="{{ asset('assets/images/faiz-naufal.jpg') }}" 
                                  alt="{{ $profile->full_name ?? 'Faiz Naufal' }}" 
@@ -153,7 +153,7 @@
                             <div class="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-between shadow-xl">
                                 <div>
                                     <div class="text-sm font-semibold text-white tracking-wide">{{ $profile->full_name ?? 'Faiz Naufal Putra Permana' }}</div>
-                                    <div class="text-xs text-cyan-300 font-light">{{ $profile->headline ?? 'Web Developer' }}</div>
+                                    <div class="text-xs text-blue-300 font-light">{{ $profile->headline ?? 'Web Developer' }}</div>
                                 </div>
                                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/10 text-green-400 text-[11px] font-mono border border-green-500/20">
                                     <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
@@ -173,7 +173,7 @@
     <section id="about" class="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
         <!-- Ambient Background Glow -->
         <div class="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-ps-primary/10 dark:bg-ps-primary/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
-        <div class="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+        <div class="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
         <div class="max-w-7xl mx-auto space-y-12 relative z-10">
             <!-- Header conforming strictly to the site-wide design system -->
@@ -193,8 +193,8 @@
                 <div class="lg:col-span-6 space-y-4">
                     <!-- Section Tag Indicator (Aligned with Right Column) -->
                     <div class="flex items-center gap-2 px-1">
-                        <span class="w-2 h-2 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
-                        <span class="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-cyan-400">
+                        <span class="w-2 h-2 rounded-full bg-ps-primary dark:bg-blue-400 animate-pulse"></span>
+                        <span class="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-blue-400">
                             BIOGRAPHY &amp; EDUCATION
                         </span>
                     </div>
@@ -208,8 +208,8 @@
 
                     <!-- Education Cards Stack -->
                     <div class="space-y-4">
-                        <div class="glass-panel p-5 flex items-center gap-4 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.01] shadow-sm dark:shadow-none group">
-                            <div class="w-12 h-12 rounded-xl bg-ps-primary/10 dark:bg-ps-primary/20 text-ps-primary dark:text-cyan-400 border border-ps-primary/25 dark:border-cyan-400/30 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:bg-ps-primary/15 dark:group-hover:bg-cyan-400/20">
+                        <div class="glass-panel p-5 flex items-center gap-4 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.01] shadow-sm dark:shadow-none group">
+                            <div class="w-12 h-12 rounded-xl bg-ps-primary/10 dark:bg-ps-primary/20 text-ps-primary dark:text-blue-400 border border-ps-primary/25 dark:border-blue-400/30 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:bg-ps-primary/15 dark:group-hover:bg-blue-400/20">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
@@ -218,7 +218,7 @@
                             </div>
                             <div class="min-w-0 flex-1 space-y-1">
                                 <div class="flex flex-wrap items-center justify-between gap-x-2">
-                                    <h4 class="text-base font-semibold text-slate-900 dark:text-white tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                                    <h4 class="text-base font-semibold text-slate-900 dark:text-white tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                         Universitas Pamulang
                                     </h4>
                                     <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-semibold border border-emerald-500/20 shrink-0">
@@ -227,7 +227,7 @@
                                     </span>
                                 </div>
                                 <div class="flex flex-wrap items-center justify-between gap-x-2">
-                                    <p class="text-xs sm:text-sm text-ps-primary dark:text-cyan-300 font-medium">
+                                    <p class="text-xs sm:text-sm text-ps-primary dark:text-blue-300 font-medium">
                                         Sistem Informasi
                                     </p>
                                     <span class="text-xs font-mono text-slate-500 dark:text-gray-400">
@@ -243,49 +243,49 @@
                 <div class="lg:col-span-6 space-y-4">
                     <!-- Section Tag Indicator -->
                     <div class="flex items-center gap-2 px-1">
-                        <span class="w-2 h-2 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
-                        <span class="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-cyan-400">
+                        <span class="w-2 h-2 rounded-full bg-ps-primary dark:bg-blue-400 animate-pulse"></span>
+                        <span class="text-xs font-mono font-bold tracking-widest uppercase text-ps-primary dark:text-blue-400">
                             INTERESTS &amp; FOCUS AREAS
                         </span>
                     </div>
 
                     <!-- 2-Column Grid of Interest Cards -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-blue-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-blue-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                 Software Development
                             </span>
                         </div>
 
-                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-blue-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-blue-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                 Web Development
                             </span>
                         </div>
 
-                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-blue-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-blue-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9.5 2A2.5 2.5 0 007 4.5c0 .28.05.54.13.79A3 3 0 005 8a3 3 0 00.35 1.4A3.5 3.5 0 004 12.5a3.5 3.5 0 001.5 2.87V16a3 3 0 003 3h1v2a1 1 0 001 1h.5a1 1 0 001-1V2H9.5zM14.5 2A2.5 2.5 0 0117 4.5c0 .28-.05.54-.13.79A3 3 0 0119 8a3 3 0 01-.35 1.4 3.5 3.5 0 011.35 3.1A3.5 3.5 0 0118.5 15.37V16a3 3 0 01-3 3h-1v2a1 1 0 01-1 1h-.5a1 1 0 01-1-1V2h2.5z" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                 Artificial Intelligence
                             </span>
                         </div>
 
-                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-blue-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-blue-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4 7 7 0 0114-1.5 7.02 7.02 0 013 5.5 4 4 0 01-4 4 4 4 0 01-4-4c0-.75.6-1.5 1.5-1.5s1.5.75 1.5 1.5a1 1 0 001 1 1 1 0 001-1 4.5 4.5 0 00-4.5-4.5A4.5 4.5 0 008 17a4 4 0 01-1 4z" />
                                     <circle cx="8.5" cy="8.5" r="1" fill="currentColor" />
@@ -293,33 +293,33 @@
                                     <circle cx="15.5" cy="8.5" r="1" fill="currentColor" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                 UI/UX Design
                             </span>
                         </div>
 
-                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-blue-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-blue-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                     <ellipse cx="12" cy="5" rx="9" ry="3" />
                                     <path stroke-linecap="round" d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
                                     <path stroke-linecap="round" d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                 Database Management
                             </span>
                         </div>
 
-                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
-                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-cyan-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-cyan-400/10 transition-all duration-200">
+                        <div class="glass-panel p-4 flex items-center gap-3.5 min-h-[70px] hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.02] shadow-sm dark:shadow-none group cursor-default">
+                            <div class="w-10 h-10 rounded-xl bg-slate-200/60 dark:bg-white/[0.05] border border-slate-300/60 dark:border-white/10 flex items-center justify-center shrink-0 text-ps-primary dark:text-blue-300 group-hover:scale-110 group-hover:bg-ps-primary/10 dark:group-hover:bg-blue-400/10 transition-all duration-200">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                     <rect x="4" y="4" width="16" height="16" rx="2" />
                                     <rect x="9" y="9" width="6" height="6" />
                                     <path stroke-linecap="round" d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                            <span class="text-sm font-medium text-slate-800 dark:text-slate-200 tracking-tight leading-snug group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                 Information Technology
                             </span>
                         </div>
@@ -333,12 +333,12 @@
          CHAPTER 3: SKILLS (Interactive Matrix)
          ========================================== -->
     <section id="skills" class="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-white/10 overflow-hidden">
-        <div class="absolute -right-20 top-1/3 w-[450px] h-[450px] bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute -right-20 top-1/3 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
 
         <div class="max-w-3xl mx-auto space-y-10 relative z-10">
             <!-- Header -->
             <div class="text-center space-y-2 max-w-xl mx-auto">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-cyan-400">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-blue-400">
                     02 / TECHNICAL CAPABILITIES
                 </div>
                 <h2 class="ps-display-lg text-white font-light">
@@ -364,7 +364,7 @@
                                         $svgStart = strpos($rawSvg, '<svg');
                                         $cleanSvg = $svgStart !== false ? substr($rawSvg, $svgStart) : $rawSvg;
                                     @endphp
-                                    <div class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 text-ps-primary dark:text-cyan-400 [&>svg]:w-full [&>svg]:h-full [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:object-contain transition-transform duration-200 group-hover:scale-110">
+                                    <div class="inline-flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 text-ps-primary dark:text-blue-400 [&>svg]:w-full [&>svg]:h-full [&>svg]:max-w-full [&>svg]:max-h-full [&>svg]:object-contain transition-transform duration-200 group-hover:scale-110">
                                         {!! $cleanSvg !!}
                                     </div>
                                 @elseif(str_starts_with($rawSvg, 'http') || str_starts_with($rawSvg, '/'))
@@ -373,7 +373,7 @@
                                     <span class="text-2xl sm:text-3xl select-none leading-none transition-transform duration-200 group-hover:scale-110">{{ $rawSvg }}</span>
                                 @endif
                             @else
-                                <svg class="w-9 h-9 sm:w-10 sm:h-10 text-ps-primary dark:text-cyan-400 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <svg class="w-9 h-9 sm:w-10 sm:h-10 text-ps-primary dark:text-blue-400 transition-transform duration-200 group-hover:scale-110" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                                     <polyline points="16 18 22 12 16 6"/>
                                     <polyline points="8 6 2 12 8 18"/>
                                 </svg>
@@ -382,14 +382,14 @@
 
                         <!-- Tech Name Only -->
                         <div class="w-full h-8 flex items-center justify-center px-1">
-                            <span class="text-[11px] sm:text-xs font-semibold text-slate-800 dark:text-slate-200 tracking-tight leading-tight line-clamp-2 text-center group-hover:text-ps-primary dark:group-hover:text-cyan-300 transition-colors">
+                            <span class="text-[11px] sm:text-xs font-semibold text-slate-800 dark:text-slate-200 tracking-tight leading-tight line-clamp-2 text-center group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                 {{ $skill->name }}
                             </span>
                         </div>
                     </div>
                 @empty
                     <div class="col-span-full py-16 text-center text-slate-400 dark:text-gray-500 font-light border border-dashed border-slate-200 dark:border-white/10 rounded-2xl p-8">
-                        <span class="text-3xl block mb-2">💻</span>
+                        <span class="text-3xl block mb-2">ðŸ’»</span>
                         <span class="text-sm">Belum ada keahlian yang ditambahkan.</span>
                     </div>
                 @endforelse
@@ -401,13 +401,13 @@
          CHAPTER 4: PROJECTS (Interactive 3D Cards Showcase)
          ========================================== -->
     <section id="projects" class="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-white/10 overflow-hidden">
-        <div class="absolute left-1/4 top-10 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="absolute left-1/4 top-10 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[150px] pointer-events-none"></div>
 
         <div class="max-w-7xl mx-auto space-y-12 relative z-10">
             <!-- Header -->
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div class="space-y-3 max-w-2xl">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-cyan-400">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-blue-400">
                         03 / FEATURED SHOWCASE
                     </div>
                     <h2 class="ps-display-lg text-white font-light">
@@ -434,7 +434,7 @@
                         <!-- Card Body -->
                         <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
                             <div class="space-y-2">
-                                <h3 class="text-xl font-bold text-white tracking-tight group-hover:text-cyan-300 transition-colors">
+                                <h3 class="text-xl font-bold text-white tracking-tight group-hover:text-blue-300 transition-colors">
                                     {{ $project->title }}
                                 </h3>
                                 <p class="text-sm text-gray-300 line-clamp-3 leading-relaxed font-light">
@@ -462,7 +462,7 @@
                             @if(!empty($project->demo_url) || !empty($project->repo_url))
                                 <div class="pt-4 border-t border-white/10 flex items-center justify-end gap-2">
                                     @if(!empty($project->demo_url))
-                                        <a href="{{ $project->demo_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-white bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 shadow-sm shadow-blue-500/20 hover:shadow-cyan-500/30 transition-all" title="Buka Live Demo">
+                                        <a href="{{ $project->demo_url }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium text-white bg-blue-600 hover:bg-blue-500 shadow-sm shadow-blue-600/30 transition-all" title="Buka Live Demo">
                                             <span>Demo</span>
                                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
@@ -497,7 +497,7 @@
         <div class="max-w-4xl mx-auto space-y-16 relative z-10">
             <!-- Header -->
             <div class="text-center space-y-3">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-cyan-400">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-blue-400">
                     04 / CAREER MILESTONES
                 </div>
                 <h2 class="ps-display-lg text-white font-light">
@@ -520,15 +520,15 @@
                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-4">
                                 <div>
                                     <h3 class="text-xl font-bold text-white">{{ $exp->role_title }}</h3>
-                                    <div class="text-cyan-400 font-medium text-sm flex items-center gap-2 mt-1">
+                                    <div class="text-blue-400 font-medium text-sm flex items-center gap-2 mt-1">
                                         <span>{{ $exp->company_name }}</span>
-                                        <span class="text-gray-500">•</span>
+                                        <span class="text-gray-500">â€¢</span>
                                         <span class="text-gray-400 text-xs">{{ $exp->location }}</span>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <span class="px-3 py-1 rounded-full text-xs font-mono bg-white/10 text-gray-300">
-                                        {{ \Carbon\Carbon::parse($exp->start_date)->format('M Y') }} — 
+                                        {{ \Carbon\Carbon::parse($exp->start_date)->format('M Y') }} â€” 
                                         {{ $exp->is_current ? 'Sekarang' : \Carbon\Carbon::parse($exp->end_date)->format('M Y') }}
                                     </span>
                                     @if($exp->is_current)
@@ -550,7 +550,7 @@
                                 @if(!empty($exp->description_points))
                                     @foreach($exp->description_points as $point)
                                         <li class="flex items-start gap-3">
-                                            <span class="text-cyan-400 mt-0.5 font-bold">›</span>
+                                            <span class="text-blue-400 mt-0.5 font-bold">â€º</span>
                                             <span>{{ $point }}</span>
                                         </li>
                                     @endforeach
@@ -585,7 +585,7 @@
         <div class="max-w-7xl mx-auto space-y-12 relative z-10">
             <!-- Header -->
             <div class="max-w-3xl space-y-3">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-cyan-400">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-blue-400">
                     05 / CREDENTIALS &amp; LICENSES
                 </div>
                 <h2 class="ps-display-lg text-white font-light">
@@ -611,13 +611,13 @@
 
                             <div class="space-y-1.5">
                                 <div class="flex items-center justify-between gap-2">
-                                    <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider">{{ $cert->issuer_organization }}</span>
+                                    <span class="text-xs font-mono text-blue-400 uppercase tracking-wider">{{ $cert->issuer_organization }}</span>
                                     @if($cert->issue_date)
                                         <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-gray-300">
                                             {{ \Carbon\Carbon::parse($cert->issue_date)->format('Y') }}
                                         </span>
                                     @elseif($cert->category)
-                                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-cyan-300">
+                                        <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-white/10 text-blue-300">
                                             {{ explode(',', $cert->category)[0] }}
                                         </span>
                                     @endif
@@ -657,7 +657,7 @@
         <div class="max-w-5xl mx-auto space-y-12 relative z-10">
             <!-- Header -->
             <div class="text-center space-y-3 max-w-2xl mx-auto">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-cyan-400">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-ps-primary/10 border border-ps-primary/30 text-xs font-bold uppercase tracking-widest text-blue-400">
                     06 / GET IN TOUCH
                 </div>
                 <h2 class="ps-display-lg text-white font-light">
@@ -680,9 +680,9 @@
 
                         <div class="space-y-4">
                             <!-- Email Row with Copy Button -->
-                            <div class="flex items-center justify-between gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-cyan-400/40 transition-all">
+                            <div class="flex items-center justify-between gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-blue-400/40 transition-all">
                                 <div class="flex items-center gap-3.5 min-w-0">
-                                    <div class="w-11 h-11 rounded-2xl bg-[#12162a] border border-indigo-500/30 flex items-center justify-center shrink-0 text-indigo-400">
+                                    <div class="w-11 h-11 rounded-2xl bg-[#0d1527] border border-blue-500/30 flex items-center justify-center shrink-0 text-blue-400">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                             <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                         </svg>
@@ -691,7 +691,7 @@
                                         <div class="text-[11px] font-mono font-semibold uppercase tracking-wider text-gray-400">
                                             EMAIL
                                         </div>
-                                        <a href="mailto:{{ $profile->email ?? 'faiznfl20@gmail.com' }}" class="text-sm sm:text-base font-semibold text-white hover:text-cyan-300 transition-colors truncate block">
+                                        <a href="mailto:{{ $profile->email ?? 'faiznfl20@gmail.com' }}" class="text-sm sm:text-base font-semibold text-white hover:text-blue-300 transition-colors truncate block">
                                             {{ $profile->email ?? 'faiznfl20@gmail.com' }}
                                         </a>
                                     </div>
@@ -711,8 +711,8 @@
                             </div>
 
                             <!-- Location Row -->
-                            <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-cyan-400/40 transition-all">
-                                <div class="w-11 h-11 rounded-2xl bg-[#12162a] border border-indigo-500/30 flex items-center justify-center shrink-0 text-indigo-400">
+                            <div class="flex items-center gap-3.5 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-blue-400/40 transition-all">
+                                <div class="w-11 h-11 rounded-2xl bg-[#0d1527] border border-blue-500/30 flex items-center justify-center shrink-0 text-blue-400">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -736,21 +736,21 @@
                             </div>
                             <div class="flex items-center gap-3">
                                 <!-- GitHub -->
-                                <a href="https://github.com/faiznfl" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95" title="GitHub Profile" aria-label="GitHub Profile">
+                                <a href="https://github.com/faiznfl" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-blue-400/50 hover:bg-blue-500/10 text-slate-300 hover:text-blue-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95" title="GitHub Profile" aria-label="GitHub Profile">
                                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                                         <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
                                     </svg>
                                 </a>
 
                                 <!-- LinkedIn -->
-                                <a href="https://www.linkedin.com/in/faiz-naufal-putra-permana" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95" title="LinkedIn Profile" aria-label="LinkedIn Profile">
+                                <a href="https://www.linkedin.com/in/faiz-naufal-putra-permana" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-blue-400/50 hover:bg-blue-500/10 text-slate-300 hover:text-blue-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95" title="LinkedIn Profile" aria-label="LinkedIn Profile">
                                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                                     </svg>
                                 </a>
 
                                 <!-- Email -->
-                                <a href="mailto:{{ $profile->email ?? 'faiznfl20@gmail.com' }}" class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-cyan-400/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95" title="Kirim Email" aria-label="Kirim Email">
+                                <a href="mailto:{{ $profile->email ?? 'faiznfl20@gmail.com' }}" class="w-10 h-10 rounded-full bg-white/[0.05] border border-white/10 hover:border-blue-400/50 hover:bg-blue-500/10 text-slate-300 hover:text-blue-300 flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-110 active:scale-95" title="Kirim Email" aria-label="Kirim Email">
                                     <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="1.8">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                     </svg>
@@ -775,7 +775,7 @@
                             <!-- Name -->
                             <div class="space-y-2">
                                 <label for="sender_name" class="block text-xs font-semibold uppercase tracking-wider text-gray-300">
-                                    Nama Lengkap <span class="text-cyan-400">*</span>
+                                    Nama Lengkap <span class="text-blue-400">*</span>
                                 </label>
                                 <input type="text" 
                                        id="sender_name" 
@@ -792,7 +792,7 @@
                             <!-- Email -->
                             <div class="space-y-2">
                                 <label for="sender_email" class="block text-xs font-semibold uppercase tracking-wider text-gray-300">
-                                    Alamat Email Bisnis <span class="text-cyan-400">*</span>
+                                    Alamat Email Bisnis <span class="text-blue-400">*</span>
                                 </label>
                                 <input type="email" 
                                        id="sender_email" 
@@ -810,7 +810,7 @@
                         <!-- Subject -->
                         <div class="space-y-2">
                             <label for="subject" class="block text-xs font-semibold uppercase tracking-wider text-gray-300">
-                                Subjek Diskusi / Tawaran <span class="text-cyan-400">*</span>
+                                Subjek Diskusi / Tawaran <span class="text-blue-400">*</span>
                             </label>
                             <input type="text" 
                                    id="subject" 
@@ -828,7 +828,7 @@
                         <div class="space-y-2">
                             <div class="flex items-center justify-between">
                                 <label for="message_body" class="block text-xs font-semibold uppercase tracking-wider text-gray-300">
-                                    Isi Pesan &amp; Rincian Kebutuhan <span class="text-cyan-400">*</span>
+                                    Isi Pesan &amp; Rincian Kebutuhan <span class="text-blue-400">*</span>
                                 </label>
                                 <span id="char-counter" class="text-xs text-gray-400 font-mono">0 karakter</span>
                             </div>

@@ -47,13 +47,17 @@ export default function Experience({ experiences = [] }) {
                 <div className="relative">
                     {sortedExperiences.length === 0 ? (
                         <div className="py-16 text-center text-slate-400 dark:text-gray-500 font-light border border-dashed border-slate-200 dark:border-white/10 rounded-2xl p-8 max-w-xl mx-auto">
-                            <span className="text-3xl block mb-2">🧭</span>
+                            <div className="w-10 h-10 mx-auto mb-3 text-slate-400 dark:text-gray-500 flex items-center justify-center">
+                                <svg className="w-8 h-8 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 21a9 9 0 100-18 9 9 0 000 18zm0 0v-2m0-14V3m9 9h-2M5 12H3m15.364-6.364l-1.414 1.414M7.05 16.95l-1.414 1.414M16.95 16.95l-1.414-1.414M7.05 7.05L5.636 5.636" />
+                                </svg>
+                            </div>
                             <span className="text-sm">Belum ada linimasa pengalaman yang ditambahkan.</span>
                         </div>
                     ) : (
                         <>
                             {/* Central Glowing Line */}
-                            <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-ps-primary via-cyan-400 to-indigo-600 -translate-x-1/2 shadow-[0_0_12px_rgba(0,112,209,0.5)]"></div>
+                            <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-blue-500 via-blue-600 to-blue-400 -translate-x-1/2 shadow-[0_0_12px_rgba(37,99,235,0.5)]"></div>
 
                             <div className="space-y-10">
                                 {sortedExperiences.map((exp, idx) => {
@@ -81,15 +85,15 @@ export default function Experience({ experiences = [] }) {
                                                 }`}
                                         >
                                             {/* Center Node Dot */}
-                                            <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-white dark:bg-black border-4 border-ps-primary dark:border-cyan-400 shadow-[0_0_15px_rgba(0,112,209,0.6)] z-20"></div>
+                                            <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-white dark:bg-black border-4 border-ps-primary dark:border-blue-400 shadow-[0_0_15px_rgba(37,99,235,0.6)] z-20"></div>
 
                                             {/* Card Container (Takes 5/12 width on desktop) */}
                                             <div className="w-full md:w-5/12 pl-12 md:pl-0">
-                                                <div className="glass-panel p-5 sm:p-6 space-y-3.5 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all duration-300 hover:scale-[1.01] shadow-md dark:shadow-xl">
+                                                <div className="glass-panel p-5 sm:p-6 space-y-3.5 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.01] shadow-md dark:shadow-xl">
                                                     {/* Role & Date Bar */}
                                                     <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 dark:border-white/10 pb-2.5">
-                                                        <span className="px-3 py-1 rounded-full text-xs font-mono bg-slate-200/80 dark:bg-white/[0.06] text-slate-800 dark:text-cyan-300 border border-slate-300 dark:border-white/10">
-                                                            {formatDate(exp.start_date)} — {exp.is_current ? 'Present' : formatDate(exp.end_date)}
+                                                        <span className="px-3 py-1 rounded-full text-xs font-mono bg-slate-200/80 dark:bg-white/[0.06] text-slate-800 dark:text-blue-300 border border-slate-300 dark:border-white/10">
+                                                            {formatDate(exp.start_date)} - {exp.is_current ? 'Present' : formatDate(exp.end_date)}
                                                         </span>
                                                         {exp.is_current && (
                                                             <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-600 dark:text-green-400 border border-emerald-500/30">
@@ -101,7 +105,7 @@ export default function Experience({ experiences = [] }) {
                                                     {/* Title & Company */}
                                                     <div>
                                                         <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">{exp.role_title}</h3>
-                                                        <div className="text-sm font-medium text-ps-primary dark:text-cyan-400 flex items-center gap-2 mt-0.5">
+                                                        <div className="text-sm font-medium text-ps-primary dark:text-blue-400 flex items-center gap-2 mt-0.5">
                                                             <span>{exp.company_name}</span>
                                                             <span className="text-slate-400 dark:text-gray-500">•</span>
                                                             <span className="text-xs text-slate-500 dark:text-gray-400 font-light">{exp.location}</span>
@@ -120,7 +124,7 @@ export default function Experience({ experiences = [] }) {
                                                         <div>
                                                             {/* Always Visible First Point */}
                                                             <div className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-gray-300 font-light leading-relaxed">
-                                                                <span className="text-ps-primary dark:text-cyan-400 mt-1 shrink-0 text-xs">◆</span>
+                                                                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 mt-2 shrink-0"></span>
                                                                 <span>{points[0]}</span>
                                                             </div>
 
@@ -133,7 +137,7 @@ export default function Experience({ experiences = [] }) {
                                                                                 <div className="space-y-2 pt-2">
                                                                                     {points.slice(1).map((point, pIdx) => (
                                                                                         <div key={pIdx} className="flex items-start gap-2.5 text-sm text-slate-600 dark:text-gray-300 font-light leading-relaxed">
-                                                                                            <span className="text-ps-primary dark:text-cyan-400 mt-1 shrink-0 text-xs">◆</span>
+                                                                                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 dark:bg-blue-400 mt-2 shrink-0"></span>
                                                                                             <span>{point}</span>
                                                                                         </div>
                                                                                     ))}
@@ -180,7 +184,7 @@ export default function Experience({ experiences = [] }) {
                                                             <button
                                                                 type="button"
                                                                 onClick={() => toggleCard(cardKey)}
-                                                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-ps-primary dark:text-cyan-300 bg-ps-primary/5 dark:bg-cyan-400/10 hover:bg-ps-primary/15 dark:hover:bg-cyan-400/20 border border-ps-primary/20 dark:border-cyan-400/25 transition-all cursor-pointer group"
+                                                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-ps-primary dark:text-blue-300 bg-ps-primary/5 dark:bg-blue-400/10 hover:bg-ps-primary/15 dark:hover:bg-blue-400/20 border border-ps-primary/20 dark:border-blue-400/25 transition-all cursor-pointer group"
                                                             >
                                                                 <span>{isExpanded ? 'Show Less' : 'Show More'}</span>
                                                                 <svg

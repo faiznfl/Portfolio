@@ -33,16 +33,16 @@
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])
 </head>
-<body class="bg-[#f8fafc] text-slate-900 dark:bg-[#070a13] dark:text-slate-100 antialiased selection:bg-ps-primary selection:text-white min-h-screen flex flex-col font-sans transition-colors duration-300">
+<body class="bg-[#f8fafc] text-slate-900 dark:bg-[#080d1a] dark:text-slate-100 antialiased selection:bg-ps-primary selection:text-white min-h-screen flex flex-col font-sans transition-colors duration-300">
     <!-- Floating Liquid Glass Admin Navbar Container -->
     <header class="fixed top-4 sm:top-5 inset-x-3 sm:inset-x-0 mx-auto max-w-6xl z-50 rounded-full liquid-glass-nav px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between transition-all duration-300">
         <!-- Left: Admin Brand & Console Badge -->
         <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
-            <a href="{{ route('admin.dashboard') }}" class="text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-white hover:text-ps-primary dark:hover:text-cyan-400 transition-colors">
-                <span>Faiz</span> <span class="text-ps-primary dark:text-cyan-400 font-light">Naufal.</span>
+            <a href="{{ route('admin.dashboard') }}" class="text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-white hover:text-ps-primary dark:hover:text-blue-400 transition-colors">
+                <span>Faiz</span> <span class="text-ps-primary dark:text-blue-400 font-light">Naufal.</span>
             </a>
-            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:bg-cyan-500/15 dark:text-cyan-300 border border-ps-primary/25 dark:border-cyan-500/30">
-                <span class="w-1.5 h-1.5 rounded-full bg-ps-primary dark:bg-cyan-400 animate-pulse"></span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:bg-blue-500/15 dark:text-blue-300 border border-ps-primary/25 dark:border-blue-500/30">
+                <span class="w-1.5 h-1.5 rounded-full bg-ps-primary dark:bg-blue-400 animate-pulse"></span>
                 ADMIN CONSOLE
             </span>
         </div>
@@ -51,33 +51,33 @@
         <nav id="admin-nav-track" class="hidden md:flex items-center relative p-1 rounded-full bg-slate-200/50 dark:bg-white/[0.04] border border-slate-300/50 dark:border-white/[0.08]">
             <!-- Animated Sliding Liquid Glass Pill -->
             <div id="admin-nav-pill"
-                 class="absolute top-0 left-0 rounded-full bg-white dark:bg-white/[0.12] border border-slate-300/80 dark:border-cyan-400/40 shadow-sm dark:shadow-[0_0_16px_rgba(0,212,255,0.25)] pointer-events-none z-0 transition-all duration-300 ease-out opacity-0"
+                 class="absolute top-0 left-0 rounded-full bg-white dark:bg-white/[0.12] border border-slate-300/80 dark:border-blue-400/40 shadow-sm dark:shadow-[0_0_16px_rgba(37,99,235,0.25)] pointer-events-none z-0 transition-all duration-300 ease-out opacity-0"
                  style="transform: translate3d(0, 0, 0);">
             </div>
 
             <a href="{{ route('admin.dashboard') }}#dashboard" 
                data-section="dashboard"
-               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none {{ request()->routeIs('admin.dashboard') && !request()->routeIs('admin.skills.*', 'admin.projects.*', 'admin.experiences.*', 'admin.certificates.*') ? 'text-ps-primary dark:text-cyan-300 font-semibold active-nav' : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white' }}">
+               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none {{ request()->routeIs('admin.dashboard') && !request()->routeIs('admin.skills.*', 'admin.projects.*', 'admin.experiences.*', 'admin.certificates.*') ? 'text-ps-primary dark:text-blue-300 font-semibold active-nav' : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white' }}">
                 <span>Dashboard</span>
             </a>
             <a href="{{ route('admin.dashboard') }}#skills" 
                data-section="skills"
-               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none {{ request()->routeIs('admin.skills.*') ? 'text-ps-primary dark:text-cyan-300 font-semibold active-nav' : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white' }}">
+               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none {{ request()->routeIs('admin.skills.*') ? 'text-ps-primary dark:text-blue-300 font-semibold active-nav' : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white' }}">
                 <span>Skills</span>
             </a>
             <a href="{{ route('admin.dashboard') }}#projects" 
                data-section="projects"
-               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none {{ request()->routeIs('admin.projects.*') ? 'text-ps-primary dark:text-cyan-300 font-semibold active-nav' : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white' }}">
+               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none {{ request()->routeIs('admin.projects.*') ? 'text-ps-primary dark:text-blue-300 font-semibold active-nav' : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white' }}">
                 <span>Projects</span>
             </a>
             <a href="{{ route('admin.dashboard') }}#experiences" 
                data-section="experiences"
-               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none {{ request()->routeIs('admin.experiences.*') ? 'text-ps-primary dark:text-cyan-300 font-semibold active-nav' : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white' }}">
+               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none {{ request()->routeIs('admin.experiences.*') ? 'text-ps-primary dark:text-blue-300 font-semibold active-nav' : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white' }}">
                 <span>Experience</span>
             </a>
             <a href="{{ route('admin.dashboard') }}#certificates" 
                data-section="certificates"
-               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none {{ request()->routeIs('admin.certificates.*') ? 'text-ps-primary dark:text-cyan-300 font-semibold active-nav' : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white' }}">
+               class="admin-nav-item relative z-10 font-medium py-1.5 px-3 rounded-full text-xs lg:text-sm transition-colors duration-200 select-none {{ request()->routeIs('admin.certificates.*') ? 'text-ps-primary dark:text-blue-300 font-semibold active-nav' : 'text-slate-600 hover:text-slate-900 dark:text-gray-300 dark:hover:text-white' }}">
                 <span>Certificates</span>
             </a>
         </nav>
@@ -101,7 +101,7 @@
 
             <!-- Account Settings Button -->
             <a href="{{ route('admin.account.index') }}" 
-               class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium {{ request()->routeIs('admin.account.*') ? 'text-ps-primary dark:text-cyan-300 bg-ps-primary/10 border-ps-primary/30 font-semibold shadow-sm' : 'text-slate-700 dark:text-slate-300 bg-slate-200/60 dark:bg-white/5 hover:bg-slate-300/70 dark:hover:bg-white/10 border border-slate-300/60 dark:border-white/10' }} transition-colors"
+               class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium {{ request()->routeIs('admin.account.*') ? 'text-ps-primary dark:text-blue-300 bg-ps-primary/10 border-ps-primary/30 font-semibold shadow-sm' : 'text-slate-700 dark:text-slate-300 bg-slate-200/60 dark:bg-white/5 hover:bg-slate-300/70 dark:hover:bg-white/10 border border-slate-300/60 dark:border-white/10' }} transition-colors"
                title="Pengaturan Akun & Kata Sandi">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -111,7 +111,7 @@
 
             <!-- Public Website Link Button -->
             <a href="{{ route('home') }}" target="_blank" 
-               class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-200/60 dark:bg-white/5 hover:bg-slate-300/70 dark:hover:bg-white/10 border border-slate-300/60 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-colors"
+               class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-200/60 dark:bg-white/5 hover:bg-slate-300/70 dark:hover:bg-white/10 border border-slate-300/60 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-colors"
                title="Buka Website Publik di Tab Baru">
                 <span>Web Publik</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,30 +141,30 @@
     <!-- Mobile Drawer Navigation for Admin -->
     <div id="admin-mobile-menu" class="hidden md:hidden fixed inset-x-4 top-24 z-50 rounded-2xl liquid-glass-nav p-5 space-y-3 text-sm shadow-2xl border border-slate-300/60 dark:border-white/10">
         <div class="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-white/10">
-            <span class="font-bold text-xs uppercase tracking-wider text-ps-primary dark:text-cyan-400">Navigasi Admin</span>
+            <span class="font-bold text-xs uppercase tracking-wider text-ps-primary dark:text-blue-400">Navigasi Admin</span>
             <span class="text-xs text-slate-500 dark:text-gray-400">Control Hub</span>
         </div>
-        <a href="{{ route('admin.dashboard') }}#dashboard" data-section="dashboard" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.dashboard') && !request()->routeIs('admin.skills.*', 'admin.projects.*', 'admin.experiences.*', 'admin.certificates.*') ? 'text-ps-primary dark:text-cyan-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
+        <a href="{{ route('admin.dashboard') }}#dashboard" data-section="dashboard" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.dashboard') && !request()->routeIs('admin.skills.*', 'admin.projects.*', 'admin.experiences.*', 'admin.certificates.*') ? 'text-ps-primary dark:text-blue-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
             Dashboard
         </a>
-        <a href="{{ route('admin.dashboard') }}#skills" data-section="skills" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.skills.*') ? 'text-ps-primary dark:text-cyan-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
+        <a href="{{ route('admin.dashboard') }}#skills" data-section="skills" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.skills.*') ? 'text-ps-primary dark:text-blue-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
             Skills
         </a>
-        <a href="{{ route('admin.dashboard') }}#projects" data-section="projects" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.projects.*') ? 'text-ps-primary dark:text-cyan-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
+        <a href="{{ route('admin.dashboard') }}#projects" data-section="projects" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.projects.*') ? 'text-ps-primary dark:text-blue-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
             Projects
         </a>
-        <a href="{{ route('admin.dashboard') }}#experiences" data-section="experiences" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.experiences.*') ? 'text-ps-primary dark:text-cyan-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
+        <a href="{{ route('admin.dashboard') }}#experiences" data-section="experiences" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.experiences.*') ? 'text-ps-primary dark:text-blue-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
             Experience
         </a>
-        <a href="{{ route('admin.dashboard') }}#certificates" data-section="certificates" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.certificates.*') ? 'text-ps-primary dark:text-cyan-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
+        <a href="{{ route('admin.dashboard') }}#certificates" data-section="certificates" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.certificates.*') ? 'text-ps-primary dark:text-blue-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
             Certificates
         </a>
-        <a href="{{ route('admin.account.index') }}" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.account.*') ? 'text-ps-primary dark:text-cyan-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
+        <a href="{{ route('admin.account.index') }}" class="admin-mobile-nav-item block px-3 py-2 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-black/5 dark:hover:bg-white/5 font-medium transition-colors {{ request()->routeIs('admin.account.*') ? 'text-ps-primary dark:text-blue-400 font-bold bg-black/5 dark:bg-white/5 active-nav' : '' }}">
             Pengaturan Akun
         </a>
         <div class="pt-2 border-t border-slate-200 dark:border-white/10">
-            <a href="{{ route('home') }}" target="_blank" class="block px-3 py-2 rounded-xl text-ps-primary dark:text-cyan-400 font-semibold hover:underline">
-                Buka Web Publik ↗
+            <a href="{{ route('home') }}" target="_blank" class="block px-3 py-2 rounded-xl text-ps-primary dark:text-blue-400 font-semibold hover:underline">
+                Buka Web Publik â†—
             </a>
         </div>
     </div>
@@ -179,17 +179,17 @@
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono">
             <div class="flex items-center gap-2 text-center sm:text-left">
                 <span class="font-bold text-slate-800 dark:text-slate-200">Faiz Naufal Putra Permana</span>
-                <span class="text-slate-400 dark:text-slate-600">•</span>
+                <span class="text-slate-400 dark:text-slate-600">â€¢</span>
                 <span>Admin Management Suite &copy; {{ date('Y') }}</span>
             </div>
             <div class="flex items-center gap-4 text-[11px] text-slate-400 dark:text-gray-500">
                 <span>PlayStation 5 Liquid Glass Design System</span>
-                <span class="hidden md:inline text-slate-300 dark:text-slate-700">•</span>
+                <span class="hidden md:inline text-slate-300 dark:text-slate-700">â€¢</span>
                 <span class="hidden md:inline">Laravel {{ app()->version() }} (PHP {{ PHP_VERSION }})</span>
             </div>
             <button type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-200/70 hover:bg-slate-300/70 dark:bg-white/[0.06] dark:hover:bg-white/[0.12] border border-slate-300 dark:border-white/10 text-slate-700 dark:text-slate-300 transition-all text-xs group" title="Kembali ke Bagian Paling Atas">
                 <span>Ke Atas</span>
-                <svg class="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform text-ps-primary dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                <svg class="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform text-ps-primary dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
             </button>
         </div>
     </footer>
@@ -266,10 +266,10 @@
 
                 navLinks.forEach(link => {
                     if (link === activeEl) {
-                        link.classList.add('text-ps-primary', 'dark:text-cyan-300', 'font-semibold', 'active-nav');
+                        link.classList.add('text-ps-primary', 'dark:text-blue-300', 'font-semibold', 'active-nav');
                         link.classList.remove('text-slate-600', 'dark:text-gray-300');
                     } else {
-                        link.classList.remove('text-ps-primary', 'dark:text-cyan-300', 'font-semibold', 'active-nav');
+                        link.classList.remove('text-ps-primary', 'dark:text-blue-300', 'font-semibold', 'active-nav');
                         link.classList.add('text-slate-600', 'dark:text-gray-300');
                     }
                 });
@@ -281,10 +281,10 @@
                 // Sync mobile drawer items
                 mobileNavLinks.forEach(item => {
                     if (item.dataset.section === sectionId) {
-                        item.classList.add('text-ps-primary', 'dark:text-cyan-400', 'font-bold', 'bg-black/5', 'dark:bg-white/5', 'active-nav');
+                        item.classList.add('text-ps-primary', 'dark:text-blue-400', 'font-bold', 'bg-black/5', 'dark:bg-white/5', 'active-nav');
                         item.classList.remove('text-slate-800', 'dark:text-slate-200');
                     } else {
-                        item.classList.remove('text-ps-primary', 'dark:text-cyan-400', 'font-bold', 'bg-black/5', 'dark:bg-white/5', 'active-nav');
+                        item.classList.remove('text-ps-primary', 'dark:text-blue-400', 'font-bold', 'bg-black/5', 'dark:bg-white/5', 'active-nav');
                         item.classList.add('text-slate-800', 'dark:text-slate-200');
                     }
                 });

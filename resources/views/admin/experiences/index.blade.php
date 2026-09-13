@@ -9,7 +9,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-6">
             <div class="space-y-1">
                 <div class="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-gray-400">
-                    <a href="{{ route('admin.dashboard') }}" class="hover:text-ps-primary dark:hover:text-cyan-400">Dashboard</a>
+                    <a href="{{ route('admin.dashboard') }}" class="hover:text-ps-primary dark:hover:text-blue-400">Dashboard</a>
                     <span>/</span>
                     <span class="text-slate-800 dark:text-gray-200 font-semibold">Journey (Pengalaman)</span>
                 </div>
@@ -36,7 +36,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="text-xs font-mono uppercase font-bold text-slate-500 dark:text-gray-400">Daftar Linimasa Pengalaman</span>
-                    <span class="text-xs font-mono text-ps-primary dark:text-cyan-400 bg-ps-primary/10 dark:bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-ps-primary/20 dark:border-cyan-400/20 font-bold">
+                    <span class="text-xs font-mono text-ps-primary dark:text-blue-400 bg-ps-primary/10 dark:bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-ps-primary/20 dark:border-blue-400/20 font-bold">
                         {{ $experiences->count() }} Data
                     </span>
                 </div>
@@ -62,7 +62,7 @@
                                     <td class="px-4 py-3.5 font-mono text-xs text-slate-400">#{{ $exp->order_index }}</td>
                                     <td class="px-4 py-3.5 font-mono text-xs text-slate-500 dark:text-gray-400 whitespace-nowrap">
                                         <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
-                                            {{ $exp->start_date->format('M Y') }} — 
+                                            {{ $exp->start_date->format('M Y') }} â€” 
                                             @if($exp->is_current)
                                                 <span class="text-emerald-600 dark:text-emerald-400 font-bold">Present</span>
                                             @else
@@ -71,7 +71,7 @@
                                         </span>
                                     </td>
                                     <td class="px-4 py-3.5 font-bold text-slate-900 dark:text-white">{{ $exp->role_title }}</td>
-                                    <td class="px-4 py-3.5 text-ps-primary dark:text-cyan-400 font-semibold">{{ $exp->company_name }}</td>
+                                    <td class="px-4 py-3.5 text-ps-primary dark:text-blue-400 font-semibold">{{ $exp->company_name }}</td>
                                     <td class="px-4 py-3.5 text-xs text-slate-500 dark:text-gray-400">{{ $exp->location }}</td>
                                     <td class="px-4 py-3.5 text-xs text-slate-600 dark:text-gray-300">
                                         @php
@@ -81,7 +81,7 @@
                                     </td>
                                     <td class="px-4 py-3.5 text-right">
                                         <div class="flex items-center justify-end gap-2 text-xs">
-                                            <a href="{{ route('admin.experiences.edit', $exp->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                            <a href="{{ route('admin.experiences.edit', $exp->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-blue-500/10 dark:hover:bg-blue-600 dark:hover:text-white transition-all">
                                                 Edit
                                             </a>
                                             <form action="{{ route('admin.experiences.destroy', $exp->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus pengalaman {{ $exp->role_title }} di {{ $exp->company_name }}?')">

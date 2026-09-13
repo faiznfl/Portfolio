@@ -62,7 +62,7 @@ export default function CaseStudyModal({ project, onClose }) {
                 {/* Modal Header */}
                 <div className="sticky top-0 z-20 bg-white/95 dark:bg-[#0d1322]/95 backdrop-blur-md px-6 py-4 border-b border-slate-200 dark:border-white/10 flex items-center justify-between">
                     <div>
-                        <span className="text-xs font-mono uppercase tracking-widest text-ps-primary dark:text-cyan-400 font-bold">
+                        <span className="text-xs font-mono uppercase tracking-widest text-ps-primary dark:text-blue-400 font-bold">
                             CASE STUDY ARCHITECTURE
                         </span>
                         <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">{project.title}</h3>
@@ -152,7 +152,7 @@ export default function CaseStudyModal({ project, onClose }) {
                     {activeTab === 'architecture' && (
                         <div className="space-y-6">
                             <div className="p-5 rounded-xl bg-blue-500/10 dark:bg-blue-950/30 border border-blue-500/20 dark:border-blue-500/30 space-y-2">
-                                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-ps-primary dark:text-cyan-400">
+                                <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-ps-primary dark:text-blue-400">
                                     03. System Architecture &amp; Technical Decisions
                                 </h4>
                                 <p className="text-sm text-slate-700 dark:text-gray-300 leading-relaxed font-light">
@@ -165,7 +165,7 @@ export default function CaseStudyModal({ project, onClose }) {
                                     {stacks.map((tech, idx) => (
                                         <span
                                             key={idx}
-                                            className="px-3 py-1 rounded-full text-xs font-mono font-medium bg-ps-primary/10 dark:bg-blue-900/40 text-ps-primary dark:text-cyan-300 border border-ps-primary/20 dark:border-blue-700/50"
+                                            className="px-3 py-1 rounded-full text-xs font-mono font-medium bg-ps-primary/10 dark:bg-blue-900/40 text-ps-primary dark:text-blue-300 border border-ps-primary/20 dark:border-blue-700/50"
                                         >
                                             {tech}
                                         </span>
@@ -184,9 +184,7 @@ export default function CaseStudyModal({ project, onClose }) {
                                 <ul className="space-y-3">
                                     {metrics.map((metric, idx) => (
                                         <li key={idx} className="flex items-center gap-2.5 text-sm text-slate-700 dark:text-gray-200">
-                                            <span className="w-5 h-5 rounded-full bg-green-500/20 text-green-600 dark:text-green-400 flex items-center justify-center text-xs font-bold shrink-0">
-                                                ✓
-                                            </span>
+                                            <span className="w-5 h-5 rounded-full bg-green-500/20 text-green-600 dark:text-green-400 flex items-center justify-center shrink-0"><svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" /></svg></span>
                                             <span>{metric}</span>
                                         </li>
                                     ))}

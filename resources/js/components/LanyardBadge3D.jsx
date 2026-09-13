@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, Suspense } from 'react';
+﻿import React, { useEffect, useRef, useState, Suspense } from 'react';
 import * as THREE from 'three';
 import { Canvas, extend, useFrame } from '@react-three/fiber';
 import { useGLTF, useTexture, Text, Environment, Lightformer } from '@react-three/drei';
@@ -244,8 +244,8 @@ function Band({ profile, maxSpeed = 50, minSpeed = 10 }) {
 
 function Loader() {
     return (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-cyan-400 font-mono text-xs">
-            <div className="w-8 h-8 border-2 border-cyan-500/30 border-t-cyan-400 rounded-full animate-spin"></div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-blue-400 font-mono text-xs">
+            <div className="w-8 h-8 border-2 border-blue-500/30 border-t-blue-400 rounded-full animate-spin"></div>
             <span>Loading 3D Physics Lanyard...</span>
         </div>
     );

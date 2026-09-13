@@ -221,7 +221,7 @@ export default function Interactive3DCard({ profile }) {
     };
 
     return (
-        <div 
+        <div
             ref={containerRef}
             className="w-full relative flex flex-col items-center justify-center select-none"
             style={{ perspective: '1200px' }}
@@ -230,7 +230,7 @@ export default function Interactive3DCard({ profile }) {
             onPointerLeave={handlePointerLeave}
         >
             {/* Soft Ambient Backlight */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-96 bg-gradient-to-tr from-ps-primary/25 via-indigo-600/20 to-cyan-500/20 rounded-full blur-3xl pointer-events-none transform scale-110"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none transform scale-110"></div>
 
             {/* Top Anchor Mount */}
             <div className="w-14 h-2 rounded-full bg-slate-800/90 dark:bg-black/90 border border-slate-600/40 dark:border-white/20 shadow-sm flex items-center justify-center mb-[-2px] z-10">
@@ -238,7 +238,7 @@ export default function Interactive3DCard({ profile }) {
             </div>
 
             {/* Flexible Dynamic Curved Ribbon Lanyard (Shorter & Fluid) */}
-            <svg 
+            <svg
                 className="w-[160px] h-[46px] overflow-visible pointer-events-none z-10 -my-0.5"
                 viewBox="0 0 160 46"
             >
@@ -271,7 +271,7 @@ export default function Interactive3DCard({ profile }) {
                     ref={strapStitchRef}
                     d="M 80 0 C 80 15, 80 32, 80 44"
                     fill="none"
-                    stroke="#00d4ff"
+                    stroke="#3b82f6"
                     strokeWidth="1.8"
                     strokeDasharray="3 3"
                     strokeOpacity="0.8"
@@ -279,7 +279,7 @@ export default function Interactive3DCard({ profile }) {
             </svg>
 
             {/* Compact Metal Swivel Clasp / Clip with Ring that aligns with strap & slot */}
-            <div 
+            <div
                 ref={clipRef}
                 className="relative z-10 -mt-1 mb-1 flex flex-col items-center pointer-events-none transition-transform duration-75 ease-out"
             >
@@ -296,9 +296,8 @@ export default function Interactive3DCard({ profile }) {
                 ref={cardRef}
                 onPointerDown={handlePointerDown}
                 onPointerUp={handlePointerUp}
-                className={`relative w-full max-w-[300px] sm:max-w-[330px] z-20 cursor-grab active:cursor-grabbing transition-shadow duration-300 ${
-                    isDragging ? 'shadow-2xl scale-[1.03]' : ''
-                }`}
+                className={`relative w-full max-w-[300px] sm:max-w-[330px] z-20 cursor-grab active:cursor-grabbing transition-shadow duration-300 ${isDragging ? 'shadow-2xl scale-[1.03]' : ''
+                    }`}
                 style={{
                     transformStyle: 'preserve-3d',
                     willChange: 'transform',
@@ -336,17 +335,17 @@ export default function Interactive3DCard({ profile }) {
                     }}
                 >
                     {/* Top Badge Slot Cutout (Deep 3D) */}
-                    <div 
+                    <div
                         className="id-badge-slot shadow-inner"
                         style={{ transform: 'translateZ(15px)' }}
                     ></div>
 
                     {/* Badge Header Brand */}
-                    <div 
+                    <div
                         className="flex items-center justify-between px-2 py-1 text-[10px] font-mono text-slate-400 dark:text-gray-400 border-b border-slate-200/80 dark:border-white/10 pb-2.5 mb-3"
                         style={{ transform: 'translateZ(20px)' }}
                     >
-                        <span className="text-ps-primary dark:text-cyan-400 font-bold tracking-wider">FN // 2026</span>
+                        <span className="text-ps-primary dark:text-blue-400 font-bold tracking-wider">FN // 2026</span>
                         <span className="text-emerald-500 dark:text-green-400 flex items-center gap-1.5 font-semibold">
                             <span className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-green-400 animate-ping"></span>
                             ACTIVE ACCESS
@@ -354,7 +353,7 @@ export default function Interactive3DCard({ profile }) {
                     </div>
 
                     {/* Portrait Photo Inside Badge with 3D Depth */}
-                    <div 
+                    <div
                         className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-300/40 dark:border-white/15 shadow-2xl group"
                         style={{ transform: 'translateZ(30px)' }}
                     >
@@ -365,10 +364,10 @@ export default function Interactive3DCard({ profile }) {
                             loading="eager"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent"></div>
-                        
+
                         {/* Chip ID Overlay */}
                         <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between">
-                            <div className="text-[10px] font-mono font-bold text-cyan-300 tracking-widest bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm border border-cyan-400/30">
+                            <div className="text-[10px] font-mono font-bold text-blue-300 tracking-widest bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm border border-blue-400/30">
                                 DEV ID: #9842
                             </div>
                             <div className="text-[9px] font-mono text-slate-400 uppercase bg-black/40 px-1.5 py-0.5 rounded">
@@ -378,20 +377,20 @@ export default function Interactive3DCard({ profile }) {
                     </div>
 
                     {/* Badge Bottom Information */}
-                    <div 
+                    <div
                         className="pt-4 pb-1 space-y-1 text-center"
                         style={{ transform: 'translateZ(25px)' }}
                     >
                         <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
                             {profile?.full_name || 'Faiz Naufal Putra Permana'}
                         </h3>
-                        <p className="text-xs text-ps-primary dark:text-cyan-300 font-medium">
+                        <p className="text-xs text-ps-primary dark:text-blue-300 font-medium">
                             {profile?.headline || 'Web Developer'}
                         </p>
                     </div>
 
                     {/* Stylized Barcode / Serial Line */}
-                    <div 
+                    <div
                         className="pt-3 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-[9px] font-mono text-slate-500 dark:text-gray-400 px-1 mt-2"
                         style={{ transform: 'translateZ(18px)' }}
                     >
@@ -413,7 +412,7 @@ export default function Interactive3DCard({ profile }) {
                     }}
                 >
                     {/* Top Magnetic Strip */}
-                    <div 
+                    <div
                         className="w-full h-8 bg-black/90 dark:bg-black rounded-lg border border-white/10 flex items-center justify-between px-3 text-[9px] font-mono text-gray-500"
                         style={{ transform: 'translateZ(15px)' }}
                     >
@@ -422,7 +421,7 @@ export default function Interactive3DCard({ profile }) {
                     </div>
 
                     {/* Smart IC Chip Graphic */}
-                    <div 
+                    <div
                         className="my-3 flex items-center justify-between px-2"
                         style={{ transform: 'translateZ(25px)' }}
                     >
@@ -438,19 +437,19 @@ export default function Interactive3DCard({ profile }) {
 
                         {/* Contactless RFID Icon */}
                         <div className="text-right">
-                            <span className="text-lg text-cyan-400">📡</span>
+                            <div className="inline-flex items-center justify-center w-6 h-6 text-blue-400"><svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.14 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" /></svg></div>
                             <div className="text-[8px] font-mono text-gray-400">NFC AUTHORIZED</div>
                         </div>
                     </div>
 
                     {/* Developer Clearance Details */}
-                    <div 
+                    <div
                         className="p-3 rounded-xl bg-slate-900/60 dark:bg-black/50 border border-white/10 text-left space-y-2 text-[11px] font-mono"
                         style={{ transform: 'translateZ(20px)' }}
                     >
                         <div className="flex justify-between text-slate-300">
                             <span className="text-gray-400">CLEARANCE:</span>
-                            <span className="text-cyan-300 font-bold">ALPHA PRODUCTION</span>
+                            <span className="text-blue-300 font-bold">ALPHA PRODUCTION</span>
                         </div>
                         <div className="flex justify-between text-slate-300">
                             <span className="text-gray-400">DOMAIN:</span>
@@ -463,16 +462,16 @@ export default function Interactive3DCard({ profile }) {
                     </div>
 
                     {/* Quick Stats Grid */}
-                    <div 
+                    <div
                         className="grid grid-cols-3 gap-2 text-center py-2"
                         style={{ transform: 'translateZ(20px)' }}
                     >
                         <div className="p-2 rounded-lg bg-white/5 border border-white/5">
-                            <div className="text-sm font-bold text-cyan-400">5+</div>
+                            <div className="text-sm font-bold text-blue-400">5+</div>
                             <div className="text-[9px] text-gray-400 font-mono">Years Exp</div>
                         </div>
                         <div className="p-2 rounded-lg bg-white/5 border border-white/5">
-                            <div className="text-sm font-bold text-indigo-400">24+</div>
+                            <div className="text-sm font-bold text-blue-400">24+</div>
                             <div className="text-[9px] text-gray-400 font-mono">Shipped</div>
                         </div>
                         <div className="p-2 rounded-lg bg-white/5 border border-white/5">
@@ -482,7 +481,7 @@ export default function Interactive3DCard({ profile }) {
                     </div>
 
                     {/* Back Footer Barcode */}
-                    <div 
+                    <div
                         className="pt-2 border-t border-slate-200/80 dark:border-white/10 flex items-center justify-between text-[9px] font-mono text-gray-400 px-1"
                         style={{ transform: 'translateZ(15px)' }}
                     >
@@ -497,14 +496,14 @@ export default function Interactive3DCard({ profile }) {
                 <button
                     type="button"
                     onClick={toggleFlip}
-                    className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200/80 dark:bg-white/10 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-400 dark:hover:text-black border border-slate-300/80 dark:border-white/15 text-xs font-mono font-medium text-slate-800 dark:text-gray-200 shadow-lg backdrop-blur-md transition-all duration-200 active:scale-95"
+                    className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-200/80 dark:bg-white/10 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500 dark:hover:text-white border border-slate-300/80 dark:border-white/15 text-xs font-mono font-medium text-slate-800 dark:text-gray-200 shadow-lg backdrop-blur-md transition-all duration-200 active:scale-95"
                 >
-                    <span className="text-sm transition-transform duration-500 group-hover:rotate-180">↻</span>
+                    <svg className="w-3.5 h-3.5 transition-transform duration-500 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
                     <span>{isFlipped ? 'Lihat Tampak Depan' : 'Putar Kartu 3D'}</span>
                 </button>
 
                 <div className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-full bg-slate-100/70 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[11px] font-mono text-slate-500 dark:text-gray-400 backdrop-blur-sm">
-                    <span>✨</span>
+                    <svg className="w-3 h-3 text-blue-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     <span>Sentuh &amp; geser untuk efek fisik</span>
                 </div>
             </div>

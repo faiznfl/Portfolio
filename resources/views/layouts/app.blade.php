@@ -42,17 +42,17 @@
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])
 </head>
-<body class="bg-[#070a13] text-slate-100 antialiased selection:bg-ps-primary selection:text-white min-h-screen flex flex-col font-sans">
+<body class="bg-[#080d1a] text-slate-100 antialiased selection:bg-ps-primary selection:text-white min-h-screen flex flex-col font-sans">
     @if(View::hasSection('custom_layout'))
         @yield('custom_layout')
     @else
         @if(!View::hasSection('hide_navbar'))
         <!-- Top Navigation Bar (PlayStation Dark Chrome) -->
-        <header class="sticky top-0 z-50 bg-[#070a12]/85 backdrop-blur-xl border-b border-white/10 transition-all duration-200">
+        <header class="sticky top-0 z-50 bg-[#080d1a]/85 backdrop-blur-xl border-b border-white/10 transition-all duration-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <!-- Brand Text (Pure Typography) -->
-            <a href="{{ url('/#home') }}" class="text-lg font-bold tracking-tight text-white hover:text-cyan-400 transition-colors">
-                <span>Faiz</span> <span class="text-cyan-400 font-light">Naufal.</span>
+            <a href="{{ url('/#home') }}" class="text-lg font-bold tracking-tight text-white hover:text-blue-400 transition-colors">
+                <span>Faiz</span> <span class="text-blue-500 dark:text-blue-400 font-light">Naufal.</span>
             </a>
 
             <!-- Desktop Navigation (7 Core Menu Items per PRD) -->

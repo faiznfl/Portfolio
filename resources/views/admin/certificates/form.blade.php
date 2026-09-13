@@ -72,10 +72,10 @@
                     <!-- Quick Preset Selector from public/assets/certificates -->
                     <div class="pt-2 border-t border-slate-200 dark:border-white/10 flex flex-wrap items-center gap-2">
                         <span class="text-[11px] text-slate-400 dark:text-gray-500">Atau pilih dari aset lokal yang tersedia:</span>
-                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-aws-saa.svg', 'AWS Certified SAA')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">AWS</button>
-                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-terraform.svg', 'HashiCorp Terraform')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">Terraform</button>
-                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-gcp.svg', 'Google Cloud PCD')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">GCP</button>
-                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-bnsp.svg', 'BNSP Architect')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-cyan-500/20 dark:hover:text-cyan-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/40 transition-all font-mono">BNSP</button>
+                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-aws-saa.svg', 'AWS Certified SAA')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all font-mono">AWS</button>
+                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-terraform.svg', 'HashiCorp Terraform')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all font-mono">Terraform</button>
+                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-gcp.svg', 'Google Cloud PCD')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all font-mono">GCP</button>
+                        <button type="button" onclick="selectLocalPreset('/assets/certificates/cert-bnsp.svg', 'BNSP Architect')" class="px-2.5 py-1 rounded-lg text-xs bg-slate-100 dark:bg-white/5 hover:bg-ps-primary hover:text-white dark:hover:bg-blue-500/20 dark:hover:text-blue-300 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all font-mono">BNSP</button>
                     </div>
                 </div>
 
@@ -88,7 +88,7 @@
                         </label>
                         <input type="text" id="certificate_name" name="certificate_name" 
                                value="{{ old('certificate_name', $certificate->certificate_name) }}" required
-                               placeholder="cth: AWS Certified Solutions Architect – Associate"
+                               placeholder="cth: AWS Certified Solutions Architect â€“ Associate"
                                class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
                         @error('certificate_name') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>
@@ -150,27 +150,27 @@
                     <div class="flex flex-wrap items-center gap-2 pt-1">
                         <button type="button" 
                                 onclick="toggleCategoryPreset('Prompt Engineering')" 
-                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:text-ps-primary dark:hover:text-cyan-300 transition-all cursor-pointer select-none">
+                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/50 hover:text-ps-primary dark:hover:text-blue-300 transition-all cursor-pointer select-none">
                             Prompt Engineering
                         </button>
                         <button type="button" 
                                 onclick="toggleCategoryPreset('Artificial Intelligence Basic')" 
-                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:text-ps-primary dark:hover:text-cyan-300 transition-all cursor-pointer select-none">
+                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/50 hover:text-ps-primary dark:hover:text-blue-300 transition-all cursor-pointer select-none">
                             Artificial Intelligence Basic
                         </button>
                         <button type="button" 
                                 onclick="toggleCategoryPreset('Cloud & Architecture')" 
-                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:text-ps-primary dark:hover:text-cyan-300 transition-all cursor-pointer select-none">
+                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/50 hover:text-ps-primary dark:hover:text-blue-300 transition-all cursor-pointer select-none">
                             Cloud &amp; Architecture
                         </button>
                         <button type="button" 
                                 onclick="toggleCategoryPreset('DevOps & Infrastructure')" 
-                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:text-ps-primary dark:hover:text-cyan-300 transition-all cursor-pointer select-none">
+                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/50 hover:text-ps-primary dark:hover:text-blue-300 transition-all cursor-pointer select-none">
                             DevOps &amp; Infrastructure
                         </button>
                         <button type="button" 
                                 onclick="toggleCategoryPreset('Software Engineering')" 
-                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-cyan-400/50 hover:text-ps-primary dark:hover:text-cyan-300 transition-all cursor-pointer select-none">
+                                class="category-preset-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-slate-100 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-300/80 dark:border-white/10 hover:border-ps-primary dark:hover:border-blue-400/50 hover:text-ps-primary dark:hover:text-blue-300 transition-all cursor-pointer select-none">
                             Software Engineering
                         </button>
                     </div>
@@ -242,9 +242,9 @@
         document.querySelectorAll('.category-preset-btn').forEach(btn => {
             const text = btn.textContent.trim();
             if (activeTags.includes(text)) {
-                btn.classList.add('!bg-ps-primary', '!text-white', '!border-ps-primary', 'dark:!bg-ps-primary', 'dark:!text-white', 'dark:!border-cyan-400', 'font-semibold');
+                btn.classList.add('!bg-ps-primary', '!text-white', '!border-ps-primary', 'dark:!bg-ps-primary', 'dark:!text-white', 'dark:!border-blue-400', 'font-semibold');
             } else {
-                btn.classList.remove('!bg-ps-primary', '!text-white', '!border-ps-primary', 'dark:!bg-ps-primary', 'dark:!text-white', 'dark:!border-cyan-400', 'font-semibold');
+                btn.classList.remove('!bg-ps-primary', '!text-white', '!border-ps-primary', 'dark:!bg-ps-primary', 'dark:!text-white', 'dark:!border-blue-400', 'font-semibold');
             }
         });
     }

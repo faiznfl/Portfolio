@@ -9,7 +9,7 @@
     <div class="max-w-md w-full ps-card-dark p-8 sm:p-10 space-y-8 shadow-2xl">
         <!-- Brand Header -->
         <div class="text-center space-y-2">
-            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-ps-primary/15 text-ps-primary dark:text-cyan-300 border border-ps-primary/25 mb-2">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-ps-primary/15 text-ps-primary dark:text-blue-300 border border-ps-primary/25 mb-2">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                 </svg>
@@ -47,7 +47,7 @@
                 <input type="password" 
                        id="password" 
                        name="password" 
-                       placeholder="••••••••"
+                       placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                        required
                        class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-sm">
                 @error('password')
@@ -74,8 +74,8 @@
         </form>
 
         <div class="text-center pt-2">
-            <a href="{{ route('home') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-ps-primary dark:hover:text-cyan-400 transition-colors">
-                ← Kembali ke Halaman Portofolio Publik
+            <a href="{{ route('home') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-ps-primary dark:hover:text-blue-400 transition-colors">
+                â† Kembali ke Halaman Portofolio Publik
             </a>
         </div>
     </div>

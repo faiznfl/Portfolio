@@ -9,7 +9,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 dark:border-white/10 pb-6">
             <div class="space-y-1">
                 <div class="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-gray-400">
-                    <a href="{{ route('admin.dashboard') }}" class="hover:text-ps-primary dark:hover:text-cyan-400">Dashboard</a>
+                    <a href="{{ route('admin.dashboard') }}" class="hover:text-ps-primary dark:hover:text-blue-400">Dashboard</a>
                     <span>/</span>
                     <span class="text-slate-800 dark:text-gray-200 font-semibold">Keahlian (Skills)</span>
                 </div>
@@ -36,7 +36,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
                     <span class="text-xs font-mono uppercase font-bold text-slate-500 dark:text-gray-400">Daftar Keahlian Aktif</span>
-                    <span class="text-xs font-mono text-ps-primary dark:text-cyan-400 bg-ps-primary/10 dark:bg-cyan-500/10 px-2.5 py-0.5 rounded-full border border-ps-primary/20 dark:border-cyan-400/20 font-bold">
+                    <span class="text-xs font-mono text-ps-primary dark:text-blue-400 bg-ps-primary/10 dark:bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-ps-primary/20 dark:border-blue-400/20 font-bold">
                         {{ $skills->count() }} Data
                     </span>
                 </div>
@@ -59,7 +59,7 @@
                                 <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors">
                                     <td class="px-4 py-3.5 font-mono text-xs text-slate-400">#{{ $skill->order_index }}</td>
                                     <td class="px-4 py-3.5">
-                                        <div class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-ps-primary dark:text-cyan-300 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:max-w-full [&>svg]:max-h-full overflow-hidden shadow-xs">
+                                        <div class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-ps-primary dark:text-blue-300 [&>svg]:w-5 [&>svg]:h-5 [&>svg]:max-w-full [&>svg]:max-h-full overflow-hidden shadow-xs">
                                             @if(!empty($skill->icon_svg))
                                                 @if(str_starts_with(trim($skill->icon_svg), '<svg') || str_starts_with(trim($skill->icon_svg), '<i '))
                                                     {!! $skill->icon_svg !!}
@@ -79,14 +79,14 @@
                                     <td class="px-4 py-3.5 font-bold text-slate-900 dark:text-white">{{ $skill->name }}</td>
                                     <td class="px-4 py-3.5">
                                         @if($skill->is_featured)
-                                            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">★ Ya</span>
+                                            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">â˜… Ya</span>
                                         @else
                                             <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">-</span>
                                         @endif
                                     </td>
                                     <td class="px-4 py-3.5 text-right">
                                         <div class="flex items-center justify-end gap-2 text-xs">
-                                            <a href="{{ route('admin.skills.edit', $skill->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-cyan-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-cyan-500/10 dark:hover:bg-cyan-400 dark:hover:text-black transition-all">
+                                            <a href="{{ route('admin.skills.edit', $skill->id) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-blue-500/10 dark:hover:bg-blue-600 dark:hover:text-white transition-all">
                                                 Edit
                                             </a>
                                             <form action="{{ route('admin.skills.destroy', $skill->id) }}" method="POST" class="inline" onsubmit="return confirm('Hapus keahlian {{ $skill->name }}?')">
