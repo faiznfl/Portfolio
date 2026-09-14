@@ -47,7 +47,7 @@
                 <input type="password" 
                        id="password" 
                        name="password" 
-                       placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
+                       placeholder="••••••••"
                        required
                        class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-sm">
                 @error('password')
@@ -75,7 +75,7 @@
 
         <div class="text-center pt-2">
             <a href="{{ route('home') }}" class="text-xs text-slate-500 dark:text-gray-400 hover:text-ps-primary dark:hover:text-blue-400 transition-colors">
-                â† Kembali ke Halaman Portofolio Publik
+                &larr; Kembali ke Halaman Portofolio Publik
             </a>
         </div>
     </div>

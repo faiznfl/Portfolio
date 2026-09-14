@@ -79,7 +79,7 @@
                                     <td class="px-4 py-3.5 font-bold text-slate-900 dark:text-white">{{ $skill->name }}</td>
                                     <td class="px-4 py-3.5">
                                         @if($skill->is_featured)
-                                            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">â˜… Ya</span>
+                                            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">&#9733; Ya</span>
                                         @else
                                             <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">-</span>
                                         @endif

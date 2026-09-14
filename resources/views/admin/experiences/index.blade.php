@@ -62,7 +62,7 @@
                                     <td class="px-4 py-3.5 font-mono text-xs text-slate-400">#{{ $exp->order_index }}</td>
                                     <td class="px-4 py-3.5 font-mono text-xs text-slate-500 dark:text-gray-400 whitespace-nowrap">
                                         <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
-                                            {{ $exp->start_date->format('M Y') }} â€” 
+                                            {{ $exp->start_date->format('M Y') }} &mdash; 
                                             @if($exp->is_current)
                                                 <span class="text-emerald-600 dark:text-emerald-400 font-bold">Present</span>
                                             @else

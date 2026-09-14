@@ -15,7 +15,7 @@
                     <div class="flex items-center gap-2.5">
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:bg-blue-500/15 dark:text-blue-300 border border-ps-primary/25 dark:border-blue-500/30">
                             <span class="w-2 h-2 rounded-full bg-ps-primary dark:bg-blue-400 animate-pulse"></span>
-                            CONTROL HUB Ã¢â‚¬Â¢ v2.4
+                            CONTROL HUB &bull; v2.4
                         </span>
                         <span class="text-xs font-mono text-slate-400 dark:text-gray-500">
                             Superadmin Active
@@ -82,7 +82,7 @@
                 <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
                     <a href="{{ route('admin.projects.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-blue-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                         <span>Kelola Proyek</span>
-                        <span>Ã¢â€ â€™</span>
+                        <span>&rarr;</span>
                     </a>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                 <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
                     <a href="{{ route('admin.skills.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-blue-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                         <span>Kelola Skills</span>
-                        <span>Ã¢â€ â€™</span>
+                        <span>&rarr;</span>
                     </a>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                 <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
                     <a href="{{ route('admin.experiences.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-blue-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                         <span>Kelola Journey</span>
-                        <span>Ã¢â€ â€™</span>
+                        <span>&rarr;</span>
                     </a>
                 </div>
             </div>
@@ -139,7 +139,7 @@
                 <div class="pt-3 border-t border-slate-200/60 dark:border-white/5">
                     <a href="{{ route('admin.certificates.index') }}" class="text-[11px] font-medium text-ps-primary dark:text-blue-400 hover:underline inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                         <span>Kelola Sertifikat</span>
-                        <span>Ã¢â€ â€™</span>
+                        <span>&rarr;</span>
                     </a>
                 </div>
             </div>
@@ -258,7 +258,7 @@
                                 <div class="flex items-center gap-2">
                                     <a href="mailto:{{ $msg->sender_email }}?subject=Re: {{ urlencode($msg->subject) }}" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium text-ps-primary dark:text-blue-300 bg-ps-primary/10 hover:bg-ps-primary hover:text-white dark:bg-blue-500/10 dark:hover:bg-blue-600 dark:hover:text-white transition-all">
                                         <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/></svg>
-                                        <span>Balas via Email Ã¢â€ â€”</span>
+                                        <span>Balas via Email &nearr;</span>
                                     </a>
 
                                     <form action="{{ route('admin.messages.toggle-read', $msg->id) }}" method="POST" class="inline">
@@ -306,7 +306,7 @@
                     </div>
                     <div class="flex items-center gap-3">
                         <a href="{{ route('admin.skills.index') }}" class="text-xs font-semibold text-ps-primary dark:text-blue-400 hover:underline">
-                            Lihat Semua Skills Ã¢â€ â€™
+                            Lihat Semua Skills &rarr;
                         </a>
                         <a href="{{ route('admin.skills.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Skill Baru</span>
@@ -395,7 +395,7 @@
                     </div>
                     <div class="flex items-center gap-3">
                         <a href="{{ route('admin.projects.index') }}" class="text-xs font-semibold text-ps-primary dark:text-blue-400 hover:underline">
-                            Lihat Semua Proyek Ã¢â€ â€™
+                            Lihat Semua Proyek &rarr;
                         </a>
                         <a href="{{ route('admin.projects.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Proyek Baru</span>
@@ -436,7 +436,7 @@
                                         </td>
                                         <td class="px-4 py-3.5">
                                             @if($p->is_featured)
-                                                <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">Ã¢Ëœâ€¦ Ya</span>
+                                                <span class="px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-600 dark:text-yellow-400 border border-amber-500/25">&#9733; Ya</span>
                                             @else
                                                 <span class="text-xs text-slate-400 dark:text-gray-500 font-mono">-</span>
                                             @endif
@@ -483,7 +483,7 @@
                     </div>
                     <div class="flex items-center gap-3">
                         <a href="{{ route('admin.experiences.index') }}" class="text-xs font-semibold text-ps-primary dark:text-blue-400 hover:underline">
-                            Lihat Semua Journey Ã¢â€ â€™
+                            Lihat Semua Journey &rarr;
                         </a>
                         <a href="{{ route('admin.experiences.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Pengalaman Baru</span>
@@ -509,7 +509,7 @@
                                     <tr class="hover:bg-slate-50 dark:hover:bg-white/[0.03] transition-colors">
                                         <td class="px-4 py-3.5 font-mono text-xs text-slate-400">#{{ $exp->order_index }}</td>
                                         <td class="px-4 py-3.5 font-mono text-xs text-slate-500 dark:text-gray-400">
-                                            {{ $exp->start_date->format('M Y') }} Ã¢â‚¬â€ {{ $exp->is_current ? 'Present' : ($exp->end_date ? $exp->end_date->format('M Y') : '-') }}
+                                            {{ $exp->start_date->format('M Y') }} &mdash; {{ $exp->is_current ? 'Present' : ($exp->end_date ? $exp->end_date->format('M Y') : '-') }}
                                         </td>
                                         <td class="px-4 py-3.5 font-semibold text-slate-900 dark:text-white">{{ $exp->role_title }}</td>
                                         <td class="px-4 py-3.5 text-ps-primary dark:text-blue-400 font-medium">{{ $exp->company_name }}</td>
@@ -566,7 +566,7 @@
                     </div>
                     <div class="flex items-center gap-3">
                         <a href="{{ route('admin.certificates.index') }}" class="text-xs font-semibold text-ps-primary dark:text-blue-400 hover:underline">
-                            Lihat Semua Sertifikat Ã¢â€ â€™
+                            Lihat Semua Sertifikat &rarr;
                         </a>
                         <a href="{{ route('admin.certificates.create') }}" class="btn-ps-primary !py-2 !px-4 !text-xs !font-bold">
                             <span>+ Tambah Sertifikat Baru</span>

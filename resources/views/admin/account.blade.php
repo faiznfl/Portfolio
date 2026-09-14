@@ -265,7 +265,7 @@
                             <div class="text-[11px] text-slate-400 dark:text-gray-500">
                                 Ukuran: <span class="font-mono text-slate-700 dark:text-gray-300 font-semibold">{{ $cvInfo['size'] }}</span>
                                 @if($cvInfo['updated_at'])
-                                    â€¢ Diperbarui: <span class="font-mono text-slate-700 dark:text-gray-300">{{ $cvInfo['updated_at'] }}</span>
+                                    &bull; Diperbarui: <span class="font-mono text-slate-700 dark:text-gray-300">{{ $cvInfo['updated_at'] }}</span>
                                 @endif
                             </div>
                         </div>
@@ -310,7 +310,7 @@
                                 Tarik &amp; letakkan berkas CV baru ke sini, atau <span class="text-ps-primary dark:text-blue-400 underline">pilih dari komputer</span>
                             </p>
                             <p class="text-xs text-slate-500 dark:text-gray-400">
-                                Format: <span class="font-semibold text-slate-700 dark:text-slate-300">PDF, DOC, DOCX</span> â€¢ Ukuran maksimal: <span class="font-semibold text-slate-700 dark:text-slate-300">10 MB</span>
+                                Format: <span class="font-semibold text-slate-700 dark:text-slate-300">PDF, DOC, DOCX</span> &bull; Ukuran maksimal: <span class="font-semibold text-slate-700 dark:text-slate-300">10 MB</span>
                             </p>
                         </div>
                     </div>

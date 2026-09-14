@@ -164,7 +164,7 @@
         </a>
         <div class="pt-2 border-t border-slate-200 dark:border-white/10">
             <a href="{{ route('home') }}" target="_blank" class="block px-3 py-2 rounded-xl text-ps-primary dark:text-blue-400 font-semibold hover:underline">
-                Buka Web Publik â†—
+                Buka Web Publik &nearr;
             </a>
         </div>
     </div>
@@ -179,12 +179,12 @@
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono">
             <div class="flex items-center gap-2 text-center sm:text-left">
                 <span class="font-bold text-slate-800 dark:text-slate-200">Faiz Naufal Putra Permana</span>
-                <span class="text-slate-400 dark:text-slate-600">â€¢</span>
+                <span class="text-slate-400 dark:text-slate-600">&bull;</span>
                 <span>Admin Management Suite &copy; {{ date('Y') }}</span>
             </div>
             <div class="flex items-center gap-4 text-[11px] text-slate-400 dark:text-gray-500">
                 <span>PlayStation 5 Liquid Glass Design System</span>
-                <span class="hidden md:inline text-slate-300 dark:text-slate-700">â€¢</span>
+                <span class="hidden md:inline text-slate-300 dark:text-slate-700">&bull;</span>
                 <span class="hidden md:inline">Laravel {{ app()->version() }} (PHP {{ PHP_VERSION }})</span>
             </div>
             <button type="button" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-200/70 hover:bg-slate-300/70 dark:bg-white/[0.06] dark:hover:bg-white/[0.12] border border-slate-300 dark:border-white/10 text-slate-700 dark:text-slate-300 transition-all text-xs group" title="Kembali ke Bagian Paling Atas">

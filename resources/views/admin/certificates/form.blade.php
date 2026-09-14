@@ -88,7 +88,7 @@
                         </label>
                         <input type="text" id="certificate_name" name="certificate_name" 
                                value="{{ old('certificate_name', $certificate->certificate_name) }}" required
-                               placeholder="cth: AWS Certified Solutions Architect â€“ Associate"
+                               placeholder="cth: AWS Certified Solutions Architect &ndash; Associate"
                                class="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/60 border border-slate-300/80 dark:border-white/20 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-ps-primary">
                         @error('certificate_name') <p class="text-xs text-red-500">{{ $message }}</p> @enderror
                     </div>

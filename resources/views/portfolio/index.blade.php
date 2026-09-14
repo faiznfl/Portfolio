@@ -389,7 +389,7 @@
                     </div>
                 @empty
                     <div class="col-span-full py-16 text-center text-slate-400 dark:text-gray-500 font-light border border-dashed border-slate-200 dark:border-white/10 rounded-2xl p-8">
-                        <span class="text-3xl block mb-2">ðŸ’»</span>
+                        <span class="text-3xl block mb-2">&#128187;</span>
                         <span class="text-sm">Belum ada keahlian yang ditambahkan.</span>
                     </div>
                 @endforelse
@@ -522,13 +522,13 @@
                                     <h3 class="text-xl font-bold text-white">{{ $exp->role_title }}</h3>
                                     <div class="text-blue-400 font-medium text-sm flex items-center gap-2 mt-1">
                                         <span>{{ $exp->company_name }}</span>
-                                        <span class="text-gray-500">â€¢</span>
+                                        <span class="text-gray-500">&bull;</span>
                                         <span class="text-gray-400 text-xs">{{ $exp->location }}</span>
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <span class="px-3 py-1 rounded-full text-xs font-mono bg-white/10 text-gray-300">
-                                        {{ \Carbon\Carbon::parse($exp->start_date)->format('M Y') }} â€” 
+                                        {{ \Carbon\Carbon::parse($exp->start_date)->format('M Y') }} &mdash; 
                                         {{ $exp->is_current ? 'Sekarang' : \Carbon\Carbon::parse($exp->end_date)->format('M Y') }}
                                     </span>
                                     @if($exp->is_current)
@@ -550,7 +550,7 @@
                                 @if(!empty($exp->description_points))
                                     @foreach($exp->description_points as $point)
                                         <li class="flex items-start gap-3">
-                                            <span class="text-blue-400 mt-0.5 font-bold">â€º</span>
+                                            <span class="text-blue-400 mt-0.5 font-bold">&rsaquo;</span>
                                             <span>{{ $point }}</span>
                                         </li>
                                     @endforeach
