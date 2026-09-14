@@ -133,32 +133,77 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Editorial Portrait Photograph (Clean & Prestigious) -->
-                <div class="lg:col-span-5 relative flex justify-center items-center">
-                    <!-- Soft Cinematic Ambient Glow Backlight -->
-                    <div class="absolute inset-0 bg-blue-600/15 rounded-3xl blur-3xl transform scale-90 pointer-events-none"></div>
+                <!-- Right Column: Interactive 3D Physics Lanyard Badge (Pre-rendered SSR Anchor) -->
+                <div class="lg:col-span-5 relative flex flex-col items-center justify-center min-h-[580px] lg:min-h-[640px] z-10 overflow-visible">
+                    <div class="w-full relative flex flex-col items-center justify-center select-none" style="perspective: 1200px;">
+                        <!-- Soft Ambient Backlight -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none transform scale-110"></div>
 
-                    <!-- Clean Framed Portrait Photo -->
-                    <div class="relative z-10 w-full max-w-sm sm:max-w-md rounded-3xl overflow-hidden glass-panel border border-white/15 shadow-2xl group transition-all duration-500 hover:border-blue-400/40">
-                        <div class="aspect-[3/4] w-full overflow-hidden relative">
-                            <img src="{{ asset('assets/images/faiz-naufal.jpg') }}" 
-                                 alt="{{ $profile->full_name ?? 'Faiz Naufal' }}" 
-                                 class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                                 loading="eager">
+                        <!-- Top Anchor Mount -->
+                        <div class="w-14 h-2 rounded-full bg-slate-800/90 dark:bg-black/90 border border-slate-600/40 dark:border-white/20 shadow-sm flex items-center justify-center mb-[-2px] z-10">
+                            <div class="w-6 h-0.5 rounded-full bg-slate-500/80 dark:bg-slate-400/80"></div>
+                        </div>
 
-                            <!-- Subtle Vignette Bottom Gradient -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-[#070a12]/90 via-transparent to-transparent"></div>
+                        <!-- Lanyard Strap Ribbon SVG -->
+                        <svg class="w-[160px] h-[46px] overflow-visible pointer-events-none z-10 -my-0.5" viewBox="0 0 160 46">
+                            <defs>
+                                <linearGradient id="lanyardGradSSR" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#181d2e" />
+                                    <stop offset="25%" stop-color="#28324e" />
+                                    <stop offset="50%" stop-color="#3c4b75" />
+                                    <stop offset="75%" stop-color="#28324e" />
+                                    <stop offset="100%" stop-color="#141724" />
+                                </linearGradient>
+                            </defs>
+                            <path d="M 80 0 C 80 15, 80 32, 80 44" fill="none" stroke="url(#lanyardGradSSR)" stroke-width="20" stroke-linecap="square" />
+                            <path d="M 80 0 C 80 15, 80 32, 80 44" fill="none" stroke="#3b82f6" stroke-width="1.8" stroke-dasharray="3 3" stroke-opacity="0.8" />
+                        </svg>
 
-                            <!-- Minimalist Floating Glass Badge -->
-                            <div class="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-between shadow-xl">
-                                <div>
-                                    <div class="text-sm font-semibold text-white tracking-wide">{{ $profile->full_name ?? 'Faiz Naufal Putra Permana' }}</div>
-                                    <div class="text-xs text-blue-300 font-light">{{ $profile->headline ?? 'Web Developer' }}</div>
+                        <!-- Metal Swivel Clasp / Clip -->
+                        <div class="relative z-10 -mt-1 mb-1 flex flex-col items-center pointer-events-none">
+                            <div class="w-8 h-4 rounded-md bg-gradient-to-b from-slate-400 via-slate-200 to-slate-500 border border-white/70 shadow-md flex items-center justify-center">
+                                <div class="w-4 h-1 rounded-full bg-slate-700/60"></div>
+                            </div>
+                            <div class="w-5 h-3 rounded-b-full border-2 border-slate-300 -mt-1 shadow-sm bg-black/20"></div>
+                        </div>
+
+                        <!-- ID Badge Card Container -->
+                        <div class="relative w-full max-w-[300px] sm:max-w-[330px] z-20">
+                            <div class="id-badge-card p-5 text-center shadow-2xl relative border border-white/20 bg-slate-950/85 backdrop-blur-xl rounded-[26px]">
+                                <!-- Top Badge Slot Cutout -->
+                                <div class="id-badge-slot shadow-inner mx-auto mb-3"></div>
+
+                                <!-- Badge Header Brand -->
+                                <div class="flex items-center justify-between px-2 py-1 text-[10px] font-mono text-slate-400 border-b border-white/10 pb-2.5 mb-3">
+                                    <span class="text-blue-400 font-bold tracking-wider">FN // 2026</span>
+                                    <span class="text-green-400 flex items-center gap-1.5 font-semibold">
+                                        <span class="w-2 h-2 rounded-full bg-green-400 animate-ping"></span>
+                                        ACTIVE ACCESS
+                                    </span>
                                 </div>
-                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-500/10 text-green-400 text-[11px] font-mono border border-green-500/20">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                                    Jakarta, ID
-                                </span>
+
+                                <!-- Portrait Photo Inside Badge -->
+                                <div class="relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-slate-900 border border-white/15 shadow-2xl">
+                                    <img src="{{ asset('assets/images/faiz-naufal.jpg') }}" 
+                                         alt="{{ $profile->full_name ?? 'Faiz Naufal' }}" 
+                                         class="w-full h-full object-cover object-top"
+                                         loading="eager">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent"></div>
+                                    <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between">
+                                        <div class="text-[10px] font-mono font-bold text-blue-300 tracking-widest bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm border border-blue-400/30">
+                                            DEV ID: #9842
+                                        </div>
+                                        <div class="text-[9px] font-mono text-slate-400 uppercase bg-black/40 px-1.5 py-0.5 rounded">
+                                            LEVEL 4
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Badge Bottom Info -->
+                                <div class="pt-3.5 space-y-1">
+                                    <div class="text-base font-bold text-white tracking-wide truncate">{{ $profile->full_name ?? 'Faiz Naufal Putra Permana' }}</div>
+                                    <div class="text-xs font-mono text-blue-400 font-medium">{{ $profile->headline ?? 'Web Developer' }}</div>
+                                </div>
                             </div>
                         </div>
                     </div>

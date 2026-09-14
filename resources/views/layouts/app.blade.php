@@ -38,6 +38,11 @@
 
     <link rel="icon" type="image/svg+xml" href="{{ asset('assets/images/logo.svg') }}">
 
+    <!-- Preload Critical 3D Lanyard Assets for Instantaneous Rendering -->
+    <link rel="preload" href="{{ asset('assets/3d/card.glb') }}" as="fetch" crossorigin="anonymous">
+    <link rel="preload" href="{{ asset('assets/images/tag_texture.png') }}" as="image">
+    <link rel="preload" href="{{ asset('assets/images/card_texture_faiz.png?v=clean') }}" as="image">
+
     <!-- Scripts & Styles with React Fast Refresh -->
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])

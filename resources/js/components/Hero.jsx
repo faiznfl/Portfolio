@@ -1,9 +1,8 @@
-﻿import React, { Suspense, lazy } from 'react';
+import React, { Suspense } from 'react';
+import LanyardBadge3D from './LanyardBadge3D';
 import Interactive3DCard from './Interactive3DCard';
 import AmbientCanvas from './AmbientCanvas';
 import { smoothScrollTo } from '../utils/smoothScroll';
-
-const LanyardBadge3D = lazy(() => import('./LanyardBadge3D'));
 
 export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
     const scrollTo = (id) => {
