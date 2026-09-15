@@ -39,7 +39,7 @@ export default function Experience({ experiences = [] }) {
                         Journey <span className="text-gradient-ps font-semibold">Timeline</span>
                     </h2>
                     <p className="text-slate-600 dark:text-gray-400 text-sm sm:text-base font-light">
-                        Linimasa karier profesional, kepemimpinan rekayasa perangkat lunak, dan kontribusi sistem.
+                        Perjalanan pendidikan dan profesional saya dalam pengembangan sistem perangkat lunak, rekayasa sistem terdistribusi, dan peran teknis lainnya.
                     </p>
                 </div>
 

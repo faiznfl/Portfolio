@@ -11,7 +11,7 @@ export default function Projects({ projects = [], onSelectProject }) {
                         Featured <span className="text-gradient-ps font-semibold">Projects</span>
                     </h2>
                     <p className="text-slate-600 dark:text-gray-400 text-sm sm:text-base font-light">
-                        Koleksi proyek pilihan dalam rekayasa sistem terdistribusi, arsitektur cloud, dan aplikasi web modern.
+                        Kumpulan proyek yang saya kerjakan, meliputi pengembangan sistem terdistribusi, aplikasi web, dan proyek-proyek lainnya.
                     </p>
                 </div>
 

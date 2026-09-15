@@ -11,7 +11,7 @@ export default function Certificates({ certificates = [], onSelectCertificate })
                         Certificates &amp; <span className="text-gradient-ps font-semibold">Licenses</span>
                     </h2>
                     <p className="text-slate-600 dark:text-gray-400 text-sm sm:text-base font-light">
-                        Validasi sertifikasi standar internasional beserta detail nomor kredensial resmi.
+                        Kumpulan sertifikat pelatihan, kompetensi, dan kegiatan yang pernah saya ikuti.
                     </p>
                 </div>
 
