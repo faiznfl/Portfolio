@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PortfolioController;
+use App\Models\Profile;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,4 +72,18 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/certificates/{certificate}/edit', [AdminController::class, 'certificateEdit'])->name('certificates.edit');
     Route::put('/certificates/{certificate}', [AdminController::class, 'certificateUpdate'])->name('certificates.update');
     Route::delete('/certificates/{certificate}', [AdminController::class, 'certificateDestroy'])->name('certificates.destroy');
+});
+
+// Hosting Production Sync Route (for InfinityFree / Shared Hosting)
+Route::get('/deploy-sync', function () {
+    Artisan::call('db:seed', ['--class' => 'PortfolioSeeder', '--force' => true]);
+    Artisan::call('view:clear');
+    Artisan::call('config:clear');
+    $profile = Profile::first();
+
+    return response()->json([
+        'status' => 'success',
+        'message' => 'Database and cache synced successfully on hosting!',
+        'headline' => $profile?->headline,
+    ]);
 });
