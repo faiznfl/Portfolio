@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 
 export default function About({ profile }) {
     const educationList = [
@@ -80,12 +80,12 @@ export default function About({ profile }) {
         'Fresh graduate Sistem Informasi Universitas Pamulang dengan IPK 3.85, berfokus pada Web Development dan perancangan UI/UX. Terbiasa merancang antarmuka pengguna yang intuitif di Figma serta mengimplementasikannya menjadi aplikasi web menggunakan Laravel, PHP, MySQL, dan Tailwind CSS, termasuk integrasi payment gateway dan dashboard sistem. Terbuka untuk peluang kerja di bidang Web Development dan Software Engineering.';
 
     return (
-        <section id="about" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
+        <section id="about" className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
             {/* Ambient Background Glow matching other sections */}
             <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[350px] bg-ps-primary/10 dark:bg-ps-primary/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
             <div className="absolute top-1/2 right-1/4 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
-            <div className="max-w-7xl mx-auto space-y-12 relative z-10">
+            <div className="max-w-7xl mx-auto space-y-10 sm:space-y-12 relative z-10">
                 {/* Header conforming strictly to the site-wide design system */}
                 <div className="text-center space-y-2 max-w-2xl mx-auto">
                     <div className="section-tagline">GET TO KNOW ME</div>
@@ -98,7 +98,7 @@ export default function About({ profile }) {
                 </div>
 
                 {/* 2-Column Split Layout with Symmetrical Alignment */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-10 items-start">
                     {/* Left Column: Narrative Story & Education Cards */}
                     <div className="lg:col-span-6 space-y-4">
                         {/* Section Tag Indicator (Aligned with Right Column) */}
@@ -110,7 +110,7 @@ export default function About({ profile }) {
                         </div>
 
                         {/* Bio Narrative Card */}
-                        <div className="glass-panel p-6 sm:p-7 shadow-sm dark:shadow-none">
+                        <div className="glass-panel p-5 sm:p-7 shadow-sm dark:shadow-none">
                             <p className="text-slate-700 dark:text-slate-200 text-base sm:text-lg leading-relaxed font-light">
                                 {bioNarrative}
                             </p>

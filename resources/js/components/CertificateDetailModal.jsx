@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 export default function CertificateDetailModal({ certificate, onClose }) {
     useEffect(() => {
@@ -47,7 +47,7 @@ export default function CertificateDetailModal({ certificate, onClose }) {
     const tags = getTags();
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto overscroll-contain">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto overscroll-contain">
             {/* Ambient Backdrop */}
             <div
                 className="fixed inset-0 bg-slate-950/50 backdrop-blur-md transition-opacity duration-300 overscroll-contain"
@@ -57,7 +57,7 @@ export default function CertificateDetailModal({ certificate, onClose }) {
             />
 
             {/* Modal Dialog Card (White Liquid Glass Aesthetic) */}
-            <div className="relative z-10 w-full max-w-lg bg-white/85 dark:bg-white/90 backdrop-blur-2xl text-slate-900 border border-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.18)] rounded-3xl overflow-hidden p-4 sm:p-5 flex flex-col my-auto transition-all transform duration-200 animate-fadeIn ring-1 ring-black/5">
+            <div className="relative z-10 w-full max-w-lg bg-white/85 dark:bg-white/90 backdrop-blur-2xl text-slate-900 border border-white/80 shadow-[0_20px_50px_rgba(0,0,0,0.18)] rounded-2xl sm:rounded-3xl overflow-hidden p-3.5 sm:p-5 flex flex-col my-auto transition-all transform duration-200 animate-fadeIn ring-1 ring-black/5">
                 {/* Subtle Liquid Glass Specular Shine Accent */}
                 <div className="absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br from-white/70 via-blue-100/30 to-transparent rounded-full blur-2xl pointer-events-none" />
 

@@ -786,7 +786,7 @@ class AdminController extends Controller
         if (! $profile) {
             $profile = Profile::create([
                 'full_name' => 'Faiz Naufal Putra Permana',
-                'headline' => 'Web Developer | UI/UX Enthusiast',
+                'headline' => 'Web Developer | UI/UX Designer',
                 'bio_about' => 'Fresh Graduate Sistem Informasi Universitas Pamulang.',
             ]);
         }

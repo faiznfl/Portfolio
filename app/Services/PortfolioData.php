@@ -19,7 +19,7 @@ class PortfolioData
         return new Profile([
             'id' => 1,
             'full_name' => 'Faiz Naufal Putra Permana',
-            'headline' => 'Web Developer | UI/UX Enthusiast',
+            'headline' => 'Web Developer | UI/UX Designer',
             'subheadline' => 'Fresh Graduate Sistem Informasi Universitas Pamulang',
             'bio_about' => 'Fresh Graduate Sistem Informasi Universitas Pamulang dengan minat dan pengalaman dalam Web Development serta UI/UX Design. Terbiasa membangun aplikasi web fungsional mulai dari perancangan antarmuka hingga implementasi sistem. Terbuka untuk peluang kerja di bidang Web Development dan Software Engineering.',
             'engineering_principles' => [

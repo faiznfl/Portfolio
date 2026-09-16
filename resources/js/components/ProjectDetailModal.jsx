@@ -47,7 +47,7 @@ export default function ProjectDetailModal({ project, onClose }) {
     const features = (Array.isArray(rawFeatures) ? rawFeatures : []).map(f => typeof f === 'string' ? f.trim() : f).filter(Boolean);
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto overscroll-contain">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto overscroll-contain">
             {/* Soft Ambient Backdrop with Rich Blur */}
             <div
                 className="fixed inset-0 bg-slate-900/60 dark:bg-black/80 backdrop-blur-md transition-opacity duration-300 overscroll-contain"
@@ -57,11 +57,11 @@ export default function ProjectDetailModal({ project, onClose }) {
             />
 
             {/* Modal Dialog Card */}
-            <div className="relative z-10 w-full max-w-4xl max-h-[90vh] bg-white dark:bg-[#0d1527] text-slate-900 dark:text-white border border-slate-200 dark:border-white/15 shadow-2xl dark:shadow-blue-950/30 rounded-3xl overflow-hidden flex flex-col my-auto transition-all transform duration-300 animate-fadeIn overscroll-contain">
+            <div className="relative z-10 w-full max-w-4xl max-h-[92vh] sm:max-h-[90vh] bg-white dark:bg-[#0d1527] text-slate-900 dark:text-white border border-slate-200 dark:border-white/15 shadow-2xl dark:shadow-blue-950/30 rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col my-auto transition-all transform duration-300 animate-fadeIn overscroll-contain">
                 {/* Header Bar */}
-                <div className="sticky top-0 z-20 bg-white/95 dark:bg-[#0d1527]/95 backdrop-blur-md px-6 sm:px-8 py-4 border-b border-slate-100 dark:border-white/10 flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:text-blue-400 border border-ps-primary/20 dark:border-blue-500/30">
+                <div className="sticky top-0 z-20 bg-white/95 dark:bg-[#0d1527]/95 backdrop-blur-md px-4 sm:px-8 py-3.5 sm:py-4 border-b border-slate-100 dark:border-white/10 flex items-center justify-between">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                        <span className="inline-flex items-center px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase bg-ps-primary/10 text-ps-primary dark:text-blue-400 border border-ps-primary/20 dark:border-blue-500/30">
                             PROJECT SHOWCASE
                         </span>
                         {project.is_featured && (
@@ -84,9 +84,9 @@ export default function ProjectDetailModal({ project, onClose }) {
                 </div>
 
                 {/* Scrollable Content Body */}
-                <div className="overflow-y-auto p-6 sm:p-8 overscroll-contain">
+                <div className="overflow-y-auto p-4 sm:p-8 overscroll-contain">
                     {/* Responsive 2-Column Grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
                         {/* Left Column: Cover Mockup & Actions */}
                         <div className="lg:col-span-5 space-y-4">
                             <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-100 dark:bg-[#070a12] border border-slate-200/80 dark:border-white/10 shadow-md">

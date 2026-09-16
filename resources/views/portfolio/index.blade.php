@@ -25,7 +25,7 @@
     <!-- ==========================================
          CHAPTER 1: HOME (Hero with Interactive Ambient Canvas)
          ========================================== -->
-    <section id="home" class="relative min-h-[92vh] flex items-center pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="home" class="relative min-h-[90vh] flex items-center pt-24 sm:pt-32 lg:pt-36 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <!-- Interactive Ambient Particle & PlayStation Symbols Canvas -->
         <canvas id="ambient-canvas"></canvas>
 
@@ -35,26 +35,26 @@
         <div class="absolute bottom-10 left-10 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
         <div class="max-w-7xl mx-auto w-full relative z-10 pointer-events-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-                <!-- Left Column: Story & CTAs -->
-                <div class="lg:col-span-7 space-y-6 text-left relative z-20 pointer-events-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center">
+                <!-- Text Column: Story & CTAs (order-2 on mobile/tablet, order-1 on desktop) -->
+                <div class="order-2 lg:order-1 lg:col-span-7 space-y-5 sm:space-y-6 text-center lg:text-left relative z-20 pointer-events-auto">
                     <!-- Main Title -->
                     <div class="space-y-2">
-                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-slate-900 dark:text-white leading-none">
+                        <h1 class="text-3xl sm:text-5xl lg:text-7xl font-light tracking-tight text-slate-900 dark:text-white leading-[1.12]">
                             Hi, I'm <span class="text-gradient-ps font-semibold">{{ $profile->full_name ?? 'Faiz Naufal Putra Permana' }}</span>
                         </h1>
-                        <div class="text-xl sm:text-2xl font-normal text-ps-primary dark:text-blue-300 font-sans tracking-wide pt-1">
+                        <div class="text-lg sm:text-2xl font-normal text-ps-primary dark:text-blue-300 font-sans tracking-wide pt-1">
                             {{ $profile->headline ?? 'Web Developer' }}
                         </div>
                     </div>
 
                     <!-- Short Bio Description -->
-                    <p class="text-base sm:text-lg text-slate-600 dark:text-gray-300 font-light leading-relaxed max-w-xl">
+                    <p class="text-sm sm:text-lg text-slate-600 dark:text-gray-300 font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
                         {{ $profile->bio_about ?? 'Selamat datang di portofolio saya. Silakan tambahkan informasi profil dan portofolio Anda melalui panel admin.' }}
                     </p>
 
                     <!-- Action Buttons (Clean & Focused) -->
-                    <div class="flex flex-wrap items-center gap-3.5 pt-3">
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-3">
                         <a href="{{ route('resume.preview') }}" target="_blank" rel="noopener noreferrer" class="btn-ps-primary !bg-blue-600 hover:!bg-blue-500 !shadow-lg !shadow-blue-600/30 flex items-center gap-2" title="Download CV">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -70,7 +70,7 @@
                     </div>
 
                     <!-- Social Links (GitHub, LinkedIn, Email) -->
-                    <div class="flex items-center gap-3 pt-2">
+                    <div class="flex items-center justify-center lg:justify-start gap-3 pt-2">
                         <!-- GitHub -->
                         <a
                             href="{{ $profile->social_links['github'] ?? 'https://github.com/faiznfl' }}"
@@ -133,8 +133,8 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Interactive 3D Physics Lanyard Badge (Pre-rendered SSR Anchor) -->
-                <div class="lg:col-span-5 relative flex flex-col items-center justify-center min-h-[580px] lg:min-h-[640px] z-10 overflow-visible">
+                <!-- Lanyard Column: Interactive 3D Physics Lanyard Badge (Pre-rendered SSR Anchor) -->
+                <div class="order-1 lg:order-2 lg:col-span-5 relative flex flex-col items-center justify-center min-h-[420px] sm:min-h-[500px] lg:min-h-[640px] z-10 overflow-visible -mt-5 sm:-mt-8 lg:-mt-12">
                     <div class="w-full relative flex flex-col items-center justify-center select-none" style="perspective: 1200px;">
                         <!-- Soft Ambient Backlight -->
                         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none transform scale-110"></div>
@@ -168,7 +168,7 @@
                         </div>
 
                         <!-- ID Badge Card Container -->
-                        <div class="relative w-full max-w-[300px] sm:max-w-[330px] z-20">
+                        <div class="relative w-full max-w-[330px] sm:max-w-[360px] z-20">
                             <div class="id-badge-card p-5 text-center shadow-2xl relative border border-white/20 bg-slate-950/85 backdrop-blur-xl rounded-[26px]">
                                 <!-- Top Badge Slot Cutout -->
                                 <div class="id-badge-slot shadow-inner mx-auto mb-3"></div>
@@ -394,8 +394,8 @@
                 </p>
             </div>
 
-            <!-- 5-Column 3D Tiles Grid with Skill Names -->
-            <div class="grid grid-cols-5 gap-3 sm:gap-4 md:gap-4.5 max-w-[720px] mx-auto justify-items-center" id="skills-container">
+            <!-- Adaptive 3D Tiles Grid with Skill Names -->
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2.5 sm:gap-4 md:gap-4.5 max-w-[720px] mx-auto justify-items-center w-full" id="skills-container">
                 @forelse($skills as $skill)
                     <div class="group skill-card-item" title="{{ $skill->name }}" aria-label="{{ $skill->name }}">
                         <!-- Centered Brand Icon -->

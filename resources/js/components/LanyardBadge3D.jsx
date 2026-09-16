@@ -1,6 +1,6 @@
-﻿import React, { useEffect, useRef, useState, Suspense } from 'react';
+import React, { useEffect, useRef, useState, Suspense } from 'react';
 import * as THREE from 'three';
-import { Canvas, extend, useFrame } from '@react-three/fiber';
+import { Canvas, extend, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF, useTexture, Text, Environment, Lightformer } from '@react-three/drei';
 import {
     BallCollider,
@@ -67,7 +67,7 @@ function Band({ profile, maxSpeed = 50, minSpeed = 10 }) {
 
     useSphericalJoint(j3, card, [
         [0, 0, 0],
-        [0, 1.45, 0],
+        [0, 1.74, 0],
     ]);
 
     useEffect(() => {
@@ -159,7 +159,7 @@ function Band({ profile, maxSpeed = 50, minSpeed = 10 }) {
 
     return (
         <>
-            <group position={[0, 4.6, 0]}>
+            <group position={[0, 4.9, 0]}>
                 <RigidBody ref={fixed} {...segmentProps} type="fixed" />
                 <RigidBody position={[0.5, 0, 0]} ref={j1} {...segmentProps}>
                     <BallCollider args={[0.1]} />
@@ -177,10 +177,10 @@ function Band({ profile, maxSpeed = 50, minSpeed = 10 }) {
                     {...segmentProps}
                     type={dragged ? 'kinematicPosition' : 'dynamic'}
                 >
-                    <CuboidCollider args={[0.8, 1.125, 0.01]} />
+                    <CuboidCollider args={[0.96, 1.35, 0.01]} />
                     <group
-                        scale={2.25}
-                        position={[0, -1.25, -0.05]}
+                        scale={2.7}
+                        position={[0, -1.5, -0.05]}
                         onPointerOver={() => hover(true)}
                         onPointerOut={() => hover(false)}
                         onPointerUp={(e) => {
@@ -270,18 +270,43 @@ class CanvasErrorBoundary extends React.Component {
     }
 }
 
+function ResponsiveCamera() {
+    const { camera, size } = useThree();
+
+    useEffect(() => {
+        const w = window.innerWidth;
+        if (w < 640) {
+            // Mobile screens: bring camera closer so lanyard badge card is substantially larger
+            camera.position.set(0, 0.6, 10.8);
+        } else if (w < 1024) {
+            // Tablet screens: moderately closer
+            camera.position.set(0, 0.7, 12.0);
+        } else {
+            // Desktop screens
+            camera.position.set(0, 0.75, 13.8);
+        }
+        camera.updateProjectionMatrix();
+    }, [size.width, size.height, camera]);
+
+    return null;
+}
+
 export default function LanyardBadge3D({ profile, fallbackComponent }) {
     return (
-        <div className="relative w-full h-[580px] sm:h-[640px] lg:h-[700px] flex items-center justify-center select-none overflow-visible">
+        <div className="relative w-full h-[420px] sm:h-[500px] lg:h-[700px] flex items-center justify-center select-none overflow-visible">
             <CanvasErrorBoundary fallback={fallbackComponent || null}>
                 <Suspense fallback={<Loader />}>
-                    {/* Expansive canvas container that extends generously left, right, top, bottom */}
-                    <div className="absolute inset-0 -left-[45%] -right-[45%] sm:-left-[65%] sm:-right-[65%] lg:-left-[85%] lg:-right-[85%] -top-[20%] -bottom-[20%] overflow-visible pointer-events-auto">
+                    {/* Responsive canvas container with touchAction pan-y to preserve mobile scroll */}
+                    <div
+                        className="absolute inset-0 -left-[20%] -right-[20%] sm:-left-[45%] sm:-right-[45%] lg:-left-[85%] lg:-right-[85%] -top-[15%] -bottom-[15%] overflow-visible pointer-events-auto"
+                        style={{ touchAction: 'pan-y' }}
+                    >
                         <Canvas
-                            camera={{ position: [0, 1.2, 14.5], fov: 33 }}
+                            camera={{ position: [0, 0.75, 13.8], fov: 33 }}
                             style={{ backgroundColor: 'transparent', width: '100%', height: '100%' }}
                             gl={{ alpha: true, antialias: true }}
                         >
+                            <ResponsiveCamera />
                             <ambientLight intensity={Math.PI} />
                             <Physics
                                 debug={false}

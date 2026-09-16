@@ -14,7 +14,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
     const emailAddress = profile?.social_links?.email || profile?.email || 'faiznfl20@gmail.com';
 
     return (
-        <section id="home" className="relative min-h-[92vh] flex items-center pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <section id="home" className="relative min-h-[90vh] flex items-center pt-24 sm:pt-32 lg:pt-36 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
             {/* Interactive Ambient Particle Canvas */}
             <AmbientCanvas />
 
@@ -23,27 +23,27 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
             <div className="absolute top-1/3 right-1/4 w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
             <div className="max-w-7xl mx-auto w-full relative z-10 pointer-events-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-                    {/* Left Column: Greeting, Role & CTAs */}
-                    <div className="lg:col-span-7 space-y-6 text-left relative z-20 pointer-events-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 items-center">
+                    {/* Text Column: Greeting, Role & CTAs (order-2 on mobile/tablet, order-1 on desktop) */}
+                    <div className="order-2 lg:order-1 lg:col-span-7 space-y-5 sm:space-y-6 text-center lg:text-left relative z-20 pointer-events-auto">
 
                         {/* Main Title matching reference */}
                         <div className="space-y-2">
-                            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight text-slate-900 dark:text-white leading-none">
+                            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-light tracking-tight text-slate-900 dark:text-white leading-[1.12]">
                                 Hi, I'm <span className="text-gradient-ps font-semibold">{profile?.full_name || 'Faiz Naufal Putra Permana'}</span>
                             </h1>
-                            <div className="text-xl sm:text-2xl font-normal text-ps-primary dark:text-blue-300 font-sans tracking-wide pt-1">
+                            <div className="text-lg sm:text-2xl font-normal text-ps-primary dark:text-blue-300 font-sans tracking-wide pt-1">
                                 {profile?.headline || 'Web Developer'}
                             </div>
                         </div>
 
                         {/* Short Bio Description */}
-                        <p className="text-base sm:text-lg text-slate-600 dark:text-gray-300 font-light leading-relaxed max-w-xl">
+                        <p className="text-sm sm:text-lg text-slate-600 dark:text-gray-300 font-light leading-relaxed max-w-xl mx-auto lg:mx-0">
                             {profile?.bio_about || 'Selamat datang di portofolio saya. Silakan tambahkan informasi profil dan portofolio Anda melalui panel admin.'}
                         </p>
 
                         {/* 3 Action Buttons (ATM Reference Pill Buttons) */}
-                        <div className="flex flex-wrap items-center gap-3.5 pt-3 relative z-30 pointer-events-auto">
+                        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 pt-2 sm:pt-3 relative z-30 pointer-events-auto">
                             <a
                                 href={resumePreviewUrl || '/resume/preview'}
                                 target="_blank"
@@ -71,7 +71,7 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
                         </div>
 
                         {/* Social Links (GitHub, LinkedIn, Email / Gmail) */}
-                        <div className="flex items-center gap-3 pt-2 relative z-30 pointer-events-auto">
+                        <div className="flex items-center justify-center lg:justify-start gap-3 pt-1 sm:pt-2 relative z-30 pointer-events-auto">
                             {/* GitHub Button */}
                             <a
                                 href={githubUrl}
@@ -114,8 +114,8 @@ export default function Hero({ profile, resumeUrl, resumePreviewUrl }) {
                         </div>
                     </div>
 
-                    {/* Right Column: Interactive 3D Physics Lanyard Badge */}
-                    <div className="lg:col-span-5 relative flex flex-col items-center justify-center min-h-[580px] lg:min-h-[640px] z-10 overflow-visible">
+                    {/* Lanyard Column: Interactive 3D Physics Lanyard Badge (order-1 on mobile/tablet, order-2 on desktop) */}
+                    <div className="order-1 lg:order-2 lg:col-span-5 relative flex flex-col items-center justify-center min-h-[420px] sm:min-h-[500px] lg:min-h-[640px] z-10 overflow-visible -mt-5 sm:-mt-8 lg:-mt-12">
                         <div className="w-full h-full flex items-center justify-center overflow-visible">
                             <Suspense fallback={<Interactive3DCard profile={profile} />}>
                                 <LanyardBadge3D

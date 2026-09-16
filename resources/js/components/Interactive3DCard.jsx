@@ -296,7 +296,7 @@ export default function Interactive3DCard({ profile }) {
                 ref={cardRef}
                 onPointerDown={handlePointerDown}
                 onPointerUp={handlePointerUp}
-                className={`relative w-full max-w-[300px] sm:max-w-[330px] z-20 cursor-grab active:cursor-grabbing transition-shadow duration-300 ${isDragging ? 'shadow-2xl scale-[1.03]' : ''
+                className={`relative w-full max-w-[330px] sm:max-w-[360px] z-20 cursor-grab active:cursor-grabbing transition-shadow duration-300 ${isDragging ? 'shadow-2xl scale-[1.03]' : ''
                     }`}
                 style={{
                     transformStyle: 'preserve-3d',

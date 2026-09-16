@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Certificates({ certificates = [], onSelectCertificate }) {
     return (
-        <section id="certificates" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
-            <div className="max-w-7xl mx-auto space-y-12 relative z-10">
+        <section id="certificates" className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
+            <div className="max-w-7xl mx-auto space-y-10 sm:space-y-12 relative z-10">
                 {/* Header */}
                 <div className="text-center space-y-2 max-w-2xl mx-auto">
                     <div className="section-tagline">VERIFIED CREDENTIALS</div>
@@ -16,7 +16,7 @@ export default function Certificates({ certificates = [], onSelectCertificate })
                 </div>
 
                 {/* Certificates Grid (3 Column Layout matching Reference) */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
                     {certificates.length === 0 ? (
                         <div className="col-span-full py-16 text-center text-slate-400 dark:text-gray-500 font-light border border-dashed border-slate-200 dark:border-white/10 rounded-2xl p-8">
                             <div className="w-10 h-10 mx-auto mb-3 text-slate-400 dark:text-gray-500 flex items-center justify-center">

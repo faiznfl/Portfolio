@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 
 export default function Contacts({ profile = {}, csrfToken = '', submitUrl = '/contact/submit' }) {
     const [formData, setFormData] = useState({
@@ -36,8 +36,8 @@ export default function Contacts({ profile = {}, csrfToken = '', submitUrl = '/c
     };
 
     return (
-        <section id="contacts" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
-            <div className="max-w-6xl mx-auto space-y-12 relative z-10">
+        <section id="contacts" className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
+            <div className="max-w-6xl mx-auto space-y-10 sm:space-y-12 relative z-10">
                 {/* Header */}
                 <div className="text-center space-y-2 max-w-2xl mx-auto">
                     <div className="section-tagline">LET'S CONNECT</div>
@@ -50,11 +50,11 @@ export default function Contacts({ profile = {}, csrfToken = '', submitUrl = '/c
                 </div>
 
                 {/* Split Contact Grid: Info Cards & Form */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
                     {/* Left Column: Contact Information Master Card & Channel Cards */}
                     <div className="lg:col-span-5 space-y-4">
                         {/* Master Card (Contact Information) */}
-                        <div className="glass-panel p-6 sm:p-7 space-y-6 shadow-sm dark:shadow-none">
+                        <div className="glass-panel p-5 sm:p-7 space-y-5 sm:space-y-6 shadow-sm dark:shadow-none">
                             <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
                                 Contact Information
                             </h3>
@@ -175,8 +175,8 @@ export default function Contacts({ profile = {}, csrfToken = '', submitUrl = '/c
                     </div>
 
                     {/* Right Column: Clean Contact Form */}
-                    <div className="lg:col-span-7 glass-panel p-8 sm:p-9 shadow-lg dark:shadow-2xl">
-                        <form action={submitUrl || '/contact/submit'} method="POST" className="space-y-5">
+                    <div className="lg:col-span-7 glass-panel p-5 sm:p-8 lg:p-9 shadow-lg dark:shadow-2xl">
+                        <form action={submitUrl || '/contact/submit'} method="POST" className="space-y-4 sm:space-y-5">
                             <input type="hidden" name="_token" value={csrfToken || ''} />
 
                             {/* Honeypot field */}
@@ -193,7 +193,7 @@ export default function Contacts({ profile = {}, csrfToken = '', submitUrl = '/c
                                 />
                             </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                                 <div className="space-y-1.5">
                                     <label htmlFor="sender_name" className="block text-xs font-mono uppercase tracking-wider text-slate-700 dark:text-gray-300 font-medium">
                                         Nama Lengkap <span className="text-ps-primary dark:text-blue-400">*</span>
@@ -206,7 +206,7 @@ export default function Contacts({ profile = {}, csrfToken = '', submitUrl = '/c
                                         placeholder="cth: Budi Santoso"
                                         value={formData.sender_name}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/50 border border-slate-300/80 dark:border-white/15 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-sm transition-colors"
+                                        className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-100/90 dark:bg-black/50 border border-slate-300/80 dark:border-white/15 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-base sm:text-sm transition-colors"
                                     />
                                 </div>
 
@@ -222,7 +222,7 @@ export default function Contacts({ profile = {}, csrfToken = '', submitUrl = '/c
                                         placeholder="cth: budi@company.com"
                                         value={formData.sender_email}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/50 border border-slate-300/80 dark:border-white/15 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-sm transition-colors"
+                                        className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-100/90 dark:bg-black/50 border border-slate-300/80 dark:border-white/15 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-base sm:text-sm transition-colors"
                                     />
                                 </div>
                             </div>
@@ -239,7 +239,7 @@ export default function Contacts({ profile = {}, csrfToken = '', submitUrl = '/c
                                     placeholder="cth: Penawaran Kolaborasi / Diskusi Proyek"
                                     value={formData.subject}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/50 border border-slate-300/80 dark:border-white/15 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-sm transition-colors"
+                                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-100/90 dark:bg-black/50 border border-slate-300/80 dark:border-white/15 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-base sm:text-sm transition-colors"
                                 />
                             </div>
 
@@ -260,7 +260,7 @@ export default function Contacts({ profile = {}, csrfToken = '', submitUrl = '/c
                                     placeholder="Tuliskan rincian kebutuhan proyek, timeline, atau topik diskusi..."
                                     value={formData.message_body}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 rounded-xl bg-slate-100/90 dark:bg-black/50 border border-slate-300/80 dark:border-white/15 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-sm transition-colors"
+                                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-slate-100/90 dark:bg-black/50 border border-slate-300/80 dark:border-white/15 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-500 focus:outline-none focus:border-ps-primary text-base sm:text-sm transition-colors"
                                 ></textarea>
                             </div>
 

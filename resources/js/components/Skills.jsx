@@ -49,7 +49,7 @@ export default function Skills({ skills = [] }) {
     };
 
     return (
-        <section id="skills" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
+        <section id="skills" className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
             {/* Ambient Background Glows */}
             <div className="absolute top-1/4 -left-20 w-[400px] h-[400px] bg-ps-primary/10 dark:bg-ps-primary/15 rounded-full blur-[130px] pointer-events-none" />
             <div className="absolute bottom-10 -right-20 w-[420px] h-[420px] bg-blue-500/10 dark:bg-blue-500/15 rounded-full blur-[140px] pointer-events-none" />
@@ -66,9 +66,9 @@ export default function Skills({ skills = [] }) {
                     </p>
                 </div>
 
-                {/* 5-Column 3D Tiles Grid with Skill Names */}
+                {/* Adaptive 3D Tiles Grid: 3-col Mobile, 4-col Small Tablet, 5-col Tablet/Desktop */}
                 <div
-                    className="grid grid-cols-5 gap-3 sm:gap-4 md:gap-4.5 max-w-[720px] mx-auto justify-items-center"
+                    className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2.5 sm:gap-4 md:gap-4.5 max-w-[720px] mx-auto justify-items-center w-full"
                     id="skills-container"
                 >
                     {skills.length === 0 ? (

@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Projects({ projects = [], onSelectProject }) {
     return (
-        <section id="projects" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
-            <div className="max-w-7xl mx-auto space-y-12 relative z-10">
+        <section id="projects" className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
+            <div className="max-w-7xl mx-auto space-y-10 sm:space-y-12 relative z-10">
                 {/* Header */}
                 <div className="text-center space-y-2 max-w-2xl mx-auto">
                     <div className="section-tagline">TAKE A LOOK AT MY</div>
@@ -17,7 +17,7 @@ export default function Projects({ projects = [], onSelectProject }) {
 
                 {/* 3-Column Projects Grid */}
                 <div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8"
                     id="projects-grid"
                 >
                     {projects.length === 0 ? (
@@ -61,7 +61,7 @@ export default function Projects({ projects = [], onSelectProject }) {
                                     </div>
 
                                     {/* Card Body */}
-                                    <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
+                                    <div className="p-5 sm:p-6 flex-grow flex flex-col justify-between space-y-4">
                                         <div className="space-y-2">
                                             <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight group-hover:text-ps-primary dark:group-hover:text-blue-300 transition-colors">
                                                 {project.title}

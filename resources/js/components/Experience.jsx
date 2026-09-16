@@ -30,8 +30,8 @@ export default function Experience({ experiences = [] }) {
     });
 
     return (
-        <section id="experience" className="relative py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
-            <div className="max-w-6xl mx-auto space-y-12 relative z-10">
+        <section id="experience" className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 border-t border-slate-200 dark:border-white/10 overflow-hidden transition-colors">
+            <div className="max-w-6xl mx-auto space-y-10 sm:space-y-12 relative z-10">
                 {/* Header */}
                 <div className="text-center space-y-2 max-w-2xl mx-auto">
                     <div className="section-tagline">MY PROFESSIONAL PATH</div>
@@ -57,9 +57,9 @@ export default function Experience({ experiences = [] }) {
                     ) : (
                         <>
                             {/* Central Glowing Line */}
-                            <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-blue-500 via-blue-600 to-blue-400 -translate-x-1/2 shadow-[0_0_12px_rgba(37,99,235,0.5)]"></div>
+                            <div className="absolute left-3.5 sm:left-4 md:left-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-blue-500 via-blue-600 to-blue-400 -translate-x-1/2 shadow-[0_0_12px_rgba(37,99,235,0.5)]"></div>
 
-                            <div className="space-y-10">
+                            <div className="space-y-8 sm:space-y-10">
                                 {sortedExperiences.map((exp, idx) => {
                                     const cardKey = exp.id ?? idx;
                                     const isExpanded = !!expandedIds[cardKey];
@@ -85,14 +85,14 @@ export default function Experience({ experiences = [] }) {
                                                 }`}
                                         >
                                             {/* Center Node Dot */}
-                                            <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-white dark:bg-black border-4 border-ps-primary dark:border-blue-400 shadow-[0_0_15px_rgba(37,99,235,0.6)] z-20"></div>
+                                            <div className="absolute left-3.5 sm:left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white dark:bg-black border-4 border-ps-primary dark:border-blue-400 shadow-[0_0_15px_rgba(37,99,235,0.6)] z-20"></div>
 
-                                            {/* Card Container (Takes 5/12 width on desktop) */}
-                                            <div className="w-full md:w-5/12 pl-12 md:pl-0">
-                                                <div className="glass-panel p-5 sm:p-6 space-y-3.5 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.01] shadow-md dark:shadow-xl">
+                                            {/* Card Container (Responsive width for mobile & tablet) */}
+                                            <div className="w-full md:w-[46%] lg:w-5/12 pl-8 sm:pl-12 md:pl-0">
+                                                <div className="glass-panel p-4.5 sm:p-6 space-y-3.5 hover:border-ps-primary dark:hover:border-blue-400/40 transition-all duration-300 hover:scale-[1.01] shadow-md dark:shadow-xl">
                                                     {/* Role & Date Bar */}
                                                     <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 dark:border-white/10 pb-2.5">
-                                                        <span className="px-3 py-1 rounded-full text-xs font-mono bg-slate-200/80 dark:bg-white/[0.06] text-slate-800 dark:text-blue-300 border border-slate-300 dark:border-white/10">
+                                                        <span className="px-2.5 sm:px-3 py-1 rounded-full text-xs font-mono bg-slate-200/80 dark:bg-white/[0.06] text-slate-800 dark:text-blue-300 border border-slate-300 dark:border-white/10">
                                                             {formatDate(exp.start_date)} - {exp.is_current ? 'Present' : formatDate(exp.end_date)}
                                                         </span>
                                                         {exp.is_current && (

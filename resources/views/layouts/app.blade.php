@@ -47,7 +47,7 @@
     @viteReactRefresh
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])
 </head>
-<body class="bg-[#080d1a] text-slate-100 antialiased selection:bg-ps-primary selection:text-white min-h-screen flex flex-col font-sans">
+<body class="bg-[#080d1a] text-slate-100 antialiased selection:bg-ps-primary selection:text-white min-h-screen flex flex-col font-sans overflow-x-hidden w-full max-w-full">
     @if(View::hasSection('custom_layout'))
         @yield('custom_layout')
     @else
@@ -72,14 +72,14 @@
             </nav>
 
             <!-- Action Pill CTAs -->
-            <div class="hidden sm:flex items-center gap-3">
+            <div class="hidden md:flex items-center gap-3">
                 <a href="{{ url('/#contacts') }}" class="btn-ps-primary !py-1.5 !px-4 !text-xs">
                     <span>Hubungi</span>
                 </a>
             </div>
 
             <!-- Mobile Hamburger Button -->
-            <div class="flex items-center sm:hidden">
+            <div class="flex items-center md:hidden">
                 <button id="mobile-menu-btn" type="button" aria-label="Buka Menu" class="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -90,26 +90,26 @@
     </header>
 
     <!-- Mobile Navigation Drawer -->
-    <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/95 flex flex-col p-6 hidden opacity-0 transition-opacity duration-200">
+    <div id="mobile-drawer" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex flex-col p-6 hidden opacity-0 transition-all duration-300 ease-out">
         <div class="flex justify-between items-center border-b border-white/10 pb-4">
-            <span class="font-bold text-lg text-white">MENU NAVIGASI</span>
-            <button id="mobile-menu-close" type="button" aria-label="Tutup Menu" class="p-2 rounded-full text-gray-400 hover:text-white">
+            <span class="font-bold text-lg text-white tracking-tight">Faiz <span class="text-blue-400 font-light">Naufal.</span></span>
+            <button id="mobile-menu-close" type="button" aria-label="Tutup Menu" class="p-2 rounded-full text-gray-400 hover:text-white hover:bg-white/10 transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
-        <nav class="flex flex-col gap-5 mt-8 text-xl font-light">
-            <a href="{{ url('/#home') }}" class="mobile-nav-link text-gray-300 hover:text-ps-primary py-1">1. Home</a>
-            <a href="{{ url('/#about') }}" class="mobile-nav-link text-gray-300 hover:text-ps-primary py-1">2. About</a>
-            <a href="{{ url('/#skills') }}" class="mobile-nav-link text-gray-300 hover:text-ps-primary py-1">3. Skills</a>
-            <a href="{{ url('/#projects') }}" class="mobile-nav-link text-gray-300 hover:text-ps-primary py-1">4. Projects</a>
-            <a href="{{ url('/#experience') }}" class="mobile-nav-link text-gray-300 hover:text-ps-primary py-1">5. Experience</a>
-            <a href="{{ url('/#certificates') }}" class="mobile-nav-link text-gray-300 hover:text-ps-primary py-1">6. Certificates</a>
-            <a href="{{ url('/#contacts') }}" class="mobile-nav-link text-gray-300 hover:text-ps-primary py-1">7. Contacts</a>
+        <nav class="flex flex-col gap-1.5 mt-6 text-base font-medium">
+            <a href="{{ url('/#home') }}" class="mobile-nav-link text-gray-300 hover:text-white py-2.5 px-3 rounded-xl hover:bg-white/10 transition-all">Home</a>
+            <a href="{{ url('/#about') }}" class="mobile-nav-link text-gray-300 hover:text-white py-2.5 px-3 rounded-xl hover:bg-white/10 transition-all">About</a>
+            <a href="{{ url('/#skills') }}" class="mobile-nav-link text-gray-300 hover:text-white py-2.5 px-3 rounded-xl hover:bg-white/10 transition-all">Skills</a>
+            <a href="{{ url('/#projects') }}" class="mobile-nav-link text-gray-300 hover:text-white py-2.5 px-3 rounded-xl hover:bg-white/10 transition-all">Projects</a>
+            <a href="{{ url('/#experience') }}" class="mobile-nav-link text-gray-300 hover:text-white py-2.5 px-3 rounded-xl hover:bg-white/10 transition-all">Experience</a>
+            <a href="{{ url('/#certificates') }}" class="mobile-nav-link text-gray-300 hover:text-white py-2.5 px-3 rounded-xl hover:bg-white/10 transition-all">Certificates</a>
+            <a href="{{ url('/#contacts') }}" class="mobile-nav-link text-gray-300 hover:text-white py-2.5 px-3 rounded-xl hover:bg-white/10 transition-all">Contacts</a>
         </nav>
         <div class="mt-auto pt-6 border-t border-white/10 flex flex-col gap-3">
-            <a href="{{ route('admin.login') }}" class="text-xs text-gray-500 text-center py-2 hover:text-gray-300">Admin Login</a>
+            <a href="{{ route('admin.login') }}" class="text-xs text-gray-500 text-center py-2 hover:text-gray-300 transition-colors">Admin Login</a>
         </div>
     </div>
     @endif

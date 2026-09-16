@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { smoothScrollTo } from '../utils/smoothScroll';
 
 export default function Navbar({ resumeUrl, theme = 'dark', onToggleTheme }) {
@@ -18,7 +18,7 @@ export default function Navbar({ resumeUrl, theme = 'dark', onToggleTheme }) {
         { id: 'projects', label: 'Projects' },
         { id: 'experience', label: 'Experience' },
         { id: 'certificates', label: 'Certificates' },
-        { id: 'contacts', label: 'Contact' }
+        { id: 'contacts', label: 'Contacts' }
     ];
 
     // Measure active button and glide the pill into exact pixel-perfect place
@@ -45,6 +45,18 @@ export default function Navbar({ resumeUrl, theme = 'dark', onToggleTheme }) {
         window.addEventListener('resize', updatePill);
         return () => window.removeEventListener('resize', updatePill);
     }, [activeSection]);
+
+    // Lock body scroll when mobile navigation drawer is active
+    useEffect(() => {
+        if (mobileOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => {
+            document.body.style.overflow = '';
+        };
+    }, [mobileOpen]);
 
     const clearStepTimeouts = () => {
         stepTimeoutsRef.current.forEach((t) => clearTimeout(t));
@@ -211,50 +223,73 @@ export default function Navbar({ resumeUrl, theme = 'dark', onToggleTheme }) {
                         )}
                     </button>
 
-                    {/* Mobile Hamburger Button */}
+                    {/* Mobile Hamburger Button (Morphing into X) */}
                     <div className="flex items-center md:hidden">
                         <button
                             type="button"
                             onClick={() => setMobileOpen(!mobileOpen)}
-                            aria-label="Toggle navigation menu"
-                            className="p-2 rounded-full text-slate-700 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/10"
+                            aria-label={mobileOpen ? "Tutup menu" : "Buka menu"}
+                            aria-expanded={mobileOpen}
+                            className="p-2.5 rounded-full text-slate-700 dark:text-gray-300 hover:bg-slate-200/60 dark:hover:bg-white/10 active:scale-90 transition-all cursor-pointer flex items-center justify-center"
                         >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
+                            <div className="w-5 h-4 relative flex flex-col justify-between items-center">
+                                <span className={`h-0.5 w-5 bg-current rounded-full transform transition-all duration-300 ease-in-out origin-center ${
+                                    mobileOpen ? 'rotate-45 translate-y-[7px]' : 'translate-y-0'
+                                }`} />
+                                <span className={`h-0.5 w-5 bg-current rounded-full transition-all duration-200 ease-in-out ${
+                                    mobileOpen ? 'opacity-0 scale-x-0' : 'opacity-100'
+                                }`} />
+                                <span className={`h-0.5 w-5 bg-current rounded-full transform transition-all duration-300 ease-in-out origin-center ${
+                                    mobileOpen ? '-rotate-45 -translate-y-[7px]' : 'translate-y-0'
+                                }`} />
+                            </div>
                         </button>
                     </div>
                 </div>
             </header>
 
-            {/* Mobile Navigation Drawer */}
-            {mobileOpen && (
-                <div className="fixed inset-0 z-50 bg-slate-900/60 dark:bg-black/80 backdrop-blur-xl flex flex-col p-6 animate-fadeIn">
-                    <div className="flex justify-between items-center border-b border-slate-200 dark:border-white/10 pb-4">
-                        <span className="font-bold text-lg text-slate-900 dark:text-white">MENU NAVIGASI</span>
-                        <button
-                            type="button"
-                            onClick={() => setMobileOpen(false)}
-                            className="p-2 rounded-full text-slate-500 dark:text-gray-400 hover:text-white"
-                        >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <nav className="flex flex-col gap-5 mt-8 text-lg font-light">
-                        {navItems.map((item, idx) => (
-                            <button
-                                key={item.id}
-                                onClick={() => scrollTo(item.id)}
-                                className="text-left text-slate-800 dark:text-gray-200 hover:text-ps-primary dark:hover:text-blue-400 py-1"
-                            >
-                                {idx + 1}. {item.label}
-                            </button>
-                        ))}
+            {/* Smooth Mobile Menu Backdrop */}
+            <div
+                onClick={() => setMobileOpen(false)}
+                className={`fixed inset-0 z-40 bg-slate-950/40 dark:bg-black/70 backdrop-blur-sm md:hidden transition-all duration-300 ease-out ${
+                    mobileOpen
+                        ? 'opacity-100 pointer-events-auto visible'
+                        : 'opacity-0 pointer-events-none invisible'
+                }`}
+                aria-hidden="true"
+            />
+
+            {/* Smooth Floating Mobile Menu Card */}
+            <div
+                className={`fixed top-20 sm:top-24 inset-x-3 sm:inset-x-6 mx-auto max-w-sm z-40 md:hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] transform ${
+                    mobileOpen
+                        ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto visible'
+                        : 'opacity-0 -translate-y-3 scale-95 pointer-events-none invisible'
+                }`}
+                aria-hidden={!mobileOpen}
+            >
+                <div className="liquid-glass-nav bg-white/95 dark:bg-[#0b1120]/95 backdrop-blur-2xl rounded-2xl border border-slate-200/90 dark:border-white/10 shadow-2xl p-2.5 overflow-hidden">
+                    {/* Direct Menu Items List (Clean, Smooth, Direct) */}
+                    <nav className="flex flex-col gap-1">
+                        {navItems.map((item) => {
+                            const isActive = activeSection === item.id;
+                            return (
+                                <button
+                                    key={item.id}
+                                    onClick={() => scrollTo(item.id)}
+                                    className={`w-full text-left py-2.5 px-4 rounded-xl transition-all duration-200 text-sm font-medium cursor-pointer active:scale-[0.98] ${
+                                        isActive
+                                            ? 'text-slate-900 dark:text-white font-semibold bg-slate-100/90 dark:bg-white/[0.08]'
+                                            : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/60 dark:hover:bg-white/5 active:bg-slate-200/60 dark:active:bg-white/10'
+                                    }`}
+                                >
+                                    {item.label}
+                                </button>
+                            );
+                        })}
                     </nav>
                 </div>
-            )}
+            </div>
         </>
     );
 }
